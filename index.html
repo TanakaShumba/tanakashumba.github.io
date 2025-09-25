@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanaka Shumba - Cybersecurity Portfolio</title>
+<title>Cybersecurity Portfolio</title>
 <style>
+    /* General Styles */
     body {
         margin: 0;
         font-family: 'Arial', sans-serif;
-        background: #000;
+        background-color: #000;
         color: #fff;
         overflow-x: hidden;
     }
     header {
-        background: linear-gradient(to right, #000, #0a0a0a);
         padding: 40px 20px;
         text-align: center;
         position: relative;
+        background: linear-gradient(to right, #000, #0a0a0a);
     }
     header h1 {
-        margin: 0;
         font-size: 2.8em;
         color: #00ff7f;
+        margin: 0;
     }
     nav {
         margin-top: 15px;
@@ -40,7 +41,10 @@
         padding: 60px 20px;
         max-width: 1000px;
         margin: auto;
+        position: relative;
+        z-index: 2;
     }
+    /* About Section */
     #about {
         display: flex;
         flex-wrap: wrap;
@@ -60,7 +64,12 @@
         font-size: 2em;
         margin-bottom: 15px;
     }
-    #projects .project-grid {
+    /* Projects Section */
+    #projects h2 {
+        color: #00ff7f;
+        margin-bottom: 25px;
+    }
+    .project-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
@@ -77,8 +86,8 @@
         box-shadow: 0 0 20px #00ff7f;
     }
     .project h3 {
-        margin-top: 0;
         color: #00dfff;
+        margin-top: 0;
     }
     .project p {
         font-size: 0.95em;
@@ -90,6 +99,11 @@
         text-decoration: none;
         color: #00ff7f;
         font-weight: bold;
+    }
+    /* Contact Section */
+    #contact h2 {
+        color: #00ff7f;
+        margin-bottom: 25px;
     }
     #contact form {
         display: flex;
@@ -120,20 +134,20 @@
         padding: 20px;
         color: #666;
     }
-    /* subtle animated background lines */
+    /* Background lines animation */
     .bg-lines {
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
         pointer-events: none;
-        z-index: 0;
+        z-index: 1;
     }
     .line {
         position: absolute;
         width: 2px;
         height: 100%;
         background: rgba(0, 255, 127, 0.1);
-        animation: move 5s linear infinite;
+        animation: move 6s linear infinite;
     }
     @keyframes move {
         0% { transform: translateY(-100%); }
@@ -142,6 +156,7 @@
 </style>
 </head>
 <body>
+
 <div class="bg-lines">
     <div class="line" style="left:10%; animation-duration:6s;"></div>
     <div class="line" style="left:25%; animation-duration:8s;"></div>
@@ -164,79 +179,50 @@
     <img src="images/about-me.jpg" alt="Profile Picture">
     <div>
         <h2>Hi there!</h2>
-        <p>Welcome to my cybersecurity portfolio. Here, I showcase my projects and ambitions. I am passionate about securing systems, analyzing threats, and contributing to impactful cybersecurity solutions. Take a look at my work and see what I can bring to your organization.</p>
+        <p>Welcome to my cybersecurity portfolio! Here I showcase my projects, skills, and ambitions in cybersecurity. I focus on threat detection, secure software development, cloud and network security. Explore my projects and see how I can contribute to your team.</p>
     </div>
 </section>
 
 <section id="projects">
-    <h2 style="color:#00ff7f;">Projects</h2>
+    <h2>Projects</h2>
     <div class="project-grid">
         <div class="project">
             <h3>Malware Analyzer</h3>
-            <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors.</p>
+            <p>Python script simulating malware detection techniques.</p>
             <a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">View on GitHub</a>
         </div>
         <div class="project">
             <h3>Ethical Hacking Sim</h3>
-            <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
+            <p>Educational scripts simulating ethical hacking techniques.</p>
             <a href="https://github.com/TanakaShumba/ethical-hacking-sim" target="_blank">View on GitHub</a>
         </div>
         <div class="project">
             <h3>Cloud Security Checker</h3>
-            <p>Python script simulating checking cloud service configurations for common security misconfigurations.</p>
+            <p>Script simulating checking cloud configurations for security issues.</p>
             <a href="https://github.com/TanakaShumba/cloud-security-checker" target="_blank">View on GitHub</a>
         </div>
         <div class="project">
-            <h3>Basic Pen Test</h3>
-            <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
-            <a href="https://github.com/TanakaShumba/basic-pen-test" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Simple IDS</h3>
-            <p>A basic IDS/IPS simulation in Python.</p>
-            <a href="https://github.com/TanakaShumba/simple-ids" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Cybersecurity Lab Series</h3>
-            <p>Collection of hands-on cybersecurity lab exercises and simulations.</p>
-            <a href="https://github.com/TanakaShumba/cybersecurity-lab-series" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Secure Hospital System</h3>
-            <p>Python-based secure hospital management system.</p>
-            <a href="https://github.com/TanakaShumba/secure-hospital-system" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>VoIP Traffic Analyzer</h3>
-            <p>Python project capturing and analyzing VoIP RTP packets safely for educational purposes.</p>
-            <a href="https://github.com/TanakaShumba/voip-traffic-analyzer" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
             <h3>Python Network Scanner</h3>
-            <p>Python project for network scanning.</p>
+            <p>Educational network scanning tool in Python.</p>
             <a href="https://github.com/TanakaShumba/python-network-scanner" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Healthcare System</h3>
-            <p>Flask-based healthcare management system to handle appointments and payments.</p>
-            <a href="https://github.com/TanakaShumba/Healthcare_System" target="_blank">View on GitHub</a>
         </div>
     </div>
 </section>
 
 <section id="contact">
-    <h2 style="color:#00ff7f;">Contact</h2>
+    <h2>Contact</h2>
     <form>
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Your Email">
-        <textarea placeholder="Message" rows="5"></textarea>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Message" rows="5" required></textarea>
         <button type="submit">Send Message</button>
-        <p style="margin-top:10px;">LinkedIn: <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" style="color:#00dfff;">tanakashumba</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" style="color:#00dfff;">tanakashumba</a></p>
     </form>
 </section>
 
 <footer>
     &copy; 2025 Tanaka Shumba. All rights reserved.
 </footer>
+
 </body>
 </html>
