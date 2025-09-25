@@ -5,181 +5,226 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tanaka Shumba Portfolio</title>
 <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0a0a0a;
-    color: #e0e0e0;
-  }
+    /* Reset and basic styling */
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    body {
+        background-color: black;
+        color: #d9d9d9;
+        line-height: 1.6;
+        position: relative;
+        overflow-x: hidden;
+    }
 
-  header {
-    background-color: #0d0d0d;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #00ff7f;
-  }
+    /* Light blue overlay */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(173, 216, 230, 0.08);
+        pointer-events: none;
+        z-index: 0;
+    }
 
-  header h1 {
-    margin: 0;
-    color: #00ff7f;
-  }
+    header {
+        padding: 20px;
+        text-align: center;
+        background-color: #000;
+        position: relative;
+        z-index: 1;
+    }
 
-  nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #00ccff;
-    font-weight: bold;
-  }
+    header h1 {
+        font-size: 2.5rem;
+        color: #00ff99;
+        margin-bottom: 10px;
+    }
 
-  nav a:hover {
-    color: #00ff7f;
-  }
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 10px;
+    }
 
-  section {
-    padding: 50px 20px;
-    max-width: 1000px;
-    margin: auto;
-  }
+    nav a {
+        color: #00bfff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
 
-  .about-me img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    float: left;
-    margin-right: 30px;
-    border: 2px solid #00ff7f;
-  }
+    nav a:hover {color: #00ff99;}
 
-  .about-me h2 {
-    color: #00ff7f;
-  }
+    section {
+        padding: 50px 20px;
+        position: relative;
+        z-index: 1;
+        max-width: 1000px;
+        margin: auto;
+    }
 
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
+    section h2 {
+        font-size: 2rem;
+        color: #00ff99;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #00bfff;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
 
-  .project-card {
-    background-color: #111;
-    border: 2px solid #00ff7f;
-    padding: 20px;
-    border-radius: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+    /* About Me Section */
+    #about img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
 
-  .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px #00ff7f;
-  }
+    #about-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+    }
 
-  .project-card h3 {
-    margin-top: 0;
-    color: #00ccff;
-  }
+    /* Projects Section */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
 
-  .contact a {
-    display: inline-block;
-    margin-right: 20px;
-    padding: 10px 20px;
-    background-color: #00ccff;
-    color: #0a0a0a;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.2s;
-  }
+    .project-card {
+        background-color: #111;
+        border: 1px solid #00ff99;
+        padding: 15px;
+        border-radius: 8px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-  .contact a:hover {
-    background-color: #00ff7f;
-    color: #000;
-  }
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px #00ff99;
+    }
 
-  footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #0d0d0d;
-    border-top: 2px solid #00ff7f;
-    color: #888;
-  }
+    .project-card h3 {
+        color: #00bfff;
+        margin-bottom: 10px;
+    }
+
+    .project-card p {
+        font-size: 0.95rem;
+        color: #d9d9d9;
+    }
+
+    /* Contact Section */
+    .contact-links a {
+        display: inline-block;
+        margin-right: 20px;
+        text-decoration: none;
+        color: #00bfff;
+        border: 1px solid #00bfff;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+
+    .contact-links a:hover {
+        background-color: #00bfff;
+        color: #000;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #000;
+        color: #555;
+        position: relative;
+        z-index: 1;
+    }
 
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Tanaka Shumba</h1>
-  <nav>
-    <a href="#about">About Me</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <h1>Tanaka Shumba</h1>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<section id="about" class="about-me">
-  <img src="images/about-me.jpg" alt="Tanaka Shumba">
-  <h2>Hi there</h2>
-  <p>Welcome to my portfolio! Here, I showcase my cybersecurity projects, highlighting my skills in threat detection, penetration testing, and network security. Each project demonstrates practical solutions and innovative approaches to modern security challenges.</p>
-  <p>Beyond these projects, I am passionate about advancing in the cybersecurity field, constantly learning, and contributing to securing digital landscapes. This portfolio reflects both my technical expertise and my ambition to make an impact in the cybersecurity industry.</p>
+<section id="about">
+    <h2>About Me</h2>
+    <div id="about-content">
+        <img src="images/about-me.jpg" alt="Tanaka Shumba">
+        <div>
+            <p>Hi there! Welcome to my portfolio. Here, I showcase my cybersecurity projects, highlighting my skills in threat detection, penetration testing, and network security. Each project demonstrates practical solutions and innovative approaches to modern security challenges.</p>
+            <p>Beyond these projects, I am passionate about advancing in the cybersecurity field, constantly learning, and contributing to securing digital landscapes. This portfolio reflects both my technical expertise and my ambition to make an impact in the cybersecurity industry.</p>
+        </div>
+    </div>
 </section>
 
 <section id="projects">
-  <h2>My Projects</h2>
-  <div class="projects">
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">Malware Analyzer</a></h3>
-      <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors in a controlled environment.</p>
+    <h2>My Projects</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">Malware Analyzer</a></h3>
+            <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors in a controlled environment.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/ethical-hacking-sim" target="_blank">Ethical Hacking Sim</a></h3>
+            <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/cloud-security-checker" target="_blank">Cloud Security Checker</a></h3>
+            <p>Python script to simulate checking cloud service configurations for common security misconfigurations.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/basic-pen-test" target="_blank">Basic Pen Test</a></h3>
+            <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/simple-ids" target="_blank">Simple IDS</a></h3>
+            <p>A basic IDS/IPS simulation in Python for detecting and preventing attacks.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/cybersecurity-lab-series" target="_blank">Cybersecurity Lab Series</a></h3>
+            <p>A collection of labs and scripts designed for hands-on cybersecurity learning.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/secure-hospital-system" target="_blank">Secure Hospital System</a></h3>
+            <p>Python-based secure hospital management system focusing on patient data security.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/voip-traffic-analyzer" target="_blank">VoIP Traffic Analyzer</a></h3>
+            <p>Python project that captures and analyzes VoIP RTP packets safely for educational use.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/python-network-scanner" target="_blank">Python Network Scanner</a></h3>
+            <p>Python tool for scanning networks and identifying connected devices and vulnerabilities.</p>
+        </div>
+        <div class="project-card">
+            <h3><a href="https://github.com/TanakaShumba/Healthcare_System" target="_blank">Healthcare System</a></h3>
+            <p>Flask-based healthcare management system to handle appointments, doctors, and payments.</p>
+        </div>
     </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/ethical-hacking-sim" target="_blank">Ethical Hacking Sim</a></h3>
-      <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
-    </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/cloud-security-checker" target="_blank">Cloud Security Checker</a></h3>
-      <p>Python script to simulate checking cloud service configurations for common security misconfigurations.</p>
-    </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/basic-pen-test" target="_blank">Basic Pen Test</a></h3>
-      <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
-    </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/simple-ids" target="_blank">Simple IDS</a></h3>
-      <p>A basic IDS/IPS simulation in Python for detecting and preventing attacks.</p>
-    </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/cybersecurity-lab-series" target="_blank">Cybersecurity Lab Series</a></h3>
-      <p>A collection of labs and scripts designed for hands-on cybersecurity learning.</p>
-    </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/secure-hospital-system" target="_blank">Secure Hospital System</a></h3>
-      <p>Python-based secure hospital management system focusing on patient data security.</p>
-    </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/voip-traffic-analyzer" target="_blank">VoIP Traffic Analyzer</a></h3>
-      <p>Python project that captures and analyzes VoIP RTP packets safely for educational use.</p>
-    </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/python-network-scanner" target="_blank">Python Network Scanner</a></h3>
-      <p>Python tool for scanning networks and identifying connected devices and vulnerabilities.</p>
-    </div>
-    <div class="project-card">
-      <h3><a href="https://github.com/TanakaShumba/Healthcare_System" target="_blank">Healthcare System</a></h3>
-      <p>Flask-based healthcare management system to handle appointments, doctors, and payments.</p>
-    </div>
-  </div>
 </section>
 
-<section id="contact" class="contact">
-  <h2>Contact Me</h2>
-  <p>Feel free to reach out via email or LinkedIn:</p>
-  <a href="mailto:tanakashumba04@gmail.com">Email Me</a>
-  <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p>Feel free to reach out via email or LinkedIn:</p>
+    <div class="contact-links">
+        <a href="mailto:tanakashumba04@gmail.com">Email Me</a>
+        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+    </div>
 </section>
 
 <footer>
-  © 2025 Tanaka Shumba
+    <p>© 2025 Tanaka Shumba</p>
 </footer>
 
 </body>
