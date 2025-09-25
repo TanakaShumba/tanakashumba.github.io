@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tanaka Shumba | Cybersecurity Portfolio</title>
+
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-  body { background:#0f0f0f; color:#e0f7ea; line-height:1.6; }
-  
-  header {
-    text-align:center;
-    padding:60px 20px;
-  }
+  body { background:#0f0f0f; color:#e0f7ea; line-height:1.6; position:relative; min-height:100vh; overflow-x:hidden; }
+
+  #particles-js { position:fixed; width:100%; height:100%; z-index:-1; top:0; left:0; }
+
+  header { text-align:center; padding:60px 20px; z-index:1; position:relative; }
   header h1 { font-size:3rem; color:#00cc99; }
   header p { font-size:1.2rem; margin-top:10px; }
 
@@ -22,26 +22,21 @@
     align-items:center;
     padding:40px 20px;
     gap:30px;
+    z-index:1;
+    position:relative;
   }
-  .about img {
-    width:180px;
-    border-radius:50%;
-    border:2px solid #00cc99;
-  }
+  .about img { width:180px; border-radius:50%; border:2px solid #00cc99; }
   .about-text { max-width:600px; }
 
-  h2 {
-    text-align:center;
-    font-size:2rem;
-    margin:50px 0 20px;
-    color:#00cc99;
-  }
+  h2 { text-align:center; font-size:2rem; margin:50px 0 20px; color:#00cc99; }
 
   .projects {
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
     gap:20px;
     padding:0 20px 50px;
+    z-index:1;
+    position:relative;
   }
   .project-card {
     background:#111;
@@ -63,21 +58,18 @@
   }
   .project-card a:hover { background:#0f0f0f; color:#00cc99; border:1px solid #00cc99; }
 
-  footer {
-    text-align:center;
-    padding:30px 20px;
-    font-size:0.9rem;
-    color:#00cc99;
-  }
+  footer { text-align:center; padding:30px 20px; font-size:0.9rem; color:#00cc99; z-index:1; position:relative; }
   footer a { color:#00cc99; margin:0 10px; text-decoration:none; }
   footer a:hover { text-decoration:underline; }
 
-  @media(max-width:600px) {
-    .about { flex-direction:column; }
-  }
+  @media(max-width:600px) { .about { flex-direction:column; } }
 </style>
 </head>
+
 <body>
+
+<!-- Particle Background -->
+<div id="particles-js"></div>
 
 <header>
   <h1>Tanaka Shumba</h1>
@@ -152,6 +144,34 @@
   <a href="mailto:tanakashumba04@gmail.com">Email</a>
   <p>&copy; 2025 Tanaka Shumba</p>
 </footer>
+
+<!-- Particles.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS('particles-js', {
+  "particles": {
+    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": "#00cc99" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.3 },
+    "size": { "value": 3 },
+    "line_linked": { "enable": true, "distance": 120, "color": "#00cc99", "opacity": 0.2, "width": 1 },
+    "move": { "enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" },
+      "onclick": { "enable": true, "mode": "push" }
+    },
+    "modes": {
+      "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
+      "push": { "particles_nb": 4 }
+    }
+  },
+  "retina_detect": true
+});
+</script>
 
 </body>
 </html>
