@@ -1,153 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanaka Shumba | Cybersecurity Portfolio</title>
-<style>
-/* Basic Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d0d0d; color: #e0e0e0; line-height: 1.6; overflow-x: hidden; }
-a { color: #00ff99; text-decoration: none; }
-header { background: rgba(0,0,0,0.8); padding: 2rem 1rem; text-align: center; border-bottom: 2px solid #00ff99; position: relative; z-index: 2; }
-header h1 { font-size: 2.5rem; color: #00ff99; }
-nav { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
-nav a { color: #00ff99; font-weight: bold; }
-section { padding: 4rem 2rem; max-width: 1000px; margin: auto; position: relative; z-index: 2; }
-h2 { color: #00ff99; margin-bottom: 1rem; border-bottom: 2px solid #00ff99; display: inline-block; padding-bottom: 0.3rem; }
-.about { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
-.about img { max-width: 250px; border-radius: 50%; border: 2px solid #00ff99; }
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-.project { background: rgba(17,17,17,0.9); border: 2px solid #00ff99; padding: 1.5rem; border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; }
-.project:hover { transform: translateY(-5px); box-shadow: 0 0 15px #00ff99; }
-.project h3 { color: #00ff99; margin-bottom: 0.5rem; }
-.project p { font-size: 0.95rem; color: #ccc; }
-.contact form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin-top: 2rem; }
-.contact input, .contact textarea { padding: 0.8rem; border-radius: 5px; border: none; font-size: 1rem; }
-.contact button { padding: 0.8rem; background: #00ff99; color: #010101; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
-.contact button:hover { background: #00cc77; }
-footer { text-align: center; padding: 2rem 1rem; border-top: 2px solid #00ff99; margin-top: 2rem; font-size: 0.9rem; position: relative; z-index: 2; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanaka Shumba | Cybersecurity Portfolio</title>
+    <style>
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: #000;
+            color: #00ff00;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { color: #00ff00; text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-/* Matrix Background */
-canvas { position: fixed; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none; }
-</style>
+        /* Matrix Background */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Container */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        header { text-align: center; margin-bottom: 3rem; }
+        header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; color: #a0ffa0; }
+
+        section { margin-bottom: 4rem; }
+
+        /* About Me */
+        #about {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        #about img {
+            width: 200px;
+            border-radius: 50%;
+            border: 2px solid #00ff00;
+        }
+        #about .about-text {
+            max-width: 700px;
+        }
+
+        /* Projects */
+        #projects h2, #contact h2, #about h2 { font-size: 2rem; margin-bottom: 1rem; color: #a0ffa0; }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .project {
+            background: rgba(0,255,0,0.05);
+            padding: 1rem;
+            border: 1px solid #00ff00;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00ff00;
+        }
+        .project h3 { margin-bottom: 0.5rem; }
+
+        /* Contact */
+        #contact p { margin-bottom: 0.5rem; }
+
+        footer { text-align: center; color: #00ff00; margin-top: 3rem; }
+    </style>
 </head>
 <body>
+    <canvas id="matrix"></canvas>
 
-<canvas id="matrix"></canvas>
+    <div class="container">
+        <header>
+            <h1>Tanaka Shumba</h1>
+            <p>Cybersecurity Professional | Python | Network & Cloud Security | Penetration Testing</p>
+        </header>
 
-<header>
-    <h1>Tanaka Shumba</h1>
-    <nav>
-        <a href="#about">About Me</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+        <section id="about">
+            <img src="images/about-me.jpg" alt="Tanaka Shumba">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Detail-oriented cybersecurity professional with a B.S. in Cybersecurity and pursuing an M.S. in Computer Science – Cybersecurity. Experienced in threat detection, incident response, penetration testing, and network monitoring. Proficient in Python, Java, and security tools like Wireshark, Zeek, Snort, and Nmap. Skilled at analyzing logs, identifying vulnerabilities, and implementing mitigation strategies. Seeking to contribute to a SOC or cybersecurity team to strengthen organizational security posture.</p>
+            </div>
+        </section>
 
-<section id="about">
-    <h2>About Me</h2>
-    <div class="about">
-        <img src="images/about-me.jpg" alt="Tanaka Shumba">
-        <p>Hello! I'm Tanaka Shumba, a dedicated Cybersecurity professional with a B.S. in Cybersecurity and currently pursuing an M.S. in Computer Science – Cybersecurity. My passion lies in protecting systems, analyzing threats, and building secure applications. I specialize in Python, ethical hacking, penetration testing, network security, and SIEM analysis. I aim to contribute to a security team that values proactive defense and innovation.</p>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <a href="https://github.com/TanakaShumba/MalwareAnalyzer" target="_blank" class="project">
+                    <h3>Malware Analyzer</h3>
+                    <p>Python script simulating analysis of suspicious files and detecting potential malicious behaviors safely.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/EthicalHackingSimulator" target="_blank" class="project">
+                    <h3>Ethical Hacking Simulator</h3>
+                    <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/CloudSecurityChecker" target="_blank" class="project">
+                    <h3>Cloud Security Checker</h3>
+                    <p>Python script for simulating checks on cloud service configurations for common misconfigurations.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/BasicPenTest" target="_blank" class="project">
+                    <h3>Basic Pen Test</h3>
+                    <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/SimpleIDS" target="_blank" class="project">
+                    <h3>Simple IDS</h3>
+                    <p>Basic IDS/IPS simulation in Python demonstrating threat detection mechanisms.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/CybersecurityLabSeries" target="_blank" class="project">
+                    <h3>Cybersecurity Lab Series</h3>
+                    <p>Collection of Python exercises and labs for hands-on cybersecurity learning.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/SecureHospitalSystem" target="_blank" class="project">
+                    <h3>Secure Hospital System</h3>
+                    <p>Python-based secure hospital management system with focus on data privacy and user access control.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/VoIPTrafficAnalyzer" target="_blank" class="project">
+                    <h3>VoIP Traffic Analyzer</h3>
+                    <p>Captures and analyzes VoIP RTP packets on a local network safely for educational purposes.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/PythonNetworkScanner" target="_blank" class="project">
+                    <h3>Python Network Scanner</h3>
+                    <p>Python tool for scanning networks and identifying devices for security auditing purposes.</p>
+                </a>
+                <a href="https://github.com/TanakaShumba/HealthcareFlaskApp" target="_blank" class="project">
+                    <h3>Healthcare System (Flask)</h3>
+                    <p>Simple healthcare management system built with Flask, managing appointments, doctors, and payments.</p>
+                </a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">www.linkedin.com/in/tanakashumba-</a></p>
+            <p>GitHub: <a href="https://github.com/TanakaShumba" target="_blank">github.com/TanakaShumba</a></p>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Tanaka Shumba</p>
+        </footer>
     </div>
-</section>
 
-<section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-        <div class="project">
-            <h3>Malware Analyzer</h3>
-            <p>Python script simulating analysis of suspicious files and detecting potential malicious behaviors safely.</p>
-        </div>
-        <div class="project">
-            <h3>Ethical Hacking Simulator</h3>
-            <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
-        </div>
-        <div class="project">
-            <h3>Cloud Security Checker</h3>
-            <p>Python script for simulating checks on cloud service configurations for common misconfigurations.</p>
-        </div>
-        <div class="project">
-            <h3>Basic Pen Test</h3>
-            <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
-        </div>
-        <div class="project">
-            <h3>Simple IDS</h3>
-            <p>Basic IDS/IPS simulation in Python demonstrating threat detection mechanisms.</p>
-        </div>
-        <div class="project">
-            <h3>Cybersecurity Lab Series</h3>
-            <p>Collection of Python exercises and labs for hands-on cybersecurity learning.</p>
-        </div>
-        <div class="project">
-            <h3>Secure Hospital System</h3>
-            <p>Python-based secure hospital management system with focus on data privacy and user access control.</p>
-        </div>
-        <div class="project">
-            <h3>VoIP Traffic Analyzer</h3>
-            <p>Captures and analyzes VoIP RTP packets on a local network safely for educational purposes.</p>
-        </div>
-        <div class="project">
-            <h3>Python Network Scanner</h3>
-            <p>Python tool for scanning networks and identifying devices for security auditing purposes.</p>
-        </div>
-        <div class="project">
-            <h3>Healthcare System (Flask)</h3>
-            <p>Simple healthcare management system built with Flask, managing appointments, doctors, and payments.</p>
-        </div>
-    </div>
-</section>
+    <script>
+        // Matrix background
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
 
-<section id="contact">
-    <h2>Contact</h2>
-    <div class="contact">
-        <form action="mailto:tanakashumba04@gmail.com" method="post" enctype="text/plain">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">www.linkedin.com/in/tanakashumba-</a></p>
-        <p>GitHub: <a href="https://github.com/TanakaShumba" target="_blank">github.com/TanakaShumba</a></p>
-    </div>
-</section>
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-<footer>
-    &copy; 2025 Tanaka Shumba. All rights reserved.
-</footer>
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
 
-<script>
-// Matrix effect
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
-let w = canvas.width = window.innerWidth;
-let h = canvas.height = window.innerHeight;
+        const drops = [];
+        for (let x = 0; x < columns; x++) drops[x] = Math.random() * canvas.height;
 
-const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()';
-const fontSize = 16;
-const columns = Math.floor(w / fontSize);
-const drops = Array(columns).fill(1);
+        function draw() {
+            ctx.fillStyle = 'rgba(0,0,0,0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-function drawMatrix() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, w, h);
-    ctx.fillStyle = '#00ff00';
-    ctx.font = fontSize + 'px monospace';
-    for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > h && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-    }
-}
+            ctx.fillStyle = '#00ff00';
+            ctx.font = fontSize + 'px monospace';
 
-setInterval(drawMatrix, 50);
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i]);
+                drops[i] += fontSize;
+                if (drops[i] > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            }
+        }
 
-window.addEventListener('resize', () => {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-});
-</script>
+        setInterval(draw, 50);
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
