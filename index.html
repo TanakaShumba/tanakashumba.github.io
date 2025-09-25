@@ -5,27 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tanaka Shumba | Cybersecurity Portfolio</title>
 <style>
-    /* Basic Reset */
-    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif;}
-    body {
-        background: #0a0a0a;
-        color: #fff;
-        overflow-x: hidden;
-    }
-
-    /* Animated neon grid background */
-    body::before {
-        content: '';
-        position: fixed;
-        top:0; left:0; width:100%; height:100%;
-        background: linear-gradient(0deg, #0a0a0a 50%, #111 50%);
-        background-size: 100% 40px;
-        z-index: -2;
-        animation: moveGrid 5s linear infinite;
-    }
-    @keyframes moveGrid {
-        0% {background-position:0 0;}
-        100% {background-position:0 40px;}
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif; }
+    body { background:#0a0a0a; color:#fff; overflow-x:hidden; position:relative; }
+    
+    /* 3D floating cubes */
+    .cube { position:fixed; width:20px; height:20px; background:#00ff00; opacity:0.3; animation: floatCube linear infinite; }
+    @keyframes floatCube {
+        0% {transform: translate3d(0,0,0) rotate(0deg);}
+        50% {transform: translate3d(50vw,50vh,0) rotate(180deg);}
+        100% {transform: translate3d(-50vw,100vh,0) rotate(360deg);}
     }
 
     header {
@@ -34,43 +22,51 @@
         background: linear-gradient(90deg,#0011ff,#00ffff);
         color:#fff;
         box-shadow: 0 0 20px #00ffff;
+        position:relative;
+        z-index:1;
     }
-    header h1 {font-size:3em; text-shadow: 0 0 10px #00ffff;}
-    header p {font-size:1.2em; margin-top:10px;}
+    header h1 { font-size:3em; text-shadow:0 0 10px #00ffff; }
+    header p { font-size:1.2em; margin-top:10px; }
 
-    section {
-        padding:60px 20px;
-        max-width:1000px;
-        margin:0 auto;
-        opacity:0;
-        transform: translateY(50px);
-        transition: all 1s ease;
-    }
-    section.visible {opacity:1; transform: translateY(0);}
-    h2 {text-align:center; font-size:2em; margin-bottom:40px; color:#00ccff;}
+    section { padding:60px 20px; max-width:1000px; margin:0 auto; opacity:0; transform: translateY(50px); transition: all 1s ease; position:relative; z-index:1; }
+    section.visible { opacity:1; transform:translateY(0); }
+    h2 { text-align:center; font-size:2em; margin-bottom:40px; color:#00ccff; }
 
     /* About Me */
-    #about-me {display:flex; align-items:center; gap:40px; flex-wrap:wrap; justify-content:center;}
-    #about-me img {border-radius:50%; width:200px; height:200px; border:3px solid #00ccff;}
-    #about-me .text {max-width:600px; font-size:1.1em; line-height:1.6; color:#eee;}
+    #about-me { display:flex; align-items:center; gap:40px; flex-wrap:wrap; justify-content:center; }
+    #about-me img { border-radius:50%; width:200px; height:200px; border:3px solid #00ccff; }
+    #about-me .text { max-width:600px; font-size:1.1em; line-height:1.6; color:#eee; }
 
     /* Projects */
-    .projects {display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
-    .project-card {background:#111; padding:20px; border-radius:10px; border:2px solid #00ccff; transition: transform 0.3s, box-shadow 0.3s;}
-    .project-card:hover {transform: translateY(-10px); box-shadow:0 0 20px #00ffff;}
-    .project-card h3 {color:#00ccff; margin-bottom:10px;}
-    .project-card p {color:#aaa; font-size:0.95em;}
-    .project-card a {color:#00ffff; text-decoration:none; font-weight:bold;}
-    .project-card a:hover {text-decoration:underline;}
+    .projects { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+    .project-card { background:#111; padding:20px; border-radius:10px; border:2px solid #00ccff; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+    .project-card:hover { transform: translateY(-10px); box-shadow:0 0 30px #00ffff; border-color:#00ffff; }
+    .project-card h3 { color:#00ccff; margin-bottom:10px; }
+    .project-card p { color:#aaa; font-size:0.95em; }
+    .project-card a { color:#00ffff; text-decoration:none; font-weight:bold; }
+    .project-card a:hover { text-decoration:underline; }
 
     /* Contact */
-    .contact a {color:#00ffff; text-decoration:none; font-weight:bold;}
-    .contact a:hover {text-decoration:underline;}
+    .contact a { color:#00ffff; text-decoration:none; font-weight:bold; }
+    .contact a:hover { text-decoration:underline; }
 
-    footer {text-align:center; padding:30px 20px; font-size:0.9em; color:#666; background:#111;}
+    footer { text-align:center; padding:30px 20px; font-size:0.9em; color:#666; background:#111; position:relative; z-index:1; }
 </style>
 </head>
 <body>
+
+<!-- Floating cubes -->
+<script>
+for(let i=0;i<30;i++){
+    let cube = document.createElement('div');
+    cube.className='cube';
+    cube.style.left=Math.random()*100+'vw';
+    cube.style.top=Math.random()*100+'vh';
+    cube.style.width = cube.style.height = (10+Math.random()*20)+'px';
+    cube.style.animationDuration = (5+Math.random()*10)+'s';
+    document.body.appendChild(cube);
+}
+</script>
 
 <header>
     <h1>Tanaka Shumba</h1>
@@ -81,7 +77,7 @@
     <img src="images/about-me.jpg" alt="Tanaka Shumba">
     <div class="text">
         <h2>About Me</h2>
-        <p>I am a detail-oriented cybersecurity professional with a B.S. in Cybersecurity and currently pursuing an M.S. in Computer Science – Cybersecurity. I have hands-on experience in threat detection, incident response, penetration testing, and network monitoring. Skilled in Python, Java, and security tools like Wireshark, Zeek, Snort, and Nmap. My goal is to contribute to a SOC or cybersecurity team and help strengthen organizational security posture.</p>
+        <p>I am a detail-oriented cybersecurity professional with a B.S. in Cybersecurity and currently pursuing an M.S. in Computer Science – Cybersecurity. Experienced in threat detection, incident response, penetration testing, and network monitoring. Skilled in Python, Java, and security tools like Wireshark, Zeek, Snort, and Nmap. My goal is to contribute to a SOC or cybersecurity team and strengthen organizational security posture.</p>
     </div>
 </section>
 
@@ -90,53 +86,28 @@
     <div class="projects">
         <div class="project-card">
             <h3>Malware Analyzer</h3>
-            <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors in a controlled environment.</p>
+            <p>Python script simulating malware behavior analysis.</p>
             <a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">View Project</a>
         </div>
         <div class="project-card">
             <h3>Ethical Hacking Simulator</h3>
-            <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
+            <p>Python scripts simulating ethical hacking techniques for learning purposes.</p>
             <a href="https://github.com/TanakaShumba/ethical-hacking-sim" target="_blank">View Project</a>
         </div>
         <div class="project-card">
             <h3>Cloud Security Checker</h3>
-            <p>Python script to simulate checking cloud service configurations for common security misconfigurations.</p>
+            <p>Simulates checking cloud service configurations for security.</p>
             <a href="https://github.com/TanakaShumba/cloud-security-checker" target="_blank">View Project</a>
         </div>
         <div class="project-card">
             <h3>Basic Pen Test</h3>
-            <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
+            <p>Educational penetration testing and vulnerability scanning.</p>
             <a href="https://github.com/TanakaShumba/basic-pen-test" target="_blank">View Project</a>
         </div>
         <div class="project-card">
             <h3>Simple IDS</h3>
-            <p>A basic IDS/IPS simulation in Python.</p>
+            <p>Basic IDS/IPS simulation in Python.</p>
             <a href="https://github.com/TanakaShumba/simple-ids" target="_blank">View Project</a>
-        </div>
-        <div class="project-card">
-            <h3>Cybersecurity Lab Series</h3>
-            <p>Collection of cybersecurity learning labs.</p>
-            <a href="https://github.com/TanakaShumba/cybersecurity-lab-series" target="_blank">View Project</a>
-        </div>
-        <div class="project-card">
-            <h3>Secure Hospital System</h3>
-            <p>Python-based secure hospital management system.</p>
-            <a href="https://github.com/TanakaShumba/secure-hospital-system" target="_blank">View Project</a>
-        </div>
-        <div class="project-card">
-            <h3>VoIP Traffic Analyzer</h3>
-            <p>Python project capturing and analyzing VoIP RTP packets on a local network.</p>
-            <a href="https://github.com/TanakaShumba/voip-traffic-analyzer" target="_blank">View Project</a>
-        </div>
-        <div class="project-card">
-            <h3>Python Network Scanner</h3>
-            <p>Python project for network scanning and monitoring.</p>
-            <a href="https://github.com/TanakaShumba/python-network-scanner" target="_blank">View Project</a>
-        </div>
-        <div class="project-card">
-            <h3>Healthcare System (Flask)</h3>
-            <p>Simple healthcare management system built with Flask to manage appointments, doctors, and payments.</p>
-            <a href="https://github.com/TanakaShumba/Healthcare_System" target="_blank">View Project</a>
         </div>
     </div>
 </section>
