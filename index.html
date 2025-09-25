@@ -5,96 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tanaka Shumba | Cybersecurity Portfolio</title>
 <style>
-/* Reset & Base */
-* { margin:0; padding:0; box-sizing:border-box; }
+/* Base styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #0f111a;
-    color: #e0e0e0;
+    background-color: #f9f9f9;
+    color: #111;
     line-height: 1.6;
-    scroll-behavior: smooth;
 }
 
-/* Navbar */
+/* Navigation */
 nav {
+    background-color: #222;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
     position: fixed;
-    top: 0; left: 0; width: 100%;
-    background-color: #111;
-    display: flex; justify-content: center;
-    padding: 15px 0;
-    z-index: 10;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
 nav a {
-    color: #1ca7ec;
+    color: #fff;
     text-decoration: none;
     margin: 0 20px;
     font-weight: bold;
-    transition: 0.3s;
 }
-nav a:hover { color: #4acaff; }
+nav a:hover {
+    color: #1ca7ec;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 120px 20px 60px 20px;
+    background-color: #1ca7ec;
+    color: #fff;
+}
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+header p {
+    font-size: 1.2em;
+}
 
 /* Sections */
-section { min-height: 100vh; padding: 100px 20px 60px 20px; }
-header h1 { font-size: 3em; color: #1ca7ec; text-align: center; }
-header p { text-align:center; font-size:1.2em; margin-top:10px; color:#c0c0c0; }
+section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
 
 /* About */
 #about {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
     gap: 30px;
+    align-items: center;
+    justify-content: center;
 }
 #about img {
-    width:200px;
-    border-radius:50%;
-    border: 3px solid #1ca7ec;
+    width: 180px;
+    border-radius: 50%;
+    border: 2px solid #1ca7ec;
 }
 #about .bio {
-    max-width:600px;
-    font-size:1.1em;
+    max-width: 600px;
+    font-size: 1.1em;
 }
 
 /* Projects */
-#projects { max-width: 900px; margin: 0 auto; }
-.project {
-    background: rgba(28,167,236,0.05);
-    border-left: 4px solid #1ca7ec;
+#projects h2, #about h2, #contact h2 {
     margin-bottom: 20px;
-    padding: 15px;
-    transition: 0.3s;
-    border-radius: 5px;
+    color: #1ca7ec;
+    text-align: center;
 }
-.project:hover { background: rgba(28,167,236,0.15); }
+.project {
+    background-color: #e8f4fd;
+    border-left: 4px solid #1ca7ec;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+.project:hover { background-color: #d0e9fc; }
 
 /* Contact */
-#contact { text-align:center; }
+#contact {
+    text-align: center;
+}
 #contact p { margin: 10px 0; }
-#contact a { color:#1ca7ec; margin:0 10px; text-decoration:none; }
+#contact a { color: #1ca7ec; text-decoration: none; margin: 0 10px; }
 #contact a:hover { text-decoration: underline; }
 
 /* Footer */
 footer {
-    text-align:center;
-    padding:20px 0;
-    font-size:0.9em;
-    color:#666;
-}
-
-/* Subtle background animation */
-canvas {
-    position: fixed; top:0; left:0;
-    width:100%; height:100%;
-    z-index:-1;
-    display:block;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    color: #666;
 }
 </style>
 </head>
 <body>
-
-<canvas id="bg"></canvas>
 
 <!-- Navbar -->
 <nav>
@@ -106,7 +120,7 @@ canvas {
 <!-- Header -->
 <header>
     <h1>Tanaka Shumba</h1>
-    <p>Cybersecurity Professional | Threat Detection | Penetration Testing | Network Defense</p>
+    <p>Cybersecurity Professional | Threat Detection | Penetration Testing | Network Security</p>
 </header>
 
 <!-- About Section -->
@@ -114,24 +128,25 @@ canvas {
     <img src="images/about-me.jpg" alt="Tanaka Shumba">
     <div class="bio">
         <h2>About Me</h2>
-        <p>I am a cybersecurity professional with a B.S. in Cybersecurity and ongoing M.S. studies. I specialize in threat detection, incident response, penetration testing, and network monitoring. Proficient in Python and tools like Wireshark, Zeek, Snort, and Nmap, I help organizations secure their infrastructure and mitigate risks.</p>
+        <p>
+            I am a dedicated cybersecurity professional with a B.S. in Cybersecurity and ongoing M.S. studies. My expertise includes threat detection, incident response, penetration testing, and cloud security. Skilled in Python, SIEM tools like Splunk, AWS cloud security, and network monitoring, I help organizations protect their critical systems and data.
+        </p>
     </div>
 </section>
 
 <!-- Projects Section -->
 <section id="projects">
-    <h2 style="text-align:center; color:#1ca7ec; margin-bottom:30px;">Projects</h2>
-    <div class="project"><strong>Malware Analyzer:</strong> Python script simulating analysis of suspicious files.</div>
-    <div class="project"><strong>Ethical Hacking Sim:</strong> Python scripts simulating ethical hacking techniques.</div>
-    <div class="project"><strong>Cloud Security Checker:</strong> Python script for cloud misconfiguration checks.</div>
-    <div class="project"><strong>Basic Pen Test:</strong> Educational penetration testing tool.</div>
-    <div class="project"><strong>Simple IDS:</strong> IDS/IPS simulation in Python.</div>
-    <div class="project"><strong>Secure Hospital System:</strong> Python-based secure hospital management system.</div>
+    <h2>Projects</h2>
+    <div class="project"><strong>Malware Analyzer:</strong> Python tool to analyze suspicious files.</div>
+    <div class="project"><strong>Ethical Hacking Simulation:</strong> Scripts demonstrating ethical hacking techniques.</div>
+    <div class="project"><strong>Cloud Security Checker:</strong> Python tool checking cloud misconfigurations.</div>
+    <div class="project"><strong>IDS/IPS Simulation:</strong> Python-based intrusion detection/protection.</div>
+    <div class="project"><strong>Secure Hospital System:</strong> Python-based secure management system.</div>
 </section>
 
 <!-- Contact Section -->
 <section id="contact">
-    <h2 style="color:#1ca7ec;">Contact</h2>
+    <h2>Contact</h2>
     <p>Email: <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a></p>
     <p>
         <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
@@ -139,54 +154,10 @@ canvas {
     </p>
 </section>
 
+<!-- Footer -->
 <footer>
     &copy; 2025 Tanaka Shumba
 </footer>
-
-<script>
-// Subtle moving particles background
-const canvas = document.getElementById('bg');
-const ctx = canvas.getContext('2d');
-let width, height, particles;
-function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
-
-class Particle {
-    constructor() { this.reset(); }
-    reset() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random()-0.5)*0.3;
-        this.vy = (Math.random()-0.5)*0.3;
-        this.size = Math.random()*2+1;
-        this.alpha = Math.random()*0.7+0.3;
-    }
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if(this.x<0||this.x>width||this.y<0||this.y>height) this.reset();
-    }
-    draw() {
-        ctx.fillStyle = `rgba(28,255,28,${this.alpha})`;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        ctx.fill();
-    }
-}
-particles=[];
-for(let i=0;i<120;i++) particles.push(new Particle());
-function animate() {
-    ctx.fillStyle = 'rgba(15,17,26,0.5)';
-    ctx.fillRect(0,0,width,height);
-    particles.forEach(p=>{p.update();p.draw();});
-    requestAnimationFrame(animate);
-}
-animate();
-</script>
 
 </body>
 </html>
