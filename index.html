@@ -3,78 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanaka Shumba | Portfolio</title>
+<title>Tanaka Shumba | Cybersecurity Portfolio</title>
 <style>
-/* Reset & base */
+/* Reset & Base */
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #0d0d0d;
+    background-color: #0f111a;
     color: #e0e0e0;
+    line-height: 1.6;
     scroll-behavior: smooth;
 }
 
 /* Navbar */
 nav {
     position: fixed;
-    width: 100%;
-    top:0;
-    left:0;
+    top: 0; left: 0; width: 100%;
     background-color: #111;
-    display: flex;
-    justify-content: center;
+    display: flex; justify-content: center;
     padding: 15px 0;
     z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 nav a {
-    color: #00bfff;
+    color: #1ca7ec;
     text-decoration: none;
     margin: 0 20px;
     font-weight: bold;
     transition: 0.3s;
 }
-nav a:hover { color: #1e90ff; }
+nav a:hover { color: #4acaff; }
 
 /* Sections */
-section {
-    min-height: 100vh;
-    padding: 100px 20px 60px 20px;
-}
-header h1 { font-size: 3em; color:#00bfff; text-align:center; }
-header p { text-align:center; font-size:1.2em; margin-top:10px; }
+section { min-height: 100vh; padding: 100px 20px 60px 20px; }
+header h1 { font-size: 3em; color: #1ca7ec; text-align: center; }
+header p { text-align:center; font-size:1.2em; margin-top:10px; color:#c0c0c0; }
 
 /* About */
 #about {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:center;
-    gap:30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 #about img {
     width:200px;
     border-radius:50%;
-    border:3px solid #00bfff;
+    border: 3px solid #1ca7ec;
 }
 #about .bio {
     max-width:600px;
-    line-height:1.6;
     font-size:1.1em;
 }
 
 /* Projects */
+#projects { max-width: 900px; margin: 0 auto; }
 .project {
-    background: rgba(0, 191, 255, 0.05);
-    border-left: 4px solid #00bfff;
+    background: rgba(28,167,236,0.05);
+    border-left: 4px solid #1ca7ec;
     margin-bottom: 20px;
     padding: 15px;
     transition: 0.3s;
+    border-radius: 5px;
 }
-.project:hover { background: rgba(0, 191, 255, 0.15); }
+.project:hover { background: rgba(28,167,236,0.15); }
 
 /* Contact */
-#contact p { margin: 10px 0; text-align:center; font-size:1.1em; }
-#contact a { margin: 0 10px; }
+#contact { text-align:center; }
+#contact p { margin: 10px 0; }
+#contact a { color:#1ca7ec; margin:0 10px; text-decoration:none; }
+#contact a:hover { text-decoration: underline; }
 
 /* Footer */
 footer {
@@ -84,13 +83,10 @@ footer {
     color:#666;
 }
 
-/* Background animation */
+/* Subtle background animation */
 canvas {
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    position: fixed; top:0; left:0;
+    width:100%; height:100%;
     z-index:-1;
     display:block;
 }
@@ -118,28 +114,24 @@ canvas {
     <img src="images/about-me.jpg" alt="Tanaka Shumba">
     <div class="bio">
         <h2>About Me</h2>
-        <p>I am a detail-oriented cybersecurity professional destined for greatness. With a B.S. in Cybersecurity and ongoing M.S. studies, I specialize in threat detection, incident response, penetration testing, and network monitoring. Proficient in Python and security tools like Wireshark, Zeek, Snort, and Nmap, I transform complex security challenges into effective solutions. My goal is to contribute to a SOC or cybersecurity team and elevate organizational security posture.</p>
+        <p>I am a cybersecurity professional with a B.S. in Cybersecurity and ongoing M.S. studies. I specialize in threat detection, incident response, penetration testing, and network monitoring. Proficient in Python and tools like Wireshark, Zeek, Snort, and Nmap, I help organizations secure their infrastructure and mitigate risks.</p>
     </div>
 </section>
 
 <!-- Projects Section -->
 <section id="projects">
-    <h2 style="text-align:center; margin-bottom:30px; color:#00bfff;">Projects</h2>
+    <h2 style="text-align:center; color:#1ca7ec; margin-bottom:30px;">Projects</h2>
     <div class="project"><strong>Malware Analyzer:</strong> Python script simulating analysis of suspicious files.</div>
-    <div class="project"><strong>Ethical Hacking Sim:</strong> Python scripts simulating hacking techniques for learning.</div>
+    <div class="project"><strong>Ethical Hacking Sim:</strong> Python scripts simulating ethical hacking techniques.</div>
     <div class="project"><strong>Cloud Security Checker:</strong> Python script for cloud misconfiguration checks.</div>
     <div class="project"><strong>Basic Pen Test:</strong> Educational penetration testing tool.</div>
     <div class="project"><strong>Simple IDS:</strong> IDS/IPS simulation in Python.</div>
-    <div class="project"><strong>Cybersecurity Lab Series:</strong> Python-based educational lab projects.</div>
-    <div class="project"><strong>Secure Hospital System:</strong> Python secure hospital management system.</div>
-    <div class="project"><strong>VoIP Traffic Analyzer:</strong> Captures and analyzes RTP packets.</div>
-    <div class="project"><strong>Python Network Scanner:</strong> Network scanning Python tool.</div>
-    <div class="project"><strong>Healthcare System:</strong> Flask-based healthcare management system.</div>
+    <div class="project"><strong>Secure Hospital System:</strong> Python-based secure hospital management system.</div>
 </section>
 
 <!-- Contact Section -->
 <section id="contact">
-    <h2 style="text-align:center; color:#00bfff;">Contact</h2>
+    <h2 style="color:#1ca7ec;">Contact</h2>
     <p>Email: <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a></p>
     <p>
         <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
@@ -152,7 +144,7 @@ canvas {
 </footer>
 
 <script>
-// Animated background: floating neon green particles
+// Subtle moving particles background
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d');
 let width, height, particles;
@@ -164,14 +156,12 @@ window.addEventListener('resize', resize);
 resize();
 
 class Particle {
-    constructor() {
-        this.reset();
-    }
+    constructor() { this.reset(); }
     reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random()-0.5)*0.5;
-        this.vy = (Math.random()-0.5)*0.5;
+        this.vx = (Math.random()-0.5)*0.3;
+        this.vy = (Math.random()-0.5)*0.3;
         this.size = Math.random()*2+1;
         this.alpha = Math.random()*0.7+0.3;
     }
@@ -181,20 +171,18 @@ class Particle {
         if(this.x<0||this.x>width||this.y<0||this.y>height) this.reset();
     }
     draw() {
-        ctx.fillStyle = `rgba(50,255,50,${this.alpha})`;
+        ctx.fillStyle = `rgba(28,255,28,${this.alpha})`;
         ctx.beginPath();
         ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
         ctx.fill();
     }
 }
-
-particles = [];
-for(let i=0;i<150;i++) particles.push(new Particle());
-
+particles=[];
+for(let i=0;i<120;i++) particles.push(new Particle());
 function animate() {
-    ctx.fillStyle = 'rgba(13,13,13,0.5)';
+    ctx.fillStyle = 'rgba(15,17,26,0.5)';
     ctx.fillRect(0,0,width,height);
-    particles.forEach(p => { p.update(); p.draw(); });
+    particles.forEach(p=>{p.update();p.draw();});
     requestAnimationFrame(animate);
 }
 animate();
