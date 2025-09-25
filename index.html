@@ -5,110 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tanaka Shumba | Cybersecurity Portfolio</title>
 <style>
-/* Base styles */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f9f9f9;
-    color: #111;
-    line-height: 1.6;
-}
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#0d0d0d; color:#eee; line-height:1.6; }
 
-/* Navigation */
-nav {
-    background-color: #222;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-}
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 20px;
-    font-weight: bold;
-}
-nav a:hover {
-    color: #1ca7ec;
-}
+/* Canvas background */
+canvas { position:fixed; top:0; left:0; z-index:-1; }
+
+/* Navbar */
+nav { position:fixed; width:100%; top:0; background:rgba(20,20,20,0.95); display:flex; justify-content:center; padding:15px 0; z-index:100; }
+nav a { color:#1cf9b3; text-decoration:none; margin:0 20px; font-weight:bold; }
+nav a:hover { color:#fff; }
 
 /* Header */
-header {
-    text-align: center;
-    padding: 120px 20px 60px 20px;
-    background-color: #1ca7ec;
-    color: #fff;
-}
-header h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-}
-header p {
-    font-size: 1.2em;
-}
+header { padding:120px 20px 60px 20px; text-align:center; }
+header h1 { font-size:3em; color:#1cf9b3; }
+header p { font-size:1.2em; color:#ccc; }
 
 /* Sections */
-section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 80px 20px;
-}
+section { max-width:1000px; margin:0 auto; padding:80px 20px; }
+section h2 { text-align:center; margin-bottom:40px; color:#1cf9b3; }
 
 /* About */
-#about {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    align-items: center;
-    justify-content: center;
-}
-#about img {
-    width: 180px;
-    border-radius: 50%;
-    border: 2px solid #1ca7ec;
-}
-#about .bio {
-    max-width: 600px;
-    font-size: 1.1em;
-}
+#about { display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:center; }
+#about img { width:180px; border-radius:50%; border:3px solid #1cf9b3; }
+#about .bio { max-width:600px; font-size:1.1em; color:#ccc; }
 
 /* Projects */
-#projects h2, #about h2, #contact h2 {
-    margin-bottom: 20px;
-    color: #1ca7ec;
-    text-align: center;
-}
-.project {
-    background-color: #e8f4fd;
-    border-left: 4px solid #1ca7ec;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    transition: background 0.2s;
-}
-.project:hover { background-color: #d0e9fc; }
+.project-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.project-card { background:#1a1a1a; border-left:5px solid #1cf9b3; padding:20px; border-radius:5px; transition: transform 0.2s, box-shadow 0.2s; }
+.project-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(28,249,179,0.3); }
+.project-card h3 { margin-bottom:10px; color:#1cf9b3; }
+.project-card p { font-size:0.95em; color:#ccc; }
 
 /* Contact */
-#contact {
-    text-align: center;
-}
-#contact p { margin: 10px 0; }
-#contact a { color: #1ca7ec; text-decoration: none; margin: 0 10px; }
-#contact a:hover { text-decoration: underline; }
+#contact { text-align:center; color:#ccc; }
+#contact a { color:#1cf9b3; text-decoration:none; margin:0 10px; }
+#contact a:hover { text-decoration:underline; }
 
 /* Footer */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.9em;
-    color: #666;
-}
+footer { text-align:center; padding:20px 0; font-size:0.9em; color:#666; }
+
+/* Responsive */
+@media(max-width:600px){ #about { flex-direction:column; } }
 </style>
 </head>
 <body>
+
+<canvas id="bg"></canvas>
 
 <!-- Navbar -->
 <nav>
@@ -128,20 +72,39 @@ footer {
     <img src="images/about-me.jpg" alt="Tanaka Shumba">
     <div class="bio">
         <h2>About Me</h2>
-        <p>
-            I am a dedicated cybersecurity professional with a B.S. in Cybersecurity and ongoing M.S. studies. My expertise includes threat detection, incident response, penetration testing, and cloud security. Skilled in Python, SIEM tools like Splunk, AWS cloud security, and network monitoring, I help organizations protect their critical systems and data.
-        </p>
+        <p>I am a dedicated cybersecurity professional with a B.S. in Cybersecurity and ongoing M.S. studies. I specialize in threat detection, incident response, penetration testing, and network security. Proficient in Python, cloud security, and SIEM tools like Splunk, I help organizations secure their critical systems and data.</p>
     </div>
 </section>
 
 <!-- Projects Section -->
 <section id="projects">
     <h2>Projects</h2>
-    <div class="project"><strong>Malware Analyzer:</strong> Python tool to analyze suspicious files.</div>
-    <div class="project"><strong>Ethical Hacking Simulation:</strong> Scripts demonstrating ethical hacking techniques.</div>
-    <div class="project"><strong>Cloud Security Checker:</strong> Python tool checking cloud misconfigurations.</div>
-    <div class="project"><strong>IDS/IPS Simulation:</strong> Python-based intrusion detection/protection.</div>
-    <div class="project"><strong>Secure Hospital System:</strong> Python-based secure management system.</div>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3>Malware Analyzer</h3>
+            <p>Python tool to analyze suspicious files and detect potential malicious behaviors safely for learning and demonstration purposes.</p>
+        </div>
+        <div class="project-card">
+            <h3>Ethical Hacking Simulation</h3>
+            <p>Scripts simulating ethical hacking techniques for educational demonstration, helping users understand vulnerabilities in a safe environment.</p>
+        </div>
+        <div class="project-card">
+            <h3>Cloud Security Checker</h3>
+            <p>Python tool to simulate checking cloud service configurations for common security misconfigurations.</p>
+        </div>
+        <div class="project-card">
+            <h3>Basic Pen Test</h3>
+            <p>Educational Python script for penetration testing and vulnerability scanning, designed for learning purposes.</p>
+        </div>
+        <div class="project-card">
+            <h3>Simple IDS/IPS</h3>
+            <p>Python-based simulation of an Intrusion Detection and Prevention System to detect suspicious network activity.</p>
+        </div>
+        <div class="project-card">
+            <h3>Secure Hospital System</h3>
+            <p>Python secure management system for hospitals, demonstrating secure handling of sensitive healthcare data.</p>
+        </div>
+    </div>
 </section>
 
 <!-- Contact Section -->
@@ -154,10 +117,57 @@ footer {
     </p>
 </section>
 
-<!-- Footer -->
-<footer>
-    &copy; 2025 Tanaka Shumba
-</footer>
+<footer>&copy; 2025 Tanaka Shumba</footer>
 
+<script>
+// Animated neon green lines in background
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const lines = [];
+for(let i=0;i<50;i++){
+    lines.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        length: Math.random()*200 + 50,
+        speed: Math.random()*0.5 + 0.2,
+        angle: Math.random()*2*Math.PI
+    });
+}
+
+function animate(){
+    ctx.fillStyle = '#0d0d0d';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.strokeStyle = '#1cf9b3';
+    ctx.lineWidth = 1.5;
+
+    lines.forEach(l=>{
+        ctx.beginPath();
+        ctx.moveTo(l.x,l.y);
+        ctx.lineTo(l.x + Math.cos(l.angle)*l.length, l.y + Math.sin(l.angle)*l.length);
+        ctx.stroke();
+
+        l.x += Math.cos(l.angle)*l.speed;
+        l.y += Math.sin(l.angle)*l.speed;
+
+        if(l.x>canvas.width+200) l.x=-200;
+        if(l.x<-200) l.x=canvas.width+200;
+        if(l.y>canvas.height+200) l.y=-200;
+        if(l.y<-200) l.y=canvas.height+200;
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener('resize',()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
 </body>
 </html>
