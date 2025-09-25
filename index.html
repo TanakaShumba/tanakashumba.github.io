@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tanaka Shumba Portfolio</title>
   <style>
-    /* Reset & basic styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { background-color: #e0f7fa; color: #fff; line-height: 1.6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background-color: #d0f0fd; color: #fff; line-height: 1.6; }
 
     a { color: #00ff00; text-decoration: none; }
 
-    /* Navigation */
     nav {
       display: flex;
       justify-content: center;
@@ -23,7 +21,6 @@
     }
     nav a { margin: 0 1.5rem; font-weight: bold; }
 
-    /* Hero section */
     .hero {
       background: url('images/dovi.jpg') center/cover no-repeat;
       height: 100vh;
@@ -37,7 +34,7 @@
       content: '';
       position: absolute;
       top:0; left:0; width:100%; height:100%;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(0,0,0,0.4);
       z-index:1;
     }
     .hero-content {
@@ -58,7 +55,6 @@
     }
     .btn:hover { background-color: #00b300; }
 
-    /* Sections */
     section { padding: 5rem 2rem; max-width: 1000px; margin: auto; }
 
     h2 { font-size: 2rem; color: #00ff00; margin-bottom: 1.5rem; text-align: center; }
@@ -69,7 +65,7 @@
       gap: 2rem;
     }
     .project {
-      background-color: rgba(0,0,0,0.7);
+      background-color: rgba(0,0,0,0.6);
       padding: 1.5rem;
       border-radius: 10px;
       transition: transform 0.3s;
@@ -78,9 +74,16 @@
     .project h3 { margin-bottom: 0.5rem; color: #00ff00; }
     .project p { font-size: 0.95rem; color: #fff; }
 
-    /* Contact */
     .contact { text-align: center; }
-    .contact a { display: inline-block; margin: 0.5rem 1rem; padding: 0.5rem 1rem; background-color: #00ff00; color: #000; border-radius: 5px; font-weight: bold; }
+    .contact a {
+      display: inline-block;
+      margin: 0.5rem 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #00ff00;
+      color: #000;
+      border-radius: 5px;
+      font-weight: bold;
+    }
     .contact a:hover { background-color: #00b300; }
 
     footer { text-align: center; padding: 2rem 0; font-size: 0.9rem; color: #fff; background-color: #00796b; }
@@ -97,14 +100,14 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Hey there!</h1>
-      <p>Welcome! This portfolio showcases my cybersecurity projects and skills while highlighting my ambitions to advance in the cybersecurity field.</p>
+      <p>Welcome! This portfolio showcases my cybersecurity projects and skills while highlighting my ambitions to advance in the field.</p>
       <a href="#projects" class="btn">View Projects</a>
     </div>
   </section>
 
   <section id="about">
     <h2>About Me</h2>
-    <p>I am a cybersecurity professional with hands-on experience in threat detection, penetration testing, and network security. This portfolio highlights my practical projects and demonstrates innovative solutions to modern security challenges. Beyond technical expertise, I am passionate about contributing to secure digital landscapes and growing as a professional in the cybersecurity industry.</p>
+    <p>I am a cybersecurity professional with practical experience in threat detection, penetration testing, and network security. This portfolio highlights my projects and demonstrates innovative solutions to modern security challenges. I am dedicated to growing professionally and contributing to secure digital landscapes.</p>
   </section>
 
   <section id="projects">
@@ -112,17 +115,21 @@
     <div class="projects">
       <div class="project">
         <h3><a href="https://github.com/TanakaShumba/MalwareAnalyzer" target="_blank">Malware Analyzer</a></h3>
-        <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors.</p>
+        <p>Python script simulating malware detection and analysis in a safe environment.</p>
       </div>
       <div class="project">
         <h3><a href="https://github.com/TanakaShumba/EthicalHackingSim" target="_blank">Ethical Hacking Sim</a></h3>
-        <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
+        <p>Simulated ethical hacking scripts for learning and demonstration purposes.</p>
       </div>
       <div class="project">
         <h3><a href="https://github.com/TanakaShumba/CloudSecurityChecker" target="_blank">Cloud Security Checker</a></h3>
-        <p>Python script to simulate checking cloud service configurations for security misconfigurations.</p>
+        <p>Checks cloud service configurations for common security misconfigurations.</p>
       </div>
-      <!-- Add more project blocks here -->
+      <div class="project">
+        <h3><a href="https://github.com/TanakaShumba/BasicPenTest" target="_blank">Basic Pen Test</a></h3>
+        <p>Educational penetration testing and vulnerability scanning Python script.</p>
+      </div>
+      <!-- Add more projects as needed -->
     </div>
   </section>
 
