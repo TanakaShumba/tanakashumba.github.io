@@ -5,45 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tanaka Shumba | Cybersecurity Portfolio</title>
 <style>
-    /* Basic Reset */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d0d0d; color: #e0e0e0; line-height: 1.6; }
-    a { color: #00ff99; text-decoration: none; }
-    header { background: #010101; padding: 2rem 1rem; text-align: center; border-bottom: 2px solid #00ff99; }
-    header h1 { font-size: 2.5rem; color: #00ff99; }
-    nav { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
-    nav a { color: #00ff99; font-weight: bold; }
-    section { padding: 4rem 2rem; max-width: 1000px; margin: auto; }
-    h2 { color: #00ff99; margin-bottom: 1rem; border-bottom: 2px solid #00ff99; display: inline-block; padding-bottom: 0.3rem; }
-    .about { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
-    .about img { max-width: 250px; border-radius: 50%; border: 2px solid #00ff99; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .project { background: #111; border: 2px solid #00ff99; padding: 1.5rem; border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; }
-    .project:hover { transform: translateY(-5px); box-shadow: 0 0 15px #00ff99; }
-    .project h3 { color: #00ff99; margin-bottom: 0.5rem; }
-    .project p { font-size: 0.95rem; color: #ccc; }
-    .contact form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin-top: 2rem; }
-    .contact input, .contact textarea { padding: 0.8rem; border-radius: 5px; border: none; font-size: 1rem; }
-    .contact button { padding: 0.8rem; background: #00ff99; color: #010101; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
-    .contact button:hover { background: #00cc77; }
-    footer { text-align: center; padding: 2rem 1rem; border-top: 2px solid #00ff99; margin-top: 2rem; font-size: 0.9rem; }
-    /* Background effect */
-    body::before {
-        content: "";
-        position: fixed;
-        top:0; left:0; width:100%; height:100%;
-        background: repeating-linear-gradient(
-            45deg,
-            rgba(0,255,153,0.05),
-            rgba(0,255,153,0.05) 1px,
-            transparent 1px,
-            transparent 10px
-        );
-        z-index:-1;
-    }
+/* Basic Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d0d0d; color: #e0e0e0; line-height: 1.6; overflow-x: hidden; }
+a { color: #00ff99; text-decoration: none; }
+header { background: rgba(0,0,0,0.8); padding: 2rem 1rem; text-align: center; border-bottom: 2px solid #00ff99; position: relative; z-index: 2; }
+header h1 { font-size: 2.5rem; color: #00ff99; }
+nav { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+nav a { color: #00ff99; font-weight: bold; }
+section { padding: 4rem 2rem; max-width: 1000px; margin: auto; position: relative; z-index: 2; }
+h2 { color: #00ff99; margin-bottom: 1rem; border-bottom: 2px solid #00ff99; display: inline-block; padding-bottom: 0.3rem; }
+.about { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
+.about img { max-width: 250px; border-radius: 50%; border: 2px solid #00ff99; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+.project { background: rgba(17,17,17,0.9); border: 2px solid #00ff99; padding: 1.5rem; border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; }
+.project:hover { transform: translateY(-5px); box-shadow: 0 0 15px #00ff99; }
+.project h3 { color: #00ff99; margin-bottom: 0.5rem; }
+.project p { font-size: 0.95rem; color: #ccc; }
+.contact form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin-top: 2rem; }
+.contact input, .contact textarea { padding: 0.8rem; border-radius: 5px; border: none; font-size: 1rem; }
+.contact button { padding: 0.8rem; background: #00ff99; color: #010101; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+.contact button:hover { background: #00cc77; }
+footer { text-align: center; padding: 2rem 1rem; border-top: 2px solid #00ff99; margin-top: 2rem; font-size: 0.9rem; position: relative; z-index: 2; }
+
+/* Matrix Background */
+canvas { position: fixed; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none; }
 </style>
 </head>
 <body>
+
+<canvas id="matrix"></canvas>
+
 <header>
     <h1>Tanaka Shumba</h1>
     <nav>
@@ -124,5 +116,38 @@
 <footer>
     &copy; 2025 Tanaka Shumba. All rights reserved.
 </footer>
+
+<script>
+// Matrix effect
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()';
+const fontSize = 16;
+const columns = Math.floor(w / fontSize);
+const drops = Array(columns).fill(1);
+
+function drawMatrix() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = '#00ff00';
+    ctx.font = fontSize + 'px monospace';
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > h && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+    }
+}
+
+setInterval(drawMatrix, 50);
+
+window.addEventListener('resize', () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+});
+</script>
 </body>
 </html>
