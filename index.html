@@ -1,159 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanaka Shumba | Cybersecurity Portfolio</title>
-    <style>
-        /* Global Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #0d1117;
-            color: #c9f0ff;
-            line-height: 1.6;
-        }
-        a {
-            color: #39ff14; /* neon green links */
-            text-decoration: none;
-        }
-        a:hover {
-            color: #0ff;
-        }
-
-        /* Header */
-        header {
-            padding: 2rem;
-            text-align: center;
-            background: linear-gradient(90deg, #0f0f0f, #0a192f);
-            border-bottom: 2px solid #39ff14;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        header p {
-            font-size: 1.2rem;
-            color: #8bd3f7;
-        }
-
-        /* Sections */
-        section {
-            padding: 3rem 2rem;
-            max-width: 1000px;
-            margin: auto;
-        }
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #39ff14;
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
-
-        /* About Me */
-        #about {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        #about img {
-            width: 200px;
-            border-radius: 50%;
-            border: 3px solid #39ff14;
-        }
-        #about p {
-            flex: 1;
-            font-size: 1.1rem;
-        }
-
-        /* Projects */
-        #projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .project-card {
-            background-color: #111827;
-            padding: 1.5rem;
-            border: 2px solid #39ff14;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px #39ff14;
-        }
-        .project-card h3 {
-            margin-bottom: 0.5rem;
-            color: #39ff14;
-        }
-        .project-card p {
-            color: #c9f0ff;
-        }
-
-        /* Contact */
-        #contact form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 400px;
-        }
-        #contact input, #contact textarea {
-            padding: 0.75rem;
-            border-radius: 5px;
-            border: 1px solid #39ff14;
-            background-color: #111827;
-            color: #c9f0ff;
-        }
-        #contact input[type="submit"] {
-            cursor: pointer;
-            background-color: #39ff14;
-            color: #0d1117;
-            border: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        #contact input[type="submit"]:hover {
-            background-color: #0ff;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #0a192f;
-            color: #8bd3f7;
-            border-top: 2px solid #39ff14;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanaka Shumba - Cybersecurity Portfolio</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+    }
+    header {
+        background: linear-gradient(to right, #000, #0a0a0a);
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2.8em;
+        color: #00ff7f;
+    }
+    nav {
+        margin-top: 15px;
+    }
+    nav a {
+        text-decoration: none;
+        color: #00dfff;
+        margin: 0 15px;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+    nav a:hover {
+        color: #00ff7f;
+    }
+    section {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
+    #about {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+    }
+    #about img {
+        width: 250px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px #00ff7f;
+    }
+    #about div {
+        flex: 1;
+    }
+    #about h2 {
+        color: #00ff7f;
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    #projects .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .project {
+        background: #111;
+        border: 2px solid #00ff7f;
+        border-radius: 10px;
+        padding: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px #00ff7f;
+    }
+    .project h3 {
+        margin-top: 0;
+        color: #00dfff;
+    }
+    .project p {
+        font-size: 0.95em;
+        line-height: 1.4em;
+    }
+    .project a {
+        display: inline-block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #00ff7f;
+        font-weight: bold;
+    }
+    #contact form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 500px;
+        margin: auto;
+    }
+    #contact input, #contact textarea {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        font-size: 1em;
+    }
+    #contact button {
+        padding: 10px;
+        background: #00ff7f;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    #contact button:hover {
+        background: #00dfff;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        color: #666;
+    }
+    /* subtle animated background lines */
+    .bg-lines {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+    .line {
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background: rgba(0, 255, 127, 0.1);
+        animation: move 5s linear infinite;
+    }
+    @keyframes move {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+</style>
 </head>
 <body>
+<div class="bg-lines">
+    <div class="line" style="left:10%; animation-duration:6s;"></div>
+    <div class="line" style="left:25%; animation-duration:8s;"></div>
+    <div class="line" style="left:40%; animation-duration:5s;"></div>
+    <div class="line" style="left:60%; animation-duration:7s;"></div>
+    <div class="line" style="left:75%; animation-duration:6.5s;"></div>
+    <div class="line" style="left:90%; animation-duration:8s;"></div>
+</div>
 
-    <!-- Header -->
-    <header>
-        <h1>Tanaka Shumba</h1>
-        <p>Cybersecurity Professional | Showcasing Projects & Ambitions</p>
-    </header>
+<header>
+    <h1>Cybersecurity Portfolio</h1>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <!-- About Me Section -->
-    <section id="about">
-        <img src="images/about-me.jpg" alt="Tanaka Shumba">
-        <div>
-            <h2>Hi there!</h2>
-            <p>Welcome to my portfolio. Here, I showcase my cybersecurity projects and share my ambitions to grow in the field. I aim to create secure solutions, learn continuously, and contribute to impactful cybersecurity work.</p>
+<section id="about">
+    <img src="images/about-me.jpg" alt="Profile Picture">
+    <div>
+        <h2>Hi there!</h2>
+        <p>Welcome to my cybersecurity portfolio. Here, I showcase my projects and ambitions. I am passionate about securing systems, analyzing threats, and contributing to impactful cybersecurity solutions. Take a look at my work and see what I can bring to your organization.</p>
+    </div>
+</section>
+
+<section id="projects">
+    <h2 style="color:#00ff7f;">Projects</h2>
+    <div class="project-grid">
+        <div class="project">
+            <h3>Malware Analyzer</h3>
+            <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors.</p>
+            <a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">View on GitHub</a>
         </div>
-    </section>
+        <div class="project">
+            <h3>Ethical Hacking Sim</h3>
+            <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
+            <a href="https://github.com/TanakaShumba/ethical-hacking-sim" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>Cloud Security Checker</h3>
+            <p>Python script simulating checking cloud service configurations for common security misconfigurations.</p>
+            <a href="https://github.com/TanakaShumba/cloud-security-checker" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>Basic Pen Test</h3>
+            <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
+            <a href="https://github.com/TanakaShumba/basic-pen-test" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>Simple IDS</h3>
+            <p>A basic IDS/IPS simulation in Python.</p>
+            <a href="https://github.com/TanakaShumba/simple-ids" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>Cybersecurity Lab Series</h3>
+            <p>Collection of hands-on cybersecurity lab exercises and simulations.</p>
+            <a href="https://github.com/TanakaShumba/cybersecurity-lab-series" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>Secure Hospital System</h3>
+            <p>Python-based secure hospital management system.</p>
+            <a href="https://github.com/TanakaShumba/secure-hospital-system" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>VoIP Traffic Analyzer</h3>
+            <p>Python project capturing and analyzing VoIP RTP packets safely for educational purposes.</p>
+            <a href="https://github.com/TanakaShumba/voip-traffic-analyzer" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>Python Network Scanner</h3>
+            <p>Python project for network scanning.</p>
+            <a href="https://github.com/TanakaShumba/python-network-scanner" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>Healthcare System</h3>
+            <p>Flask-based healthcare management system to handle appointments and payments.</p>
+            <a href="https://github.com/TanakaShumba/Healthcare_System" target="_blank">View on GitHub</a>
+        </div>
+    </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
+<section id="contact">
+    <h2 style="color:#00ff7f;">Contact</h2>
+    <form>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea placeholder="Message" rows="5"></textarea>
+        <button type="submit">Send Message</button>
+        <p style="margin-top:10px;">LinkedIn: <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" style="color:#00dfff;">tanakashumba</a></p>
+    </form>
+</section>
 
-        <div class="project-card">
-            <h3><a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">Malware Analyzer</a></h3>
-            <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors in a controlled environment.</p>
+<footer>
+    &copy; 2025 Tanaka Shumba. All rights reserved.
+</footer>
+</body>
+</html>
