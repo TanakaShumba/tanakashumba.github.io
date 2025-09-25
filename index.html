@@ -1,224 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanaka Shumba | Cybersecurity Portfolio</title>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #000; 
-        color: #fff;
-        overflow-x: hidden;
-        position: relative;
-    }
-    #tech-bg {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        z-index: -1;
-    }
-    header {
-        text-align: center;
-        padding: 50px 20px 30px 20px;
-    }
-    header img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        border: 3px solid #00ff00;
-        margin-bottom: 20px;
-    }
-    header h1 { font-size: 2.5em; color: #00ff00; }
-    header p { font-size: 1.1em; margin-top: 10px; color: #ccc; max-width: 700px; margin: auto; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanaka Shumba | Cybersecurity Portfolio</title>
+    <style>
+        /* General Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    section { padding: 60px 20px; max-width: 1000px; margin: auto; }
-    h2 { color: #00ff00; margin-bottom: 20px; font-size: 2em; text-align: center; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    /* About Section */
-    #about p { line-height: 1.6; font-size: 1.1em; color: #ccc; text-align: center; max-width: 800px; margin: auto; margin-bottom: 20px; }
-    .cv-card {
-        background-color: #111;
-        border: 2px solid #00ff00;
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        max-width: 400px;
-        margin: 20px auto;
-    }
-    .cv-card a {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 12px 25px;
-        background-color: #00ff00;
-        color: #000;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-    }
-    .cv-card a:hover { background-color: #00cc00; }
+        /* Tech particles canvas */
+        #tech-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-    /* Projects Section */
-    .projects-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-    .project-card {
-        background-color: #111;
-        border: 2px solid #00ff00;
-        padding: 20px;
-        border-radius: 8px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 15px #00ff00;
-    }
-    .project-card h3 { color: #00ff00; margin-bottom: 10px; font-size: 1.2em; }
-    .project-card p { color: #ccc; font-size: 0.95em; margin-bottom: 10px; }
-    .project-card a { color: #00ff00; text-decoration: none; font-weight: bold; }
-    .project-card a:hover { text-decoration: underline; }
+        header {
+            text-align: center;
+            padding: 50px 20px 30px 20px;
+        }
 
-    /* Contact Section */
-    #contact { text-align: center; }
-    #contact a {
-        display: inline-block; margin: 10px 20px;
-        color: #00ff00;
-        text-decoration: none;
-        font-weight: bold;
-        border: 2px solid #00ff00;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    #contact a:hover { background-color: #00ff00; color: #000; }
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #00ff00; /* lime green border */
+            margin-bottom: 20px;
+        }
 
-    footer { text-align: center; padding: 30px 20px; color: #555; font-size: 0.9em; }
-</style>
+        header h1 {
+            font-size: 2.5em;
+            color: #00ff00;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #ccc;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #00ff00;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        /* About Section */
+        #about p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            color: #ccc;
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .cv-link {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 20px;
+            background-color: #00ff00;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cv-link:hover {
+            background-color: #00cc00;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: #111;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        .project-card h3 {
+            color: #00ff00;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .project-card p {
+            color: #ccc;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        .project-card a {
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+
+        #contact a {
+            display: inline-block;
+            margin: 10px 20px;
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #00ff00;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #contact a:hover {
+            background-color: #00ff00;
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+    </style>
 </head>
 <body>
-<canvas id="tech-bg"></canvas>
+    <canvas id="tech-bg"></canvas>
 
-<header>
-    <img src="images/about-me.jpg" alt="Profile Picture">
-    <h1>Hey there</h1>
-    <p>Welcome to my portfolio! Here, I showcase my cybersecurity projects, highlighting my skills in threat detection, penetration testing, and network security. Beyond my projects, I am passionate about advancing in the cybersecurity field and contributing to securing digital landscapes.</p>
-</header>
+    <header>
+        <img src="images/about-me.jpg" alt="Tanaka Shumba">
+        <h1>Hey there</h1>
+        <p>Welcome to my portfolio! Here, I showcase my cybersecurity projects, highlighting my skills in threat detection, penetration testing, and network security. Beyond my projects, I am passionate about advancing in the cybersecurity field and contributing to securing digital landscapes.</p>
+        <a href="resume.pdf" target="_blank" class="cv-link">Download my CV</a>
+    </header>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>This section gives a brief overview of my background, skills, and ambitions in cybersecurity.</p>
-    <div class="cv-card">
-        <p>Download my CV to learn more about my professional journey.</p>
-        <a href="resume.pdf" target="_blank">Download CV</a>
-    </div>
-</section>
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Malware Analyzer</h3>
+                <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors.</p>
+                <a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Ethical Hacking Sim</h3>
+                <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
+                <a href="https://github.com/TanakaShumba/ethical-hacking-sim" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Cloud Security Checker</h3>
+                <p>Python script to simulate checking cloud service configurations for common security misconfigurations.</p>
+                <a href="https://github.com/TanakaShumba/cloud-security-checker" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Basic Pen Test</h3>
+                <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
+                <a href="https://github.com/TanakaShumba/basic-pen-test" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Simple IDS</h3>
+                <p>A basic IDS/IPS simulation in Python for detecting and preventing attacks.</p>
+                <a href="https://github.com/TanakaShumba/simple-ids" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Cybersecurity Lab Series</h3>
+                <p>A collection of labs and scripts designed for hands-on cybersecurity learning.</p>
+                <a href="https://github.com/TanakaShumba/cybersecurity-lab-series" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Secure Hospital System</h3>
+                <p>Python-based secure hospital management system focusing on patient data security.</p>
+                <a href="https://github.com/TanakaShumba/secure-hospital-system" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>VoIP Traffic Analyzer</h3>
+                <p>Python project that captures and analyzes VoIP RTP packets safely for educational use.</p>
+                <a href="https://github.com/TanakaShumba/voip-traffic-analyzer" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Python Network Scanner</h3>
+                <p>Python tool for scanning networks and identifying connected devices and vulnerabilities.</p>
+                <a href="https://github.com/TanakaShumba/python-network-scanner" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Healthcare System</h3>
+                <p>Flask-based healthcare management system to handle appointments, doctors, and payments.</p>
+                <a href="https://github.com/TanakaShumba/healthcare-system" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </section>
 
-<section id="projects">
-    <h2>My Projects</h2>
-    <div class="projects-container">
-        <div class="project-card">
-            <h3>Malware Analyzer</h3>
-            <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors.</p>
-            <a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>Ethical Hacking Sim</h3>
-            <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
-            <a href="https://github.com/TanakaShumba/ethical-hacking-sim" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>Cloud Security Checker</h3>
-            <p>Python script to simulate checking cloud service configurations for common security misconfigurations.</p>
-            <a href="https://github.com/TanakaShumba/cloud-security-checker" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>Basic Pen Test</h3>
-            <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
-            <a href="https://github.com/TanakaShumba/basic-pen-test" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>Simple IDS</h3>
-            <p>A basic IDS/IPS simulation in Python for detecting and preventing attacks.</p>
-            <a href="https://github.com/TanakaShumba/simple-ids" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>Cybersecurity Lab Series</h3>
-            <p>A collection of labs and scripts designed for hands-on cybersecurity learning.</p>
-            <a href="https://github.com/TanakaShumba/cybersecurity-lab-series" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>Secure Hospital System</h3>
-            <p>Python-based secure hospital management system focusing on patient data security.</p>
-            <a href="https://github.com/TanakaShumba/secure-hospital-system" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>VoIP Traffic Analyzer</h3>
-            <p>Python project that captures and analyzes VoIP RTP packets safely for educational use.</p>
-            <a href="https://github.com/TanakaShumba/voip-traffic-analyzer" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>Python Network Scanner</h3>
-            <p>Python tool for scanning networks and identifying connected devices and vulnerabilities.</p>
-            <a href="https://github.com/TanakaShumba/python-network-scanner" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-            <h3>Healthcare System</h3>
-            <p>Flask-based healthcare management system to handle appointments, doctors, and payments.</p>
-            <a href="https://github.com/TanakaShumba/healthcare-system" target="_blank">View on GitHub</a>
-        </div>
-    </div>
-</section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <a href="mailto:tanakashumba04@gmail.com">Email Me</a>
+        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+    </section>
 
-<section id="contact">
-    <h2>Contact Me</h2>
-    <a href="mailto:tanakashumba04@gmail.com">Email Me</a>
-    <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
-</section>
+    <footer>
+        © 2025 Tanaka Shumba
+    </footer>
 
-<footer>© 2025 Tanaka Shumba</footer>
-
-<script>
-    // Minimal 3D tech particles
-    const canvas = document.getElementById('tech-bg');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particles = [];
-    for (let i = 0; i < 50; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5,
-            size: Math.random() * 2 + 1
-        });
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'lime';
-        particles.forEach(p => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fill();
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        });
-        requestAnimationFrame(animate);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
+    <script>
+        // Minimal 3D tech particles animation
+        const canvas = document.getElementById('tech-bg');
+        const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-    });
-</script>
+
+        let particles = [];
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2 + 1
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'lime';
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
