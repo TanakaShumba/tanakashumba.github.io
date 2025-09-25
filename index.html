@@ -3,168 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanaka Shumba - Cybersecurity Portfolio</title>
+<title>Tanaka Shumba | Cybersecurity Portfolio</title>
 <style>
-  /* General Styles */
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-  body { background-color: #000; color: #fff; line-height: 1.6; }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+  }
 
-  /* Hero Section */
-  .hero {
-    position: relative;
-    height: 100vh;
+  /* Header */
+  header {
+    background-color: #000;
+    padding: 20px 40px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    color: #00ff00;
-    background: url('images/dovi.jpg') no-repeat center center/cover;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-  }
-  .hero-content {
-    position: relative;
-    z-index: 1;
-  }
-  .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-  .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: #ccc; }
-
-  /* Navigation */
-  nav {
-    position: fixed;
-    top: 0; width: 100%;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
+    border-bottom: 2px solid #00ff00;
+    position: sticky;
+    top: 0;
     z-index: 10;
   }
-  nav a { color: #00ff00; text-decoration: none; margin: 0 1rem; font-weight: bold; }
-  nav a:hover { color: #fff; }
 
-  /* Sections */
-  section { padding: 100px 20px; max-width: 1000px; margin: auto; }
-  h2 { color: #00ff00; margin-bottom: 1rem; }
+  header h1 {
+    color: #00ff00;
+    margin: 0;
+    font-size: 1.5rem;
+  }
 
-  /* About Me */
-  .about {
+  nav a {
+    color: #00ff00;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: #fff;
+  }
+
+  /* Profile Section */
+  .profile {
+    text-align: center;
+    padding: 50px 20px;
+  }
+
+  .profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #00ff00;
+  }
+
+  .profile h2 {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #00ff00;
+  }
+
+  .profile p {
+    max-width: 700px;
+    margin: 10px auto 0 auto;
+    line-height: 1.6;
+    color: #fff;
+  }
+
+  /* Projects Section */
+  .projects {
+    padding: 50px 20px;
+    background-color: #111;
+  }
+
+  .projects h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #00ff00;
+    margin-bottom: 40px;
+  }
+
+  .project-list {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    gap: 30px;
   }
-  .about img { width: 200px; border-radius: 50%; border: 3px solid #00ff00; }
-  .about-text { flex: 1; }
 
-  /* Projects */
-  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-  .project-card {
-    background: #111;
-    border: 1px solid #00ff00;
-    padding: 1rem;
+  .project {
+    background-color: #000;
+    border: 2px solid #00ff00;
     border-radius: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s;
   }
-  .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px #00ff00;
-  }
-  .project-card h3 { color: #00ff00; margin-bottom: 0.5rem; font-size: 1.1rem; }
-  .project-card p { font-size: 0.9rem; color: #ccc; }
-  .project-card a { color: #00ff00; text-decoration: none; font-weight: bold; }
-  .project-card a:hover { color: #fff; }
 
-  /* Contact */
-  .contact a { color: #00ff00; margin-right: 1rem; text-decoration: none; }
-  .contact a:hover { color: #fff; }
-
-  /* Animated neon green lines in background */
-  .animated-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    background: repeating-linear-gradient(45deg, rgba(0,255,0,0.05) 0, rgba(0,255,0,0.05) 1px, transparent 1px, transparent 20px);
-    animation: moveBg 10s linear infinite;
+  .project:hover {
+    transform: scale(1.05);
   }
-  @keyframes moveBg { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+
+  .project h3 {
+    margin-top: 0;
+    color: #00ff00;
+    font-size: 1.2rem;
+  }
+
+  .project p {
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .project a {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .project a:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+
+  /* About Section */
+  .about {
+    padding: 50px 20px;
+    background: url('images/dovi.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+  }
+
+  .about h2 {
+    font-size: 2rem;
+    color: #00ff00;
+    margin-bottom: 20px;
+  }
+
+  .about p {
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    line-height: 1.6;
+  }
+
+  .about a {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .about a:hover {
+    color: #fff;
+  }
+
+  /* Contact Section */
+  .contact {
+    padding: 50px 20px;
+    background-color: #111;
+    text-align: center;
+  }
+
+  .contact h2 {
+    font-size: 2rem;
+    color: #00ff00;
+    margin-bottom: 20px;
+  }
+
+  .contact a {
+    color: #00ff00;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+
+  .contact a:hover {
+    color: #fff;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #000;
+    border-top: 2px solid #00ff00;
+    color: #00ff00;
+  }
 
 </style>
 </head>
 <body>
 
-<div class="animated-bg"></div>
+<header>
+  <h1>Tanaka Shumba</h1>
+  <nav>
+    <a href="#profile">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-<nav>
-  <a href="#about">About Me</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1>Hey there!</h1>
-    <p>Welcome to my portfolio! Here, I showcase my cybersecurity projects, highlighting skills in threat detection, penetration testing, and network security. I’m constantly learning and advancing in the field to secure digital landscapes.</p>
-  </div>
+<section id="profile" class="profile">
+  <img src="images/about-me.jpg" alt="Profile Picture">
+  <h2>Hi there!</h2>
+  <p>Welcome to my portfolio! Here, I showcase my cybersecurity projects, highlighting my skills in threat detection, penetration testing, and network security. Each project demonstrates practical solutions and innovative approaches to modern security challenges. Beyond these projects, I am passionate about advancing in cybersecurity and contributing to securing digital landscapes.</p>
 </section>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="about">
-    <img src="images/about-me.jpg" alt="Profile Picture">
-    <div class="about-text">
-      <p>Passionate about cybersecurity, I enjoy solving complex security challenges and creating practical solutions. This portfolio reflects both my technical expertise and my ambition to make an impact in the cybersecurity industry.</p>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="projects">
-    <div class="project-card">
+<section id="projects" class="projects">
+  <h2>My Projects</h2>
+  <div class="project-list">
+    <div class="project">
       <h3>Malware Analyzer</h3>
-      <p>Python script to simulate analyzing suspicious files and detecting potential malicious behaviors in a controlled environment.</p>
+      <p>Python script simulating analyzing suspicious files and detecting potential malicious behaviors.</p>
       <a href="https://github.com/TanakaShumba/malware-analyzer" target="_blank">View on GitHub</a>
     </div>
-    <div class="project-card">
+    <div class="project">
       <h3>Ethical Hacking Sim</h3>
-      <p>Python scripts simulating ethical hacking techniques for learning and demonstration purposes.</p>
+      <p>Python scripts simulating ethical hacking techniques for learning purposes.</p>
       <a href="https://github.com/TanakaShumba/ethical-hacking-sim" target="_blank">View on GitHub</a>
     </div>
-    <div class="project-card">
+    <div class="project">
       <h3>Cloud Security Checker</h3>
       <p>Python script to simulate checking cloud service configurations for common security misconfigurations.</p>
       <a href="https://github.com/TanakaShumba/cloud-security-checker" target="_blank">View on GitHub</a>
     </div>
-    <div class="project-card">
+    <div class="project">
       <h3>Basic Pen Test</h3>
       <p>Simple Python script for educational penetration testing and vulnerability scanning.</p>
       <a href="https://github.com/TanakaShumba/basic-pen-test" target="_blank">View on GitHub</a>
     </div>
-    <div class="project-card">
+    <div class="project">
       <h3>Simple IDS</h3>
       <p>A basic IDS/IPS simulation in Python for detecting and preventing attacks.</p>
       <a href="https://github.com/TanakaShumba/simple-ids" target="_blank">View on GitHub</a>
     </div>
-    <div class="project-card">
+    <div class="project">
       <h3>Cybersecurity Lab Series</h3>
-      <p>A collection of labs and scripts designed for hands-on cybersecurity learning.</p>
-      <a href="https://github.com/TanakaShumba/cyber-lab-series" target="_blank">View on GitHub</a>
+      <p>Collection of labs and scripts for hands-on cybersecurity learning.</p>
+      <a href="https://github.com/TanakaShumba/cybersecurity-lab-series" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>Secure Hospital System</h3>
+      <p>Python-based secure hospital management system focusing on patient data security.</p>
+      <a href="https://github.com/TanakaShumba/secure-hospital-system" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>VoIP Traffic Analyzer</h3>
+      <p>Python project capturing and analyzing VoIP RTP packets safely for educational use.</p>
+      <a href="https://github.com/TanakaShumba/voip-traffic-analyzer" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>Python Network Scanner</h3>
+      <p>Tool for scanning networks and identifying connected devices and vulnerabilities.</p>
+      <a href="https://github.com/TanakaShumba/python-network-scanner" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>Healthcare System</h3>
+      <p>Flask-based healthcare management system handling appointments, doctors, and payments.</p>
+      <a href="https://github.com/TanakaShumba/healthcare-system" target="_blank">View on GitHub</a>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p class="contact">
-    <a href="mailto:tanakashumba04@gmail.com">Email Me</a>
-    <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
-  </p>
+<section class="about">
+  <h2>About Me</h2>
+  <p>This section uses a background image where you can showcase your CV or other personal details. Add your CV link here:</p>
+  <a href="files/Tanaka_Shuba_CV.pdf" target="_blank">Download CV</a>
 </section>
+
+<section id="contact" class="contact">
+  <h2>Contact Me</h2>
+  <p>Feel free to reach out via email or LinkedIn:</p>
+  <a href="mailto:tanakashumba04@gmail.com">Email Me</a>
+  <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+</section>
+
+<footer>
+  © 2025 Tanaka Shumba
+</footer>
 
 </body>
 </html>
