@@ -5,169 +5,212 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tanaka Shumba | Cybersecurity Portfolio</title>
 <style>
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#0d0d0d; color:#eee; line-height:1.6; }
+  /* Reset */
+  * {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+  
+  body {
+    background: #000;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-/* Canvas background */
-canvas { position:fixed; top:0; left:0; z-index:-1; }
+  /* Animated neon background */
+  body::before {
+    content: "";
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: linear-gradient(90deg, rgba(0,255,0,0.05), rgba(0,0,255,0.05));
+    z-index:-1;
+    animation: bgMove 10s linear infinite;
+  }
 
-/* Navbar */
-nav { position:fixed; width:100%; top:0; background:rgba(20,20,20,0.95); display:flex; justify-content:center; padding:15px 0; z-index:100; }
-nav a { color:#1cf9b3; text-decoration:none; margin:0 20px; font-weight:bold; }
-nav a:hover { color:#fff; }
+  @keyframes bgMove {
+    0%{background-position:0 0;}
+    100%{background-position:100% 100%;}
+  }
 
-/* Header */
-header { padding:120px 20px 60px 20px; text-align:center; }
-header h1 { font-size:3em; color:#1cf9b3; }
-header p { font-size:1.2em; color:#ccc; }
+  header {
+    text-align:center;
+    padding:60px 20px;
+    border-bottom: 2px solid #0f0;
+  }
 
-/* Sections */
-section { max-width:1000px; margin:0 auto; padding:80px 20px; }
-section h2 { text-align:center; margin-bottom:40px; color:#1cf9b3; }
+  header h1 {
+    color:#0f0;
+    font-size:3rem;
+    margin-bottom:10px;
+  }
 
-/* About */
-#about { display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:center; }
-#about img { width:180px; border-radius:50%; border:3px solid #1cf9b3; }
-#about .bio { max-width:600px; font-size:1.1em; color:#ccc; }
+  header p {
+    font-size:1.2rem;
+    color:#0f0;
+  }
 
-/* Projects */
-.project-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-.project-card { background:#1a1a1a; border-left:5px solid #1cf9b3; padding:20px; border-radius:5px; transition: transform 0.2s, box-shadow 0.2s; }
-.project-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(28,249,179,0.3); }
-.project-card h3 { margin-bottom:10px; color:#1cf9b3; }
-.project-card p { font-size:0.95em; color:#ccc; }
+  section {
+    max-width:1000px;
+    margin:50px auto;
+    padding:0 20px;
+  }
 
-/* Contact */
-#contact { text-align:center; color:#ccc; }
-#contact a { color:#1cf9b3; text-decoration:none; margin:0 10px; }
-#contact a:hover { text-decoration:underline; }
+  /* About Me */
+  #about {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:20px;
+    justify-content:center;
+  }
 
-/* Footer */
-footer { text-align:center; padding:20px 0; font-size:0.9em; color:#666; }
+  #about img {
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    border:3px solid #0f0;
+  }
 
-/* Responsive */
-@media(max-width:600px){ #about { flex-direction:column; } }
+  #about-text {
+    max-width:600px;
+  }
+
+  #about-text h2 {
+    color:#0f0;
+    margin-bottom:10px;
+  }
+
+  /* Projects */
+  #projects h2, #contact h2 {color:#0f0; margin-bottom:20px; text-align:center;}
+  .project-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:20px;
+  }
+
+  .project-card {
+    background:#111;
+    border:2px solid #0f0;
+    padding:20px;
+    border-radius:10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow:0 0 20px #0f0;
+  }
+
+  .project-card h3 {
+    color:#0f0;
+    margin-bottom:10px;
+  }
+
+  .project-card p {
+    font-size:0.9rem;
+    color:#ccc;
+  }
+
+  /* Contact */
+  #contact form {
+    display:flex;
+    flex-direction:column;
+    max-width:400px;
+    margin:auto;
+    gap:10px;
+  }
+
+  #contact input, #contact textarea, #contact button {
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    outline:none;
+  }
+
+  #contact input, #contact textarea {
+    background:#222;
+    color:#fff;
+  }
+
+  #contact button {
+    background:#0f0;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    transition: background 0.3s;
+  }
+
+  #contact button:hover {background:#0c0;}
+  
+  footer {
+    text-align:center;
+    margin:50px 0;
+    color:#0f0;
+    font-size:0.8rem;
+  }
+
 </style>
 </head>
 <body>
 
-<canvas id="bg"></canvas>
-
-<!-- Navbar -->
-<nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<!-- Header -->
 <header>
-    <h1>Tanaka Shumba</h1>
-    <p>Cybersecurity Professional | Threat Detection | Penetration Testing | Network Security</p>
+  <h1>Tanaka Shumba</h1>
+  <p>Cybersecurity Professional | Network & Security Enthusiast</p>
 </header>
 
-<!-- About Section -->
 <section id="about">
-    <img src="images/about-me.jpg" alt="Tanaka Shumba">
-    <div class="bio">
-        <h2>About Me</h2>
-        <p>I am a dedicated cybersecurity professional with a B.S. in Cybersecurity and ongoing M.S. studies. I specialize in threat detection, incident response, penetration testing, and network security. Proficient in Python, cloud security, and SIEM tools like Splunk, I help organizations secure their critical systems and data.</p>
-    </div>
+  <img src="images/about-me.jpg" alt="Tanaka Shumba">
+  <div id="about-text">
+    <h2>About Me</h2>
+    <p>Detail-oriented cybersecurity professional with hands-on experience in threat detection, penetration testing, and network security. Proficient in Python, security tools like Wireshark, Zeek, Snort, and Nmap. Passionate about safeguarding digital assets and building secure systems. Seeking to contribute to a forward-thinking cybersecurity team.</p>
+  </div>
 </section>
 
-<!-- Projects Section -->
 <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-        <div class="project-card">
-            <h3>Malware Analyzer</h3>
-            <p>Python tool to analyze suspicious files and detect potential malicious behaviors safely for learning and demonstration purposes.</p>
-        </div>
-        <div class="project-card">
-            <h3>Ethical Hacking Simulation</h3>
-            <p>Scripts simulating ethical hacking techniques for educational demonstration, helping users understand vulnerabilities in a safe environment.</p>
-        </div>
-        <div class="project-card">
-            <h3>Cloud Security Checker</h3>
-            <p>Python tool to simulate checking cloud service configurations for common security misconfigurations.</p>
-        </div>
-        <div class="project-card">
-            <h3>Basic Pen Test</h3>
-            <p>Educational Python script for penetration testing and vulnerability scanning, designed for learning purposes.</p>
-        </div>
-        <div class="project-card">
-            <h3>Simple IDS/IPS</h3>
-            <p>Python-based simulation of an Intrusion Detection and Prevention System to detect suspicious network activity.</p>
-        </div>
-        <div class="project-card">
-            <h3>Secure Hospital System</h3>
-            <p>Python secure management system for hospitals, demonstrating secure handling of sensitive healthcare data.</p>
-        </div>
+  <h2>Projects</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Malware Analyzer</h3>
+      <p>Python script simulating malware analysis in a controlled environment to detect potential malicious behaviors.</p>
     </div>
+    <div class="project-card">
+      <h3>Ethical Hacking Simulator</h3>
+      <p>Python scripts demonstrating ethical hacking techniques for educational purposes.</p>
+    </div>
+    <div class="project-card">
+      <h3>Cloud Security Checker</h3>
+      <p>Python tool simulating checks for common cloud misconfigurations and vulnerabilities.</p>
+    </div>
+    <div class="project-card">
+      <h3>Secure Hospital System</h3>
+      <p>Python-based system for managing hospital data securely, with role-based access controls.</p>
+    </div>
+    <div class="project-card">
+      <h3>VOIP Traffic Analyzer</h3>
+      <p>Captures and analyzes VoIP RTP packets safely for educational and security insights.</p>
+    </div>
+    <div class="project-card">
+      <h3>Python Network Scanner</h3>
+      <p>Custom network scanning scripts to detect hosts, open ports, and potential vulnerabilities.</p>
+    </div>
+    <div class="project-card">
+      <h3>Healthcare System (Flask)</h3>
+      <p>Flask-based healthcare management application for handling appointments, doctors, and payments.</p>
+    </div>
+  </div>
 </section>
 
-<!-- Contact Section -->
 <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a></p>
-    <p>
-        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
-        <a href="https://github.com/TanakaShumba" target="_blank">GitHub</a>
-    </p>
+  <h2>Contact</h2>
+  <form action="#" method="post">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </section>
 
-<footer>&copy; 2025 Tanaka Shumba</footer>
+<footer>
+  &copy; 2025 Tanaka Shumba | <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" style="color:#0f0;">LinkedIn</a> | <a href="https://github.com/TanakaShumba" target="_blank" style="color:#0f0;">GitHub</a>
+</footer>
 
-<script>
-// Animated neon green lines in background
-const canvas = document.getElementById('bg');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const lines = [];
-for(let i=0;i<50;i++){
-    lines.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        length: Math.random()*200 + 50,
-        speed: Math.random()*0.5 + 0.2,
-        angle: Math.random()*2*Math.PI
-    });
-}
-
-function animate(){
-    ctx.fillStyle = '#0d0d0d';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    ctx.strokeStyle = '#1cf9b3';
-    ctx.lineWidth = 1.5;
-
-    lines.forEach(l=>{
-        ctx.beginPath();
-        ctx.moveTo(l.x,l.y);
-        ctx.lineTo(l.x + Math.cos(l.angle)*l.length, l.y + Math.sin(l.angle)*l.length);
-        ctx.stroke();
-
-        l.x += Math.cos(l.angle)*l.speed;
-        l.y += Math.sin(l.angle)*l.speed;
-
-        if(l.x>canvas.width+200) l.x=-200;
-        if(l.x<-200) l.x=canvas.width+200;
-        if(l.y>canvas.height+200) l.y=-200;
-        if(l.y<-200) l.y=canvas.height+200;
-    });
-
-    requestAnimationFrame(animate);
-}
-
-animate();
-
-window.addEventListener('resize',()=>{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-</script>
 </body>
 </html>
