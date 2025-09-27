@@ -1,245 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanaka Shumba | Cybersecurity Portfolio</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        #tech-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 20px 30px 20px;
-        }
-
-        header img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid #00ff00;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            color: #00ff00;
-        }
-
-        header p {
-            font-size: 1.1em;
-            margin-top: 10px;
-            color: #ccc;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cv-link {
-            display: inline-block;
-            padding: 12px 25px;
-            margin-top: 20px;
-            background-color: #00ff00;
-            color: #000;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .cv-link:hover {
-            background-color: #00cc00;
-        }
-
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        h2 {
-            color: #00ff00;
-            margin-bottom: 20px;
-            font-size: 2em;
-            text-align: center;
-        }
-
-        #about p {
-            line-height: 1.6;
-            font-size: 1.1em;
-            color: #ccc;
-            text-align: center;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background-color: #111;
-            border: 2px solid #00ff00;
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px #00ff00;
-        }
-
-        .project-card h3 {
-            color: #00ff00;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        .project-card a {
-            color: #00ff00;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .project-card a:hover {
-            text-decoration: underline;
-        }
-
-        #contact {
-            text-align: center;
-        }
-
-        #contact a {
-            display: inline-block;
-            margin: 10px 15px;
-            color: #00ff00;
-            text-decoration: none;
-            font-weight: bold;
-            border: 2px solid #00ff00;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        #contact a:hover {
-            background-color: #00ff00;
-            color: #000;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #555;
-            font-size: 0.9em;
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanaka Shumba | Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d1117;
+      color: #c9d1d9;
+    }
+    header {
+      background-color: #161b22;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      color: #3fb950;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #c9d1d9;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: #3fb950;
+    }
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    h2 {
+      color: #3fb950;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 5px;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .card {
+      background-color: #161b22;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card a {
+      color: #3fb950;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #161b22;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <canvas id="tech-bg"></canvas>
+  <header>
+    <h1>Tanaka Shumba</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="resume.pdf" target="_blank">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <header>
-        <img src="images/about-me.jpg" alt="Tanaka Shumba">
-        <h1>Hey there</h1>
-        <p>Welcome to my portfolio! Here, I showcase my cybersecurity projects, highlighting my skills in threat detection, penetration testing, and network security. Beyond my projects, I am passionate about advancing in the cybersecurity field and contributing to securing digital landscapes.</p>
-        <a href="resume.pdf" target="_blank" class="cv-link">Download my CV</a>
-    </header>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a Cybersecurity professional with a B.S. in Cybersecurity from Troy University,
+      currently pursuing an M.S. in Computer Science – Cybersecurity.
+      Skilled in threat detection, incident response, penetration testing, and data analysis.
+      Passionate about securing systems and helping organizations strengthen their defenses.
+    </p>
+  </section>
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="projects-container" id="projects-container">
-        </div>
-    </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects" id="projects-list">
+      <!-- GitHub projects will load here -->
+    </div>
+  </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <a href="mailto:tanakashumba04@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
-        <a href="https://www.instagram.com/tanakashumba_/" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@tanakashumba" target="_blank">TikTok</a>
-        <a href="https://twitter.com/Shumba_rumba" target="_blank">X</a>
-    </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/tanakashumba" target="_blank">linkedin.com/in/tanakashumba</a></p>
+    <p>GitHub: <a href="https://github.com/TanakaShumba" target="_blank">github.com/TanakaShumba</a></p>
+  </section>
 
-    <footer>
-        © 2025 Tanaka Shumba
-    </footer>
+  <footer>
+    <p>&copy; 2025 Tanaka Shumba</p>
+  </footer>
 
-    <script>
-        const canvas = document.getElementById('tech-bg');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+  <script>
+    async function loadProjects() {
+      try {
+        const response = await fetch("https://api.github.com/users/TanakaShumba/repos");
+        let repos = await response.json();
 
-        let particles = [];
-        for (let i = 0; i < 50; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2 + 1
-            });
-        }
+        repos = repos.filter(repo =>
+          repo.name.toLowerCase() !== "tanakashumba.github.io" &&
+          repo.name.toLowerCase() !== "tanakashumba"
+        );
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'lime';
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-            });
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        const projectsList = document.getElementById("projects-list");
+        repos.forEach(repo => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description || "No description provided."}</p>
+            <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+          `;
+          projectsList.appendChild(card);
         });
-
-        // Fetch GitHub repos and display projects (exclude portfolio repo, no description)
-        const container = document.getElementById('projects-container');
-        fetch('https://api.github.com/users/TanakaShumba/repos?sort=updated&per_page=100')
-        .then(res => res.json())
-        .then(repos => {
-            repos
-            .filter(repo => repo.name.toLowerCase() !== 'tanakashumba.github.io')
-            .forEach(repo => {
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                card.innerHTML = `
-                    <h3>${repo.name}</h3>
-                    <a href="${repo.html_url}" target="_blank">View on GitHub</a>
-                `;
-                container.appendChild(card);
-            });
-        })
-        .catch(err => console.error('Error fetching repos:', err));
-    </script>
+      } catch (err) {
+        console.error("Error loading repos:", err);
+      }
+    }
+    loadProjects();
+  </script>
 </body>
 </html>
