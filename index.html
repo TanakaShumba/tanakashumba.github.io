@@ -1,218 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tanaka Shumba | Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: black;
+      color: #00ff99;
       overflow-x: hidden;
     }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    header {
       text-align: center;
+      padding: 80px 20px 40px 20px;
+      position: relative;
+      z-index: 2;
     }
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #00ff99;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin: 10px 0 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      background: transparent;
+      border: 2px solid #00ff99;
+      color: #00ff99;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #00ff99;
+      color: black;
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    h2 {
+      font-size: 2em;
+      margin-bottom: 40px;
+      border-bottom: 2px solid #00ff99;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: rgba(0, 0, 0, 0.85);
+      border: 2px solid #00ff99;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 153, 0.5);
+      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:nth-child(4) { animation-delay: 0.8s; }
+    .card:nth-child(5) { animation-delay: 1s; }
 
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card h3 {
+      margin-bottom: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 1px solid #00ff99;
+      position: relative;
+      z-index: 2;
+    }
+    /* Fade-in animation */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* 3D Particle Background */
     #particles-js {
-      position: absolute;
+      position: fixed;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
-      z-index: -1;
-    }
-
-    .hero-content h1 {
-      font-size: 2.8em;
-      color: #00ff00;
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: 1.2em;
-      color: #ccc;
-      max-width: 700px;
-      margin: 0 auto 25px auto;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background-color: #00ff00;
-      color: #000;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #00cc00;
-    }
-
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      color: #00ff00;
-      margin-bottom: 20px;
-      font-size: 2em;
-      text-align: center;
-    }
-
-    .projects-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .project-card {
-      background-color: #111;
-      border: 2px solid #00ff00;
-      padding: 20px;
-      border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px #00ff00;
-    }
-
-    .project-card h3 {
-      color: #00ff00;
-      margin-bottom: 10px;
-      font-size: 1.2em;
-    }
-
-    .project-card a {
-      color: #00ff00;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .project-card a:hover {
-      text-decoration: underline;
-    }
-
-    #contact {
-      text-align: center;
-    }
-
-    #contact a {
-      display: inline-block;
-      margin: 10px 15px;
-      color: #00ff00;
-      text-decoration: none;
-      font-weight: bold;
-      border: 2px solid #00ff00;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    #contact a:hover {
-      background-color: #00ff00;
-      color: #000;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: #555;
-      font-size: 0.9em;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
+  <div id="particles-js"></div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div id="particles-js"></div>
-    <div class="hero-content">
-      <h1>Welcome to My Portfolio</h1>
-      <p>I am a Cybersecurity Professional with skills in threat detection, penetration testing, and network security. Explore my projects and see how I contribute to securing digital landscapes.</p>
-      <a href="#projects" class="btn">Explore My Work</a>
+  <header>
+    <img src="images/profile.jpg" alt="Tanaka Shumba">
+    <h1>Tanaka Shumba</h1>
+    <p>Cybersecurity Professional | IT Security Enthusiast</p>
+    <a href="resume.pdf" class="btn" download><i class="fa-solid fa-download"></i> Download Resume</a>
+    <a href="https://github.com/TanakaShumba" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://linkedin.com/in/tanakashumba" target="_blank" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  </header>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects" id="project-list">
+      <!-- GitHub repos will load here -->
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="projects-container" id="projects-container"></div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <a href="mailto:tanakashumba04@gmail.com">Email</a>
-    <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
-    <a href="https://www.instagram.com/tanakashumba_/" target="_blank">Instagram</a>
-    <a href="https://www.tiktok.com/@tanakashumba" target="_blank">TikTok</a>
-    <a href="https://twitter.com/Shumba_rumba" target="_blank">X</a>
-  </section>
-
   <footer>
-    © 2025 Tanaka Shumba
+    <p>&copy; 2025 Tanaka Shumba | Cybersecurity Portfolio</p>
   </footer>
 
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- Particles.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 80 },
-        "size": { "value": 3 },
-        "color": { "value": "#00ff00" },
-        "line_linked": { "enable": true, "color": "#00ff00" },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" }
-        }
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00ff99" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        line_linked: { enable: true, color: "#00ff99" },
+        move: { enable: true, speed: 2 }
       }
     });
-  </script>
 
-  <!-- Fetch GitHub repos -->
-  <script>
-    const container = document.getElementById('projects-container');
-    fetch('https://api.github.com/users/TanakaShumba/repos?sort=updated&per_page=100')
-      .then(res => res.json())
+    // Load GitHub Projects dynamically
+    fetch("https://api.github.com/users/TanakaShumba/repos")
+      .then(response => response.json())
       .then(repos => {
+        const projectList = document.getElementById("project-list");
         repos
           .filter(repo =>
-            repo.name.toLowerCase() !== 'tanakashumba.github.io' &&
-            repo.name.toLowerCase() !== 'tanakashumba'
+            repo.name.toLowerCase() !== "tanakashumba.github.io" &&
+            repo.name.toLowerCase() !== "tanakashumba"
           )
           .forEach(repo => {
-            const card = document.createElement('div');
-            card.className = 'project-card';
-            card.innerHTML = `
-              <h3>${repo.name}</h3>
-              <a href="${repo.html_url}" target="_blank">View on GitHub</a>
-            `;
-            container.appendChild(card);
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `<h3>${repo.name}</h3>
+              <a href="${repo.html_url}" target="_blank" class="btn">View Project</a>`;
+            projectList.appendChild(card);
           });
-      })
-      .catch(err => console.error('Error fetching repos:', err));
+      });
   </script>
 </body>
 </html>
