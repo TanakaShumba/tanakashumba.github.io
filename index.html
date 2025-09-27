@@ -31,9 +31,10 @@
     }
     header p {
       font-size: 1.2rem;
-      max-width: 600px;
+      max-width: 650px;
       margin: 0 auto;
       line-height: 1.5;
+      color: white;
     }
     .btn {
       display: inline-block;
@@ -80,10 +81,31 @@
     }
     .card p {
       font-size: 0.95rem;
+      color: white;
     }
     .fade-in {
       opacity: 1 !important;
       transform: translateY(0) !important;
+    }
+    .about, .contact {
+      max-width: 800px;
+      margin: 0 auto;
+      color: white;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .socials {
+      margin-top: 20px;
+    }
+    .socials a {
+      margin: 0 10px;
+      color: #39ff14;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .socials a:hover {
+      color: white;
     }
     /* Particle canvas */
     #particles-js {
@@ -103,13 +125,33 @@
   <header>
     <img src="images/about-me.jpg" alt="Tanaka Shumba Profile" />
     <h1>Tanaka Shumba</h1>
-    <p>Welcome to my portfolio where I showcase my skills, academic achievements, and cybersecurity projects. Explore my work and feel free to view my resume.</p>
-    <a href="resume.pdf" class="btn" target="_blank">Download Resume</a>
+    <p>Welcome to my portfolio where I showcase my projects in cybersecurity, coding, and technology. Here you will find selected work that reflects my skills and passion for solving technical challenges.</p>
+    <a href="resume.pdf" class="btn" target="_blank">View My Resume</a>
+    <div class="socials">
+      <a href="https://github.com/TanakaShumba" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+      <a href="mailto:tanakashumba04@gmail.com">Email</a>
+    </div>
   </header>
+
+  <section class="about">
+    <h2>About Me</h2>
+    <p>I am a Cybersecurity professional with a B.S. in Cybersecurity and a strong background in threat detection, incident response, and penetration testing. I enjoy building secure systems, solving real-world problems, and applying technical expertise to keep information safe. My goal is to continuously grow as a security consultant while contributing to innovative projects in the field of IT and security.</p>
+  </section>
 
   <section>
     <h2>Projects</h2>
     <div class="projects" id="projects"></div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <p>If you would like to connect, feel free to reach out via email or through my socials below. I am open to collaborations, professional opportunities, and sharing knowledge.</p>
+    <div class="socials">
+      <a href="https://github.com/TanakaShumba" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+      <a href="mailto:tanakashumba04@gmail.com">Email</a>
+    </div>
   </section>
 
   <!-- Particles.js script -->
