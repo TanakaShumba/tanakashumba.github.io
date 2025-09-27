@@ -186,34 +186,47 @@
       }
     });
 
-    async function loadProjects() {
-      const container = document.getElementById("projects");
-      const res = await fetch("https://api.github.com/users/TanakaShumba/repos");
-      const repos = await res.json();
-      repos
-        .filter(
-          repo =>
-            repo.name.toLowerCase() !== "tanakashumba.github.io" &&
-            repo.name.toLowerCase() !== "tanakashumba"
-        )
-        .forEach((repo, index) => {
-          const languagesRes = fetch(repo.languages_url).then(r => r.json());
-          languagesRes.then(langs => {
-            const langList = Object.keys(langs).join(", ") || "N/A";
-            const card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `
-              <h3>${repo.name}</h3>
-              <p>${repo.description || "Cybersecurity and coding project."}</p>
-              <div class="tech">Tech/Tools: ${langList}</div>
-              <a class="btn" href="${repo.html_url}" target="_blank">View on GitHub</a>
-            `;
-            container.appendChild(card);
-            setTimeout(() => card.classList.add("fade-in"), 200 * index);
-          });
-        });
-    }
-    loadProjects();
+    // Static project list to avoid CORS issues
+    const projects = [
+      {
+        name: "Network Scanner",
+        description: "A Python-based network scanning tool for discovering devices on LAN and performing basic security checks.",
+        tech: "Python, Nmap, Bash",
+        url: "https://github.com/TanakaShumba/network-scanner"
+      },
+      {
+        name: "Phishing Detection",
+        description: "Tool to identify phishing emails using machine learning techniques.",
+        tech: "Python, Scikit-learn, Pandas",
+        url: "https://github.com/TanakaShumba/phishing-detection"
+      },
+      {
+        name: "SIEM Dashboard",
+        description: "A dashboard to monitor security events and visualize logs in real-time.",
+        tech: "Splunk, Python, Flask",
+        url: "https://github.com/TanakaShumba/siem-dashboard"
+      },
+      {
+        name: "Malware Analysis Scripts",
+        description: "Scripts to automate static and dynamic analysis of malware samples.",
+        tech: "Python, Linux, VirtualBox",
+        url: "https://github.com/TanakaShumba/malware-analysis-scripts"
+      }
+    ];
+
+    const container = document.getElementById("projects");
+    projects.forEach((repo, index) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h3>${repo.name}</h3>
+        <p>${repo.description}</p>
+        <div class="tech">Tech/Tools: ${repo.tech}</div>
+        <a class="btn" href="${repo.url}" target="_blank">View on GitHub</a>
+      `;
+      container.appendChild(card);
+      setTimeout(() => card.classList.add("fade-in"), 200 * index);
+    });
   </script>
 </body>
 </html>
