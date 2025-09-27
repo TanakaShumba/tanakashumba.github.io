@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanaka Shumba | Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #tech-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 30px 20px;
+    }
+
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #00ff00;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: #00ff00;
+    }
+
+    header p {
+      font-size: 1.1em;
+      margin-top: 10px;
+      color: #ccc;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 10px;
+      background-color: #00ff00;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #00cc00;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #00ff00;
+      margin-bottom: 20px;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: #111;
+      border: 2px solid #00ff00;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-card h3 {
+      color: #00ff00;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    .project-card a {
+      color: #00ff00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
+
+    #contact {
+      text-align: center;
+    }
+
+    #contact a {
+      display: inline-block;
+      margin: 10px 15px;
+      color: #00ff00;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #00ff00;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #contact a:hover {
+      background-color: #00ff00;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #555;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="tech-bg"></canvas>
+
+  <header>
+    <img src="images/about-me.jpg" alt="Tanaka Shumba">
+    <h1>Tanaka Shumba</h1>
+    <p>Cybersecurity Professional | IT Security Enthusiast</p>
+    <a href="resume.pdf" class="btn" download><i class="fa-solid fa-download"></i> Download Resume</a>
+    <a href="https://github.com/TanakaShumba" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://linkedin.com/in/tanakashumba" target="_blank" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  </header>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects-container" id="projects-container"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <a href="mailto:tanakashumba04@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/tanakashumba_/" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@tanakashumba" target="_blank">TikTok</a>
+    <a href="https://twitter.com/Shumba_rumba" target="_blank">X</a>
+  </section>
+
+  <footer>
+    © 2025 Tanaka Shumba
+  </footer>
+
+  <script>
+    // Neon 3D floating background
+    const canvas = document.getElementById('tech-bg');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        size: Math.random() * 2 + 1
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ff00';
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Fetch GitHub repos (exclude portfolio + username)
+    const container = document.getElementById('projects-container');
+    fetch('https://api.github.com/users/TanakaShumba/repos?sort=updated&per_page=100')
+      .then(res => res.json())
+      .then(repos => {
+        repos
+          .filter(repo =>
+            repo.name.toLowerCase() !== 'tanakashumba.github.io' &&
+            repo.name.toLowerCase() !== 'tanakashumba'
+          )
+          .forEach((repo, i) => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.style.animationDelay = `${i * 0.1}s`;
+            card.innerHTML = `
+              <h3>${repo.name}</h3>
+              <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+            `;
+            container.appendChild(card);
+          });
+      })
+      .catch(err => console.error('Error fetching repos:', err));
+  </script>
+</body>
+</html>
