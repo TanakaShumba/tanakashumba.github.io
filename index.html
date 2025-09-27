@@ -1,323 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cybersecurity Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanaka Shumba | Cybersecurity Portfolio</title>
   <style>
-    :root{
-      --bg:#000;
-      --panel:#0f1113;
-      --muted:#bfc7c3;
-      --lime:#00ff66;
-      --card:#0c0e0f;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--bg);
-      color:var(--muted);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
     }
 
-    /* canvas full-screen (neon tech particles) */
-    #bgCanvas{
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      width:100%;
-      height:100%;
-      display:block;
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
     }
 
-    header{
-      text-align:center;
-      padding:48px 20px 28px;
-      display:flex;
-      gap:20px;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .profile {
-      display:flex;
-      gap:20px;
-      align-items:center;
-    }
-    .avatar{
-      width:140px;
-      height:140px;
-      border-radius:50%;
-      object-fit:cover;
-      border:3px solid rgba(0,255,102,0.9);
-      box-shadow:0 6px 30px rgba(0,255,102,0.06);
-      background:#111;
-    }
-    .intro {
-      max-width:820px;
-      text-align:left;
-    }
-    .intro h1{
-      margin:0 0 6px 0;
-      font-size:28px;
-      color:var(--lime);
-      letter-spacing:0.5px;
-    }
-    .intro p{
-      margin:0;
-      color:#bfc7c3;
-      line-height:1.5;
-      font-size:15px;
-    }
-    .cv-btn{
-      display:inline-block;
-      margin-top:12px;
-      padding:10px 18px;
-      background:var(--lime);
-      color:#000;
-      border-radius:6px;
-      text-decoration:none;
-      font-weight:600;
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
 
-    main{max-width:1100px;margin:30px auto;padding:0 18px}
-
-    h2{
-      color:var(--lime);
-      font-size:20px;
-      margin:6px 0 14px;
-      text-align:center;
+    .hero-content h1 {
+      font-size: 2.8em;
+      color: #00ff00;
+      margin-bottom: 20px;
     }
 
-    /* projects grid */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:18px;
-      margin-bottom:30px;
-    }
-    .project-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(0,255,102,0.06);
-      padding:18px;
-      border-radius:10px;
-      transition:transform .16s ease,box-shadow .16s ease;
-      text-align:center;
-      min-height:110px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-    .project-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 10px 30px rgba(0,255,102,0.06);
-      border-color:rgba(0,255,102,0.22);
-    }
-    .project-card h3{
-      margin:0 0 10px 0;
-      color:var(--lime);
-      font-size:16px;
-      word-break:break-word;
-    }
-    .project-card a.view{
-      margin-top:auto;
-      display:inline-block;
-      padding:8px 12px;
-      border-radius:6px;
-      font-weight:600;
-      text-decoration:none;
-      color:#000;
-      background:var(--lime);
-    }
-    .project-count{
-      text-align:center;
-      color:#9aa69f;
-      margin-bottom:10px;
-      font-size:14px;
+    .hero-content p {
+      font-size: 1.2em;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto 25px auto;
     }
 
-    section#contact{ text-align:center; margin:36px 0 80px; }
-    .socials a{
-      display:inline-block;margin:6px 8px;padding:8px 14px;border-radius:8px;border:1px solid rgba(0,255,102,0.08);
-      color:var(--lime);text-decoration:none;font-weight:600;background:rgba(255,255,255,0.01)
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #00ff00;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
     }
 
-    footer{ text-align:center;color:#6f7a75;padding:28px 10px 80px;font-size:13px; }
+    .btn:hover {
+      background-color: #00cc00;
+    }
 
-    /* responsive small tweaks */
-    @media (max-width:640px){
-      .intro { text-align:center; }
-      .profile{ flex-direction:column; }
-      .avatar{ width:120px;height:120px }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #00ff00;
+      margin-bottom: 20px;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: #111;
+      border: 2px solid #00ff00;
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #00ff00;
+    }
+
+    .project-card h3 {
+      color: #00ff00;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    .project-card a {
+      color: #00ff00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
+
+    #contact {
+      text-align: center;
+    }
+
+    #contact a {
+      display: inline-block;
+      margin: 10px 15px;
+      color: #00ff00;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #00ff00;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #contact a:hover {
+      background-color: #00ff00;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #555;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <canvas id="bgCanvas"></canvas>
 
-  <header>
-    <div class="profile">
-      <img class="avatar" src="images/about-me.jpg" alt="Profile">
-      <div class="intro">
-        <h1>Hey there</h1>
-        <p>Welcome — this portfolio showcases hands-on cybersecurity projects (scripts, lab work, and demos). Click any project to open it on GitHub. I'm focused on practical security tooling and learning-driven projects.</p>
-        <a class="cv-btn" href="resume.pdf" target="_blank">Download CV</a>
-      </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <h1>Welcome to My Portfolio</h1>
+      <p>I am a Cybersecurity Professional with skills in threat detection, penetration testing, and network security. Explore my projects and see how I contribute to securing digital landscapes.</p>
+      <a href="#projects" class="btn">Explore My Work</a>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section id="projects">
-      <h2>My Projects</h2>
-      <div class="project-count" id="project-count">Loading projects…</div>
-      <div class="projects-grid" id="projectsGrid"></div>
-    </section>
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects-container" id="projects-container"></div>
+  </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="socials">
-        <a href="mailto:tanakashumba04@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
-        <a href="https://www.instagram.com/tanakashumba_/" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@tanakashumba" target="_blank">TikTok</a>
-        <a href="https://twitter.com/Shumba_rumba" target="_blank">X</a>
-      </div>
-    </section>
-  </main>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <a href="mailto:tanakashumba04@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/tanakashumba_/" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@tanakashumba" target="_blank">TikTok</a>
+    <a href="https://twitter.com/Shumba_rumba" target="_blank">X</a>
+  </section>
 
-  <footer>© 2025 Tanaka Shumba</footer>
+  <footer>
+    © 2025 Tanaka Shumba
+  </footer>
 
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    /* ====== neon particle background (lightweight) ====== */
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    let W = canvas.width = innerWidth;
-    let H = canvas.height = innerHeight;
-
-    const orbs = [];
-    const ORB_COUNT = Math.max(30, Math.floor((W*H)/90000)); // scale with screen
-    for (let i=0;i<ORB_COUNT;i++){
-      orbs.push({
-        x: Math.random()*W,
-        y: Math.random()*H,
-        r: 1 + Math.random()*3,
-        vx: (Math.random()-0.5)*0.4,
-        vy: (Math.random()-0.5)*0.4,
-        alpha: 0.05 + Math.random()*0.15,
-        depth: 0.3 + Math.random()*1.5
-      });
-    }
-
-    let mouseX = W/2, mouseY = H/2;
-    addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-
-    function draw(){
-      ctx.clearRect(0,0,W,H);
-      // subtle background gradient
-      const g = ctx.createLinearGradient(0,0,0,H);
-      g.addColorStop(0,'rgba(0,0,0,0.4)');
-      g.addColorStop(1,'rgba(0,0,0,0.75)');
-      ctx.fillStyle = g;
-      ctx.fillRect(0,0,W,H);
-
-      // draw orbs with glow
-      for (let o of orbs){
-        // parallax toward mouse (gives 3D feel)
-        const dx = (o.x - mouseX) * 0.002 * o.depth;
-        const dy = (o.y - mouseY) * 0.002 * o.depth;
-
-        o.x += o.vx + dx;
-        o.y += o.vy + dy;
-
-        if (o.x < -20) o.x = W + 20;
-        if (o.x > W + 20) o.x = -20;
-        if (o.y < -20) o.y = H + 20;
-        if (o.y > H + 20) o.y = -20;
-
-        // neon glow
-        ctx.beginPath();
-        ctx.fillStyle = 'rgba(0,255,102,' + o.alpha + ')';
-        ctx.shadowBlur = 18 * o.depth;
-        ctx.shadowColor = 'rgba(0,255,102,0.8)';
-        ctx.arc(o.x, o.y, o.r* (1+o.depth*0.6), 0, Math.PI*2);
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-
-      // subtle connecting lines for close orbs
-      ctx.strokeStyle = 'rgba(0,255,102,0.04)';
-      ctx.lineWidth = 1;
-      for (let i=0;i<orbs.length;i++){
-        for (let j=i+1;j<orbs.length;j++){
-          const a = orbs[i], b = orbs[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const dist = Math.sqrt(dx*dx + dy*dy);
-          if (dist < 120){
-            ctx.globalAlpha = 1 - dist/140;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-            ctx.globalAlpha = 1;
-          }
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80 },
+        "size": { "value": 3 },
+        "color": { "value": "#00ff00" },
+        "line_linked": { "enable": true, "color": "#00ff00" },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" }
         }
       }
+    });
+  </script>
 
-      requestAnimationFrame(draw);
-    }
-    draw();
-    addEventListener('resize', () => { W = canvas.width = innerWidth; H = canvas.height = innerHeight; });
-
-    /* ====== load GitHub repos but ONLY show name + link (no descriptions) ====== */
-    (async function loadRepos(){
-      const ignore = new Set([
-        'tanakashumba.github.io',
-        'tanakashumba',
-        'tanaka-shumba',
-        'tanaka_shumba',
-        'tanaka shumba',
-        'tanaka'
-      ]);
-      try {
-        const resp = await fetch('https://api.github.com/users/TanakaShumba/repos?per_page=100&sort=updated');
-        const data = await resp.json();
-        const filtered = (Array.isArray(data) ? data : [])
-          .filter(r => !ignore.has(String(r.name).toLowerCase()))
-          // keep most-recently updated first
-          .sort((a,b)=> new Date(b.updated_at) - new Date(a.updated_at));
-
-        const grid = document.getElementById('projectsGrid');
-        document.getElementById('project-count').textContent = filtered.length + ' projects';
-
-        filtered.forEach(repo => {
-          const card = document.createElement('div');
-          card.className = 'project-card';
-          const title = document.createElement('h3');
-          title.textContent = repo.name;
-          const link = document.createElement('a');
-          link.className = 'view';
-          link.href = repo.html_url;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.textContent = 'View on GitHub';
-          card.appendChild(title);
-          card.appendChild(link);
-          grid.appendChild(card);
-        });
-
-        if(filtered.length === 0){
-          document.getElementById('project-count').textContent = 'No projects found.';
-        }
-
-      } catch (err){
-        document.getElementById('project-count').textContent = 'Failed to load projects';
-        console.error(err);
-      }
-    })();
+  <!-- Fetch GitHub repos -->
+  <script>
+    const container = document.getElementById('projects-container');
+    fetch('https://api.github.com/users/TanakaShumba/repos?sort=updated&per_page=100')
+      .then(res => res.json())
+      .then(repos => {
+        repos
+          .filter(repo =>
+            repo.name.toLowerCase() !== 'tanakashumba.github.io' &&
+            repo.name.toLowerCase() !== 'tanakashumba'
+          )
+          .forEach(repo => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+              <h3>${repo.name}</h3>
+              <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+            `;
+            container.appendChild(card);
+          });
+      })
+      .catch(err => console.error('Error fetching repos:', err));
   </script>
 </body>
 </html>
