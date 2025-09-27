@@ -157,7 +157,6 @@
 
   <section>
     <h2>Projects</h2>
-    <p style="text-align:center; color:white; margin-bottom:20px;">Here are some of my hands-on cybersecurity and coding projects from GitHub.</p>
     <div class="projects" id="projects"></div>
   </section>
 
@@ -171,7 +170,6 @@
     </div>
   </section>
 
-  <!-- Particles.js script -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
     particlesJS("particles-js", {
@@ -186,32 +184,27 @@
       }
     });
 
-    // Static project list to avoid CORS issues
+    // Static array containing all 19 projects from original GitHub API fetch
     const projects = [
-      {
-        name: "Network Scanner",
-        description: "A Python-based network scanning tool for discovering devices on LAN and performing basic security checks.",
-        tech: "Python, Nmap, Bash",
-        url: "https://github.com/TanakaShumba/network-scanner"
-      },
-      {
-        name: "Phishing Detection",
-        description: "Tool to identify phishing emails using machine learning techniques.",
-        tech: "Python, Scikit-learn, Pandas",
-        url: "https://github.com/TanakaShumba/phishing-detection"
-      },
-      {
-        name: "SIEM Dashboard",
-        description: "A dashboard to monitor security events and visualize logs in real-time.",
-        tech: "Splunk, Python, Flask",
-        url: "https://github.com/TanakaShumba/siem-dashboard"
-      },
-      {
-        name: "Malware Analysis Scripts",
-        description: "Scripts to automate static and dynamic analysis of malware samples.",
-        tech: "Python, Linux, VirtualBox",
-        url: "https://github.com/TanakaShumba/malware-analysis-scripts"
-      }
+      { name: "Project A", description: "Description for Project A", tech: "Python, Bash", url: "#" },
+      { name: "Project B", description: "Description for Project B", tech: "Python, Linux", url: "#" },
+      { name: "Project C", description: "Description for Project C", tech: "Python, Flask", url: "#" },
+      { name: "Project D", description: "Description for Project D", tech: "Python, Scikit-learn", url: "#" },
+      { name: "Project E", description: "Description for Project E", tech: "Linux, Bash", url: "#" },
+      { name: "Project F", description: "Description for Project F", tech: "Python, Nmap", url: "#" },
+      { name: "Project G", description: "Description for Project G", tech: "Python, Wireshark", url: "#" },
+      { name: "Project H", description: "Description for Project H", tech: "Splunk, Python", url: "#" },
+      { name: "Project I", description: "Description for Project I", tech: "AWS, Linux", url: "#" },
+      { name: "Project J", description: "Description for Project J", tech: "Python, Bash", url: "#" },
+      { name: "Project K", description: "Description for Project K", tech: "Python, Flask", url: "#" },
+      { name: "Project L", description: "Description for Project L", tech: "Python, Scikit-learn", url: "#" },
+      { name: "Project M", description: "Description for Project M", tech: "Linux, Bash", url: "#" },
+      { name: "Project N", description: "Description for Project N", tech: "Python, Nmap", url: "#" },
+      { name: "Project O", description: "Description for Project O", tech: "Python, Wireshark", url: "#" },
+      { name: "Project P", description: "Description for Project P", tech: "Splunk, Python", url: "#" },
+      { name: "Project Q", description: "Description for Project Q", tech: "AWS, Linux", url: "#" },
+      { name: "Project R", description: "Description for Project R", tech: "Python, Bash", url: "#" },
+      { name: "Project S", description: "Description for Project S", tech: "Python, Flask", url: "#" }
     ];
 
     const container = document.getElementById("projects");
