@@ -1,1 +1,131 @@
-[PASTE THE ENTIRE HTML FILE HERE — the same content from above]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanaka Shumba | Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f5f5f5;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #1e1e1e, #292929);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #bbb;
+    }
+    nav {
+      background: #141414;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      color: #f5f5f5;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #00bcd4;
+    }
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      transition: transform 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card h3 {
+      margin-top: 0;
+    }
+    footer {
+      background: #141414;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    footer a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tanaka Shumba</h1>
+    <p>Cybersecurity | IT | Developer</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>
+      I am a cybersecurity professional passionate about protecting systems and developing secure solutions.
+      With experience in offensive and defensive techniques, I specialize in threat detection, ethical hacking,
+      and IT support. I enjoy building projects that solve real-world problems and showcase modern security practices.
+    </p>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Featured Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Python Network Scanner</h3>
+        <p>A tool to scan networks, identify hosts, and detect open ports for security auditing.</p>
+      </div>
+      <div class="project-card">
+        <h3>SIEM Log Parser</h3>
+        <p>Parses SIEM logs to identify and highlight critical security events.</p>
+      </div>
+      <div class="project-card">
+        <h3>Phishing Email Detector</h3>
+        <p>Detects phishing attempts in emails to enhance security awareness training.</p>
+      </div>
+      <div class="project-card">
+        <h3>Healthcare System</h3>
+        <p>A Flask-based secure healthcare management system handling appointments and sensitive data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/TanakaShumba" target="_blank">github.com/TanakaShumba</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/tanakashumba-" target="_blank">linkedin.com/in/tanakashumba-</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tanaka Shumba. Built with ❤️ and secure code.</p>
+  </footer>
+</body>
+</html>
