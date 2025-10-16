@@ -12,30 +12,6 @@
       color: #39ff14;
       overflow-x: hidden;
     }
-
-    /* Sticky Navbar */
-    nav {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.9);
-      border-bottom: 2px solid #39ff14;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-    }
-    nav a {
-      color: #39ff14;
-      padding: 15px 20px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      background: #39ff14;
-      color: black;
-      border-radius: 5px;
-    }
-
     header {
       text-align: center;
       padding: 60px 20px 30px;
@@ -75,7 +51,25 @@
       background: #39ff14;
       color: black;
     }
-
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.9);
+      border-bottom: 2px solid #39ff14;
+      padding: 10px 20px;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav a {
+      color: #39ff14;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: white;
+    }
     section {
       padding: 60px 20px;
       position: relative;
@@ -87,7 +81,6 @@
       font-size: 2.2rem;
       color: #39ff14;
     }
-
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -116,7 +109,6 @@
       opacity: 1 !important;
       transform: translateY(0) !important;
     }
-
     .about, .contact {
       max-width: 800px;
       margin: 0 auto;
@@ -124,36 +116,6 @@
       text-align: center;
       line-height: 1.6;
     }
-
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    .contact input, .contact textarea {
-      margin: 8px 0;
-      padding: 10px;
-      border: 2px solid #39ff14;
-      border-radius: 5px;
-      background: black;
-      color: #39ff14;
-    }
-    .contact button {
-      margin-top: 10px;
-      padding: 12px 20px;
-      border: 2px solid #39ff14;
-      background: black;
-      color: #39ff14;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-    .contact button:hover {
-      background: #39ff14;
-      color: black;
-    }
-
     .socials {
       margin-top: 20px;
     }
@@ -167,7 +129,6 @@
     .socials a:hover {
       color: white;
     }
-
     #particles-js {
       position: fixed;
       top: 0;
@@ -175,6 +136,30 @@
       width: 100%;
       height: 100%;
       z-index: 0;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 2px solid #39ff14;
+      border-radius: 5px;
+      background: black;
+      color: #39ff14;
+    }
+    form button {
+      background: #39ff14;
+      color: black;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    form button:hover {
+      background: black;
+      color: #39ff14;
+      border: 2px solid #39ff14;
     }
   </style>
 </head>
@@ -188,17 +173,18 @@
   </nav>
 
   <header>
-    <img src="images/about-me.jpg?v=2" alt="Tanaka Shumba Profile" />
+    <img src="images/about-me.jpg?v=3" alt="Tanaka Shumba Profile" />
     <h1>Tanaka Shumba</h1>
-    <p>Detail-oriented Cybersecurity professional with experience in threat detection, incident response, penetration testing, and network monitoring. Skilled in Python, Java, C++, Wireshark, Zeek, Snort, and Nmap. Passionate about applying hands-on security expertise to real-world challenges.</p>
+    <p>Detail-oriented Cybersecurity professional with a B.S. in Cybersecurity and currently pursuing an M.S. in Computer Science – Cybersecurity. Experienced in IT support, threat detection, incident response, and penetration testing. Skilled in Python, Java, C++, and network analysis tools. Passionate about applying hands-on security expertise in dynamic environments.</p>
     <a href="resume.pdf" class="btn">View My Resume</a>
   </header>
 
-  <section id="about" class="about">
+  <section class="about" id="about">
     <h2>About Me</h2>
-    <p>I am pursuing an M.S. in Computer Science – Cybersecurity at Troy University, with a B.S. in Cybersecurity. Experienced in IT support, threat detection, penetration testing, and network monitoring. I enjoy analyzing logs, identifying vulnerabilities, and implementing mitigation strategies.</p>
-    <p>Technical Skills: Python, Java, C++, Wireshark, Nmap, Zeek, Snort, Scapy, pfSense, IPTables. Operating Systems: Linux, Windows, macOS.</p>
-    <p>Soft Skills: Problem-Solving, Critical Thinking, Communication, Documentation, Team Collaboration.</p>
+    <p>I am a Cybersecurity professional experienced in threat detection, incident response, penetration testing, and network monitoring. I have hands-on experience with Python, Java, C++, and tools like Wireshark, Zeek, Snort, Scapy, Nmap, and pfSense. I enjoy building secure systems, analyzing logs, and identifying vulnerabilities. My goal is to contribute to a SOC or cybersecurity team while continuously growing as a security consultant.</p>
+    <p>Education: Troy University – M.S., Computer Science – Cybersecurity | Expected 05/2026, B.S., Cybersecurity | 12/2023</p>
+    <p>Experience: Student Worker – Computer Science Dept., Troy University | 09/2025 – Present. Manage lab systems, tutor students, and monitor network activity for anomalies or security incidents.</p>
+    <p>Technical Skills: Python, Java, C++, Wireshark, Zeek, Snort, Nmap, Scapy, pfSense, IPTables, Penetration Testing, IDS/IPS, Incident Response. Operating Systems: Linux, Windows, macOS. Soft Skills: Problem-Solving, Critical Thinking, Communication, Documentation, Team Collaboration.</p>
   </section>
 
   <section id="projects">
@@ -206,13 +192,13 @@
     <div class="projects" id="projects-container"></div>
   </section>
 
-  <section id="contact" class="contact">
+  <section class="contact" id="contact">
     <h2>Contact</h2>
-    <p>Feel free to reach out via email or socials below. Open to collaborations, professional opportunities, and knowledge sharing.</p>
+    <p>If you would like to connect, feel free to reach out via email or socials below. Open to collaborations and professional opportunities.</p>
     <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
       <button type="submit">Send Message</button>
     </form>
     <div class="socials">
@@ -224,37 +210,31 @@
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // Particles background
     particlesJS("particles-js", {
-      particles: {
-        number: { value: 80 },
-        color: { value: "#39ff14" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3 },
-        line_linked: { enable: true, color: "#39ff14" },
-        move: { enable: true, speed: 2 }
-      }
+      particles: { number: { value: 80 }, color: { value: "#39ff14" }, shape: { type: "circle" },
+        opacity: { value: 0.5 }, size: { value: 3 }, line_linked: { enable: true, color: "#39ff14" },
+        move: { enable: true, speed: 2 } }
     });
 
     const projects = [
-      {"name":"Login-BruteForce-Simulator","description":"A local, educational login brute-force simulator with a Flask server and a conservative simulator client. Demonstrates account lockout, rate-limit handling, and safe testing practices","tech":"Python, Flask","url":"https://github.com/tanakashumba/Login-BruteForce-Simulator"},
-      {"name":"automated-vulnerability-scanner","description":"A safe, educational demo that parses mock Nmap-style JSON scan results and maps services/ports to a small sample CVE database.","tech":"Python","url":"https://github.com/TanakaShumba/automated-vulnerability-scanner"},
+      {"name":"Login-BruteForce-Simulator","description":"A local, educational login brute-force simulator with a Flask server and a conservative simulator client.","tech":"Python, Flask","url":"https://github.com/tanakashumba/Login-BruteForce-Simulator"},
+      {"name":"automated-vulnerability-scanner","description":"A safe, educational demo parsing mock Nmap-style JSON scan results.","tech":"Python","url":"https://github.com/TanakaShumba/automated-vulnerability-scanner"},
+      {"name":"simple-ids","description":"A basic IDS/IPS simulation in Python","tech":"Python","url":"https://github.com/TanakaShumba/simple-ids"},
       {"name":"basic-pen-test","description":"Simple Python script for educational penetration testing and vulnerability scanning.","tech":"Python","url":"https://github.com/TanakaShumba/basic-pen-test"},
-      {"name":"simple-ids","description":"A basic IDS/IPS simulation in Python to detect suspicious activity in a network environment.","tech":"Python","url":"https://github.com/TanakaShumba/simple-ids"},
-      {"name":"cloud-misconfig-scanner","description":"Tool to scan cloud environments for common misconfigurations that could lead to vulnerabilities.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-misconfig-scanner"},
-      {"name":"cloud-security-checker","description":"Python script to simulate checking cloud service configurations for common security misconfigurations.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-security-checker"},
+      {"name":"cloud-misconfig-scanner","description":"Tool to scan cloud environments for common misconfigurations.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-misconfig-scanner"},
+      {"name":"cloud-security-checker","description":"Python script to simulate checking cloud service configurations.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-security-checker"},
       {"name":"cybersecurity-lab-series","description":"Educational scripts for network scanning and VoIP traffic analysis.","tech":"Python","url":"https://github.com/TanakaShumba/cybersecurity-lab-series"},
-      {"name":"ethical-hacking-sim","description":"Python scripts simulating ethical hacking techniques for learning and demonstration purposes.","tech":"Python","url":"https://github.com/TanakaShumba/ethical-hacking-sim"},
+      {"name":"ethical-hacking-sim","description":"Python scripts simulating ethical hacking techniques for learning purposes.","tech":"Python","url":"https://github.com/TanakaShumba/ethical-hacking-sim"},
       {"name":"Healthcare_System","description":"A simple healthcare management system built with Flask.","tech":"HTML, Flask","url":"https://github.com/TanakaShumba/Healthcare_System"},
-      {"name":"malware-analyzer","description":"Python script to simulate analyzing suspicious files in a controlled environment.","tech":"Python","url":"https://github.com/TanakaShumba/malware-analyzer"},
+      {"name":"malware-analyzer","description":"Python script to simulate analyzing suspicious files.","tech":"Python","url":"https://github.com/TanakaShumba/malware-analyzer"},
       {"name":"password-security-demo","description":"Demonstration of best practices for password hashing and salting.","tech":"Python","url":"https://github.com/TanakaShumba/password-security-demo"},
-      {"name":"voip-traffic-analyzer","description":"A Python project that captures and analyzes VoIP RTP packets on a local network for educational use.","tech":"Python","url":"https://github.com/TanakaShumba/voip-traffic-analyzer"},
-      {"name":"nmap-threat-model","description":"A comprehensive threat model for Nmap, identifying potential security risks and mitigation strategies.","tech":"Python","url":"https://github.com/TanakaShumba/nmap-threat-model"},
-      {"name":"phishing-email-detector","description":"An AI-based tool to detect phishing emails and protect users from malicious attacks.","tech":"Python","url":"https://github.com/TanakaShumba/phishing-email-detector"},
-      {"name":"windows-event-log-analyzer","description":"A utility to analyze Windows event logs for suspicious activities and potential security threats.","tech":"Python","url":"https://github.com/TanakaShumba/windows-event-log-analyzer"},
-      {"name":"soc-alert-triage","description":"A system for triaging Security Operations Center alerts to prioritize and respond to incidents effectively.","tech":"Python","url":"https://github.com/TanakaShumba/soc-alert-triage"},
-      {"name":"secure-hospital-system","description":"Python-based secure hospital management system.","tech":"Python","url":"https://github.com/TanakaShumba/secure-hospital-system"}
+      {"name":"secure-hospital-system","description":"Python-based secure hospital management system.","tech":"Python","url":"https://github.com/TanakaShumba/secure-hospital-system"},
+      {"name":"voip-traffic-analyzer","description":"A Python project that captures and analyzes VoIP RTP packets on a local network.","tech":"Python","url":"https://github.com/TanakaShumba/voip-traffic-analyzer"},
+      {"name":"nmap-threat-model","description":"A comprehensive threat model for Nmap, identifying potential security risks.","tech":"Python","url":"https://github.com/TanakaShumba/nmap-threat-model"},
+      {"name":"phishing-email-detector","description":"An AI-based tool to detect phishing emails and protect users from attacks.","tech":"Python","url":"https://github.com/TanakaShumba/phishing-email-detector"},
+      {"name":"siem-log-parser","description":"A parser to analyze and interpret logs from SIEM systems.","tech":"Python","url":"https://github.com/TanakaShumba/siem-log-parser"},
+      {"name":"windows-event-log-analyzer","description":"A utility to analyze Windows event logs for suspicious activities.","tech":"Python","url":"https://github.com/TanakaShumba/windows-event-log-analyzer"},
+      {"name":"soc-alert-triage","description":"A system for triaging SOC alerts effectively.","tech":"Python","url":"https://github.com/TanakaShumba/soc-alert-triage"}
     ];
 
     const container = document.getElementById("projects-container");
