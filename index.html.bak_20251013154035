@@ -24,7 +24,6 @@
       border-radius: 50%;
       border: 3px solid #39ff14;
       margin-bottom: 20px;
-      object-fit: cover;
     }
     header h1 {
       font-size: 3rem;
@@ -153,7 +152,6 @@
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // Initialize background animation
     particlesJS("particles-js", {
       particles: {
         number: { value: 80 },
@@ -166,18 +164,27 @@
       }
     });
 
-    // Projects data
     const projects = [
-      {"name":"Login-BruteForce-Simulator","description":"A local, educational login brute-force simulator with a Flask server and a conservative simulator client. Demonstrates account lockout, rate-limit handling, and safe testing practices","tech":"Python, Flask","url":"https://github.com/tanakashumba/Login-BruteForce-Simulator"},
-      {"name":"automated-vulnerability-scanner","description":"A safe, educational demo that parses mock Nmap-style JSON scan results and maps services/ports to a small sample CVE database.","tech":"Python","url":"https://github.com/TanakaShumba/automated-vulnerability-scanner"},
+      {"name":"Login-BruteForce-Simulator","description":"A local, educational login brute-force simulator with a Flask server and a conservative simulator client. Demonstrates account lockout, rate-limit handling, and safe testing practices. For learning only — do not run against systems you do not own or have explicit permission to test.","tech":"Python, Flask","url":"https://github.com/tanakashumba/Login-BruteForce-Simulator"},
+      {"name":"automated-vulnerability-scanner","description":"A safe, educational demo that parses mock Nmap-style JSON scan results and maps services/ports to a small sample CVE database. Demonstrates how an automated vulnerability scanner could parse network scan data and identify potential vulnerabilities.","tech":"Python","url":"https://github.com/TanakaShumba/automated-vulnerability-scanner"},
       {"name":"basic-pen-test","description":"Simple Python script for educational penetration testing and vulnerability scanning.","tech":"Python","url":"https://github.com/TanakaShumba/basic-pen-test"},
-      {"name":"cloud-misconfig-scanner","description":"Tool to scan cloud environments for common misconfigurations that could lead to vulnerabilities.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-misconfig-scanner"},
+      {"name":"cloud-misconfig-scanner","description":"A tool to scan cloud environments for common misconfigurations that could lead to security vulnerabilities.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-misconfig-scanner"},
       {"name":"cloud-security-checker","description":"Python script to simulate checking cloud service configurations for common security misconfigurations.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-security-checker"},
       {"name":"cybersecurity-lab-series","description":"Educational scripts for network scanning and VoIP traffic analysis.","tech":"Python","url":"https://github.com/TanakaShumba/cybersecurity-lab-series"},
       {"name":"ethical-hacking-sim","description":"Python scripts simulating ethical hacking techniques for learning and demonstration purposes.","tech":"Python","url":"https://github.com/TanakaShumba/ethical-hacking-sim"},
-      {"name":"Healthcare_System","description":"A simple healthcare management system built with Flask.","tech":"HTML, Flask","url":"https://github.com/TanakaShumba/Healthcare_System"},
-      {"name":"malware-analyzer","description":"Python script to simulate analyzing suspicious files in a controlled environment.","tech":"Python","url":"https://github.com/TanakaShumba/malware-analyzer"},
-      {"name":"password-security-demo","description":"Demonstration of best practices for password hashing and salting.","tech":"Python","url":"https://github.com/TanakaShumba/password-security-demo"}
+      {"name":"Healthcare_System","description":"A simple healthcare management system built with Flask. Manages appointments, doctors, and payments with CRUD operations.","tech":"HTML, Flask","url":"https://github.com/TanakaShumba/Healthcare_System"},
+      {"name":"malware-analyzer","description":"Python script to simulate analyzing suspicious files and detecting potential malicious behaviors in a controlled environment.","tech":"Python","url":"https://github.com/TanakaShumba/malware-analyzer"},
+      {"name":"nmap-threat-model","description":"A comprehensive threat model for Nmap, identifying potential security risks and mitigation strategies.","tech":"Python","url":"https://github.com/TanakaShumba/nmap-threat-model"},
+      {"name":"password-security-demo","description":"A demonstration of best practices for password security, including hashing and salting techniques.","tech":"Python","url":"https://github.com/TanakaShumba/password-security-demo"},
+      {"name":"phishing-email-detector","description":"An AI-based tool to detect phishing emails and protect users from malicious attacks.","tech":"Python","url":"https://github.com/TanakaShumba/phishing-email-detector"},
+      {"name":"python-network-scanner","description":"Python project for network scanning.","tech":"Python","url":"https://github.com/TanakaShumba/python-network-scanner"},
+      {"name":"secure-hospital-system","description":"Python-based secure hospital management system.","tech":"Python","url":"https://github.com/TanakaShumba/secure-hospital-system"},
+      {"name":"security-awareness-mini-course","description":"An introductory course designed to enhance security awareness among users and organizations.","tech":"HTML","url":"https://github.com/TanakaShumba/security-awareness-mini-course"},
+      {"name":"siem-log-parser","description":"A parser to analyze and interpret logs from Security Information and Event Management systems.","tech":"Python","url":"https://github.com/TanakaShumba/siem-log-parser"},
+      {"name":"simple-ids","description":"A basic IDS/IPS simulation in Python.","tech":"Python","url":"https://github.com/TanakaShumba/simple-ids"},
+      {"name":"soc-alert-triage","description":"A system for triaging Security Operations Center alerts to prioritize and respond to incidents effectively.","tech":"Python","url":"https://github.com/TanakaShumba/soc-alert-triage"},
+      {"name":"voip-traffic-analyzer","description":"Python project that captures and analyzes VoIP RTP packets on a local network. Prints sequence number, timestamp, and payload type for each RTP packet. Safe for educational use.","tech":"Python","url":"https://github.com/TanakaShumba/voip-traffic-analyzer"},
+      {"name":"windows-event-log-analyzer","description":"A utility to analyze Windows event logs for suspicious activities and potential security threats.","tech":"Python","url":"https://github.com/TanakaShumba/windows-event-log-analyzer"}
     ];
 
     const container = document.getElementById("projects");
