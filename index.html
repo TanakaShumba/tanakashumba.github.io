@@ -1,75 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tanaka Shumba | Cybersecurity Portfolio</title>
-  <meta name="description" content="Tanaka Shumba's Cybersecurity Portfolio showcasing projects, skills, and experience." />
-  <meta name="keywords" content="Cybersecurity, Portfolio, Python, Ethical Hacking, Penetration Testing, Network Security" />
-  <meta name="author" content="Tanaka Shumba" />
-  <link rel="icon" href="images/about-me.jpg" />
   <style>
-    /* Basic Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
       background: black;
       color: #39ff14;
       overflow-x: hidden;
     }
-    a { text-decoration: none; }
 
-    /* Sticky Navbar */
-    header {
+    /* Sticky navbar */
+    nav {
       position: sticky;
       top: 0;
       background: rgba(0,0,0,0.9);
-      z-index: 1000;
-      text-align: center;
-      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 15px 0;
+      z-index: 10;
       border-bottom: 2px solid #39ff14;
     }
+
+    nav a {
+      color: #39ff14;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+      position: relative;
+      z-index: 1;
+    }
+
     header img {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       border: 3px solid #39ff14;
+      margin-bottom: 20px;
       object-fit: cover;
-      margin-bottom: 10px;
     }
+
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin: 10px 0;
     }
-    header nav a {
-      margin: 0 15px;
-      color: #39ff14;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    header nav a:hover {
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.5;
       color: white;
     }
 
-    /* Section Styling */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: 2px solid #39ff14;
+      color: #39ff14;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #39ff14;
+      color: black;
+    }
+
     section {
       padding: 60px 20px;
       position: relative;
       z-index: 1;
-      max-width: 1000px;
-      margin: auto;
     }
+
     h2 {
       text-align: center;
-      font-size: 2.2rem;
       margin-bottom: 40px;
+      font-size: 2.2rem;
       color: #39ff14;
     }
+
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
     }
+
     .card {
       background: rgba(0, 0, 0, 0.7);
       border: 2px solid #39ff14;
@@ -80,95 +111,139 @@
       opacity: 0;
       transform: translateY(20px);
     }
-    .card h3 { margin-bottom: 10px; color: #39ff14; }
-    .card p, .card .tech { color: white; font-size: 0.95rem; }
-    .card:hover { transform: scale(1.05); }
 
-    /* Fade-in animation */
-    .fade-in { opacity: 1 !important; transform: translateY(0) !important; }
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      color: #39ff14;
+    }
 
-    /* About & Contact */
-    .about, .contact {
+    .card p, .card .tech {
+      font-size: 0.95rem;
       color: white;
-      text-align: center;
+    }
+
+    .fade-in {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .about, .contact {
+      max-width: 800px;
+      margin: 0 auto;
+      color: white;
+      text-align: left;
       line-height: 1.6;
     }
+
+    .about h3 {
+      margin-top: 30px;
+      color: #39ff14;
+    }
+
     .contact form {
       display: flex;
       flex-direction: column;
+      gap: 15px;
       max-width: 500px;
-      margin: 20px auto 0;
+      margin: 0 auto;
     }
+
     .contact input, .contact textarea {
       padding: 10px;
-      margin: 10px 0;
-      border-radius: 10px;
+      border-radius: 8px;
       border: 2px solid #39ff14;
       background: black;
       color: #39ff14;
+      font-size: 1rem;
     }
-    .contact button {
-      padding: 12px;
-      border: 2px solid #39ff14;
-      background: black;
+
+    .contact input::placeholder, .contact textarea::placeholder {
       color: #39ff14;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.3s;
+      opacity: 0.7;
     }
-    .contact button:hover { background: #39ff14; color: black; }
 
-    /* Social Links */
-    .socials { margin-top: 20px; }
-    .socials a { margin: 0 10px; color: #39ff14; font-size: 1.2rem; }
-    .socials a:hover { color: white; }
-
-    /* Particle Background */
-    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
   </style>
 </head>
 <body>
+  <!-- Particle Background -->
   <div id="particles-js"></div>
+
+  <!-- Sticky Navbar -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <header>
     <img src="images/about-me.jpg?v=2" alt="Tanaka Shumba Profile" />
     <h1>Tanaka Shumba</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <p>Welcome to my portfolio where I showcase my projects in cybersecurity, coding, and technology. Explore my work, skills, and background in IT security and software development.</p>
+    <a href="resume.pdf" class="btn">View My Resume</a>
   </header>
 
+  <!-- About Section -->
   <section class="about" id="about">
     <h2>About Me</h2>
-    <p>I am a Cybersecurity professional with a B.S. in Cybersecurity, experienced in threat detection, incident response, and penetration testing. I enjoy building secure systems and contributing to innovative IT projects.</p>
+    <p>Hello! I'm <strong>Tanaka Shumba</strong>, a detail-oriented and analytical Cybersecurity professional with a B.S. in Cybersecurity and currently pursuing an M.S. in Computer Science – Cybersecurity. I am experienced in IT support, threat detection, incident response, and developing secure applications. I am proficient in Python, Java, C++, and network analysis tools, and I enjoy applying hands-on security expertise in dynamic environments.</p>
+    
+    <h3>Education</h3>
+    <ul>
+      <li><strong>Troy University</strong> – M.S., Computer Science – Cybersecurity | Expected 05/2026</li>
+      <li><strong>Troy University</strong> – B.S., Cybersecurity | 12/2023</li>
+    </ul>
+    
+    <h3>Experience</h3>
+    <ul>
+      <li><strong>Student Worker – Computer Science, Troy University | 09/2025 – Present</strong>
+        <ul>
+          <li>Assist in managing lab systems and resources for students.</li>
+          <li>Tutor students in programming and computer science fundamentals.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Technical Skills</h3>
+    <ul>
+      <li><strong>Programming:</strong> Python, Java, C++</li>
+      <li><strong>Cybersecurity:</strong> Penetration Testing, IDS/IPS, Firewalls, Incident Response</li>
+      <li><strong>Tools:</strong> Wireshark, Nmap, Zeek, Snort, Scapy, pfSense, IPTables</li>
+      <li><strong>Operating Systems:</strong> Windows, Linux, macOS</li>
+    </ul>
+
+    <h3>Soft Skills</h3>
+    <p>Problem-Solving | Critical Thinking | Communication | Documentation | Team Collaboration</p>
   </section>
 
+  <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects" id="projects-container"></div>
   </section>
 
+  <!-- Contact Section -->
   <section class="contact" id="contact">
     <h2>Contact Me</h2>
-    <p>Feel free to reach out via email or socials. I'm open to collaborations and professional opportunities.</p>
-    <form action="https://formspree.io/f/yourformid" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="_replyto" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send</button>
+    <form action="mailto:tanakashumba04@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Send Message" class="btn">
     </form>
-    <div class="socials">
-      <a href="https://github.com/TanakaShumba" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
-      <a href="mailto:tanakashumba04@gmail.com">Email</a>
-    </div>
   </section>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // Particle Background
+    // Particles.js
     particlesJS("particles-js", {
       particles: {
         number: { value: 80 },
@@ -181,28 +256,28 @@
       }
     });
 
-    // Projects data
+    // Project Data
     const projects = [
-      {"name":"python-network-scanner","description":"Python project for network scanning","tech":"Python","url":"https://github.com/TanakaShumba/python-network-scanner"},
-      {"name":"automated-vulnerability-scanner","description":"Educational demo parsing mock Nmap JSON scan results.","tech":"Python","url":"https://github.com/TanakaShumba/automated-vulnerability-scanner"},
-      {"name":"siem-log-parser","description":"Parse and analyze SIEM logs.","tech":"Python","url":"https://github.com/TanakaShumba/siem-log-parser"},
-      {"name":"phishing-email-detector","description":"AI-based phishing email detection tool.","tech":"Python","url":"https://github.com/TanakaShumba/phishing-email-detector"},
-      {"name":"windows-event-log-analyzer","description":"Analyze Windows event logs for suspicious activity.","tech":"Python","url":"https://github.com/TanakaShumba/windows-event-log-analyzer"},
-      {"name":"soc-alert-triage","description":"Triaging SOC alerts to prioritize incidents.","tech":"Python","url":"https://github.com/TanakaShumba/soc-alert-triage"},
-      {"name":"cloud-misconfig-scanner","description":"Scan cloud environments for misconfigurations.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-misconfig-scanner"},
-      {"name":"nmap-threat-model","description":"Threat model for Nmap identifying security risks.","tech":"Python","url":"https://github.com/TanakaShumba/nmap-threat-model"},
-      {"name":"malware-analyzer","description":"Simulate analyzing suspicious files in a controlled environment.","tech":"Python","url":"https://github.com/TanakaShumba/malware-analyzer"},
-      {"name":"ethical-hacking-sim","description":"Simulate ethical hacking techniques for learning.","tech":"Python","url":"https://github.com/TanakaShumba/ethical-hacking-sim"},
-      {"name":"cloud-security-checker","description":"Check cloud service configurations for misconfigurations.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-security-checker"},
-      {"name":"basic-pen-test","description":"Educational penetration testing script.","tech":"Python","url":"https://github.com/TanakaShumba/basic-pen-test"},
-      {"name":"simple-ids","description":"Basic IDS/IPS simulation in Python.","tech":"Python","url":"https://github.com/TanakaShumba/simple-ids"},
-      {"name":"cybersecurity-lab-series","description":"Network scanning and VoIP analysis scripts.","tech":"Python","url":"https://github.com/TanakaShumba/cybersecurity-lab-series"},
-      {"name":"secure-hospital-system","description":"Secure hospital management system in Python.","tech":"Python","url":"https://github.com/TanakaShumba/secure-hospital-system"},
-      {"name":"voip-traffic-analyzer","description":"Capture and analyze VoIP RTP packets for education.","tech":"Python","url":"https://github.com/TanakaShumba/voip-traffic-analyzer"},
-      {"name":"Healthcare_System","description":"Healthcare management system built with Flask.","tech":"HTML, Flask","url":"https://github.com/TanakaShumba/Healthcare_System"},
-      {"name":"Login-BruteForce-Simulator","description":"Educational login brute-force simulator with Flask.","tech":"Python, Flask","url":"https://github.com/TanakaShumba/Login-BruteForce-Simulator"},
-      {"name":"password-security-demo","description":"Password hashing and salting demo.","tech":"Python","url":"https://github.com/TanakaShumba/password-security-demo"},
-      {"name":"security-awareness-mini-course","description":"Introductory course for security awareness.","tech":"Python","url":"https://github.com/TanakaShumba/security-awareness-mini-course"}
+      {"name":"Python Network Scanner","description":"Python project for network scanning","tech":"Python","url":"https://github.com/TanakaShumba/Python-Network-Scanner"},
+      {"name":"automated-vulnerability-scanner","description":"A safe, educational demo that parses mock Nmap-style JSON scan results and maps services/ports to a small sample CVE database.","tech":"Python","url":"https://github.com/TanakaShumba/automated-vulnerability-scanner"},
+      {"name":"siem-log-parser","description":"A parser to analyze and interpret logs from Security Information and Event Management systems.","tech":"Python","url":"https://github.com/TanakaShumba/siem-log-parser"},
+      {"name":"phishing-email-detector","description":"An AI-based tool to detect phishing emails and protect users from malicious attacks.","tech":"Python","url":"https://github.com/TanakaShumba/phishing-email-detector"},
+      {"name":"windows-event-log-analyzer","description":"A utility to analyze Windows event logs for suspicious activities and potential security threats.","tech":"Python","url":"https://github.com/TanakaShumba/windows-event-log-analyzer"},
+      {"name":"soc-alert-triage","description":"A system for triaging Security Operations Center alerts to prioritize and respond to incidents effectively.","tech":"Python","url":"https://github.com/TanakaShumba/soc-alert-triage"},
+      {"name":"cloud-misconfig-scanner","description":"A tool to scan cloud environments for common misconfigurations that could lead to security vulnerabilities.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-misconfig-scanner"},
+      {"name":"nmap-threat-model","description":"A comprehensive threat model for Nmap, identifying potential security risks and mitigation strategies.","tech":"Python","url":"https://github.com/TanakaShumba/nmap-threat-model"},
+      {"name":"malware-analyzer","description":"Python script to simulate analyzing suspicious files and detecting potential malicious behaviors in a controlled environment","tech":"Python","url":"https://github.com/TanakaShumba/malware-analyzer"},
+      {"name":"ethical-hacking-sim","description":"Python scripts simulating ethical hacking techniques for learning and demonstration purposes.","tech":"Python","url":"https://github.com/TanakaShumba/ethical-hacking-sim"},
+      {"name":"cloud-security-checker","description":"Python script to simulate checking cloud service configurations for common security misconfigurations.","tech":"Python","url":"https://github.com/TanakaShumba/cloud-security-checker"},
+      {"name":"basic-pen-test","description":"Simple Python script for educational penetration testing and vulnerability scanning.","tech":"Python","url":"https://github.com/TanakaShumba/basic-pen-test"},
+      {"name":"simple-ids","description":"A basic IDS/IPS simulation in Python","tech":"Python","url":"https://github.com/TanakaShumba/simple-ids"},
+      {"name":"cybersecurity-lab-series","description":"Educational scripts for network scanning and VoIP traffic analysis.","tech":"Python","url":"https://github.com/TanakaShumba/cybersecurity-lab-series"},
+      {"name":"secure-hospital-system","description":"Python-based secure hospital management system","tech":"Python","url":"https://github.com/TanakaShumba/secure-hospital-system"},
+      {"name":"voip-traffic-analyzer","description":"A Python project that captures and analyzes VoIP RTP packets on a local network.","tech":"Python","url":"https://github.com/TanakaShumba/voip-traffic-analyzer"},
+      {"name":"Healthcare_System","description":"A simple healthcare management system built with Flask.","tech":"HTML, Flask","url":"https://github.com/TanakaShumba/Healthcare_System"},
+      {"name":"Login-BruteForce-Simulator","description":"A local, educational login brute-force simulator with a Flask server and a conservative simulator client.","tech":"Python, Flask","url":"https://github.com/TanakaShumba/Login-BruteForce-Simulator"},
+      {"name":"password-security-demo","description":"Demonstration of best practices for password hashing and salting.","tech":"Python","url":"https://github.com/TanakaShumba/password-security-demo"},
+      {"name":"security-awareness-mini-course","description":"An introductory course designed to enhance security awareness among users and organizations.","tech":"Python","url":"https://github.com/TanakaShumba/security-awareness-mini-course"}
     ];
 
     const container = document.getElementById("projects-container");
