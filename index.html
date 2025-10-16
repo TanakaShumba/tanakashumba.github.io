@@ -125,7 +125,8 @@
   <div id="particles-js"></div>
 
   <header>
-    <img src="images/about-me.jpg" alt="Tanaka Shumba Profile" />
+    <!-- Cache-busting query added to force browser to load the new image -->
+    <img src="images/about-me.jpg?v=2" alt="Tanaka Shumba Profile" />
     <h1>Tanaka Shumba</h1>
     <p>Welcome to my portfolio where I showcase my projects in cybersecurity, coding, and technology. Here you will find selected work that reflects my skills and passion for solving technical challenges.</p>
     <a href="resume.pdf" class="btn">View My Resume</a>
@@ -153,7 +154,6 @@
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // Initialize background animation
     particlesJS("particles-js", {
       particles: {
         number: { value: 80 },
@@ -166,7 +166,6 @@
       }
     });
 
-    // Projects data
     const projects = [
       {"name":"Login-BruteForce-Simulator","description":"A local, educational login brute-force simulator with a Flask server and a conservative simulator client. Demonstrates account lockout, rate-limit handling, and safe testing practices","tech":"Python, Flask","url":"https://github.com/tanakashumba/Login-BruteForce-Simulator"},
       {"name":"automated-vulnerability-scanner","description":"A safe, educational demo that parses mock Nmap-style JSON scan results and maps services/ports to a small sample CVE database.","tech":"Python","url":"https://github.com/TanakaShumba/automated-vulnerability-scanner"},
