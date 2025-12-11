@@ -254,14 +254,23 @@
       }
     });
 
-    // Updated Project List with CyberTrack at the top
+    // Updated Project List with MediChat and CyberTrack at the top
     const projects = [
+      {
+        "name": "MediChat - Universal AI Triage",
+        "description": "Multilingual Patient Intake System. Translates 20+ languages instantly, uses clinical logic to assess risk, and generates digital tickets.",
+        "tech": "Python, Streamlit, Pandas, Deep-Translator",
+        "url": "https://github.com/TanakaShumba/MediChat",
+        "download": "https://tanakashumba-medichat.streamlit.app",
+        "type": "web"
+      },
       {
         "name": "CyberTrack - macOS Security Auditor",
         "description": "Automated security tool. Scans Firewall, Gatekeeper, FileVault, and Open Ports. Packaged as a standalone executable CLI.",
         "tech": "Python, Rich, Socket, PyInstaller",
         "url": "https://github.com/TanakaShumba/CyberTrack",
-        "download": "https://github.com/TanakaShumba/CyberTrack/releases/latest"
+        "download": "https://github.com/TanakaShumba/CyberTrack/releases/latest",
+        "type": "app"
       },
       {"name":"python-network-scanner","description":"Python project for network scanning","tech":"Python","url":"https://github.com/TanakaShumba/python-network-scanner"},
       {"name":"automated-vulnerability-scanner","description":"Parses mock Nmap JSON results, maps services/ports to CVE database.","tech":"Python","url":"https://github.com/TanakaShumba/automated-vulnerability-scanner"},
@@ -291,11 +300,15 @@
       const card = document.createElement("div");
       card.className = "card";
       
-      // LOGIC: If the project has a 'download' link, show two buttons. Otherwise, just GitHub.
+      // LOGIC: Custom button text based on project type
       let buttonsHtml = "";
       if (repo.download) {
+        let btnText = "Download App";
+        if (repo.type === "web") {
+            btnText = "Try Live Demo";
+        }
         buttonsHtml = `
-          <a class="btn btn-primary" href="${repo.download}" target="_blank">Download App</a>
+          <a class="btn btn-primary" href="${repo.download}" target="_blank">${btnText}</a>
           <a class="btn" href="${repo.url}" target="_blank">View Source</a>
         `;
       } else {
