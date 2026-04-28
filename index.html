@@ -26,10 +26,6 @@
     .card .tech { font-size: 0.85rem; color: #ddd; margin-bottom: 15px; font-style: italic; }
     .fade-in { opacity: 1 !important; transform: translateY(0) !important; }
     .about, .contact { max-width: 800px; margin: 0 auto; color: white; text-align: center; line-height: 1.6; }
-    .contact form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
-    .contact input, .contact textarea { padding: 10px; border: 2px solid #39ff14; border-radius: 8px; background: black; color: white; }
-    .contact button { padding: 12px; border: 2px solid #39ff14; border-radius: 30px; background: black; color: #39ff14; font-weight: bold; cursor: pointer; transition: 0.3s; }
-    .contact button:hover { background: #39ff14; color: black; }
     .socials { margin-top: 20px; }
     .socials a { margin: 0 10px; color: #39ff14; text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
     .socials a:hover { color: white; }
@@ -46,29 +42,12 @@
   <header>
     <img src="images/about-me.jpg?v=3" alt="Tanaka Shumba Profile" />
     <h1>Tanaka Shumba</h1>
-    <p>Cybersecurity professional and student at Troy University. Explore my work in AI safety, network security, and secure coding.</p>
+    <p>Cybersecurity professional at Troy University. Passionate about network security and AI-driven protection.</p>
     <a href="resume.pdf" class="btn">View My Resume</a>
   </header>
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>Detail-oriented Cybersecurity professional pursuing an M.S. in Computer Science at Troy University. Proficient in Python, Java, C++, and security tools like Wireshark, Zeek, and Nmap.</p>
-  </section>
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects" id="projects-container"></div>
-  </section>
-  <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <form action="mailto:tanakashumba04@gmail.com" method="POST" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <div class="socials">
-      <a href="https://github.com/TanakaShumba" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
-    </div>
   </section>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
@@ -76,8 +55,8 @@
     const projects = [
       { "name": "SafetyShield AI - Digital Bodyguard", "description": "A proactive 'Quad-Shield' framework designed to intercept predatory intent and redact PII in real-time. Built for edge deployment to prioritize user privacy.", "tech": "Python, spaCy (NER), Transformers (DistilBERT), Streamlit", "url": "https://github.com/TanakaShumba/SafetyShield-AI", "download": "", "type": "code" },
       { "name": "Sub-Sniper - Bug Bounty Bot", "description": "Offensive Security tool. Uses AsyncIO to scan 500+ subdomains/minute for Takeover vulnerabilities.", "tech": "Python, Aiohttp, AsyncIO, Requests", "url": "https://github.com/TanakaShumba/SubSniper", "download": "", "type": "code" },
-      { "name": "MediChat - Universal AI Triage", "description": "Multilingual Patient Intake System. Translates 20+ languages instantly, uses clinical logic to assess risk.", "tech": "Python, Streamlit, Pandas", "url": "https://github.com/TanakaShumba/MediChat", "download": "https://medichat-jtpygclbxqkgaatirfnwum.streamlit.app/", "type": "web" },
-      { "name": "CyberTrack - macOS Security Auditor", "description": "Automated security tool. Scans Firewall, Gatekeeper, and Open Ports.", "tech": "Python, Rich, Socket", "url": "https://github.com/TanakaShumba/CyberTrack", "download": "https://github.com/TanakaShumba/CyberTrack/releases/latest", "type": "app" }
+      { "name": "MediChat - Universal AI Triage", "description": "Multilingual Patient Intake System. Translates 20+ languages instantly and assesses patient risk.", "tech": "Python, Streamlit, Pandas", "url": "https://github.com/TanakaShumba/MediChat", "download": "https://medichat-jtpygclbxqkgaatirfnwum.streamlit.app/", "type": "web" },
+      { "name": "CyberTrack - macOS Security Auditor", "description": "Automated security tool. Scans Firewall, Gatekeeper, and Open Ports to identify system vulnerabilities.", "tech": "Python, Rich, Socket", "url": "https://github.com/TanakaShumba/CyberTrack", "download": "https://github.com/TanakaShumba/CyberTrack/releases/latest", "type": "app" }
     ];
     const container = document.getElementById("projects-container");
     projects.forEach((repo, index) => {
