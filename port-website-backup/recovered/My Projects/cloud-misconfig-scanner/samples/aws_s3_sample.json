@@ -1,0 +1,6 @@
+{
+  "buckets":[
+    {"name":"public-bucket-1","ACL":"public-read","Policy":""},
+    {"name":"private-bucket","ACL":"private","Policy":""}
+  ]
+}

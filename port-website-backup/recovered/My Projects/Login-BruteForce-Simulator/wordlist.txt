@@ -1,0 +1,7 @@
+123456
+password
+admin
+letmein
+Pa$$w0rd
+secret
+welcome

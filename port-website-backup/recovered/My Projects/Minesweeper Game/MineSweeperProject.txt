@@ -1,0 +1,29 @@
+Requirments for Minesweeper:
+
+An initial welcome screen
+	- button to start the game
+	-button with extra information such as creators, credit artists, etc
+	
+Game requirements:
+	-randomly generate bombs
+	-ability to place flags
+	-tell number of flags left to place
+	-make sound affects
+	-a game timer
+	
+	
+after game over:
+	-Should have a "You win!" or "You lose!" screen
+	-include a "play again" button
+	-include a "return to home screen" button
+	
+	
+	
+Class Layout
+Week 1: requirements
+Week 2: active development
+Week 3: active development
+Week 4: integration
+Week 5: testing/bug fixing
+
+actively take notes on who does what
