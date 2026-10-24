@@ -125,8 +125,8 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
-      font-size: 0.9rem;
+      gap: 14px;
+      font-size: 0.88rem;
       color: var(--text-muted);
     }
 
@@ -137,12 +137,13 @@
     .btn-small {
       display: inline-flex;
       align-items: center;
+      gap: 6px;
       padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -162,21 +163,48 @@
       opacity: 0.88;
     }
 
+    .kbd-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+
     /* Hero */
     .hero {
-      padding: 84px 0 64px;
+      padding: 76px 0 60px;
       border-bottom: 1px solid var(--border);
+    }
+
+    .hero-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
     }
 
     .hero-greeting {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
+    }
+
+    .role-rotator {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: opacity 0.25s ease;
     }
 
     .hero h1 {
@@ -185,7 +213,7 @@
       font-weight: 400;
       line-height: 1.08;
       letter-spacing: -0.02em;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .hero h1 em {
@@ -194,17 +222,17 @@
     }
 
     .hero-sub {
-      font-size: 1.1rem;
+      font-size: 1.06rem;
       color: var(--text-muted);
-      max-width: 640px;
-      margin-bottom: 32px;
+      max-width: 670px;
+      margin-bottom: 30px;
     }
 
     .status-bar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-size: 0.85rem;
     }
 
@@ -217,7 +245,7 @@
       background: var(--pill-bg);
       border: 1px solid var(--border);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
     }
 
     .pulse {
@@ -237,7 +265,7 @@
       background: var(--text);
       color: var(--bg);
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       transition: opacity 0.2s ease;
     }
 
@@ -247,7 +275,7 @@
 
     /* Section Headings */
     section {
-      padding: 64px 0;
+      padding: 60px 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -255,7 +283,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 32px;
+      margin-bottom: 30px;
     }
 
     .section-title {
@@ -266,7 +294,7 @@
 
     .section-subtitle {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -283,7 +311,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px;
+      padding: 26px;
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
@@ -301,7 +329,7 @@
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .tag {
@@ -314,19 +342,19 @@
     }
 
     .project-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       font-weight: 600;
       margin-bottom: 10px;
     }
 
     .project-card p {
-      font-size: 0.94rem;
+      font-size: 0.93rem;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .card-footer {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 500;
       display: flex;
       align-items: center;
@@ -335,10 +363,10 @@
       border-top: 1px solid var(--border);
     }
 
-    /* Lately I've Been Into */
+    /* Lately I've Been Into + Vinyl Card */
     .bento-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 14px;
     }
 
@@ -347,18 +375,44 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .bento-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .bento-value {
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
+    }
+
+    .vinyl-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .vinyl-disc {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent) 0 18%, #18181b 20% 42%, #2e2e34 43% 46%, #18181b 47% 100%);
+      border: 1px solid var(--border);
+      animation: spin 6s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     /* Resume Timeline */
@@ -370,7 +424,7 @@
 
     .resume-item {
       display: grid;
-      grid-template-columns: 170px 1fr;
+      grid-template-columns: 175px 1fr;
       gap: 20px;
     }
 
@@ -402,20 +456,82 @@
       margin-bottom: 4px;
     }
 
-    /* Skills Pills */
+    /* Skills Categories */
+    .skills-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .skill-group-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
     .skills-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .skill-pill {
-      padding: 8px 14px;
-      border-radius: 10px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    /* Favorite Quote Block (Inspired by upriyanshu.tech) */
+    .quote-section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quote-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      font-size: 0.88rem;
-      font-weight: 500;
+      border-radius: 18px;
+      padding: 36px 32px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .quote-mark {
+      font-family: 'Instrument Serif', serif;
+      font-size: 4rem;
+      line-height: 0.8;
+      color: var(--accent);
+      opacity: 0.45;
+      margin-bottom: 8px;
+    }
+
+    .quote-text {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(1.65rem, 3.5vw, 2.3rem);
+      font-style: italic;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .quote-author {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     /* Modal Drawer */
@@ -438,17 +554,19 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 18px;
-      max-width: 600px;
+      max-width: 680px;
       width: 100%;
+      max-height: 86vh;
+      overflow-y: auto;
       padding: 32px;
       position: relative;
       box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     }
 
     .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+      position: sticky;
+      top: 0;
+      float: right;
       background: var(--surface-alt);
       border: 1px solid var(--border);
       border-radius: 50%;
@@ -457,6 +575,32 @@
       cursor: pointer;
       color: var(--text);
       font-size: 1rem;
+    }
+
+    /* Command Palette */
+    .cmd-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .cmd-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .cmd-item:hover {
+      border-color: var(--text-muted);
     }
 
     /* Sidekick Widget */
@@ -517,7 +661,7 @@
     }
 
     footer {
-      padding: 48px 0 80px;
+      padding: 44px 0 84px;
       font-size: 0.88rem;
       color: var(--text-muted);
       display: flex;
@@ -526,13 +670,16 @@
       gap: 16px;
     }
 
-    @media (max-width: 680px) {
+    @media (max-width: 720px) {
       .resume-item {
         grid-template-columns: 1fr;
         gap: 4px;
       }
       .nav-links a.hide-mobile {
         display: none;
+      }
+      .skills-categories {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -555,8 +702,11 @@
         <a href="#work" class="hide-mobile">Work</a>
         <a href="#experience" class="hide-mobile">Experience</a>
         <a href="#skills" class="hide-mobile">Skills</a>
-        <a href="resume.pdf" target="_blank" rel="noopener" class="btn-small">View Resume</a>
+        <button class="btn-small" onclick="openResumeModal()">View Resume</button>
         <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf" class="btn-small btn-primary-small">Download Resume</a>
+        <button class="btn-small hide-mobile" onclick="openCmdPalette()" title="Quick Actions">
+          <span class="kbd-tag">⌘K</span>
+        </button>
         <button class="btn-small" id="themeBtn" onclick="toggleTheme()">Dark</button>
       </nav>
     </div>
@@ -565,35 +715,40 @@
   <main class="container">
     <!-- Hero -->
     <section class="hero">
-      <div class="hero-greeting">
-        <span>Hi, I'm Tanaka Shumba</span>
-        <span>·</span>
-        <span>M.S. Computer Science &amp; B.S. Cybersecurity</span>
+      <div class="hero-top-meta">
+        <div class="hero-greeting">
+          <span>Hi, I'm Tanaka Shumba</span>
+          <span>·</span>
+          <span class="role-rotator" id="roleRotator">Cybersecurity Specialist</span>
+        </div>
       </div>
+
       <h1>
         I defend networks, <em>train AI systems</em>, &amp; analyze traffic metadata.
       </h1>
+
       <p class="hero-sub">
-        Cybersecurity professional and AI Trainer at Snorkel AI. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, Snort, and Kali Linux.
+        Detail-oriented professional holding both an M.S. in Computer Science and a B.S. in Cybersecurity, and serving as an AI Trainer at Snorkel AI. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, and Kali Linux. Seeking a dynamic cybersecurity role to apply academic training and hands-on technical experience to actively defend enterprise infrastructure.
       </p>
+
       <div class="status-bar">
         <span class="status-pill">
           <span class="pulse"></span>
           Available for Cybersecurity &amp; AI Roles
         </span>
         <span class="status-pill" id="clockPill">
-          Troy, AL · Loading time...
+          My Time (Troy, AL): Loading...
         </span>
         <a href="mailto:tanakashumba04@gmail.com" class="cta-link">
-          Say hi →
+          Email me →
         </a>
       </div>
     </section>
 
-    <!-- Selected Work -->
+    <!-- Selected Work & Research -->
     <section id="work">
       <div class="section-header">
-        <h2 class="section-title">Selected Work &amp; Research</h2>
+        <h2 class="section-title">Academic Projects &amp; Featured Work</h2>
         <span class="section-subtitle">Click a card for details</span>
       </div>
 
@@ -602,15 +757,35 @@
           <div>
             <div class="card-tags">
               <span class="tag">Master's Thesis</span>
-              <span class="tag">Zeek &amp; Wireshark</span>
+              <span class="tag">Wireshark</span>
+              <span class="tag">Zeek</span>
+              <span class="tag">Snort</span>
             </div>
-            <h3>IoT Network Privacy Analysis</h3>
+            <h3>Master's Thesis: IoT Network Privacy Analysis</h3>
             <p>
-              Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata in virtualized lab environments.
+              Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata using virtualized environments and Kali Linux.
             </p>
           </div>
           <div class="card-footer">
-            <span>Read case study · 2026</span>
+            <span>View Details · 2026</span>
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="project-card" onclick="openModal('sysadmin')">
+          <div>
+            <div class="card-tags">
+              <span class="tag">ATA Secure Erase</span>
+              <span class="tag">Log Auditing</span>
+              <span class="tag">Access Control</span>
+            </div>
+            <h3>Practical Cybersecurity &amp; Systems Administration</h3>
+            <p>
+              Performed secure data destruction on hardware using ATA Secure Erase protocols to safely decommission devices and monitored device connection logs.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span>View Details · 2026</span>
             <span>→</span>
           </div>
         </div>
@@ -619,32 +794,16 @@
           <div>
             <div class="card-tags">
               <span class="tag">Snorkel AI</span>
-              <span class="tag">AI Evaluation</span>
+              <span class="tag">LLM Evaluation</span>
+              <span class="tag">Python</span>
             </div>
             <h3>AI Trainer: Dataset Construction &amp; Review</h3>
             <p>
-              Training and evaluating large language models across complex software engineering, cybersecurity, and technical reasoning benchmarks.
+              Training and evaluating large language models across software engineering, cybersecurity, and multi-step technical reasoning tasks.
             </p>
           </div>
           <div class="card-footer">
-            <span>Explore role · 2026</span>
-            <span>→</span>
-          </div>
-        </div>
-
-        <div class="project-card" onclick="openModal('sysadmin')">
-          <div>
-            <div class="card-tags">
-              <span class="tag">Systems Security</span>
-              <span class="tag">ATA Secure Erase</span>
-            </div>
-            <h3>Practical Cybersecurity &amp; Sanitization</h3>
-            <p>
-              Performing firmware level ATA Secure Erase data destruction to safely decommission hardware and monitoring device connection logs.
-            </p>
-          </div>
-          <div class="card-footer">
-            <span>Read summary · 2026</span>
+            <span>View Details · 2026</span>
             <span>→</span>
           </div>
         </div>
@@ -653,22 +812,23 @@
           <div>
             <div class="card-tags">
               <span class="tag">Troy University</span>
-              <span class="tag">Mentorship</span>
+              <span class="tag">Lab Networks</span>
+              <span class="tag">Threat Analysis</span>
             </div>
-            <h3>CS Lab Infrastructure &amp; Threat Tutoring</h3>
+            <h3>Computer Science Lab Systems &amp; Mentorship</h3>
             <p>
-              Maintaining computer lab networks and mentoring students in cybersecurity fundamentals, programming concepts, and threat analysis.
+              Maintained and supported computer lab systems and networks while assisting students with cybersecurity fundamentals and introductory threat analysis.
             </p>
           </div>
           <div class="card-footer">
-            <span>Read summary · 2025 to 2026</span>
+            <span>View Details · Sept 2025 to Dec 2026</span>
             <span>→</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Lately I've Been Into -->
+    <!-- Lately I've Been Into (Marian + Priyanshu hybrid) -->
     <section>
       <div class="section-header">
         <h2 class="section-title">Lately I've Been Into</h2>
@@ -676,20 +836,29 @@
       </div>
       <div class="bento-strip">
         <div class="bento-item">
-          <div class="bento-label">AI WORK</div>
-          <div class="bento-value">AI Training @ Snorkel AI</div>
+          <div class="bento-label">
+            <span>ON REPEAT</span>
+            <span>♫</span>
+          </div>
+          <div class="vinyl-wrap">
+            <div class="vinyl-disc"></div>
+            <div>
+              <div class="bento-value">NF</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Hip-Hop Rotation</div>
+            </div>
+          </div>
         </div>
         <div class="bento-item">
           <div class="bento-label">PACKET LAB</div>
-          <div class="bento-value">Zeek &amp; Suricata Telemetry</div>
+          <div class="bento-value">Zeek &amp; Snort Telemetry</div>
         </div>
         <div class="bento-item">
           <div class="bento-label">FOOTBALL</div>
-          <div class="bento-value">Chelsea FC Matchday Metrics</div>
+          <div class="bento-value">Chelsea FC Matchday</div>
         </div>
         <div class="bento-item">
-          <div class="bento-label">SYSTEMS</div>
-          <div class="bento-value">Kali Linux &amp; macOS Workflows</div>
+          <div class="bento-label">AI SYSTEMS</div>
+          <div class="bento-value">AI Training @ Snorkel AI</div>
         </div>
       </div>
     </section>
@@ -698,7 +867,7 @@
     <section id="experience">
       <div class="section-header">
         <h2 class="section-title">Experience &amp; Education</h2>
-        <span class="section-subtitle">Background</span>
+        <span class="section-subtitle">Timeline</span>
       </div>
 
       <div class="resume-list">
@@ -720,7 +889,7 @@
             <h4>Student Worker, Computer Science Dept.</h4>
             <div class="resume-org">Troy University</div>
             <ul>
-              <li>Maintained and supported computer lab systems and networks, ensuring system reliability and adherence to security practices.</li>
+              <li>Maintained and supported computer lab systems and networks, ensuring system reliability and adherence to basic security practices.</li>
               <li>Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis.</li>
             </ul>
           </div>
@@ -729,10 +898,10 @@
         <div class="resume-item">
           <div class="resume-date">Dec 2026</div>
           <div class="resume-content">
-            <h4>M.S. in Computer Science (Cybersecurity)</h4>
+            <h4>M.S. in Computer Science</h4>
             <div class="resume-org">Troy University</div>
             <ul>
-              <li>Master's Thesis: <em>An Empirical Analysis of Privacy Leakage in Smart Home IoT Devices Using Network Traffic Metadata</em>.</li>
+              <li>Master's Thesis: <em>IoT Network Privacy Analysis</em> (designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata).</li>
             </ul>
           </div>
         </div>
@@ -743,38 +912,77 @@
             <h4>B.S. in Cybersecurity</h4>
             <div class="resume-org">Troy University</div>
             <ul>
-              <li>Core focus on network defense, vulnerability assessment, incident response, and systems administration.</li>
+              <li>Hands-on training in network security, IDS/IPS, incident response, threat detection, and vulnerability assessment.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Technical Skills -->
+    <!-- Technical & Soft Skills (Exact match to your uploaded Resume) -->
     <section id="skills">
       <div class="section-header">
-        <h2 class="section-title">Technical Arsenal</h2>
-        <span class="section-subtitle">Tools &amp; Languages</span>
+        <h2 class="section-title">Technical &amp; Soft Skills</h2>
+        <span class="section-subtitle">Tech Stack</span>
       </div>
-      <div class="skills-wrap">
-        <span class="skill-pill">Python</span>
-        <span class="skill-pill">Java</span>
-        <span class="skill-pill">C++</span>
-        <span class="skill-pill">Wireshark</span>
-        <span class="skill-pill">Zeek</span>
-        <span class="skill-pill">Snort</span>
-        <span class="skill-pill">Nmap</span>
-        <span class="skill-pill">pfSense</span>
-        <span class="skill-pill">IPTables</span>
-        <span class="skill-pill">Kali Linux</span>
-        <span class="skill-pill">Ubuntu</span>
-        <span class="skill-pill">macOS &amp; Windows</span>
-        <span class="skill-pill">Network Security</span>
-        <span class="skill-pill">IDS / IPS</span>
-        <span class="skill-pill">Incident Response</span>
-        <span class="skill-pill">Threat Detection</span>
-        <span class="skill-pill">Vulnerability Assessment</span>
-        <span class="skill-pill">AI Model Evaluation</span>
+
+      <div class="skills-categories">
+        <div class="skill-group">
+          <div class="skill-group-title">Cybersecurity Tools</div>
+          <div class="skills-wrap">
+            <span class="skill-pill">Wireshark</span>
+            <span class="skill-pill">Zeek</span>
+            <span class="skill-pill">Snort</span>
+            <span class="skill-pill">Nmap</span>
+            <span class="skill-pill">pfSense</span>
+            <span class="skill-pill">IPTables</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Security Concepts</div>
+          <div class="skills-wrap">
+            <span class="skill-pill">Network Security</span>
+            <span class="skill-pill">IDS / IPS</span>
+            <span class="skill-pill">Incident Response</span>
+            <span class="skill-pill">Threat Detection</span>
+            <span class="skill-pill">Vulnerability Assessment</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Programming &amp; Operating Systems</div>
+          <div class="skills-wrap">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">Java</span>
+            <span class="skill-pill">C++</span>
+            <span class="skill-pill">Linux (Ubuntu, Kali)</span>
+            <span class="skill-pill">Windows</span>
+            <span class="skill-pill">macOS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Soft Skills</div>
+          <div class="skills-wrap">
+            <span class="skill-pill">Problem Solving</span>
+            <span class="skill-pill">Critical Thinking</span>
+            <span class="skill-pill">Communication</span>
+            <span class="skill-pill">Documentation</span>
+            <span class="skill-pill">Collaboration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Favorite Quote Section -->
+    <section class="quote-section">
+      <div class="quote-card">
+        <div class="quote-mark">“</div>
+        <div class="quote-text">
+          Life has no manual, don’t be too hard on yourself.
+        </div>
+        <div class="quote-author">Personal Philosophy · Thanks for visiting</div>
       </div>
     </section>
 
@@ -783,14 +991,16 @@
         <strong>Tanaka Shumba</strong> · <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a> · 334-482-0211
       </div>
       <div>
-        <a href="resume.pdf" target="_blank" rel="noopener">View Resume ↗</a>
+        <a href="#" onclick="openResumeModal(); return false;">View Resume</a>
+        &nbsp;·&nbsp;
+        <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">Download PDF</a>
         &nbsp;·&nbsp;
         <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </footer>
   </main>
 
-  <!-- Case Study Modal -->
+  <!-- Modal Drawer -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
     <div class="modal" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeModal()">×</button>
@@ -807,26 +1017,52 @@
     <div id="sidekickAnswer" style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 10px;">
       Select a question below for a quick summary.
     </div>
+    <button class="sidekick-q" onclick="askSidekick('summary')">What is Tanaka's background?</button>
     <button class="sidekick-q" onclick="askSidekick('role')">What does he do at Snorkel AI?</button>
     <button class="sidekick-q" onclick="askSidekick('thesis')">What is his Master's thesis about?</button>
-    <button class="sidekick-q" onclick="askSidekick('stack')">What security tools does he use?</button>
     <button class="sidekick-q" onclick="askSidekick('contact')">How can I contact him?</button>
   </div>
 
   <script>
-    // Live Clock (America/Chicago)
+    // Dual Timezone Clock (Inspired by upriyanshu.tech: Your Time vs My Time)
     function updateClock() {
       const now = new Date();
-      const timeStr = now.toLocaleTimeString('en-US', {
+      const myTime = now.toLocaleTimeString('en-US', {
         timeZone: 'America/Chicago',
         hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit'
+        minute: '2-digit'
       });
-      document.getElementById('clockPill').textContent = `Troy, AL · ${timeStr} CT`;
+      const yourTime = now.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit'
+      });
+      const pill = document.getElementById('clockPill');
+      if (myTime === yourTime) {
+        pill.textContent = `Troy, AL · ${myTime} CT`;
+      } else {
+        pill.textContent = `My Time: ${myTime} CT · Your Time: ${yourTime}`;
+      }
     }
     updateClock();
-    setInterval(updateClock, 1000);
+    setInterval(updateClock, 10000);
+
+    // Role Rotator (Inspired by upriyanshu.tech)
+    const roles = [
+      "Cybersecurity Specialist",
+      "AI Trainer @ Snorkel AI",
+      "M.S. Computer Science",
+      "Network Traffic Analyst"
+    ];
+    let roleIdx = 0;
+    setInterval(() => {
+      roleIdx = (roleIdx + 1) % roles.length;
+      const el = document.getElementById('roleRotator');
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.textContent = roles[roleIdx];
+        el.style.opacity = 1;
+      }, 220);
+    }, 3200);
 
     // Dark Mode Toggle
     function toggleTheme() {
@@ -841,23 +1077,23 @@
       }
     }
 
-    // Modal Content
+    // Project Details Modal
     const details = {
       iot: {
         title: "Master's Thesis: IoT Network Privacy Analysis",
-        body: "Designed and executed an empirical privacy analysis of smart home IoT device network traffic metadata. Configured virtualized testbeds and utilized Wireshark, Zeek, Snort, and Kali Linux for deep packet inspection, DNS/TLS telemetry logging, and behavioral fingerprinting."
+        body: "Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata. Configuring virtualized environments and utilizing Wireshark, Zeek, Snort, and Kali Linux for advanced packet analysis and telemetry logging."
+      },
+      sysadmin: {
+        title: "Practical Cybersecurity & Systems Administration",
+        body: "Performed secure data destruction on hardware using ATA Secure Erase protocols to safely decommission devices. Monitored network security by reviewing device connection logs and configuring access controls."
       },
       snorkel: {
         title: "AI Trainer at Snorkel AI",
-        body: "Serving as an AI Trainer contributing to high quality AI dataset construction, code and security task design, and model evaluation across specialized technical benchmarks."
-      },
-      sysadmin: {
-        title: "Practical Cybersecurity & Hardware Sanitization",
-        body: "Executed firmware level secure data destruction on enterprise laptops using ATA Secure Erase protocols to safely decommission hardware, alongside continuous connection log auditing and access control configuration."
+        body: "Contributing to specialized AI dataset construction, code and cybersecurity task design, and evaluating large language model responses for technical accuracy."
       },
       lab: {
-        title: "Student Worker, Troy University CS Department",
-        body: "Maintained computer lab infrastructure and networks from Sept 2025 to Dec 2026. Guided undergraduate and graduate students through cybersecurity labs, Python and C++ programming, and introductory threat analysis."
+        title: "Student Worker, Computer Science Dept. (Troy University)",
+        body: "Maintained and supported computer lab systems and networks from Sept 2025 to Dec 2026, ensuring system reliability and adherence to basic security practices. Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis."
       }
     };
 
@@ -870,6 +1106,110 @@
       document.getElementById('modalBackdrop').classList.add('open');
     }
 
+    // Exact Uploaded Resume Modal Viewer
+    function openResumeModal() {
+      document.getElementById('modalBody').innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:18px; padding-right:40px;">
+          <div>
+            <h3 style="font-family:'Instrument Serif', serif; font-size:2rem; font-weight:400;">Tanaka Shumba</h3>
+            <div style="font-size:0.82rem; color:var(--text-muted);">
+              tanakashumba04@gmail.com | linkedin.com/in/tanakashumba- | 334-482-0211
+            </div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <a href="resume.pdf" target="_blank" rel="noopener" class="btn-small">Open Raw PDF ↗</a>
+            <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf" class="btn-small btn-primary-small">Download PDF</a>
+          </div>
+        </div>
+        <hr style="border:none; border-top:1px solid var(--border); margin:14px 0;" />
+        <div style="font-size:0.9rem; display:flex; flex-direction:column; gap:14px;">
+          <div>
+            <strong>Professional Summary</strong>
+            <p style="color:var(--text-muted); margin-top:4px;">
+              Detail-oriented professional holding both an M.S. in Computer Science and a B.S. in Cybersecurity. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, and Kali Linux. Seeking a dynamic cybersecurity role to apply academic training and hands-on technical experience to actively defend enterprise infrastructure.
+            </p>
+          </div>
+          <div>
+            <strong>Education</strong>
+            <p style="color:var(--text-muted); margin-top:4px;">
+              Troy University · M.S. Computer Science | Dec 2026<br/>
+              Troy University · B.S. Cybersecurity | Dec 2023
+            </p>
+          </div>
+          <div>
+            <strong>Experience</strong>
+            <p style="color:var(--text-muted); margin-top:4px;">
+              <strong>Student Worker, Computer Science Dept.</strong> | Troy University (Sept 2025 to Dec 2026)<br/>
+              • Maintained and supported computer lab systems and networks, ensuring system reliability and adherence to basic security practices.<br/>
+              • Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis.
+            </p>
+          </div>
+          <div>
+            <strong>Academic Projects &amp; Research</strong>
+            <p style="color:var(--text-muted); margin-top:4px;">
+              <strong>Master's Thesis: IoT Network Privacy Analysis</strong><br/>
+              • Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata.<br/>
+              • Configuring virtualized environments and utilizing Wireshark, Zeek, Snort, and Kali Linux for advanced packet analysis and telemetry logging.<br/><br/>
+              <strong>Practical Cybersecurity &amp; Systems Administration</strong><br/>
+              • Performed secure data destruction on hardware using ATA Secure Erase protocols to safely decommission devices.<br/>
+              • Monitored network security by reviewing device connection logs and configuring access controls.
+            </p>
+          </div>
+          <div>
+            <strong>Technical &amp; Soft Skills</strong>
+            <p style="color:var(--text-muted); margin-top:4px;">
+              <strong>Programming/Scripting:</strong> Python, Java, C++<br/>
+              <strong>Cybersecurity Tools:</strong> Wireshark, Zeek, Snort, Nmap, pfSense, IPTables<br/>
+              <strong>Security Concepts:</strong> Network Security, IDS/IPS, Incident Response, Threat Detection, Vulnerability Assessment<br/>
+              <strong>Operating Systems:</strong> Linux (Ubuntu, Kali), Windows, macOS<br/>
+              <strong>Soft Skills:</strong> Problem Solving, Critical Thinking, Communication, Documentation, Collaboration
+            </p>
+          </div>
+        </div>
+      `;
+      document.getElementById('modalBackdrop').classList.add('open');
+    }
+
+    // Command Palette (⌘K)
+    function openCmdPalette() {
+      document.getElementById('modalBody').innerHTML = `
+        <h3 style="font-family: 'Instrument Serif', serif; font-size: 1.7rem; font-weight: 400; margin-bottom: 6px;">Quick Navigation</h3>
+        <p style="font-size: 0.84rem; color: var(--text-muted);">Jump anywhere or grab Tanaka's resume</p>
+        <div class="cmd-list">
+          <button class="cmd-item" onclick="openResumeModal()">
+            <span>View Full Resume</span>
+            <span class="kbd-tag">Resume</span>
+          </button>
+          <a class="cmd-item" href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">
+            <span>Download Resume (PDF)</span>
+            <span class="kbd-tag">PDF</span>
+          </a>
+          <a class="cmd-item" href="mailto:tanakashumba04@gmail.com">
+            <span>Send an Email (tanakashumba04@gmail.com)</span>
+            <span class="kbd-tag">Email</span>
+          </a>
+          <a class="cmd-item" href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">
+            <span>Open LinkedIn Profile</span>
+            <span class="kbd-tag">↗</span>
+          </a>
+          <button class="cmd-item" onclick="toggleTheme(); closeModal();">
+            <span>Toggle Dark / Light Theme</span>
+            <span class="kbd-tag">Theme</span>
+          </button>
+        </div>
+      `;
+      document.getElementById('modalBackdrop').classList.add('open');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openCmdPalette();
+      } else if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
     function closeModal() {
       document.getElementById('modalBackdrop').classList.remove('open');
     }
@@ -880,9 +1220,9 @@
 
     function askSidekick(topic) {
       const answers = {
+        summary: "Tanaka holds an M.S. in Computer Science and a B.S. in Cybersecurity from Troy University, specializing in network monitoring, threat detection, and AI training.",
         role: "Tanaka works as an AI Trainer at Snorkel AI, focusing on AI dataset construction, technical prompt authoring, and evaluating model responses.",
-        thesis: "His M.S. thesis at Troy University analyzes privacy leakage in smart home IoT devices by inspecting network traffic metadata using Zeek, Wireshark, and Snort.",
-        stack: "His core toolkit includes Wireshark, Zeek, Snort, Nmap, pfSense, IPTables, Kali Linux, Ubuntu, and Python.",
+        thesis: "His M.S. thesis at Troy University analyzes privacy leakage in smart home IoT devices by inspecting network traffic metadata using Zeek, Wireshark, Snort, and Kali Linux.",
         contact: "You can reach Tanaka directly at tanakashumba04@gmail.com or by phone at 334-482-0211."
       };
       document.getElementById('sidekickAnswer').textContent = answers[topic];
