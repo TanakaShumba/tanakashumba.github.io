@@ -3,108 +3,861 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tanaka Shumba | Cybersecurity Portfolio</title>
+  <title>Tanaka Shumba — Cybersecurity, AI & Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: black; color: #39ff14; overflow-x: hidden; }
-    header { text-align: center; padding: 60px 20px 30px; position: relative; z-index: 1; }
-    header img { width: 140px; height: 140px; border-radius: 50%; border: 3px solid #39ff14; margin-bottom: 20px; object-fit: cover; }
-    header h1 { font-size: 3rem; margin: 10px 0; }
-    header p { font-size: 1.2rem; max-width: 650px; margin: 0 auto; line-height: 1.5; color: white; }
-    nav { position: sticky; top: 0; background: rgba(0,0,0,0.85); padding: 15px 0; text-align: center; z-index: 100; border-bottom: 2px solid #39ff14; }
-    nav a { margin: 0 15px; color: #39ff14; text-decoration: none; font-weight: bold; transition: 0.3s; }
-    nav a:hover { color: white; }
-    .btn { display: inline-block; margin-top: 15px; padding: 10px 20px; border: 2px solid #39ff14; color: #39ff14; text-decoration: none; border-radius: 30px; transition: 0.3s; font-size: 0.9rem; cursor: pointer; }
-    .btn:hover { background: #39ff14; color: black; }
-    .btn-primary { background: #39ff14; color: black; font-weight: bold; margin-right: 10px; }
-    .btn-primary:hover { background: white; border-color: white; color: black; }
-    section { padding: 60px 20px; position: relative; z-index: 1; }
-    h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; color: #39ff14; }
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-    .card { background: rgba(0, 0, 0, 0.7); border: 2px solid #39ff14; border-radius: 15px; padding: 20px; text-align: center; transition: transform 0.3s, opacity 1s ease; opacity: 0; transform: translateY(20px); display: flex; flex-direction: column; justify-content: space-between; }
-    .card h3 { margin-bottom: 10px; font-size: 1.3rem; color: #39ff14; }
-    .card p { font-size: 0.95rem; color: white; margin-bottom: 15px; line-height: 1.4; }
-    .card .tech { font-size: 0.85rem; color: #ddd; margin-bottom: 15px; font-style: italic; }
-    .fade-in { opacity: 1 !important; transform: translateY(0) !important; }
-    .about, .contact { max-width: 800px; margin: 0 auto; color: white; text-align: center; line-height: 1.6; }
-    .contact form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
-    .contact input, .contact textarea { padding: 10px; border: 2px solid #39ff14; border-radius: 8px; background: black; color: white; }
-    .contact button { padding: 12px; border: 2px solid #39ff14; border-radius: 30px; background: black; color: #39ff14; font-weight: bold; cursor: pointer; transition: 0.3s; }
-    .contact button:hover { background: #39ff14; color: black; }
-    .socials { margin-top: 20px; }
-    .socials a { margin: 0 10px; color: #39ff14; text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
-    .socials a:hover { color: white; }
-    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+    :root {
+      --bg: #FAF8F5;
+      --surface: #FFFFFF;
+      --surface-alt: #F3EFEA;
+      --text: #18181B;
+      --text-muted: #64646E;
+      --border: #E5E0D8;
+      --accent: #10B981;
+      --accent-dark: #059669;
+      --pill-bg: #EFECE6;
+      --shadow: 0 4px 20px -2px rgba(24, 24, 27, 0.05);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0C0D0E;
+      --surface: #141619;
+      --surface-alt: #1C1F24;
+      --text: #F4F4F6;
+      --text-muted: #9EA3AE;
+      --border: #262930;
+      --accent: #10B981;
+      --accent-dark: #34D399;
+      --pill-bg: #1E2025;
+      --shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn-small {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-small:hover {
+      border-color: var(--text-muted);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 84px 0 64px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-greeting {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .status-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--pill-bg);
+      border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent);
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 500;
+      font-size: 0.85rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .cta-link:hover {
+      opacity: 0.88;
+    }
+
+    /* Section Headings */
+    section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.1rem;
+      font-weight: 400;
+    }
+
+    .section-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Project Case Study Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--text-muted);
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--surface-alt);
+      color: var(--text-muted);
+    }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .card-footer {
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Lately I've Been Into */
+    .bento-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .bento-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .bento-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .bento-value {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    /* Resume Timeline */
+    .resume-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .resume-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+    }
+
+    .resume-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding-top: 3px;
+    }
+
+    .resume-content h4 {
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .resume-org {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .resume-content ul {
+      padding-left: 18px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .resume-content li {
+      margin-bottom: 4px;
+    }
+
+    /* Skills Pills */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-pill {
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* Modal Drawer */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      max-width: 600px;
+      width: 100%;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    /* Sidekick Widget */
+    .sidekick-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidekick-panel {
+      position: fixed;
+      bottom: 78px;
+      right: 24px;
+      width: 330px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.22);
+      display: none;
+      z-index: 60;
+    }
+
+    .sidekick-panel.open {
+      display: block;
+    }
+
+    .sidekick-q {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 8px 12px;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .sidekick-q:hover {
+      border-color: var(--text-muted);
+    }
+
+    footer {
+      padding: 48px 0 80px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .resume-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .nav-links a.hide-mobile {
+        display: none;
+      }
+    }
+
+    @media print {
+      header, .sidekick-btn, .sidekick-panel, .status-bar .cta-link {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        color: #000;
+      }
+      section {
+        padding: 24px 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-  <nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+
   <header>
-    <img src="images/about-me.jpg?v=3" alt="Tanaka Shumba Profile" />
-    <h1>Tanaka Shumba</h1>
-    <p>Welcome to my portfolio! I am a Cybersecurity professional and Computer Science student at Troy University. Passionate about protecting networks, AI safety, and building secure applications.</p>
-    <a href="resume.pdf" class="btn">View My Resume</a>
-  </header>
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>I am a detail-oriented Cybersecurity professional with a B.S. in Cybersecurity and pursuing an M.S. in Computer Science – Cybersecurity. I have extensive experience in threat detection, incident response, and network monitoring using tools like Wireshark, Zeek, and Nmap.</p>
-    <p>Currently working as a Student Worker at Troy University's Computer Science Department, I aim to continuously grow and contribute to innovative security projects and SOC teams.</p>
-  </section>
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects" id="projects-container"></div>
-  </section>
-  <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <form action="mailto:tanakashumba04@gmail.com" method="POST" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <div class="socials">
-      <a href="https://github.com/TanakaShumba" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/tanakashumba-" target="_blank">LinkedIn</a>
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-dot"></span>
+        tanakashumba.com
+      </a>
+      <nav class="nav-links">
+        <a href="#work" class="hide-mobile">Work</a>
+        <a href="#experience" class="hide-mobile">Experience</a>
+        <a href="#skills" class="hide-mobile">Skills</a>
+        <button class="btn-small" onclick="window.print()">Print / PDF</button>
+        <button class="btn-small" id="themeBtn" onclick="toggleTheme()">Dark</button>
+      </nav>
     </div>
-  </section>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-greeting">
+        <span>Hi, I'm Tanaka Shumba</span>
+        <span>·</span>
+        <span>M.S. Computer Science &amp; B.S. Cybersecurity</span>
+      </div>
+      <h1>
+        I defend networks, <em>train AI systems</em>, &amp; analyze traffic metadata.
+      </h1>
+      <p class="hero-sub">
+        Detail-oriented cybersecurity professional and AI Trainer at Snorkel AI. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, Snort, and Kali Linux.
+      </p>
+      <div class="status-bar">
+        <span class="status-pill">
+          <span class="pulse"></span>
+          Available for Cybersecurity &amp; AI Roles
+        </span>
+        <span class="status-pill" id="clockPill">
+          Troy, AL · Loading time...
+        </span>
+        <a href="mailto:tanakashumba04@gmail.com" class="cta-link">
+          Say hi →
+        </a>
+      </div>
+    </section>
+
+    <!-- Selected Work -->
+    <section id="work">
+      <div class="section-header">
+        <h2 class="section-title">Selected Work &amp; Research</h2>
+        <span class="section-subtitle">Click a card for details</span>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card" onclick="openModal('iot')">
+          <div>
+            <div class="card-tags">
+              <span class="tag">Master's Thesis</span>
+              <span class="tag">Zeek &amp; Wireshark</span>
+            </div>
+            <h3>IoT Network Privacy Analysis</h3>
+            <p>
+              Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata in virtualized lab environments.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span>Read case study · 2026</span>
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="project-card" onclick="openModal('snorkel')">
+          <div>
+            <div class="card-tags">
+              <span class="tag">Snorkel AI</span>
+              <span class="tag">AI Evaluation</span>
+            </div>
+            <h3>AI Trainer — Dataset Construction &amp; Review</h3>
+            <p>
+              Training and evaluating large language models across complex software engineering, cybersecurity, and technical reasoning benchmarks.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span>Explore role · 2026</span>
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="project-card" onclick="openModal('sysadmin')">
+          <div>
+            <div class="card-tags">
+              <span class="tag">Systems Security</span>
+              <span class="tag">ATA Secure Erase</span>
+            </div>
+            <h3>Practical Cybersecurity &amp; Sanitization</h3>
+            <p>
+              Performing firmware-level ATA Secure Erase data destruction to safely decommission hardware and monitoring device connection logs.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span>Read summary · 2026</span>
+            <span>→</span>
+          </div>
+        </div>
+
+        <div class="project-card" onclick="openModal('lab')">
+          <div>
+            <div class="card-tags">
+              <span class="tag">Troy University</span>
+              <span class="tag">Mentorship</span>
+            </div>
+            <h3>CS Lab Infrastructure &amp; Threat Tutoring</h3>
+            <p>
+              Maintaining computer lab networks and mentoring students in cybersecurity fundamentals, programming concepts, and threat analysis.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span>Read summary · 2025–2026</span>
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lately I've Been Into -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">Lately I've Been Into</h2>
+        <span class="section-subtitle">Current Rotation</span>
+      </div>
+      <div class="bento-strip">
+        <div class="bento-item">
+          <div class="bento-label">AI WORK</div>
+          <div class="bento-value">AI Training @ Snorkel AI</div>
+        </div>
+        <div class="bento-item">
+          <div class="bento-label">PACKET LAB</div>
+          <div class="bento-value">Zeek &amp; Suricata Telemetry</div>
+        </div>
+        <div class="bento-item">
+          <div class="bento-label">FOOTBALL</div>
+          <div class="bento-value">Chelsea FC Matchday Metrics</div>
+        </div>
+        <div class="bento-item">
+          <div class="bento-label">SYSTEMS</div>
+          <div class="bento-value">Kali Linux &amp; macOS Workflows</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience &amp; Education</h2>
+        <span class="section-subtitle">Curriculum Vitae</span>
+      </div>
+
+      <div class="resume-list">
+        <div class="resume-item">
+          <div class="resume-date">2026 — Present</div>
+          <div class="resume-content">
+            <h4>AI Trainer</h4>
+            <div class="resume-org">Snorkel AI</div>
+            <ul>
+              <li>Contribute to specialized AI dataset construction, prompt engineering, and multi-step technical task evaluation.</li>
+              <li>Review and benchmark model outputs for code quality, security accuracy, and reasoning fidelity.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-date">Sept 2025 — Dec 2026</div>
+          <div class="resume-content">
+            <h4>Student Worker — Computer Science Dept.</h4>
+            <div class="resume-org">Troy University</div>
+            <ul>
+              <li>Maintained and supported computer lab systems and networks, ensuring system reliability and adherence to security practices.</li>
+              <li>Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-date">Dec 2026</div>
+          <div class="resume-content">
+            <h4>M.S. in Computer Science (Cybersecurity)</h4>
+            <div class="resume-org">Troy University</div>
+            <ul>
+              <li>Master's Thesis: <em>An Empirical Analysis of Privacy Leakage in Smart Home IoT Devices Using Network Traffic Metadata</em>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-date">Dec 2023</div>
+          <div class="resume-content">
+            <h4>B.S. in Cybersecurity</h4>
+            <div class="resume-org">Troy University</div>
+            <ul>
+              <li>Core focus on network defense, vulnerability assessment, incident response, and systems administration.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Technical Arsenal</h2>
+        <span class="section-subtitle">Tools &amp; Languages</span>
+      </div>
+      <div class="skills-wrap">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">C++</span>
+        <span class="skill-pill">Wireshark</span>
+        <span class="skill-pill">Zeek</span>
+        <span class="skill-pill">Snort</span>
+        <span class="skill-pill">Nmap</span>
+        <span class="skill-pill">pfSense</span>
+        <span class="skill-pill">IPTables</span>
+        <span class="skill-pill">Kali Linux</span>
+        <span class="skill-pill">Ubuntu</span>
+        <span class="skill-pill">macOS &amp; Windows</span>
+        <span class="skill-pill">Network Security</span>
+        <span class="skill-pill">IDS / IPS</span>
+        <span class="skill-pill">Incident Response</span>
+        <span class="skill-pill">Threat Detection</span>
+        <span class="skill-pill">Vulnerability Assessment</span>
+        <span class="skill-pill">AI Model Evaluation</span>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <strong>Tanaka Shumba</strong> · <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a> · 334-482-0211
+      </div>
+      <div>
+        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn ↗</a>
+        &nbsp;·&nbsp;
+        <a href="https://tanakashumba.github.io/" target="_blank" rel="noopener">GitHub Pages ↗</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Case Study Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Sidekick Widget -->
+  <button class="sidekick-btn" onclick="toggleSidekick()">
+    <span class="brand-dot"></span> Ask Tanaka's AI Sidekick
+  </button>
+  <div class="sidekick-panel" id="sidekickPanel">
+    <div style="font-weight: 600; font-size: 0.92rem; margin-bottom: 4px;">Hi! Ask me about Tanaka:</div>
+    <div id="sidekickAnswer" style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 10px;">
+      Pick a question below to get an instant summary.
+    </div>
+    <button class="sidekick-q" onclick="askSidekick('role')">What does he do at Snorkel AI?</button>
+    <button class="sidekick-q" onclick="askSidekick('thesis')">What is his Master's thesis about?</button>
+    <button class="sidekick-q" onclick="askSidekick('stack')">What security tools does he use?</button>
+    <button class="sidekick-q" onclick="askSidekick('contact')">How can I contact him?</button>
+  </div>
+
   <script>
-    particlesJS("particles-js", { particles: { number: { value: 80 }, color: { value: "#39ff14" }, shape: { type: "circle" }, opacity: { value: 0.5 }, size: { value: 3 }, line_linked: { enable: true, color: "#39ff14" }, move: { enable: true, speed: 2 } } });
-    const projects = [
-      { "name": "SafetyShield AI - Digital Bodyguard", "description": "A proactive 'Quad-Shield' framework designed to intercept predatory intent and redact PII in real-time. Built for edge deployment to prioritize user privacy.", "tech": "Python, spaCy (NER), Transformers (DistilBERT), Streamlit", "url": "https://github.com/TanakaShumba/SafetyShield-AI", "type": "code" },
-      { "name": "Sub-Sniper - Bug Bounty Bot", "description": "Offensive Security tool. Uses AsyncIO to scan 500+ subdomains/minute for Takeover vulnerabilities.", "tech": "Python, Aiohttp, AsyncIO, Requests", "url": "https://github.com/TanakaShumba/SubSniper", "type": "code" },
-      { "name": "MediChat - Universal AI Triage", "description": "Multilingual Patient Intake System. Translates 20+ languages instantly, uses clinical logic to assess risk.", "tech": "Python, Streamlit, Pandas", "url": "https://github.com/TanakaShumba/MediChat", "download": "https://medichat-jtpygclbxqkgaatirfnwum.streamlit.app/", "type": "web" },
-      { "name": "CyberTrack - macOS Security Auditor", "description": "Automated security tool. Scans Firewall, Gatekeeper, FileVault, and Open Ports.", "tech": "Python, Rich, Socket, PyInstaller", "url": "https://github.com/TanakaShumba/CyberTrack", "download": "https://github.com/TanakaShumba/CyberTrack/releases/latest", "type": "app" },
-      { "name": "python-network-scanner", "description": "Python project for network scanning", "tech": "Python", "url": "https://github.com/TanakaShumba/python-network-scanner" },
-      { "name": "automated-vulnerability-scanner", "description": "Parses mock Nmap JSON results, maps services/ports to CVE database.", "tech": "Python", "url": "https://github.com/TanakaShumba/automated-vulnerability-scanner" },
-      { "name": "siem-log-parser", "description": "Analyze and interpret logs from SIEM systems.", "tech": "Python", "url": "https://github.com/TanakaShumba/siem-log-parser" },
-      { "name": "phishing-email-detector", "description": "AI-based tool to detect phishing emails.", "tech": "Python", "url": "https://github.com/TanakaShumba/phishing-email-detector" },
-      { "name": "windows-event-log-analyzer", "description": "Analyze Windows event logs for suspicious activities.", "tech": "Python", "url": "https://github.com/TanakaShumba/windows-event-log-analyzer" },
-      { "name": "soc-alert-triage", "description": "Triaging SOC alerts to prioritize and respond to incidents effectively.", "tech": "Python", "url": "https://github.com/TanakaShumba/soc-alert-triage" },
-      { "name": "cloud-misconfig-scanner", "description": "Scan cloud environments for common misconfigurations.", "tech": "Python", "url": "https://github.com/TanakaShumba/cloud-misconfig-scanner" },
-      { "name": "nmap-threat-model", "description": "Threat model for Nmap identifying potential risks and mitigations.", "tech": "Python", "url": "https://github.com/TanakaShumba/nmap-threat-model" },
-      { "name": "malware-analyzer", "description": "Simulate analyzing suspicious files for malicious behavior.", "tech": "Python", "url": "https://github.com/TanakaShumba/malware-analyzer" },
-      { "name": "ethical-hacking-sim", "description": "Simulate ethical hacking techniques for learning purposes.", "tech": "Python", "url": "https://github.com/TanakaShumba/ethical-hacking-sim" },
-      { "name": "cloud-security-checker", "description": "Simulate checking cloud service configurations for misconfigurations.", "tech": "Python", "url": "https://github.com/TanakaShumba/cloud-security-checker" },
-      { "name": "basic-pen-test", "description": "Educational penetration testing and vulnerability scanning script.", "tech": "Python", "url": "https://github.com/TanakaShumba/basic-pen-test" },
-      { "name": "simple-ids", "description": "Basic IDS/IPS simulation in Python.", "tech": "Python", "url": "https://github.com/TanakaShumba/simple-ids" },
-      { "name": "cybersecurity-lab-series", "description": "Educational scripts for network scanning and VoIP traffic analysis.", "tech": "Python", "url": "https://github.com/TanakaShumba/cybersecurity-lab-series" },
-      { "name": "secure-hospital-system", "description": "Python-based secure hospital management system.", "tech": "Python", "url": "https://github.com/TanakaShumba/secure-hospital-system" },
-      { "name": "voip-traffic-analyzer", "description": "Capture and analyze VoIP RTP packets on local network.", "tech": "Python", "url": "https://github.com/TanakaShumba/voip-traffic-analyzer" },
-      { "name": "Healthcare_System", "description": "Healthcare management system built with Flask.", "tech": "HTML, Flask", "url": "https://github.com/TanakaShumba/Healthcare_System" },
-      { "name": "Login-BruteForce-Simulator", "description": "Local login brute-force simulator with Flask server and client.", "tech": "Python, Flask", "url": "https://github.com/TanakaShumba/Login-BruteForce-Simulator" },
-      { "name": "password-security-demo", "description": "Demo of best practices for password hashing and salting.", "tech": "Python", "url": "https://github.com/TanakaShumba/password-security-demo" },
-      { "name": "security-awareness-mini-course", "description": "Introductory course to enhance security awareness.", "tech": "Python", "url": "https://github.com/TanakaShumba/security-awareness-mini-course" }
-    ];
-    const container = document.getElementById("projects-container");
-    projects.forEach((repo, index) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      let buttonsHtml = repo.download ? `<a class="btn btn-primary" href="${repo.download}" target="_blank">${repo.type === "web" ? "Try Live Demo" : "Download App"}</a><a class="btn" href="${repo.url}" target="_blank">View Source</a>` : `<a class="btn" href="${repo.url}" target="_blank">View on GitHub</a>`;
-      card.innerHTML = `<h3>${repo.name}</h3><p>${repo.description}</p><div class="tech">Tech/Tools: ${repo.tech}</div><div style="margin-top:auto;">${buttonsHtml}</div>`;
-      container.appendChild(card);
-      setTimeout(() => card.classList.add("fade-in"), 150 * index);
-    });
+    // Live Clock (America/Chicago)
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('en-US', {
+        timeZone: 'America/Chicago',
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      document.getElementById('clockPill').textContent = `Troy, AL · ${timeStr} CT`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Dark Mode Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.getElementById('themeBtn');
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        btn.textContent = 'Dark';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        btn.textContent = 'Light';
+      }
+    }
+
+    // Modal Content
+    const details = {
+      iot: {
+        title: "Master's Thesis: IoT Network Privacy Analysis",
+        body: "Designed and executed an empirical privacy analysis of smart home IoT device network traffic metadata. Configured virtualized testbeds and utilized Wireshark, Zeek, Snort, and Kali Linux for deep packet inspection, DNS/TLS telemetry logging, and behavioral fingerprinting."
+      },
+      snorkel: {
+        title: "AI Trainer — Snorkel AI",
+        body: "Serving as an AI Trainer contributing to high-quality AI dataset construction, code/security task design, and model evaluation across specialized technical benchmarks."
+      },
+      sysadmin: {
+        title: "Practical Cybersecurity & Hardware Sanitization",
+        body: "Executed firmware-level secure data destruction on enterprise laptops using ATA Secure Erase protocols to safely decommission hardware, alongside continuous connection log auditing and access control configuration."
+      },
+      lab: {
+        title: "Student Worker — Troy University CS Department",
+        body: "Maintained computer lab infrastructure and networks from Sept 2025 to Dec 2026. Guided undergraduate and graduate students through cybersecurity labs, Python/C++ programming, and introductory threat analysis."
+      }
+    };
+
+    function openModal(key) {
+      const item = details[key];
+      document.getElementById('modalBody').innerHTML = `
+        <h3 style="font-family: 'Instrument Serif', serif; font-size: 1.9rem; font-weight: 400; margin-bottom: 12px;">${item.title}</h3>
+        <p style="color: var(--text-muted); font-size: 0.96rem;">${item.body}</p>
+      `;
+      document.getElementById('modalBackdrop').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('modalBackdrop').classList.remove('open');
+    }
+
+    function toggleSidekick() {
+      document.getElementById('sidekickPanel').classList.toggle('open');
+    }
+
+    function askSidekick(topic) {
+      const answers = {
+        role: "Tanaka works as an AI Trainer at Snorkel AI, focusing on AI dataset construction, technical prompt authoring, and evaluating model responses.",
+        thesis: "His M.S. thesis at Troy University analyzes privacy leakage in smart home IoT devices by inspecting network traffic metadata using Zeek, Wireshark, and Snort.",
+        stack: "His core toolkit includes Wireshark, Zeek, Snort, Nmap, pfSense, IPTables, Kali Linux, Ubuntu, and Python.",
+        contact: "You can reach Tanaka directly at tanakashumba04@gmail.com or by phone at 334-482-0211."
+      };
+      document.getElementById('sidekickAnswer').textContent = answers[topic];
+    }
   </script>
 </body>
 </html>
