@@ -16,22 +16,24 @@
       --text-muted: #64646E;
       --border: #E5E0D8;
       --accent: #10B981;
-      --accent-dark: #059669;
+      --accent-soft: rgba(16, 185, 129, 0.12);
       --pill-bg: #EFECE6;
+      --grid-color: rgba(24, 24, 27, 0.045);
       --shadow: 0 4px 20px -2px rgba(24, 24, 27, 0.05);
     }
 
     [data-theme="dark"] {
-      --bg: #0C0D0E;
-      --surface: #141619;
-      --surface-alt: #1C1F24;
+      --bg: #0A0C10;
+      --surface: #12151C;
+      --surface-alt: #181C26;
       --text: #F4F4F6;
-      --text-muted: #9EA3AE;
-      --border: #262930;
+      --text-muted: #949BA6;
+      --border: #232834;
       --accent: #10B981;
-      --accent-dark: #34D399;
-      --pill-bg: #1E2025;
-      --shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
+      --accent-soft: rgba(16, 185, 129, 0.15);
+      --pill-bg: #161A23;
+      --grid-color: rgba(255, 255, 255, 0.035);
+      --shadow: 0 8px 28px -4px rgba(0, 0, 0, 0.5);
     }
 
     * {
@@ -47,6 +49,11 @@
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
+      /* Subtle architectural security grid */
+      background-image: 
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+      background-size: 36px 36px;
       color: var(--text);
       line-height: 1.6;
       transition: background-color 0.25s ease, color 0.25s ease;
@@ -71,7 +78,7 @@
       z-index: 40;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
       border-bottom: 1px solid var(--border);
     }
 
@@ -107,6 +114,12 @@
       justify-content: center;
       box-shadow: var(--shadow);
       color: var(--text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .brand:hover .lion-badge {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
     }
 
     .lion-badge svg {
@@ -150,7 +163,7 @@
     }
 
     .btn-small:hover {
-      border-color: var(--text-muted);
+      border-color: var(--accent);
     }
 
     .btn-primary-small {
@@ -161,6 +174,7 @@
 
     .btn-primary-small:hover {
       opacity: 0.88;
+      border-color: var(--text);
     }
 
     .kbd-tag {
@@ -171,7 +185,7 @@
 
     /* Hero */
     .hero {
-      padding: 76px 0 60px;
+      padding: 76px 0 56px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -198,9 +212,9 @@
       display: inline-block;
       padding: 3px 10px;
       border-radius: 6px;
-      background: var(--surface-alt);
+      background: var(--surface);
       border: 1px solid var(--border);
-      color: var(--text);
+      color: var(--accent);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
       font-weight: 500;
@@ -225,7 +239,7 @@
       font-size: 1.06rem;
       color: var(--text-muted);
       max-width: 670px;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     .status-bar {
@@ -234,6 +248,7 @@
       align-items: center;
       gap: 10px;
       font-size: 0.85rem;
+      margin-bottom: 26px;
     }
 
     .status-pill {
@@ -242,7 +257,7 @@
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: var(--pill-bg);
+      background: var(--surface);
       border: 1px solid var(--border);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.76rem;
@@ -253,7 +268,7 @@
       height: 8px;
       background: var(--accent);
       border-radius: 50%;
-      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
     }
 
     .cta-link {
@@ -271,6 +286,38 @@
 
     .cta-link:hover {
       opacity: 0.88;
+    }
+
+    /* Clean Cyber Telemetry Strip */
+    .telemetry-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      color: var(--text-muted);
+    }
+
+    .telemetry-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .telemetry-key {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .telemetry-ok {
+      color: var(--accent);
+      font-weight: 500;
     }
 
     /* Section Headings */
@@ -294,13 +341,13 @@
 
     .section-subtitle {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
 
-    /* Project Case Study Cards */
+    /* Project Case Study Cards with Subtle Cyber Brackets */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -308,6 +355,7 @@
     }
 
     .project-card {
+      position: relative;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -317,12 +365,48 @@
       flex-direction: column;
       justify-content: space-between;
       cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      overflow: hidden;
+    }
+
+    /* Subtle cyber target-lock top accent on hover */
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
 
     .project-card:hover {
       transform: translateY(-3px);
-      border-color: var(--text-muted);
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+      box-shadow: 0 10px 30px -6px rgba(16, 185, 129, 0.1);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .pcap-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .pcap-id {
+      color: var(--accent);
+      font-weight: 500;
     }
 
     .card-tags {
@@ -339,6 +423,12 @@
       border-radius: 6px;
       background: var(--surface-alt);
       color: var(--text-muted);
+      border: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .project-card:hover .tag {
+      border-color: var(--border);
     }
 
     .project-card h3 {
@@ -354,13 +444,15 @@
     }
 
     .card-footer {
-      font-size: 0.84rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
       font-weight: 500;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-top: 14px;
       border-top: 1px solid var(--border);
+      color: var(--text);
     }
 
     /* Lately I've Been Into + Vinyl Card */
@@ -378,13 +470,18 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: border-color 0.2s ease;
+    }
+
+    .bento-item:hover {
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
     }
 
     .bento-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.7rem;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -430,7 +527,7 @@
 
     .resume-date {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       padding-top: 3px;
     }
@@ -441,8 +538,9 @@
     }
 
     .resume-org {
-      font-size: 0.92rem;
-      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--accent);
       margin-bottom: 8px;
     }
 
@@ -468,15 +566,30 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
+      transition: border-color 0.2s ease;
+    }
+
+    .skill-group:hover {
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
     }
 
     .skill-group-title {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .skill-group-title span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
     .skills-wrap {
@@ -486,15 +599,22 @@
     }
 
     .skill-pill {
-      padding: 6px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 6px 11px;
       border-radius: 8px;
       background: var(--surface-alt);
       border: 1px solid var(--border);
-      font-size: 0.84rem;
+      font-size: 0.8rem;
       font-weight: 500;
+      transition: all 0.15s ease;
     }
 
-    /* Favorite Quote Block (Inspired by upriyanshu.tech) */
+    .skill-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Favorite Quote Block */
     .quote-section {
       padding: 64px 0;
       border-bottom: 1px solid var(--border);
@@ -514,7 +634,7 @@
       font-size: 4rem;
       line-height: 0.8;
       color: var(--accent);
-      opacity: 0.45;
+      opacity: 0.5;
       margin-bottom: 8px;
     }
 
@@ -528,7 +648,7 @@
 
     .quote-author {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -600,7 +720,7 @@
     }
 
     .cmd-item:hover {
-      border-color: var(--text-muted);
+      border-color: var(--accent);
     }
 
     /* Sidekick Widget */
@@ -610,11 +730,11 @@
       right: 24px;
       background: var(--text);
       color: var(--bg);
-      border: none;
+      border: 1px solid var(--border);
       border-radius: 999px;
       padding: 12px 20px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
       font-weight: 500;
       cursor: pointer;
       box-shadow: 0 8px 28px rgba(0,0,0,0.2);
@@ -657,7 +777,7 @@
     }
 
     .sidekick-q:hover {
-      border-color: var(--text-muted);
+      border-color: var(--accent);
     }
 
     footer {
@@ -743,18 +863,38 @@
           Email me →
         </a>
       </div>
+
+      <!-- Clean Cyber Telemetry Strip -->
+      <div class="telemetry-bar">
+        <div class="telemetry-item">
+          <span class="telemetry-key">STATUS:</span>
+          <span class="telemetry-ok">● ACTIVE DEFENSE</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-key">SENSORS:</span>
+          <span>WIRESHARK · ZEEK · SNORT · NMAP</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-key">OS:</span>
+          <span>KALI / UBUNTU / MACOS</span>
+        </div>
+      </div>
     </section>
 
     <!-- Selected Work & Research -->
     <section id="work">
       <div class="section-header">
         <h2 class="section-title">Academic Projects &amp; Featured Work</h2>
-        <span class="section-subtitle">Click a card for details</span>
+        <span class="section-subtitle">Click a module to inspect</span>
       </div>
 
       <div class="projects-grid">
-        <div class="project-card" onclick="openModal('iot')">
+        <div class="project-card" onclick="openModal('iot')" onmouseenter="scrambleText(this.querySelector('.pcap-id'), 'PCAP_01 // IOT_METADATA')">
           <div>
+            <div class="pcap-header">
+              <span class="pcap-id">PCAP_01 // IOT_METADATA</span>
+              <span>2026</span>
+            </div>
             <div class="card-tags">
               <span class="tag">Master's Thesis</span>
               <span class="tag">Wireshark</span>
@@ -767,13 +907,17 @@
             </p>
           </div>
           <div class="card-footer">
-            <span>View Details · 2026</span>
+            <span>Inspect Packet Study</span>
             <span>→</span>
           </div>
         </div>
 
-        <div class="project-card" onclick="openModal('sysadmin')">
+        <div class="project-card" onclick="openModal('sysadmin')" onmouseenter="scrambleText(this.querySelector('.pcap-id'), 'SYS_02 // ATA_SANITIZE')">
           <div>
+            <div class="pcap-header">
+              <span class="pcap-id">SYS_02 // ATA_SANITIZE</span>
+              <span>2026</span>
+            </div>
             <div class="card-tags">
               <span class="tag">ATA Secure Erase</span>
               <span class="tag">Log Auditing</span>
@@ -785,13 +929,17 @@
             </p>
           </div>
           <div class="card-footer">
-            <span>View Details · 2026</span>
+            <span>Inspect Protocol Log</span>
             <span>→</span>
           </div>
         </div>
 
-        <div class="project-card" onclick="openModal('snorkel')">
+        <div class="project-card" onclick="openModal('snorkel')" onmouseenter="scrambleText(this.querySelector('.pcap-id'), 'AI_03 // MODEL_EVAL')">
           <div>
+            <div class="pcap-header">
+              <span class="pcap-id">AI_03 // MODEL_EVAL</span>
+              <span>2026</span>
+            </div>
             <div class="card-tags">
               <span class="tag">Snorkel AI</span>
               <span class="tag">LLM Evaluation</span>
@@ -803,13 +951,17 @@
             </p>
           </div>
           <div class="card-footer">
-            <span>View Details · 2026</span>
+            <span>Inspect AI Benchmark</span>
             <span>→</span>
           </div>
         </div>
 
-        <div class="project-card" onclick="openModal('lab')">
+        <div class="project-card" onclick="openModal('lab')" onmouseenter="scrambleText(this.querySelector('.pcap-id'), 'NET_04 // LAB_DEFENSE')">
           <div>
+            <div class="pcap-header">
+              <span class="pcap-id">NET_04 // LAB_DEFENSE</span>
+              <span>2025 to 2026</span>
+            </div>
             <div class="card-tags">
               <span class="tag">Troy University</span>
               <span class="tag">Lab Networks</span>
@@ -821,14 +973,14 @@
             </p>
           </div>
           <div class="card-footer">
-            <span>View Details · Sept 2025 to Dec 2026</span>
+            <span>Inspect Lab Operations</span>
             <span>→</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Lately I've Been Into (Marian + Priyanshu hybrid) -->
+    <!-- Lately I've Been Into -->
     <section>
       <div class="section-header">
         <h2 class="section-title">Lately I've Been Into</h2>
@@ -849,15 +1001,24 @@
           </div>
         </div>
         <div class="bento-item">
-          <div class="bento-label">PACKET LAB</div>
+          <div class="bento-label">
+            <span>PACKET LAB</span>
+            <span style="color:var(--accent);">●</span>
+          </div>
           <div class="bento-value">Zeek &amp; Snort Telemetry</div>
         </div>
         <div class="bento-item">
-          <div class="bento-label">FOOTBALL</div>
+          <div class="bento-label">
+            <span>FOOTBALL</span>
+            <span>CFC</span>
+          </div>
           <div class="bento-value">Chelsea FC Matchday</div>
         </div>
         <div class="bento-item">
-          <div class="bento-label">AI SYSTEMS</div>
+          <div class="bento-label">
+            <span>AI SYSTEMS</span>
+            <span>LLM</span>
+          </div>
           <div class="bento-value">AI Training @ Snorkel AI</div>
         </div>
       </div>
@@ -867,7 +1028,7 @@
     <section id="experience">
       <div class="section-header">
         <h2 class="section-title">Experience &amp; Education</h2>
-        <span class="section-subtitle">Timeline</span>
+        <span class="section-subtitle">Verified Timeline</span>
       </div>
 
       <div class="resume-list">
@@ -919,16 +1080,19 @@
       </div>
     </section>
 
-    <!-- Technical & Soft Skills (Exact match to your uploaded Resume) -->
+    <!-- Technical & Soft Skills -->
     <section id="skills">
       <div class="section-header">
         <h2 class="section-title">Technical &amp; Soft Skills</h2>
-        <span class="section-subtitle">Tech Stack</span>
+        <span class="section-subtitle">Security Stack</span>
       </div>
 
       <div class="skills-categories">
         <div class="skill-group">
-          <div class="skill-group-title">Cybersecurity Tools</div>
+          <div class="skill-group-title">
+            <span>Cybersecurity Tools</span>
+            <span class="dot"></span>
+          </div>
           <div class="skills-wrap">
             <span class="skill-pill">Wireshark</span>
             <span class="skill-pill">Zeek</span>
@@ -940,7 +1104,10 @@
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-title">Security Concepts</div>
+          <div class="skill-group-title">
+            <span>Security Concepts</span>
+            <span class="dot"></span>
+          </div>
           <div class="skills-wrap">
             <span class="skill-pill">Network Security</span>
             <span class="skill-pill">IDS / IPS</span>
@@ -951,7 +1118,10 @@
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-title">Programming &amp; Operating Systems</div>
+          <div class="skill-group-title">
+            <span>Programming &amp; Operating Systems</span>
+            <span class="dot"></span>
+          </div>
           <div class="skills-wrap">
             <span class="skill-pill">Python</span>
             <span class="skill-pill">Java</span>
@@ -963,7 +1133,10 @@
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-title">Soft Skills</div>
+          <div class="skill-group-title">
+            <span>Soft Skills</span>
+            <span class="dot"></span>
+          </div>
           <div class="skills-wrap">
             <span class="skill-pill">Problem Solving</span>
             <span class="skill-pill">Critical Thinking</span>
@@ -1024,7 +1197,29 @@
   </div>
 
   <script>
-    // Dual Timezone Clock (Inspired by upriyanshu.tech: Your Time vs My Time)
+    // Subtle Cyber Cipher Decryption Effect on Hover
+    const cipherChars = "0123456789ABCDEF/_#";
+    function scrambleText(el, targetText) {
+      if (!el || el.dataset. running === "true") return;
+      el.dataset.running = "true";
+      let iteration = 0;
+      const interval = setInterval(() => {
+        el.textContent = targetText
+          .split("")
+          .map((char, idx) => {
+            if (idx < iteration || char === " ") return targetText[idx];
+            return cipherChars[Math.floor(Math.random() * cipherChars.length)];
+          })
+          .join("");
+        if (iteration >= targetText.length) {
+          clearInterval(interval);
+          el.dataset.running = "false";
+        }
+        iteration += 1.5;
+      }, 22);
+    }
+
+    // Dual Timezone Clock
     function updateClock() {
       const now = new Date();
       const myTime = now.toLocaleTimeString('en-US', {
@@ -1046,7 +1241,7 @@
     updateClock();
     setInterval(updateClock, 10000);
 
-    // Role Rotator (Inspired by upriyanshu.tech)
+    // Role Rotator
     const roles = [
       "Cybersecurity Specialist",
       "AI Trainer @ Snorkel AI",
