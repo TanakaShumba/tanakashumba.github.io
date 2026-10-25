@@ -65,6 +65,118 @@
       overflow-x: hidden;
     }
 
+    /* Animated Lion Splash Screen */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out), visibility 0.6s;
+    }
+
+    .splash-screen.hidden {
+      opacity: 0;
+      transform: scale(1.04);
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .splash-lion-box {
+      width: 96px;
+      height: 96px;
+      border-radius: 26px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15);
+      position: relative;
+      margin-bottom: 18px;
+      animation: lionBoxPulse 1.4s var(--ease-out) forwards;
+    }
+
+    .splash-lion-box::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 30px;
+      border: 1.5px solid var(--accent-bright);
+      opacity: 0;
+      animation: lionRingWave 1.2s ease-out 0.35s forwards;
+    }
+
+    .splash-lion-svg {
+      width: 58px;
+      height: 58px;
+      color: var(--text);
+    }
+
+    .splash-lion-svg path {
+      stroke-dasharray: 160;
+      stroke-dashoffset: 160;
+      animation: drawLion 1.05s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+    }
+
+    .splash-lion-svg path.accent-stroke {
+      stroke: var(--accent);
+      animation-delay: 0.2s;
+    }
+
+    .splash-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0;
+      transform: translateY(6px);
+      animation: fadeUpLabel 0.5s var(--ease-out) 0.35s forwards;
+    }
+
+    .splash-bar {
+      width: 120px;
+      height: 2px;
+      background: var(--border);
+      border-radius: 99px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+
+    .splash-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+      animation: fillBar 1.15s var(--ease-out) forwards;
+    }
+
+    @keyframes drawLion {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes lionBoxPulse {
+      0% { transform: scale(0.86); opacity: 0; }
+      50% { transform: scale(1.03); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes lionRingWave {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      100% { transform: scale(1.22); opacity: 0; }
+    }
+
+    @keyframes fadeUpLabel {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fillBar {
+      to { width: 100%; }
+    }
+
     /* Ambient Soft Top Glow */
     .ambient-glow {
       position: fixed;
@@ -144,6 +256,7 @@
       font-weight: 600;
       font-size: 0.95rem;
       letter-spacing: -0.01em;
+      cursor: pointer;
     }
 
     .lion-badge {
@@ -255,7 +368,7 @@
 
     /* Hero */
     .hero {
-      padding: 84px 0 56px;
+      padding: 80px 0 54px;
     }
 
     .hero-top-meta {
@@ -293,11 +406,11 @@
 
     .hero h1 {
       font-family: 'Instrument Serif', serif;
-      font-size: clamp(3rem, 6.4vw, 4.7rem);
+      font-size: clamp(2.85rem, 6vw, 4.45rem);
       font-weight: 400;
-      line-height: 1.05;
+      line-height: 1.06;
       letter-spacing: -0.02em;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .hero h1 em {
@@ -319,11 +432,46 @@
       border-radius: 4px;
     }
 
+    /* Cybersecurity Pillars Strip */
+    .cyber-pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .cyber-pillar-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      padding: 5px 11px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s var(--ease-out), border-color 0.2s ease;
+    }
+
+    .cyber-pillar-chip:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .cyber-pillar-chip span.chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-bright);
+    }
+
     .hero-sub {
-      font-size: 1.08rem;
+      font-size: 1.06rem;
       color: var(--text-muted);
-      max-width: 690px;
-      margin-bottom: 32px;
+      max-width: 720px;
+      margin-bottom: 30px;
     }
 
     .status-bar {
@@ -515,7 +663,6 @@
       overflow: hidden;
     }
 
-    /* Interactive Cursor Spotlight Layer */
     .project-card::after {
       content: "";
       position: absolute;
@@ -1036,12 +1183,28 @@
 </head>
 <body>
 
+  <!-- Animated Shumba Lion Splash Screen -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-lion-box">
+      <svg class="splash-lion-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 3L22.5 6.5L28 5.5L29.5 11L33 15.5L30.5 21L31.5 26.5L26 29.5L22.5 33.5L18 31.5L13.5 33.5L10 29.5L4.5 26.5L5.5 21L3 15.5L6.5 11L8 5.5L13.5 6.5L18 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path class="accent-stroke" d="M12 14.5L14.5 16.5M24 14.5L21.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path class="accent-stroke" d="M18 15V20.5M18 20.5L15.5 22.5M18 20.5L20.5 22.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.5 25.5C15 27 21 27 22.5 25.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="splash-label">TANAKA SHUMBA // SECURITY &amp; AI</div>
+    <div class="splash-bar">
+      <div class="splash-bar-fill"></div>
+    </div>
+  </div>
+
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="ambient-glow"></div>
 
   <header>
     <div class="container nav-inner">
-      <a href="#" class="brand" aria-label="Tanaka Shumba Home" title="Shumba">
+      <a href="#" class="brand" onclick="replaySplash(event)" aria-label="Tanaka Shumba Home" title="Click to replay Lion animation">
         <span class="lion-badge">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 3L22.5 6.5L28 5.5L29.5 11L33 15.5L30.5 21L31.5 26.5L26 29.5L22.5 33.5L18 31.5L13.5 33.5L10 29.5L4.5 26.5L5.5 21L3 15.5L6.5 11L8 5.5L13.5 6.5L18 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
@@ -1072,16 +1235,25 @@
         <div class="hero-greeting">
           <span>Hi, I'm Tanaka Shumba</span>
           <span>·</span>
-          <span class="role-rotator" id="roleRotator">Cybersecurity Specialist</span>
+          <span class="role-rotator" id="roleRotator">Cybersecurity Engineer</span>
         </div>
       </div>
 
       <h1 class="reveal active delay-1">
-        I defend networks, <em>train AI systems</em>, &amp; analyze traffic metadata.
+        I defend enterprise networks, <em>hunt threats</em>, train AI systems, &amp; engineer <em>resilient infrastructure</em>.
       </h1>
 
+      <!-- Full Cybersecurity Scope Pills -->
+      <div class="cyber-pillars reveal active delay-1">
+        <span class="cyber-pillar-chip"><span class="chip-dot"></span>Network Defense &amp; IDS/IPS</span>
+        <span class="cyber-pillar-chip"><span class="chip-dot"></span>Threat Detection &amp; Incident Response</span>
+        <span class="cyber-pillar-chip"><span class="chip-dot"></span>Packet &amp; Metadata Telemetry</span>
+        <span class="cyber-pillar-chip"><span class="chip-dot"></span>Vulnerability Assessment &amp; Hardening</span>
+        <span class="cyber-pillar-chip"><span class="chip-dot"></span>AI Model Training &amp; Evaluation</span>
+      </div>
+
       <p class="hero-sub reveal active delay-2">
-        Detail-oriented professional holding both an M.S. in Computer Science and a B.S. in Cybersecurity, and serving as an AI Trainer at Snorkel AI. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, and Kali Linux. Seeking a dynamic cybersecurity role to apply academic training and hands-on technical experience to actively defend enterprise infrastructure.
+        Detail-oriented cybersecurity professional holding both an M.S. in Computer Science and a B.S. in Cybersecurity, and serving as an AI Trainer at Snorkel AI. Experienced across the full defensive lifecycle: deep packet inspection, intrusion detection, vulnerability assessment, firewall and access control engineering, hardware sanitization, and incident response using Wireshark, Zeek, Snort, Nmap, pfSense, and Kali Linux.
       </p>
 
       <div class="status-bar reveal active delay-3">
@@ -1101,12 +1273,12 @@
       <!-- Clean Cyber Telemetry Strip -->
       <div class="telemetry-bar reveal active delay-3">
         <div class="telemetry-item">
-          <span class="telemetry-key">STATUS:</span>
-          <span class="telemetry-ok">● ACTIVE DEFENSE</span>
+          <span class="telemetry-key">OPERATIONS:</span>
+          <span class="telemetry-ok">● SOC / SECENG / AI EVAL</span>
         </div>
         <div class="telemetry-item">
-          <span class="telemetry-key">SENSORS:</span>
-          <span>WIRESHARK · ZEEK · SNORT · NMAP</span>
+          <span class="telemetry-key">ARSENAL:</span>
+          <span>WIRESHARK · ZEEK · SNORT · NMAP · PFSENSE</span>
         </div>
         <div class="telemetry-item">
           <span class="telemetry-key">OS:</span>
@@ -1119,8 +1291,8 @@
   <!-- Smooth Editorial Marquee Ribbon -->
   <div class="marquee-wrap">
     <div class="marquee-track">
-      NETWORK SECURITY <span class="marquee-star">✦</span> PACKET TELEMETRY <span class="marquee-star">✦</span> AI MODEL EVALUATION <span class="marquee-star">✦</span> INCIDENT RESPONSE <span class="marquee-star">✦</span> ZEEK &amp; WIRESHARK <span class="marquee-star">✦</span> THREAT DETECTION <span class="marquee-star">✦</span> KALI LINUX <span class="marquee-star">✦</span>
-      NETWORK SECURITY <span class="marquee-star">✦</span> PACKET TELEMETRY <span class="marquee-star">✦</span> AI MODEL EVALUATION <span class="marquee-star">✦</span> INCIDENT RESPONSE <span class="marquee-star">✦</span> ZEEK &amp; WIRESHARK <span class="marquee-star">✦</span> THREAT DETECTION <span class="marquee-star">✦</span> KALI LINUX <span class="marquee-star">✦</span>
+      NETWORK SECURITY <span class="marquee-star">✦</span> INTRUSION DETECTION (IDS/IPS) <span class="marquee-star">✦</span> INCIDENT RESPONSE <span class="marquee-star">✦</span> VULNERABILITY ASSESSMENT <span class="marquee-star">✦</span> PACKET TELEMETRY <span class="marquee-star">✦</span> AI MODEL EVALUATION <span class="marquee-star">✦</span> ZEEK &amp; WIRESHARK <span class="marquee-star">✦</span> FIREWALL ARCHITECTURE <span class="marquee-star">✦</span>
+      NETWORK SECURITY <span class="marquee-star">✦</span> INTRUSION DETECTION (IDS/IPS) <span class="marquee-star">✦</span> INCIDENT RESPONSE <span class="marquee-star">✦</span> VULNERABILITY ASSESSMENT <span class="marquee-star">✦</span> PACKET TELEMETRY <span class="marquee-star">✦</span> AI MODEL EVALUATION <span class="marquee-star">✦</span> ZEEK &amp; WIRESHARK <span class="marquee-star">✦</span> FIREWALL ARCHITECTURE <span class="marquee-star">✦</span>
     </div>
   </div>
 
@@ -1441,18 +1613,39 @@
   </div>
 
   <script>
+    // Lion Splash Screen Controller
+    function hideSplash() {
+      const splash = document.getElementById('splashScreen');
+      if (splash) {
+        setTimeout(() => {
+          splash.classList.add('hidden');
+        }, 1250);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', hideSplash);
+
+    // Replay Lion Splash when clicking top-left Lion crest
+    function replaySplash(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const splash = document.getElementById('splashScreen');
+      const box = splash.querySelector('.splash-lion-box');
+      const clone = box.cloneNode(true);
+      box.parentNode.replaceChild(clone, box);
+      splash.classList.remove('hidden');
+      setTimeout(() => {
+        splash.classList.add('hidden');
+      }, 1300);
+    }
+
     // Smooth scroll without adding #skills or #work to the URL bar
-    document.querySelectorAll('header a[href^="#"]').forEach(link => {
+    document.querySelectorAll('header a.nav-item').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
-        if (!targetId) {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          const targetSection = document.getElementById(targetId);
-          if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-          }
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
         }
         history.replaceState(null, null, window.location.pathname);
       });
@@ -1530,12 +1723,13 @@
     updateClock();
     setInterval(updateClock, 10000);
 
-    // Role Rotator
+    // Expanded Cybersecurity Role Rotator
     const roles = [
-      "Cybersecurity Specialist",
-      "AI Trainer @ Snorkel AI",
-      "M.S. Computer Science",
-      "Network Traffic Analyst"
+      "Cybersecurity Engineer",
+      "Threat Detection & Incident Response",
+      "Network Security & IDS/IPS",
+      "Vulnerability & Risk Analyst",
+      "AI Trainer @ Snorkel AI"
     ];
     let roleIdx = 0;
     setInterval(() => {
@@ -1548,7 +1742,7 @@
         el.style.opacity = 1;
         el.style.transform = "translateY(0)";
       }, 220);
-    }, 3200);
+    }, 3000);
 
     // Optional Dark / Light Toggle (Starts in Light Mode by default)
     function toggleTheme() {
@@ -1706,7 +1900,7 @@
 
     function askSidekick(topic) {
       const answers = {
-        summary: "Tanaka holds an M.S. in Computer Science and a B.S. in Cybersecurity from Troy University, specializing in network monitoring, threat detection, and AI training.",
+        summary: "Tanaka holds an M.S. in Computer Science and a B.S. in Cybersecurity from Troy University, specializing in network defense, threat detection, incident response, and AI training.",
         role: "Tanaka works as an AI Trainer at Snorkel AI, focusing on AI dataset construction, technical prompt authoring, and evaluating model responses.",
         thesis: "His M.S. thesis at Troy University analyzes privacy leakage in smart home IoT devices by inspecting network traffic metadata using Zeek, Wireshark, Snort, and Kali Linux.",
         contact: "You can reach Tanaka directly at tanakashumba04@gmail.com or by phone at 334-482-0211."
