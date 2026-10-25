@@ -18,6 +18,8 @@
       --accent: #059669;
       --accent-bright: #10B981;
       --accent-soft: rgba(16, 185, 129, 0.12);
+      --gold: #D97706;
+      --gold-light: #F59E0B;
       --danger: #EF4444;
       --pill-bg: #EFECE6;
       --grid-color: rgba(20, 20, 22, 0.038);
@@ -36,6 +38,8 @@
       --accent: #10B981;
       --accent-bright: #34D399;
       --accent-soft: rgba(16, 185, 129, 0.15);
+      --gold: #F59E0B;
+      --gold-light: #FBBF24;
       --danger: #F87171;
       --pill-bg: #171B22;
       --grid-color: rgba(255, 255, 255, 0.03);
@@ -68,14 +72,14 @@
     }
 
     /* =====================================================
-       FULL-BODIED LION SWORD & SHIELD DEFENSE SPLASH
+       FULL-BODIED RAMPANT LION DRAWING SWORD & SHIELD
        ===================================================== */
     .splash-screen {
       position: fixed;
       inset: 0;
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 50% 42%, rgba(16, 185, 129, 0.15), transparent 58%),
+        radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.16), transparent 60%),
         linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
         linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
       background-size: 100% 100%, 40px 40px, 40px 40px;
@@ -94,179 +98,180 @@
       pointer-events: none;
     }
 
-    .defense-arena {
+    .defense-stage {
       position: relative;
-      width: 280px;
-      height: 280px;
+      width: 320px;
+      height: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .shield-outer-ring {
-      position: absolute;
-      width: 230px;
-      height: 230px;
-      border-radius: 50%;
-      border: 1.5px dashed rgba(16, 185, 129, 0.45);
-      animation: rotateRadar 9s linear infinite;
+    .guardian-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      filter: drop-shadow(0 14px 28px rgba(20, 20, 22, 0.12));
     }
 
-    .shield-barrier {
-      position: absolute;
-      width: 184px;
-      height: 184px;
-      border-radius: 50%;
-      border: 2px solid var(--accent-bright);
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 35%, rgba(16, 185, 129, 0.22) 100%);
-      box-shadow: 0 0 40px rgba(16, 185, 129, 0.22), inset 0 0 22px rgba(16, 185, 129, 0.18);
-      animation: shieldImpactPulse 2.1s ease-out forwards;
+    /* Rotating tactical ground & perimeter rings */
+    .tactical-ring {
+      transform-origin: 180px 160px;
+      animation: spinSlow 14s linear infinite;
     }
 
-    .radar-sweep {
-      position: absolute;
-      width: 184px;
-      height: 184px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, rgba(16, 185, 129, 0.32) 0deg, transparent 75deg);
-      animation: rotateRadar 1.5s linear infinite;
-      pointer-events: none;
+    /* Full-bodied Lion breathing & bracing stance */
+    .lion-full-body {
+      transform-origin: 175px 255px;
+      animation: lionStance 3.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .splash-lion-box {
-      width: 120px;
-      height: 120px;
-      border-radius: 30px;
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 20px 50px rgba(16, 185, 129, 0.24);
-      position: relative;
-      z-index: 4;
-      animation: lionRoarScale 2.1s var(--ease-out) forwards;
+    /* Tail whip animation */
+    .lion-tail {
+      transform-origin: 145px 215px;
+      animation: tailLash 1.5s ease-in-out infinite alternate;
     }
 
-    .splash-lion-svg {
-      width: 82px;
-      height: 82px;
-      color: var(--text);
+    /* RIGHT ARM + BROADSWORD: Starts sheathed at hip, draws high into air, slashes threats */
+    .sword-arm-group {
+      transform-origin: 162px 142px;
+      animation: drawAndSlashSword 3.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    /* Full-bodied lion & sword path animations */
-    .splash-lion-svg path.lion-figure {
-      stroke-dasharray: 400;
-      stroke-dashoffset: 400;
-      animation: drawFullLion 0.95s cubic-bezier(0.35, 0, 0.25, 1) forwards;
-    }
-
-    .splash-lion-svg path.sword-slash {
-      stroke: var(--accent-bright);
-      stroke-dasharray: 120;
-      stroke-dashoffset: 120;
-      animation: drawSwordBlade 0.75s cubic-bezier(0.35, 0, 0.25, 1) 0.3s forwards;
-      filter: drop-shadow(0 0 8px var(--accent-bright));
-    }
-
-    .splash-lion-svg path.shield-plate {
-      stroke: var(--accent);
-      stroke-dasharray: 180;
-      stroke-dashoffset: 180;
-      animation: drawShieldPlate 0.8s cubic-bezier(0.35, 0, 0.25, 1) 0.1s forwards;
-    }
-
-    /* Incoming Malicious Threat Vectors */
-    .threat-packet {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--danger);
-      box-shadow: 0 0 14px var(--danger);
+    /* Sword metallic unsheathe gleam */
+    .blade-gleam {
       opacity: 0;
-      z-index: 5;
+      animation: bladeFlash 3.1s ease-out forwards;
     }
 
-    .threat-1 {
-      top: 10px;
-      left: 10px;
-      animation: attackTopLeft 0.65s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
+    /* LEFT ARM + HEATER SHIELD: Raises forward & braces against incoming red attacks */
+    .shield-arm-group {
+      transform-origin: 188px 146px;
+      animation: raiseAndBlockShield 3.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .threat-2 {
-      top: 50%;
-      right: 2px;
-      animation: attackRight 0.65s cubic-bezier(0.4, 0, 0.2, 1) 0.75s forwards;
+    /* Emerald Dome Forcefield Flash on Shield Block */
+    .shield-dome-arc {
+      opacity: 0;
+      transform-origin: 242px 158px;
+      animation: domeImpactFlash 3.1s ease-out forwards;
     }
 
-    .threat-3 {
-      bottom: 12px;
-      left: 16px;
-      animation: attackBottomLeft 0.65s cubic-bezier(0.4, 0, 0.2, 1) 1.15s forwards;
+    /* Incoming Malicious Cyber Threat Bolts (Red -> Shatter on Shield/Sword) */
+    .cyber-bolt-1 {
+      opacity: 0;
+      animation: boltAttack1 3.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .cyber-bolt-2 {
+      opacity: 0;
+      animation: boltAttack2 3.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .cyber-bolt-3 {
+      opacity: 0;
+      animation: boltAttack3 3.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 
-    @keyframes attackTopLeft {
-      0% { transform: translate(0, 0) scale(0.8); opacity: 1; background: var(--danger); }
-      70% { transform: translate(56px, 56px) scale(1.15); opacity: 1; background: var(--danger); }
-      85% { transform: translate(48px, 48px) scale(2); opacity: 1; background: var(--accent-bright); box-shadow: 0 0 24px var(--accent-bright); }
-      100% { transform: translate(42px, 42px) scale(0); opacity: 0; }
-    }
-
-    @keyframes attackRight {
-      0% { transform: translate(0, -50%) scale(0.8); opacity: 1; background: var(--danger); }
-      70% { transform: translate(-50px, -50%) scale(1.15); opacity: 1; background: var(--danger); }
-      85% { transform: translate(-42px, -50%) scale(2); opacity: 1; background: var(--accent-bright); box-shadow: 0 0 24px var(--accent-bright); }
-      100% { transform: translate(-36px, -50%) scale(0); opacity: 0; }
-    }
-
-    @keyframes attackBottomLeft {
-      0% { transform: translate(0, 0) scale(0.8); opacity: 1; background: var(--danger); }
-      70% { transform: translate(52px, -52px) scale(1.15); opacity: 1; background: var(--danger); }
-      85% { transform: translate(44px, -44px) scale(2); opacity: 1; background: var(--accent-bright); box-shadow: 0 0 24px var(--accent-bright); }
-      100% { transform: translate(38px, -38px) scale(0); opacity: 0; }
-    }
-
-    @keyframes shieldImpactPulse {
-      0% { transform: scale(0.85); opacity: 0; }
-      20% { transform: scale(1); opacity: 1; }
-      42% { transform: scale(1.06); border-color: var(--accent-bright); box-shadow: 0 0 48px rgba(16, 185, 129, 0.55); }
-      60% { transform: scale(1.08); border-color: var(--accent-bright); box-shadow: 0 0 55px rgba(16, 185, 129, 0.6); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes lionRoarScale {
-      0% { transform: scale(0.85); }
-      42% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes rotateRadar {
+    @keyframes spinSlow {
       to { transform: rotate(360deg); }
     }
 
-    @keyframes drawFullLion {
-      to { stroke-dashoffset: 0; }
+    @keyframes tailLash {
+      0% { transform: rotate(-6deg); }
+      100% { transform: rotate(10deg); }
     }
 
-    @keyframes drawSwordBlade {
-      to { stroke-dashoffset: 0; }
+    @keyframes lionStance {
+      0% { transform: scale(0.92) translateY(8px); opacity: 0; }
+      15% { transform: scale(1) translateY(0); opacity: 1; }
+      38% { transform: scale(1.03) translateY(-3px); } /* Roars as sword is drawn */
+      58% { transform: scale(1.01) translateX(-3px); } /* Braces for shield block */
+      76% { transform: scale(1.04) translateX(4px); }  /* Lunges with sword slash */
+      100% { transform: scale(1) translateX(0); opacity: 1; }
     }
 
-    @keyframes drawShieldPlate {
-      to { stroke-dashoffset: 0; }
+    @keyframes drawAndSlashSword {
+      /* 0% - 15%: Reaching across body to scabbard at left hip */
+      0% { transform: rotate(118deg) translate(-12px, 10px) scale(0.88); }
+      15% { transform: rotate(105deg) translate(-8px, 6px) scale(0.92); }
+      /* 38%: Draws broadsword high above head! */
+      38% { transform: rotate(-28deg) translate(0, -6px) scale(1.05); }
+      /* 58%: Holds ready while shield blocks Threat 1 & 2 */
+      58% { transform: rotate(-18deg) translate(0, -2px) scale(1.02); }
+      /* 74%: Powerful forward sword slash to destroy Threat 3! */
+      74% { transform: rotate(52deg) translate(12px, 8px) scale(1.08); }
+      /* 90% - 100%: Heroic guard stance */
+      90%, 100% { transform: rotate(-8deg) translate(0, 0) scale(1); }
+    }
+
+    @keyframes bladeFlash {
+      0%, 22% { opacity: 0; }
+      35% { opacity: 1; filter: drop-shadow(0 0 14px #10B981); }
+      55% { opacity: 0.4; }
+      74% { opacity: 1; filter: drop-shadow(0 0 18px #10B981); }
+      100% { opacity: 0.7; }
+    }
+
+    @keyframes raiseAndBlockShield {
+      /* 0% - 18%: Shield lowered at side */
+      0% { transform: translate(-24px, 26px) rotate(22deg) scale(0.9); }
+      18% { transform: translate(-18px, 18px) rotate(14deg) scale(0.94); }
+      /* 40%: Snaps shield out in front of chest into guard position */
+      40% { transform: translate(6px, -4px) rotate(-6deg) scale(1.04); }
+      /* 54%: Absorbs Threat 1 impact & pushes back */
+      54% { transform: translate(-3px, 0px) rotate(3deg) scale(1.08); }
+      /* 66%: Absorbs Threat 2 impact */
+      66% { transform: translate(8px, -4px) rotate(-8deg) scale(1.09); }
+      /* 85% - 100%: Locked defensive wall */
+      85%, 100% { transform: translate(4px, -2px) rotate(-4deg) scale(1.02); }
+    }
+
+    @keyframes domeImpactFlash {
+      0%, 46% { opacity: 0; transform: scale(0.9); }
+      54% { opacity: 1; transform: scale(1.08); }
+      60% { opacity: 0.25; transform: scale(1); }
+      66% { opacity: 1; transform: scale(1.12); }
+      76% { opacity: 0.9; transform: scale(1.05); }
+      100% { opacity: 0.35; transform: scale(1); }
+    }
+
+    /* Threat 1: Fires from top-right -> Slams into Shield at 54% -> Shatters green */
+    @keyframes boltAttack1 {
+      0%, 38% { transform: translate(110px, -70px) scale(0.8); opacity: 0; }
+      42% { opacity: 1; }
+      53% { transform: translate(0px, 0px) scale(1.1); opacity: 1; }
+      57% { transform: translate(10px, -8px) scale(2.2); opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Threat 2: Fires from bottom-right -> Slams into Shield at 66% -> Shatters green */
+    @keyframes boltAttack2 {
+      0%, 50% { transform: translate(115px, 55px) scale(0.8); opacity: 0; }
+      54% { opacity: 1; }
+      65% { transform: translate(0px, 0px) scale(1.1); opacity: 1; }
+      69% { transform: translate(12px, 6px) scale(2.2); opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Threat 3: Fires from high-right -> Sliced in half by Sword Slash at 74% */
+    @keyframes boltAttack3 {
+      0%, 60% { transform: translate(105px, -85px) scale(0.8); opacity: 0; }
+      64% { opacity: 1; }
+      73% { transform: translate(-10px, -18px) scale(1.2); opacity: 1; }
+      78% { transform: translate(-2px, -24px) scale(2.5); opacity: 0; }
+      100% { opacity: 0; }
     }
 
     .splash-status {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 6px;
-      min-height: 20px;
+      min-height: 22px;
+      text-align: center;
     }
 
     .splash-sub {
@@ -277,7 +282,7 @@
     }
 
     .splash-bar {
-      width: 170px;
+      width: 200px;
       height: 3px;
       background: var(--border);
       border-radius: 99px;
@@ -287,16 +292,16 @@
     .splash-bar-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-bright));
-      animation: fillBar 1.95s var(--ease-out) forwards;
+      background: linear-gradient(90deg, var(--gold), var(--accent-bright));
+      animation: fillBar 2.9s var(--ease-out) forwards;
     }
 
     .splash-skip {
-      margin-top: 18px;
+      margin-top: 16px;
       background: transparent;
       border: none;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       cursor: pointer;
       text-decoration: underline;
@@ -390,8 +395,8 @@
     }
 
     .lion-badge {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
       background: var(--surface);
       border: 1px solid var(--border);
@@ -410,8 +415,8 @@
     }
 
     .lion-badge svg {
-      width: 22px;
-      height: 22px;
+      width: 28px;
+      height: 28px;
     }
 
     .brand-dot {
@@ -1313,33 +1318,169 @@
 </head>
 <body>
 
-  <!-- Animated Full-Bodied Lion Sword & Shield Defense Splash Screen -->
+  <!-- =========================================================================
+       FULL-BODIED RAMPANT LION DRAWING SWORD & RAISING SHIELD SPLASH SCREEN
+       ========================================================================= -->
   <div class="splash-screen" id="splashScreen">
-    <div class="defense-arena" id="defenseArena">
-      <div class="shield-outer-ring"></div>
-      <div class="shield-barrier"></div>
-      <div class="radar-sweep"></div>
+    <div class="defense-stage" id="defenseArena">
+      <svg class="guardian-svg" viewBox="0 0 360 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="lionGold" x1="110" y1="60" x2="220" y2="270" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#F59E0B" />
+            <stop offset="55%" stop-color="#D97706" />
+            <stop offset="100%" stop-color="#92400E" />
+          </linearGradient>
+          <linearGradient id="maneDark" x1="115" y1="65" x2="185" y2="165" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#B45309" />
+            <stop offset="100%" stop-color="#451A03" />
+          </linearGradient>
+          <linearGradient id="steelBlade" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="50%" stop-color="#CBD5E1" />
+            <stop offset="100%" stop-color="#64748B" />
+          </linearGradient>
+          <linearGradient id="shieldEmerald" x1="210" y1="100" x2="265" y2="215" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#10B981" />
+            <stop offset="100%" stop-color="#064E3B" />
+          </linearGradient>
+        </defs>
 
-      <!-- Incoming Malicious Threat Packets -->
-      <div class="threat-packet threat-1"></div>
-      <div class="threat-packet threat-2"></div>
-      <div class="threat-packet threat-3"></div>
+        <!-- Tactical Radar Perimeter Ring -->
+        <circle class="tactical-ring" cx="180" cy="160" r="132" stroke="rgba(16, 185, 129, 0.35)" stroke-width="1.5" stroke-dasharray="8 6" />
+        <ellipse cx="180" cy="272" rx="95" ry="14" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.2" />
 
-      <!-- Full-Bodied Lion Drawing Sword and Shield Core -->
-      <div class="splash-lion-box">
-        <svg class="splash-lion-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Full-Bodied Lion Silhouette / Mane / Paws -->
-          <path class="lion-figure" d="M32 8C27 8 23 12 23 17C23 20 25 22 28 24C23 26 18 31 18 38C18 45 24 50 32 50C40 50 46 45 46 38C46 31 41 26 36 24C39 22 41 20 41 17C41 12 37 8 32 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <!-- Reinforced Security Shield in Left Paw -->
-          <path class="shield-plate" d="M16 28C16 24 21 21 24 20V38C21 38 16 34 16 28Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-          <!-- Glowing Emerald Sword Drawn in Right Paw -->
-          <path class="sword-slash" d="M48 16L32 40M30 42L26 46" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
-        </svg>
-      </div>
+        <!-- ===============================================================
+             RIGHT ARM + BROADSWORD (Draws from scabbard -> Raises -> Slashes)
+             =============================================================== -->
+        <g class="sword-arm-group">
+          <!-- Muscular Right Forelimb & Shoulder -->
+          <path d="M162 142 C152 128, 146 112, 152 96 C156 88, 166 88, 170 96 C172 110, 172 128, 168 144 Z" fill="url(#lionGold)" stroke="#451A03" stroke-width="2" />
+          <!-- Lion Claws Gripping Sword Hilt -->
+          <circle cx="158" cy="92" r="8" fill="#D97706" stroke="#451A03" stroke-width="2" />
+          <!-- Sword Pommel & Grip -->
+          <circle cx="158" cy="105" r="5" fill="#F59E0B" stroke="#451A03" stroke-width="1.5" />
+          <rect x="155" y="86" width="6" height="16" rx="2" fill="#451A03" />
+          <!-- Cruciform Gold Crossguard -->
+          <path d="M140 86 L176 86 L173 81 L143 81 Z" fill="#FBBF24" stroke="#451A03" stroke-width="1.5" />
+          <!-- Double-Edged Broadsword Blade & Center Fuller -->
+          <polygon points="153,81 163,81 165,18 158,4 151,18" fill="url(#steelBlade)" stroke="#0F172A" stroke-width="1.8" />
+          <line x1="158" y1="78" x2="158" y2="14" stroke="#10B981" stroke-width="2" />
+          <!-- Glowing Cyber Edge Gleam -->
+          <polygon class="blade-gleam" points="151,81 165,81 167,16 158,0 149,16" fill="rgba(16, 185, 129, 0.45)" />
+        </g>
+
+        <!-- ===============================================================
+             FULL-BODIED ANATOMICAL RAMPANT LION (Head, Mane, Torso, Legs, Tail)
+             =============================================================== -->
+        <g class="lion-full-body">
+          <!-- S-Curved Lion Tail with Tufted Tip -->
+          <g class="lion-tail">
+            <path d="M145 215 C112 208, 95 178, 108 150 C118 130, 102 112, 92 118" stroke="url(#lionGold)" stroke-width="7" stroke-linecap="round" fill="none" />
+            <path d="M145 215 C112 208, 95 178, 108 150 C118 130, 102 112, 92 118" stroke="#451A03" stroke-width="1.8" stroke-linecap="round" fill="none" />
+            <!-- Tail Tuft -->
+            <path d="M92 118 C82 112, 78 122, 85 130 C92 136, 100 128, 92 118 Z" fill="url(#maneDark)" stroke="#451A03" stroke-width="1.8" />
+          </g>
+
+          <!-- Back Left Hind Leg (Planted firmly) -->
+          <path d="M150 205 C140 225, 134 245, 128 262 L148 266 L154 260 C156 244, 162 226, 168 210 Z" fill="#B45309" stroke="#451A03" stroke-width="2" stroke-linejoin="round" />
+          <!-- Back Left Paw & Claws -->
+          <path d="M126 262 C126 257, 136 256, 150 262 L152 268 L124 268 Z" fill="#B45309" stroke="#451A03" stroke-width="2" />
+
+          <!-- Muscular Lion Torso, Chest & Haunches -->
+          <path d="M154 128 C184 126, 206 146, 202 174 C198 194, 190 210, 194 226 L160 226 C144 214, 142 192, 146 168 C148 152, 148 138, 154 128 Z" fill="url(#lionGold)" stroke="#451A03" stroke-width="2.2" stroke-linejoin="round" />
+          <!-- Chest & Rib Definition Lines -->
+          <path d="M188 152 C178 158, 174 170, 178 182" stroke="#92400E" stroke-width="2" stroke-linecap="round" />
+          <path d="M182 168 C174 172, 170 182, 174 192" stroke="#92400E" stroke-width="1.8" stroke-linecap="round" />
+
+          <!-- Front Right Hind Leg (Stepping forward) -->
+          <path d="M174 212 C182 228, 192 246, 198 262 L218 266 L216 258 C206 242, 198 224, 192 208 Z" fill="url(#lionGold)" stroke="#451A03" stroke-width="2.2" stroke-linejoin="round" />
+          <!-- Front Right Paw & Claws -->
+          <path d="M196 262 C198 256, 212 256, 224 262 L226 268 L194 268 Z" fill="url(#lionGold)" stroke="#451A03" stroke-width="2" />
+
+          <!-- Sword Scabbard Strapped at Hip -->
+          <path d="M135 182 L178 164" stroke="#451A03" stroke-width="3.5" stroke-linecap="round" />
+          <polygon points="112,232 120,236 162,174 154,170" fill="#1E293B" stroke="#F59E0B" stroke-width="1.8" />
+
+          <!-- Flowing Spiked Royal Mane -->
+          <path d="M168 74 
+                   L154 66 L156 78 
+                   L138 74 L144 88 
+                   L126 90 L136 104 
+                   L122 112 L136 124 
+                   L128 138 L146 144 
+                   L142 158 L164 156 
+                   L182 146 L186 122 
+                   L182 92 Z" 
+                fill="url(#maneDark)" stroke="#270E02" stroke-width="2.2" stroke-linejoin="round" />
+
+          <!-- Inner Golden Mane Layer -->
+          <path d="M168 82 L152 80 L156 92 L142 96 L150 108 L138 118 L152 126 L148 140 L170 140 L180 120 Z" fill="#D97706" stroke="#451A03" stroke-width="1.6" stroke-linejoin="round" />
+
+          <!-- Fierce Roaring Lion Head, Brow, Snout & Fangs -->
+          <path d="M166 82 
+                   C180 80, 192 86, 196 94 
+                   L210 98 
+                   L208 108 
+                   L194 110 
+                   L192 115 
+                   L204 118 
+                   L200 126 
+                   C188 128, 176 124, 168 118 Z" 
+                fill="url(#lionGold)" stroke="#451A03" stroke-width="2.2" stroke-linejoin="round" />
+          <!-- Roaring Mouth Interior & White Fangs -->
+          <path d="M194 110 L205 110 L203 118 L192 115 Z" fill="#7F1D1D" />
+          <polygon points="203,109 206,109 205,114" fill="#FFFFFF" />
+          <polygon points="200,118 203,118 202,114" fill="#FFFFFF" />
+          <!-- Glowing Emerald Cyber Eye -->
+          <polygon points="184,93 192,91 190,96 183,96" fill="#10B981" />
+          <!-- Royal Crown Crest -->
+          <polygon points="164,80 168,66 175,74 182,64 188,74 194,68 192,82" fill="#FBBF24" stroke="#451A03" stroke-width="1.8" stroke-linejoin="round" />
+        </g>
+
+        <!-- ===============================================================
+             LEFT ARM + HERALDIC HEATER SHIELD (Swings forward & blocks bolts)
+             =============================================================== -->
+        <g class="shield-arm-group">
+          <!-- Left Forelimb Holding Shield -->
+          <path d="M186 146 C198 146, 214 148, 226 152 L226 166 C212 166, 196 162, 184 158 Z" fill="url(#lionGold)" stroke="#451A03" stroke-width="2" />
+          <!-- Heraldic Heater Shield (Angled 3/4 view) -->
+          <path d="M214 112 
+                   L252 104 
+                   L252 162 
+                   C252 192, 233 212, 233 220 
+                   C233 212, 214 192, 214 162 Z" 
+                fill="url(#shieldEmerald)" stroke="#FBBF24" stroke-width="3.2" stroke-linejoin="round" />
+          <!-- Shield Inner Trim & Gold Cross -->
+          <path d="M233 112 L233 210 M218 152 L248 146" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round" />
+          <!-- Center Glowing Shield Boss -->
+          <circle cx="233" cy="150" r="7" fill="#FBBF24" stroke="#064E3B" stroke-width="2" />
+        </g>
+
+        <!-- Emerald Energy Forcefield Arc on Shield Block -->
+        <path class="shield-dome-arc" d="M242 74 C282 110, 282 206, 242 242" stroke="#10B981" stroke-width="4" stroke-linecap="round" fill="none" filter="drop-shadow(0 0 12px #10B981)" />
+
+        <!-- ===============================================================
+             INCOMING MALICIOUS RED THREAT BOLTS (Blocked by Shield & Sword)
+             =============================================================== -->
+        <g class="cyber-bolt-1">
+          <line x1="258" y1="132" x2="292" y2="112" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
+          <circle cx="256" cy="133" r="6" fill="#EF4444" filter="drop-shadow(0 0 10px #EF4444)" />
+        </g>
+
+        <g class="cyber-bolt-2">
+          <line x1="258" y1="176" x2="294" y2="192" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
+          <circle cx="256" cy="175" r="6" fill="#EF4444" filter="drop-shadow(0 0 10px #EF4444)" />
+        </g>
+
+        <g class="cyber-bolt-3">
+          <line x1="242" y1="102" x2="278" y2="78" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
+          <circle cx="240" cy="104" r="6" fill="#EF4444" filter="drop-shadow(0 0 10px #EF4444)" />
+        </g>
+      </svg>
     </div>
 
-    <div class="splash-status" id="splashStatus">SHUMBA DEFENSE // DRAWING SWORD &amp; SHIELD...</div>
-    <div class="splash-sub">TANAKA SHUMBA · CYBERSECURITY DEFENSE</div>
+    <div class="splash-status" id="splashStatus">SHUMBA GUARDIAN // DRAWING SWORD &amp; SHIELD...</div>
+    <div class="splash-sub">TANAKA SHUMBA · ACTIVE CYBERSECURITY DEFENSE</div>
     <div class="splash-bar">
       <div class="splash-bar-fill"></div>
     </div>
@@ -1353,10 +1494,16 @@
     <div class="container nav-inner">
       <a href="#" class="brand" onclick="replaySplash(event)" aria-label="Tanaka Shumba Home" title="Click to replay Full-Bodied Lion Defense animation">
         <span class="lion-badge">
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 5C15 5 13 7 13 10C13 12 14 13 16 14C13 15 10 18 10 22C10 26 13 29 18 29C23 29 26 26 26 22C26 18 23 15 20 14C22 13 23 12 23 10C23 7 21 5 18 5Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M9 16C9 14 12 12 14 11V21C12 21 9 19 9 16Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M27 9L18 23" stroke="currentColor" stroke-width="2"/>
+          <!-- Mini Rampant Lion with Sword & Shield Icon -->
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sword -->
+            <path d="M18 22 L10 6 M8 20 L20 16" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" />
+            <!-- Full-Bodied Rampant Lion Silhouette -->
+            <path d="M28 12 C34 10, 40 14, 40 20 C36 22, 38 28, 38 36 C38 44, 34 50, 38 56 L30 56 C28 48, 26 44, 24 44 C20 44, 18 50, 16 56 L10 56 C12 46, 16 38, 18 30 C16 24, 20 14, 28 12 Z" fill="currentColor" />
+            <!-- Tail -->
+            <path d="M16 42 C8 38, 6 28, 12 24" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+            <!-- Shield -->
+            <path d="M42 22 L56 18 L56 36 C56 46, 49 52, 49 54 C49 52, 42 46, 42 36 Z" fill="#10B981" stroke="currentColor" stroke-width="2.5" />
           </svg>
         </span>
       </a>
@@ -1805,7 +1952,7 @@
   </div>
 
   <script>
-    // Full-Bodied Lion Sword & Shield Defense Splash Screen Controller
+    // Full-Bodied Rampant Lion Sword & Shield Defense Controller
     let splashTimers = [];
 
     function runDefenseSequence() {
@@ -1816,23 +1963,23 @@
       const status = document.getElementById('splashStatus');
       if (!splash || !status) return;
 
-      status.textContent = "SHUMBA DEFENSE // DRAWING SWORD & SHIELD...";
+      status.textContent = "SHUMBA GUARDIAN // UNSHEATHING BROADSWORD & SHIELD...";
 
       splashTimers.push(setTimeout(() => {
-        status.textContent = "THREAT_01 DETECTED -> BLOCKED BY SHIELD";
-      }, 650));
+        status.textContent = "SWORD DRAWN // SHIELD LOCKED IN GUARD STANCE";
+      }, 950));
 
       splashTimers.push(setTimeout(() => {
-        status.textContent = "THREAT_02 & 03 -> NEUTRALIZED WITH SWORD";
-      }, 1250));
+        status.textContent = "INCOMING THREAT BOLTS -> BLOCKED BY SHIELD!";
+      }, 1600));
 
       splashTimers.push(setTimeout(() => {
-        status.textContent = "PERIMETER SECURE // ACCESS GRANTED";
-      }, 1680));
+        status.textContent = "COUNTER-SLASH EXECUTED // PERIMETER SECURE";
+      }, 2250));
 
       splashTimers.push(setTimeout(() => {
         splash.classList.add('hidden');
-      }, 2150));
+      }, 3050));
     }
 
     function dismissSplashNow() {
