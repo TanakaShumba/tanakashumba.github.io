@@ -3,812 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tanaka Shumba | Cybersecurity, AI & Systems</title>
+  <title>Tanaka Shumba — Cybersecurity & AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #FAF8F5;
-      --surface: #FFFFFF;
-      --surface-alt: #F3EFEA;
-      --text: #18181B;
-      --text-muted: #64646E;
-      --border: #E5E0D8;
+      --bg: #07090E;
+      --surface: #0E121A;
+      --surface-alt: #141A25;
+      --text: #F3F4F6;
+      --text-muted: #8B949E;
+      --border: #21262D;
       --accent: #10B981;
       --accent-soft: rgba(16, 185, 129, 0.12);
-      --pill-bg: #EFECE6;
-      --grid-color: rgba(24, 24, 27, 0.045);
-      --shadow: 0 4px 20px -2px rgba(24, 24, 27, 0.05);
+      --shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.7);
     }
 
-    [data-theme="dark"] {
-      --bg: #0A0C10;
-      --surface: #12151C;
-      --surface-alt: #181C26;
-      --text: #F4F4F6;
-      --text-muted: #949BA6;
-      --border: #232834;
-      --accent: #10B981;
-      --accent-soft: rgba(16, 185, 129, 0.15);
-      --pill-bg: #161A23;
-      --grid-color: rgba(255, 255, 255, 0.035);
-      --shadow: 0 8px 28px -4px rgba(0, 0, 0, 0.5);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
-      /* Subtle architectural security grid */
-      background-image: 
-        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-      background-size: 36px 36px;
       color: var(--text);
       line-height: 1.6;
-      transition: background-color 0.25s ease, color 0.25s ease;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Top Technical Ticker */
+    .top-ticker {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      padding: 8px 0;
     }
 
-    .container {
-      max-width: 840px;
-      margin: 0 auto;
-      padding: 0 24px;
+    .ticker-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .ticker-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+    }
+
+    .pulse {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
     }
 
     /* Navbar */
     header {
       position: sticky;
       top: 0;
-      z-index: 40;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(7, 9, 14, 0.88);
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: -0.01em;
-      transition: transform 0.2s ease;
-    }
-
-    .brand:hover {
-      transform: scale(1.04);
+      display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 0.95rem;
     }
 
     .lion-badge {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow);
-      color: var(--text);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      width: 38px; height: 38px; border-radius: 10px; background: var(--surface);
+      border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center;
+      color: var(--text); transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
+    .brand:hover .lion-badge { border-color: var(--accent); box-shadow: 0 0 15px var(--accent-soft); }
+    .lion-badge svg { width: 20px; height: 20px; }
 
-    .brand:hover .lion-badge {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-soft);
-    }
-
-    .lion-badge svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .brand-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
+    .nav-links { display: flex; align-items: center; gap: 14px; font-size: 0.85rem; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--text); }
 
     .btn-small {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      font-size: 0.78rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s ease;
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+      border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); font-size: 0.76rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease;
     }
-
-    .btn-small:hover {
-      border-color: var(--accent);
-    }
-
-    .btn-primary-small {
-      background: var(--text);
-      color: var(--bg);
-      border-color: var(--text);
-    }
-
-    .btn-primary-small:hover {
-      opacity: 0.88;
-      border-color: var(--text);
-    }
-
-    .kbd-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      opacity: 0.7;
-    }
+    .btn-small:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-primary-small { background: var(--accent); color: #07090E; border-color: var(--accent); font-weight: 600; }
+    .btn-primary-small:hover { opacity: 0.9; color: #07090E; }
+    .kbd-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; opacity: 0.7; }
 
     /* Hero */
-    .hero {
-      padding: 76px 0 56px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-top-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .hero-greeting {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .role-rotator {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 6px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 500;
-      transition: opacity 0.25s ease;
+    .hero { padding: 76px 0 60px; border-bottom: 1px solid var(--border); }
+    
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px;
+      padding: 5px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
     }
 
     .hero h1 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(2.8rem, 6vw, 4.4rem);
-      font-weight: 400;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin-bottom: 22px;
+      font-family: 'Instrument Serif', serif; font-size: clamp(3rem, 6.5vw, 4.6rem);
+      font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 22px;
+    }
+    .hero h1 em { font-style: italic; color: var(--text-muted); }
+
+    .hero-sub { font-size: 1.08rem; color: var(--text-muted); max-width: 740px; margin-bottom: 32px; }
+
+    /* Scale & Impact Metrics Grid (Kayoje / Rashedat style) */
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 36px;
+    }
+    .metric-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
+    }
+    .metric-value {
+      font-family: 'Instrument Serif', serif; font-size: 2.2rem; color: var(--text); line-height: 1; margin-bottom: 4px;
+    }
+    .metric-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted); text-transform: uppercase;
     }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--text-muted);
-    }
+    /* Sections */
+    section { padding: 70px 0; border-bottom: 1px solid var(--border); }
+    .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 36px; }
+    .section-title { font-family: 'Instrument Serif', serif; font-size: 2.3rem; font-weight: 400; }
+    .section-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-    .hero-sub {
-      font-size: 1.06rem;
-      color: var(--text-muted);
-      max-width: 670px;
-      margin-bottom: 28px;
-    }
-
-    .status-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-      margin-bottom: 26px;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
-    }
-
-    .pulse {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px var(--accent-soft);
-    }
-
-    .cta-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: var(--text);
-      color: var(--bg);
-      font-weight: 500;
-      font-size: 0.84rem;
-      transition: opacity 0.2s ease;
-    }
-
-    .cta-link:hover {
-      opacity: 0.88;
-    }
-
-    /* Clean Cyber Telemetry Strip */
-    .telemetry-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.73rem;
-      color: var(--text-muted);
-    }
-
-    .telemetry-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .telemetry-key {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .telemetry-ok {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    /* Section Headings */
-    section {
-      padding: 60px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 30px;
-    }
-
-    .section-title {
-      font-family: 'Instrument Serif', serif;
-      font-size: 2.1rem;
-      font-weight: 400;
-    }
-
-    .section-subtitle {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    /* Project Case Study Cards with Subtle Cyber Brackets */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 20px;
-    }
-
+    /* Project Cards (PCAP Terminal Style) */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+    
     .project-card {
-      position: relative;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px;
+      position: relative; transition: transform 0.2s ease, border-color 0.2s ease; cursor: pointer;
     }
-
-    /* Subtle cyber target-lock top accent on hover */
-    .project-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-3px);
-      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-      box-shadow: 0 10px 30px -6px rgba(16, 185, 129, 0.1);
-    }
-
-    .project-card:hover::before {
-      opacity: 1;
-    }
-
+    .project-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    
     .pcap-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px dashed var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted);
+      margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px dashed var(--border);
     }
+    .pcap-id { color: var(--accent); font-weight: 600; }
 
-    .pcap-id {
-      color: var(--accent);
-      font-weight: 500;
-    }
+    .project-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 10px; }
+    .project-card p { font-size: 0.94rem; color: var(--text-muted); margin-bottom: 20px; }
+    
+    .card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; background: var(--surface-alt); border: 1px solid var(--border); color: var(--text-muted); }
 
-    .card-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
+    /* Experience Timeline */
+    .timeline-list { display: flex; flex-direction: column; gap: 32px; }
+    .timeline-item { display: grid; grid-template-columns: 180px 1fr; gap: 24px; }
+    .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); padding-top: 2px; }
+    .timeline-content h4 { font-size: 1.12rem; font-weight: 600; }
+    .timeline-org { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px; }
+    .timeline-content ul { padding-left: 18px; color: var(--text-muted); font-size: 0.92rem; }
+    .timeline-content li { margin-bottom: 4px; }
 
-    .tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: var(--surface-alt);
-      color: var(--text-muted);
-      border: 1px solid transparent;
-      transition: border-color 0.2s ease;
-    }
+    /* Skills Grid */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .skill-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+    .skill-box-title { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-pill { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; padding: 5px 10px; border-radius: 6px; background: var(--surface-alt); border: 1px solid var(--border); }
 
-    .project-card:hover .tag {
-      border-color: var(--border);
-    }
-
-    .project-card h3 {
-      font-size: 1.22rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .project-card p {
-      font-size: 0.93rem;
-      color: var(--text-muted);
-      margin-bottom: 22px;
-    }
-
-    .card-footer {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      color: var(--text);
-    }
-
-    /* Lately I've Been Into + Vinyl Card */
-    .bento-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 14px;
-    }
-
-    .bento-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: border-color 0.2s ease;
-    }
-
-    .bento-item:hover {
-      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-    }
-
-    .bento-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .bento-value {
-      font-weight: 500;
-      font-size: 0.94rem;
-    }
-
-    .vinyl-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .vinyl-disc {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--accent) 0 18%, #18181b 20% 42%, #2e2e34 43% 46%, #18181b 47% 100%);
-      border: 1px solid var(--border);
-      animation: spin 6s linear infinite;
-      flex-shrink: 0;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Resume Timeline */
-    .resume-list {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    .resume-item {
-      display: grid;
-      grid-template-columns: 175px 1fr;
-      gap: 20px;
-    }
-
-    .resume-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      padding-top: 3px;
-    }
-
-    .resume-content h4 {
-      font-size: 1.08rem;
-      font-weight: 600;
-    }
-
-    .resume-org {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .resume-content ul {
-      padding-left: 18px;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-    }
-
-    .resume-content li {
-      margin-bottom: 4px;
-    }
-
-    /* Skills Categories */
-    .skills-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 16px;
-    }
-
-    .skill-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
-      transition: border-color 0.2s ease;
-    }
-
-    .skill-group:hover {
-      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-    }
-
-    .skill-group-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .skill-group-title span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .skills-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill-pill {
-      font-family: 'JetBrains Mono', monospace;
-      padding: 6px 11px;
-      border-radius: 8px;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      font-size: 0.8rem;
-      font-weight: 500;
-      transition: all 0.15s ease;
-    }
-
-    .skill-pill:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Favorite Quote Block */
-    .quote-section {
-      padding: 64px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
+    /* Quote Card */
     .quote-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 36px 32px;
-      position: relative;
-      box-shadow: var(--shadow);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 40px;
+      position: relative; box-shadow: var(--shadow); text-align: center;
     }
+    .quote-text { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 3.8vw, 2.4rem); font-style: italic; margin-bottom: 14px; }
+    .quote-author { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-    .quote-mark {
-      font-family: 'Instrument Serif', serif;
-      font-size: 4rem;
-      line-height: 0.8;
-      color: var(--accent);
-      opacity: 0.5;
-      margin-bottom: 8px;
-    }
+    /* Modal / Terminal */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; backdrop-filter: blur(8px); }
+    .modal-backdrop.open { display: flex; }
+    .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 32px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
+    .modal-close { position: sticky; top: 0; float: right; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 50%; width: 34px; height: 34px; cursor: pointer; color: var(--text); }
 
-    .quote-text {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(1.65rem, 3.5vw, 2.3rem);
-      font-style: italic;
-      line-height: 1.25;
-      margin-bottom: 14px;
-    }
+    footer { padding: 48px 0; font-size: 0.86rem; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
 
-    .quote-author {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    /* Modal Drawer */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 100;
-    }
-
-    .modal-backdrop.open {
-      display: flex;
-    }
-
-    .modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      max-width: 680px;
-      width: 100%;
-      max-height: 86vh;
-      overflow-y: auto;
-      padding: 32px;
-      position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    }
-
-    .modal-close {
-      position: sticky;
-      top: 0;
-      float: right;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      width: 34px;
-      height: 34px;
-      cursor: pointer;
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    /* Command Palette */
-    .cmd-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 16px;
-    }
-
-    .cmd-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 14px;
-      border-radius: 10px;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      font-size: 0.9rem;
-      cursor: pointer;
-      color: var(--text);
-      text-align: left;
-    }
-
-    .cmd-item:hover {
-      border-color: var(--accent);
-    }
-
-    /* Sidekick Widget */
-    .sidekick-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--text);
-      color: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 12px 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 500;
-      cursor: pointer;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
-      z-index: 60;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .sidekick-panel {
-      position: fixed;
-      bottom: 78px;
-      right: 24px;
-      width: 330px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.22);
-      display: none;
-      z-index: 60;
-    }
-
-    .sidekick-panel.open {
-      display: block;
-    }
-
-    .sidekick-q {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 8px 12px;
-      margin-top: 8px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface-alt);
-      color: var(--text);
-      font-size: 0.82rem;
-      cursor: pointer;
-    }
-
-    .sidekick-q:hover {
-      border-color: var(--accent);
-    }
-
-    footer {
-      padding: 44px 0 84px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    @media (max-width: 720px) {
-      .resume-item {
-        grid-template-columns: 1fr;
-        gap: 4px;
-      }
-      .nav-links a.hide-mobile {
-        display: none;
-      }
-      .skills-categories {
-        grid-template-columns: 1fr;
-      }
+    @media(max-width: 768px) {
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Top Technical Ticker -->
+  <div class="top-ticker">
+    <div class="container ticker-inner">
+      <div class="ticker-live">
+        <span class="pulse"></span>
+        <span>SYS_STATUS: ONLINE (TROY, AL)</span>
+      </div>
+      <div>
+        <span>SECURE_SHELL: ACTIVE ✶ 2026_EDITION</span>
+      </div>
+    </div>
+  </div>
+
   <header>
     <div class="container nav-inner">
-      <a href="#" class="brand" aria-label="Tanaka Shumba Home" title="Shumba">
+      <a href="#" class="brand">
         <span class="lion-badge">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 3L22.5 6.5L28 5.5L29.5 11L33 15.5L30.5 21L31.5 26.5L26 29.5L22.5 33.5L18 31.5L13.5 33.5L10 29.5L4.5 26.5L5.5 21L3 15.5L6.5 11L8 5.5L13.5 6.5L18 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
@@ -817,209 +229,117 @@
             <path d="M13.5 25.5C15 27 21 27 22.5 25.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </span>
+        <span>Tanaka Shumba</span>
       </a>
       <nav class="nav-links">
         <a href="#work" class="hide-mobile">Work</a>
         <a href="#experience" class="hide-mobile">Experience</a>
         <a href="#skills" class="hide-mobile">Skills</a>
-        <button class="btn-small" onclick="openResumeModal()">View Resume</button>
-        <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf" class="btn-small btn-primary-small">Download Resume</a>
-        <button class="btn-small hide-mobile" onclick="openCmdPalette()" title="Quick Actions">
+        <button class="btn-small" onclick="openResumeModal()">Resume</button>
+        <button class="btn-small btn-primary-small hide-mobile" onclick="openCmdPalette()">
           <span class="kbd-tag">⌘K</span>
         </button>
-        <button class="btn-small" id="themeBtn" onclick="toggleTheme()">Dark</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <!-- Hero -->
     <section class="hero">
-      <div class="hero-top-meta">
-        <div class="hero-greeting">
-          <span>Hi, I'm Tanaka Shumba</span>
-          <span>·</span>
-          <span class="role-rotator" id="roleRotator">Cybersecurity Specialist</span>
-        </div>
+      <div class="hero-tag">
+        <span>root@tanaka-station:~$ security-engineer</span>
       </div>
-
       <h1>
-        I defend networks, <em>train AI systems</em>, &amp; analyze traffic metadata.
+        I defend networks, <em>train AI systems</em>, &amp; analyze telemetry.
       </h1>
-
       <p class="hero-sub">
-        Detail-oriented professional holding both an M.S. in Computer Science and a B.S. in Cybersecurity, and serving as an AI Trainer at Snorkel AI. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, and Kali Linux. Seeking a dynamic cybersecurity role to apply academic training and hands-on technical experience to actively defend enterprise infrastructure.
+        Detail-oriented professional holding both an M.S. in Computer Science and a B.S. in Cybersecurity[cite: 14]. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, and Kali Linux[cite: 14].
       </p>
 
-      <div class="status-bar">
-        <span class="status-pill">
-          <span class="pulse"></span>
-          Available for Cybersecurity &amp; AI Roles
-        </span>
-        <span class="status-pill" id="clockPill">
-          My Time (Troy, AL): Loading...
-        </span>
-        <a href="mailto:tanakashumba04@gmail.com" class="cta-link">
-          Email me →
-        </a>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="mailto:tanakashumba04@gmail.com" class="btn-small btn-primary-small" style="padding: 10px 18px; font-size: 0.86rem;">Initialize Contact →</a>
+        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener" class="btn-small" style="padding: 10px 18px; font-size: 0.86rem;">LinkedIn ↗</a>
       </div>
 
-      <!-- Clean Cyber Telemetry Strip -->
-      <div class="telemetry-bar">
-        <div class="telemetry-item">
-          <span class="telemetry-key">STATUS:</span>
-          <span class="telemetry-ok">● ACTIVE DEFENSE</span>
+      <!-- Scale Metrics (Kayoje/Rashedat Style) -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-value">2</div>
+          <div class="metric-label">Degrees (M.S. &amp; B.S.)[cite: 14]</div>
         </div>
-        <div class="telemetry-item">
-          <span class="telemetry-key">SENSORS:</span>
-          <span>WIRESHARK · ZEEK · SNORT · NMAP</span>
+        <div class="metric-card">
+          <div class="metric-value">AI</div>
+          <div class="metric-label">Trainer @ Snorkel AI</div>
         </div>
-        <div class="telemetry-item">
-          <span class="telemetry-key">OS:</span>
-          <span>KALI / UBUNTU / MACOS</span>
+        <div class="metric-card">
+          <div class="metric-value">01</div>
+          <div class="metric-label">IoT Privacy Thesis</div>
         </div>
       </div>
     </section>
 
-    <!-- Selected Work & Research -->
+    <!-- Projects & Research -->
     <section id="work">
       <div class="section-header">
-        <h2 class="section-title">Academic Projects &amp; Featured Work</h2>
-        <span class="section-subtitle">Click a module to inspect</span>
+        <h2 class="section-title">Projects &amp; Research</h2>
+        <span class="section-subtitle">System Modules</span>
       </div>
 
       <div class="projects-grid">
-        <div class="project-card" onclick="openModal('iot')" onmouseenter="scrambleText(this.querySelector('.pcap-id'), 'PCAP_01 // IOT_METADATA')">
-          <div>
-            <div class="pcap-header">
-              <span class="pcap-id">PCAP_01 // IOT_METADATA</span>
-              <span>2026</span>
-            </div>
-            <div class="card-tags">
-              <span class="tag">Master's Thesis</span>
-              <span class="tag">Wireshark</span>
-              <span class="tag">Zeek</span>
-              <span class="tag">Snort</span>
-            </div>
-            <h3>Master's Thesis: IoT Network Privacy Analysis</h3>
-            <p>
-              Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata using virtualized environments and Kali Linux.
-            </p>
+        <div class="project-card" onclick="openModal('iot')">
+          <div class="pcap-header">
+            <span class="pcap-id">PCAP_01 // THESIS_LOG</span>
+            <span>2026</span>
           </div>
-          <div class="card-footer">
-            <span>Inspect Packet Study</span>
-            <span>→</span>
+          <h3>IoT Network Privacy Analysis</h3>
+          <p>Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata using Wireshark, Zeek, Snort, and Kali Linux[cite: 14].</p>
+          <div class="card-tags">
+            <span class="tag">Wireshark</span>
+            <span class="tag">Zeek</span>
+            <span class="tag">Snort</span>
+            <span class="tag">Kali Linux</span>
           </div>
         </div>
 
-        <div class="project-card" onclick="openModal('sysadmin')" onmouseenter="scrambleText(this.querySelector('.pcap-id'), 'SYS_02 // ATA_SANITIZE')">
-          <div>
-            <div class="pcap-header">
-              <span class="pcap-id">SYS_02 // ATA_SANITIZE</span>
-              <span>2026</span>
-            </div>
-            <div class="card-tags">
-              <span class="tag">ATA Secure Erase</span>
-              <span class="tag">Log Auditing</span>
-              <span class="tag">Access Control</span>
-            </div>
-            <h3>Practical Cybersecurity &amp; Systems Administration</h3>
-            <p>
-              Performed secure data destruction on hardware using ATA Secure Erase protocols to safely decommission devices and monitored device connection logs.
-            </p>
+        <div class="project-card" onclick="openModal('sysadmin')">
+          <div class="pcap-header">
+            <span class="pcap-id">SYS_02 // HARDWARE_SANITIZE</span>
+            <span>2026</span>
           </div>
-          <div class="card-footer">
-            <span>Inspect Protocol Log</span>
-            <span>→</span>
+          <h3>Practical Cybersecurity &amp; Systems Admin</h3>
+          <p>Performed secure data destruction on hardware using ATA Secure Erase protocols to safely decommission devices and monitored network connection logs[cite: 14].</p>
+          <div class="card-tags">
+            <span class="tag">ATA Secure Erase</span>
+            <span class="tag">Log Auditing</span>
+            <span class="tag">Access Control</span>
           </div>
         </div>
 
-        <div class="project-card" onclick="openModal('snorkel')" onmouseenter="scrambleText(this.querySelector('.pcap-id'), 'AI_03 // MODEL_EVAL')">
-          <div>
-            <div class="pcap-header">
-              <span class="pcap-id">AI_03 // MODEL_EVAL</span>
-              <span>2026</span>
-            </div>
-            <div class="card-tags">
-              <span class="tag">Snorkel AI</span>
-              <span class="tag">LLM Evaluation</span>
-              <span class="tag">Python</span>
-            </div>
-            <h3>AI Trainer: Dataset Construction &amp; Review</h3>
-            <p>
-              Training and evaluating large language models across software engineering, cybersecurity, and multi-step technical reasoning tasks.
-            </p>
+        <div class="project-card" onclick="openModal('snorkel')">
+          <div class="pcap-header">
+            <span class="pcap-id">AI_03 // MODEL_BENCHMARK</span>
+            <span>2026</span>
           </div>
-          <div class="card-footer">
-            <span>Inspect AI Benchmark</span>
-            <span>→</span>
+          <h3>AI Trainer @ Snorkel AI</h3>
+          <p>Contributing to specialized AI dataset construction, code/security task design, and evaluating large language model responses for technical accuracy.</p>
+          <div class="card-tags">
+            <span class="tag">LLM Evaluation</span>
+            <span class="tag">Python</span>
+            <span class="tag">Task Design</span>
           </div>
         </div>
 
-        <div class="project-card" onclick="openModal('lab')" onmouseenter="scrambleText(this.querySelector('.pcap-id'), 'NET_04 // LAB_DEFENSE')">
-          <div>
-            <div class="pcap-header">
-              <span class="pcap-id">NET_04 // LAB_DEFENSE</span>
-              <span>2025 to 2026</span>
-            </div>
-            <div class="card-tags">
-              <span class="tag">Troy University</span>
-              <span class="tag">Lab Networks</span>
-              <span class="tag">Threat Analysis</span>
-            </div>
-            <h3>Computer Science Lab Systems &amp; Mentorship</h3>
-            <p>
-              Maintained and supported computer lab systems and networks while assisting students with cybersecurity fundamentals and introductory threat analysis.
-            </p>
+        <div class="project-card" onclick="openModal('lab')">
+          <div class="pcap-header">
+            <span class="pcap-id">NET_04 // LAB_INFRASTRUCTURE</span>
+            <span>2025 – 2026</span>
           </div>
-          <div class="card-footer">
-            <span>Inspect Lab Operations</span>
-            <span>→</span>
+          <h3>Computer Science Lab Systems &amp; Mentorship</h3>
+          <p>Maintained and supported computer lab systems and networks while assisting students with cybersecurity fundamentals and introductory threat analysis[cite: 14].</p>
+          <div class="card-tags">
+            <span class="tag">Lab Networks</span>
+            <span class="tag">Threat Analysis</span>
+            <span class="tag">Mentorship</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Lately I've Been Into -->
-    <section>
-      <div class="section-header">
-        <h2 class="section-title">Lately I've Been Into</h2>
-        <span class="section-subtitle">Current Rotation</span>
-      </div>
-      <div class="bento-strip">
-        <div class="bento-item">
-          <div class="bento-label">
-            <span>ON REPEAT</span>
-            <span>♫</span>
-          </div>
-          <div class="vinyl-wrap">
-            <div class="vinyl-disc"></div>
-            <div>
-              <div class="bento-value">NF</div>
-              <div style="font-size: 0.78rem; color: var(--text-muted);">Hip-Hop Rotation</div>
-            </div>
-          </div>
-        </div>
-        <div class="bento-item">
-          <div class="bento-label">
-            <span>PACKET LAB</span>
-            <span style="color:var(--accent);">●</span>
-          </div>
-          <div class="bento-value">Zeek &amp; Snort Telemetry</div>
-        </div>
-        <div class="bento-item">
-          <div class="bento-label">
-            <span>FOOTBALL</span>
-            <span>CFC</span>
-          </div>
-          <div class="bento-value">Chelsea FC Matchday</div>
-        </div>
-        <div class="bento-item">
-          <div class="bento-label">
-            <span>AI SYSTEMS</span>
-            <span>LLM</span>
-          </div>
-          <div class="bento-value">AI Training @ Snorkel AI</div>
         </div>
       </div>
     </section>
@@ -1028,15 +348,15 @@
     <section id="experience">
       <div class="section-header">
         <h2 class="section-title">Experience &amp; Education</h2>
-        <span class="section-subtitle">Verified Timeline</span>
+        <span class="section-subtitle">Timeline</span>
       </div>
 
-      <div class="resume-list">
-        <div class="resume-item">
-          <div class="resume-date">2026 to Present</div>
-          <div class="resume-content">
+      <div class="timeline-list">
+        <div class="timeline-item">
+          <div class="timeline-date">2026 — PRESENT</div>
+          <div class="timeline-content">
             <h4>AI Trainer</h4>
-            <div class="resume-org">Snorkel AI</div>
+            <div class="timeline-org">Snorkel AI</div>
             <ul>
               <li>Contribute to specialized AI dataset construction, prompt engineering, and technical task evaluation.</li>
               <li>Review and benchmark model outputs for code quality, security accuracy, and reasoning fidelity.</li>
@@ -1044,136 +364,104 @@
           </div>
         </div>
 
-        <div class="resume-item">
-          <div class="resume-date">Sept 2025 to Dec 2026</div>
-          <div class="resume-content">
-            <h4>Student Worker, Computer Science Dept.</h4>
-            <div class="resume-org">Troy University</div>
+        <div class="timeline-item">
+          <div class="timeline-date">SEPT 2025 – DEC 2026[cite: 14]</div>
+          <div class="timeline-content">
+            <h4>Student Worker - Computer Science Dept.[cite: 14]</h4>
+            <div class="timeline-org">Troy University[cite: 14]</div>
             <ul>
-              <li>Maintained and supported computer lab systems and networks, ensuring system reliability and adherence to basic security practices.</li>
-              <li>Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis.</li>
+              <li>Maintained and supported computer lab systems and networks, ensuring system reliability and adherence to basic security practices[cite: 14].</li>
+              <li>Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis[cite: 14].</li>
             </ul>
           </div>
         </div>
 
-        <div class="resume-item">
-          <div class="resume-date">Dec 2026</div>
-          <div class="resume-content">
-            <h4>M.S. in Computer Science</h4>
-            <div class="resume-org">Troy University</div>
+        <div class="timeline-item">
+          <div class="timeline-date">DECEMBER 2026[cite: 14]</div>
+          <div class="timeline-content">
+            <h4>M.S. in Computer Science[cite: 14]</h4>
+            <div class="timeline-org">Troy University[cite: 14]</div>
             <ul>
-              <li>Master's Thesis: <em>IoT Network Privacy Analysis</em> (designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata).</li>
+              <li>Master's Thesis: <em>IoT Network Privacy Analysis</em> (deep packet inspection and telemetry logging in virtualized testbeds[cite: 14]).</li>
             </ul>
           </div>
         </div>
 
-        <div class="resume-item">
-          <div class="resume-date">Dec 2023</div>
-          <div class="resume-content">
-            <h4>B.S. in Cybersecurity</h4>
-            <div class="resume-org">Troy University</div>
+        <div class="timeline-item">
+          <div class="timeline-date">DECEMBER 2023[cite: 14]</div>
+          <div class="timeline-content">
+            <h4>B.S. in Cybersecurity[cite: 14]</h4>
+            <div class="timeline-org">Troy University[cite: 14]</div>
             <ul>
-              <li>Hands-on training in network security, IDS/IPS, incident response, threat detection, and vulnerability assessment.</li>
+              <li>Rigorous training in network security, IDS/IPS, incident response, threat detection, and vulnerability assessment[cite: 14].</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Technical & Soft Skills -->
+    <!-- Technical Skills -->
     <section id="skills">
       <div class="section-header">
-        <h2 class="section-title">Technical &amp; Soft Skills</h2>
-        <span class="section-subtitle">Security Stack</span>
+        <h2 class="section-title">Technical Skills</h2>
+        <span class="section-subtitle">Security Arsenal</span>
       </div>
 
-      <div class="skills-categories">
-        <div class="skill-group">
-          <div class="skill-group-title">
-            <span>Cybersecurity Tools</span>
-            <span class="dot"></span>
-          </div>
-          <div class="skills-wrap">
-            <span class="skill-pill">Wireshark</span>
-            <span class="skill-pill">Zeek</span>
-            <span class="skill-pill">Snort</span>
-            <span class="skill-pill">Nmap</span>
-            <span class="skill-pill">pfSense</span>
-            <span class="skill-pill">IPTables</span>
+      <div class="skills-grid">
+        <div class="skill-box">
+          <div class="skill-box-title">Cybersecurity Tools[cite: 14]</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Wireshark[cite: 14]</span>
+            <span class="skill-pill">Zeek[cite: 14]</span>
+            <span class="skill-pill">Snort[cite: 14]</span>
+            <span class="skill-pill">Nmap[cite: 14]</span>
+            <span class="skill-pill">pfSense[cite: 14]</span>
+            <span class="skill-pill">IPTables[cite: 14]</span>
           </div>
         </div>
 
-        <div class="skill-group">
-          <div class="skill-group-title">
-            <span>Security Concepts</span>
-            <span class="dot"></span>
-          </div>
-          <div class="skills-wrap">
-            <span class="skill-pill">Network Security</span>
-            <span class="skill-pill">IDS / IPS</span>
-            <span class="skill-pill">Incident Response</span>
-            <span class="skill-pill">Threat Detection</span>
-            <span class="skill-pill">Vulnerability Assessment</span>
+        <div class="skill-box">
+          <div class="skill-box-title">Security Concepts[cite: 14]</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Network Security[cite: 14]</span>
+            <span class="skill-pill">IDS/IPS[cite: 14]</span>
+            <span class="skill-pill">Incident Response[cite: 14]</span>
+            <span class="skill-pill">Threat Detection[cite: 14]</span>
+            <span class="skill-pill">Vulnerability Assessment[cite: 14]</span>
           </div>
         </div>
 
-        <div class="skill-group">
-          <div class="skill-group-title">
-            <span>Programming &amp; Operating Systems</span>
-            <span class="dot"></span>
-          </div>
-          <div class="skills-wrap">
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">Java</span>
-            <span class="skill-pill">C++</span>
-            <span class="skill-pill">Linux (Ubuntu, Kali)</span>
-            <span class="skill-pill">Windows</span>
-            <span class="skill-pill">macOS</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-group-title">
-            <span>Soft Skills</span>
-            <span class="dot"></span>
-          </div>
-          <div class="skills-wrap">
-            <span class="skill-pill">Problem Solving</span>
-            <span class="skill-pill">Critical Thinking</span>
-            <span class="skill-pill">Communication</span>
-            <span class="skill-pill">Documentation</span>
-            <span class="skill-pill">Collaboration</span>
+        <div class="skill-box">
+          <div class="skill-box-title">Programming &amp; OS[cite: 14]</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Python[cite: 14]</span>
+            <span class="skill-pill">Java[cite: 14]</span>
+            <span class="skill-pill">C++[cite: 14]</span>
+            <span class="skill-pill">Linux (Ubuntu, Kali)[cite: 14]</span>
+            <span class="skill-pill">macOS &amp; Windows[cite: 14]</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Favorite Quote Section -->
-    <section class="quote-section">
+    <!-- Quote Section -->
+    <section style="border-bottom: 1px solid var(--border); padding: 60px 0;">
       <div class="quote-card">
-        <div class="quote-mark">“</div>
-        <div class="quote-text">
-          Life has no manual, don’t be too hard on yourself.
-        </div>
+        <div class="quote-text">“ Life has no manual, don’t be too hard on yourself. ”</div>
         <div class="quote-author">Personal Philosophy · Thanks for visiting</div>
       </div>
     </section>
 
     <footer>
+      <div><strong>Tanaka Shumba</strong> · <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a> · 334-482-0211[cite: 14]</div>
       <div>
-        <strong>Tanaka Shumba</strong> · <a href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com</a> · 334-482-0211
-      </div>
-      <div>
-        <a href="#" onclick="openResumeModal(); return false;">View Resume</a>
-        &nbsp;·&nbsp;
-        <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">Download PDF</a>
-        &nbsp;·&nbsp;
-        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="#" onclick="openResumeModal(); return false;">View Resume</a> · 
+        <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn ↗</a>[cite: 14]
       </div>
     </footer>
   </main>
 
-  <!-- Modal Drawer -->
+  <!-- Modal / Terminal Drawer -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
     <div class="modal" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeModal()">×</button>
@@ -1181,183 +469,56 @@
     </div>
   </div>
 
-  <!-- Sidekick Widget -->
-  <button class="sidekick-btn" onclick="toggleSidekick()">
-    <span class="brand-dot"></span> Ask About Tanaka
-  </button>
-  <div class="sidekick-panel" id="sidekickPanel">
-    <div style="font-weight: 600; font-size: 0.92rem; margin-bottom: 4px;">Quick Q&amp;A:</div>
-    <div id="sidekickAnswer" style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 10px;">
-      Select a question below for a quick summary.
-    </div>
-    <button class="sidekick-q" onclick="askSidekick('summary')">What is Tanaka's background?</button>
-    <button class="sidekick-q" onclick="askSidekick('role')">What does he do at Snorkel AI?</button>
-    <button class="sidekick-q" onclick="askSidekick('thesis')">What is his Master's thesis about?</button>
-    <button class="sidekick-q" onclick="askSidekick('contact')">How can I contact him?</button>
-  </div>
-
   <script>
-    // Subtle Cyber Cipher Decryption Effect on Hover
-    const cipherChars = "0123456789ABCDEF/_#";
-    function scrambleText(el, targetText) {
-      if (!el || el.dataset. running === "true") return;
-      el.dataset.running = "true";
-      let iteration = 0;
-      const interval = setInterval(() => {
-        el.textContent = targetText
-          .split("")
-          .map((char, idx) => {
-            if (idx < iteration || char === " ") return targetText[idx];
-            return cipherChars[Math.floor(Math.random() * cipherChars.length)];
-          })
-          .join("");
-        if (iteration >= targetText.length) {
-          clearInterval(interval);
-          el.dataset.running = "false";
-        }
-        iteration += 1.5;
-      }, 22);
-    }
-
-    // Dual Timezone Clock
-    function updateClock() {
-      const now = new Date();
-      const myTime = now.toLocaleTimeString('en-US', {
-        timeZone: 'America/Chicago',
-        hour: 'numeric',
-        minute: '2-digit'
-      });
-      const yourTime = now.toLocaleTimeString('en-US', {
-        hour: 'numeric',
-        minute: '2-digit'
-      });
-      const pill = document.getElementById('clockPill');
-      if (myTime === yourTime) {
-        pill.textContent = `Troy, AL · ${myTime} CT`;
-      } else {
-        pill.textContent = `My Time: ${myTime} CT · Your Time: ${yourTime}`;
-      }
-    }
-    updateClock();
-    setInterval(updateClock, 10000);
-
-    // Role Rotator
-    const roles = [
-      "Cybersecurity Specialist",
-      "AI Trainer @ Snorkel AI",
-      "M.S. Computer Science",
-      "Network Traffic Analyst"
-    ];
-    let roleIdx = 0;
-    setInterval(() => {
-      roleIdx = (roleIdx + 1) % roles.length;
-      const el = document.getElementById('roleRotator');
-      el.style.opacity = 0;
-      setTimeout(() => {
-        el.textContent = roles[roleIdx];
-        el.style.opacity = 1;
-      }, 220);
-    }, 3200);
-
-    // Dark Mode Toggle
-    function toggleTheme() {
-      const html = document.documentElement;
-      const btn = document.getElementById('themeBtn');
-      if (html.getAttribute('data-theme') === 'dark') {
-        html.removeAttribute('data-theme');
-        btn.textContent = 'Dark';
-      } else {
-        html.setAttribute('data-theme', 'dark');
-        btn.textContent = 'Light';
-      }
-    }
-
-    // Project Details Modal
     const details = {
-      iot: {
-        title: "Master's Thesis: IoT Network Privacy Analysis",
-        body: "Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata. Configuring virtualized environments and utilizing Wireshark, Zeek, Snort, and Kali Linux for advanced packet analysis and telemetry logging."
-      },
-      sysadmin: {
-        title: "Practical Cybersecurity & Systems Administration",
-        body: "Performed secure data destruction on hardware using ATA Secure Erase protocols to safely decommission devices. Monitored network security by reviewing device connection logs and configuring access controls."
-      },
-      snorkel: {
-        title: "AI Trainer at Snorkel AI",
-        body: "Contributing to specialized AI dataset construction, code and cybersecurity task design, and evaluating large language model responses for technical accuracy."
-      },
-      lab: {
-        title: "Student Worker, Computer Science Dept. (Troy University)",
-        body: "Maintained and supported computer lab systems and networks from Sept 2025 to Dec 2026, ensuring system reliability and adherence to basic security practices. Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis."
-      }
+      iot: { title: "Master's Thesis: IoT Network Privacy Analysis", body: "Designed and executed a comprehensive privacy analysis of smart home IoT device network traffic metadata[cite: 14]. Configured virtualized environments and utilized Wireshark, Zeek, Snort, and Kali Linux for advanced packet analysis and telemetry logging[cite: 14]." },
+      sysadmin: { title: "Practical Cybersecurity & Systems Administration", body: "Performed secure data destruction on hardware using ATA Secure Erase protocols to safely decommission devices[cite: 14]. Monitored network security by reviewing device connection logs and configuring access controls[cite: 14]." },
+      snorkel: { title: "AI Trainer at Snorkel AI", body: "Contributing to specialized AI dataset construction, code/security task design, and evaluating large language model responses for technical accuracy." },
+      lab: { title: "Student Worker - Computer Science Dept. (Troy University)[cite: 14]", body: "Maintained and supported computer lab systems and networks from Sept 2025 to Dec 2026[cite: 14], ensuring system reliability and adherence to basic security practices[cite: 14]. Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis[cite: 14]." }
     };
 
     function openModal(key) {
       const item = details[key];
       document.getElementById('modalBody').innerHTML = `
-        <h3 style="font-family: 'Instrument Serif', serif; font-size: 1.9rem; font-weight: 400; margin-bottom: 12px;">${item.title}</h3>
-        <p style="color: var(--text-muted); font-size: 0.96rem;">${item.body}</p>
+        <h3 style="font-family: 'Instrument Serif', serif; font-size: 2rem; font-weight: 400; margin-bottom: 12px;">${item.title}</h3>
+        <p style="color: var(--text-muted); font-size: 1rem;">${item.body}</p>
       `;
       document.getElementById('modalBackdrop').classList.add('open');
     }
 
-    // Exact Uploaded Resume Modal Viewer
     function openResumeModal() {
       document.getElementById('modalBody').innerHTML = `
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:18px; padding-right:40px;">
           <div>
-            <h3 style="font-family:'Instrument Serif', serif; font-size:2rem; font-weight:400;">Tanaka Shumba</h3>
+            <h3 style="font-family:'Instrument Serif', serif; font-size:2rem; font-weight:400;">Tanaka Shumba[cite: 14]</h3>
             <div style="font-size:0.82rem; color:var(--text-muted);">
-              tanakashumba04@gmail.com | linkedin.com/in/tanakashumba- | 334-482-0211
+              tanakashumba04@gmail.com[cite: 14] | linkedin.com/in/tanakashumba-[cite: 14] | 334-482-0211[cite: 14]
             </div>
           </div>
-          <div style="display:flex; gap:8px;">
-            <a href="resume.pdf" target="_blank" rel="noopener" class="btn-small">Open Raw PDF ↗</a>
+          <div>
             <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf" class="btn-small btn-primary-small">Download PDF</a>
           </div>
         </div>
         <hr style="border:none; border-top:1px solid var(--border); margin:14px 0;" />
-        <div style="font-size:0.9rem; display:flex; flex-direction:column; gap:14px;">
+        <div style="font-size:0.92rem; display:flex; flex-direction:column; gap:16px;">
           <div>
-            <strong>Professional Summary</strong>
-            <p style="color:var(--text-muted); margin-top:4px;">
-              Detail-oriented professional holding both an M.S. in Computer Science and a B.S. in Cybersecurity. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, and Kali Linux. Seeking a dynamic cybersecurity role to apply academic training and hands-on technical experience to actively defend enterprise infrastructure.
-            </p>
+            <strong>Professional Summary[cite: 14]</strong>
+            <p style="color:var(--text-muted); margin-top:4px;">Detail-oriented professional holding both an M.S. in Computer Science and a B.S. in Cybersecurity[cite: 14]. Skilled in network monitoring, threat detection, and incident response using Wireshark, Zeek, and Kali Linux[cite: 14].</p>
           </div>
           <div>
-            <strong>Education</strong>
-            <p style="color:var(--text-muted); margin-top:4px;">
-              Troy University · M.S. Computer Science | Dec 2026<br/>
-              Troy University · B.S. Cybersecurity | Dec 2023
-            </p>
+            <strong>Education[cite: 14]</strong>
+            <p style="color:var(--text-muted); margin-top:4px;">Troy University[cite: 14] - M.S. Computer Science | Dec 2026<br/>Troy University[cite: 14] - B.S. Cybersecurity | Dec 2023</p>
           </div>
           <div>
-            <strong>Experience</strong>
-            <p style="color:var(--text-muted); margin-top:4px;">
-              <strong>Student Worker, Computer Science Dept.</strong> | Troy University (Sept 2025 to Dec 2026)<br/>
-              • Maintained and supported computer lab systems and networks, ensuring system reliability and adherence to basic security practices.<br/>
-              • Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis.
-            </p>
+            <strong>Experience[cite: 14]</strong>
+            <p style="color:var(--text-muted); margin-top:4px;"><strong>Student Worker - Computer Science Dept.</strong> | Troy University (Sept 2025 to Dec 2026)<br/>• Maintained and supported computer lab systems and networks, ensuring system reliability and security adherence[cite: 14].<br/>• Assisted students with cybersecurity fundamentals and threat analysis[cite: 14].</p>
           </div>
           <div>
-            <strong>Academic Projects &amp; Research</strong>
+            <strong>Technical Skills[cite: 14]</strong>
             <p style="color:var(--text-muted); margin-top:4px;">
-              <strong>Master's Thesis: IoT Network Privacy Analysis</strong><br/>
-              • Designing and executing a comprehensive privacy analysis of smart home IoT device network traffic metadata.<br/>
-              • Configuring virtualized environments and utilizing Wireshark, Zeek, Snort, and Kali Linux for advanced packet analysis and telemetry logging.<br/><br/>
-              <strong>Practical Cybersecurity &amp; Systems Administration</strong><br/>
-              • Performed secure data destruction on hardware using ATA Secure Erase protocols to safely decommission devices.<br/>
-              • Monitored network security by reviewing device connection logs and configuring access controls.
-            </p>
-          </div>
-          <div>
-            <strong>Technical &amp; Soft Skills</strong>
-            <p style="color:var(--text-muted); margin-top:4px;">
-              <strong>Programming/Scripting:</strong> Python, Java, C++<br/>
-              <strong>Cybersecurity Tools:</strong> Wireshark, Zeek, Snort, Nmap, pfSense, IPTables<br/>
-              <strong>Security Concepts:</strong> Network Security, IDS/IPS, Incident Response, Threat Detection, Vulnerability Assessment<br/>
-              <strong>Operating Systems:</strong> Linux (Ubuntu, Kali), Windows, macOS<br/>
-              <strong>Soft Skills:</strong> Problem Solving, Critical Thinking, Communication, Documentation, Collaboration
+              <strong>Tools:</strong> Wireshark, Zeek, Snort, Nmap, pfSense, IPTables[cite: 14]<br/>
+              <strong>Programming:</strong> Python, Java, C++[cite: 14]<br/>
+              <strong>OS:</strong> Linux (Ubuntu, Kali), Windows, macOS[cite: 14]
             </p>
           </div>
         </div>
@@ -1365,35 +526,8 @@
       document.getElementById('modalBackdrop').classList.add('open');
     }
 
-    // Command Palette (⌘K)
     function openCmdPalette() {
-      document.getElementById('modalBody').innerHTML = `
-        <h3 style="font-family: 'Instrument Serif', serif; font-size: 1.7rem; font-weight: 400; margin-bottom: 6px;">Quick Navigation</h3>
-        <p style="font-size: 0.84rem; color: var(--text-muted);">Jump anywhere or grab Tanaka's resume</p>
-        <div class="cmd-list">
-          <button class="cmd-item" onclick="openResumeModal()">
-            <span>View Full Resume</span>
-            <span class="kbd-tag">Resume</span>
-          </button>
-          <a class="cmd-item" href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">
-            <span>Download Resume (PDF)</span>
-            <span class="kbd-tag">PDF</span>
-          </a>
-          <a class="cmd-item" href="mailto:tanakashumba04@gmail.com">
-            <span>Send an Email (tanakashumba04@gmail.com)</span>
-            <span class="kbd-tag">Email</span>
-          </a>
-          <a class="cmd-item" href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">
-            <span>Open LinkedIn Profile</span>
-            <span class="kbd-tag">↗</span>
-          </a>
-          <button class="cmd-item" onclick="toggleTheme(); closeModal();">
-            <span>Toggle Dark / Light Theme</span>
-            <span class="kbd-tag">Theme</span>
-          </button>
-        </div>
-      `;
-      document.getElementById('modalBackdrop').classList.add('open');
+      openResumeModal();
     }
 
     document.addEventListener('keydown', (e) => {
@@ -1405,23 +539,7 @@
       }
     });
 
-    function closeModal() {
-      document.getElementById('modalBackdrop').classList.remove('open');
-    }
-
-    function toggleSidekick() {
-      document.getElementById('sidekickPanel').classList.toggle('open');
-    }
-
-    function askSidekick(topic) {
-      const answers = {
-        summary: "Tanaka holds an M.S. in Computer Science and a B.S. in Cybersecurity from Troy University, specializing in network monitoring, threat detection, and AI training.",
-        role: "Tanaka works as an AI Trainer at Snorkel AI, focusing on AI dataset construction, technical prompt authoring, and evaluating model responses.",
-        thesis: "His M.S. thesis at Troy University analyzes privacy leakage in smart home IoT devices by inspecting network traffic metadata using Zeek, Wireshark, Snort, and Kali Linux.",
-        contact: "You can reach Tanaka directly at tanakashumba04@gmail.com or by phone at 334-482-0211."
-      };
-      document.getElementById('sidekickAnswer').textContent = answers[topic];
-    }
+    function closeModal() { document.getElementById('modalBackdrop').classList.remove('open'); }
   </script>
 </body>
 </html>
