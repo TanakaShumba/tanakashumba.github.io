@@ -72,7 +72,7 @@
     }
 
     /* =====================================================
-       HERALDIC CYBER-LION GUARDIAN SPLASH SCREEN
+       HIGH-PRECISION CYBER-DEFENSE SPLASH ENGINE
        ===================================================== */
     .splash-screen {
       position: fixed;
@@ -88,7 +88,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out), visibility 0.65s;
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out), visibility 0.6s;
     }
 
     .splash-screen.hidden {
@@ -100,145 +100,70 @@
 
     .defense-stage {
       position: relative;
-      width: 310px;
-      height: 290px;
+      width: 360px;
+      height: 320px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
-    .guardian-svg {
+    #defenseCanvas {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .crest-emblem-svg {
+      width: 260px;
+      height: 260px;
+      position: relative;
+      z-index: 3;
       overflow: visible;
-      filter: drop-shadow(0 18px 32px rgba(20, 20, 22, 0.1));
+      filter: drop-shadow(0 18px 36px rgba(15, 23, 42, 0.14));
     }
 
-    .tactical-ring {
-      transform-origin: 180px 160px;
-      animation: spinSlow 14s linear infinite;
+    /* Animated Crossed Broadsword unsheathing behind & slashing across */
+    .animated-broadsword {
+      transform-origin: 150px 155px;
+      animation: unsheatheAndSlash 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .lion-full-body {
-      transform-origin: 175px 250px;
-      animation: lionStance 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    /* Animated Armored Heater Shield & Rampant Lion Core */
+    .animated-shield-core {
+      transform-origin: 150px 155px;
+      animation: shieldBrace 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .lion-tail {
-      transform-origin: 140px 210px;
-      animation: tailLash 1.4s ease-in-out infinite alternate;
+    /* Detailed Lion Rampant inside the Crest */
+    .sculpted-lion {
+      transform-origin: 150px 155px;
+      animation: lionPulse 2.8s ease-out forwards;
     }
 
-    .sword-arm-group {
-      transform-origin: 162px 140px;
-      animation: drawAndSlashSword 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    @keyframes unsheatheAndSlash {
+      0% { transform: translate(-28px, 32px) rotate(-35deg) scale(0.75); opacity: 0; }
+      25% { transform: translate(0px, -10px) rotate(12deg) scale(1.08); opacity: 1; }
+      52% { transform: translate(0px, -4px) rotate(4deg) scale(1.02); opacity: 1; }
+      74% { transform: translate(8px, 4px) rotate(42deg) scale(1.1); opacity: 1; }
+      92%, 100% { transform: translate(0px, 0px) rotate(18deg) scale(1.03); opacity: 1; }
     }
 
-    .blade-gleam {
-      opacity: 0;
-      animation: bladeFlash 2.8s ease-out forwards;
-    }
-
-    .shield-arm-group {
-      transform-origin: 192px 144px;
-      animation: raiseAndBlockShield 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    .shield-dome-arc {
-      opacity: 0;
-      transform-origin: 246px 158px;
-      animation: domeImpactFlash 2.8s ease-out forwards;
-    }
-
-    .cyber-bolt-1 {
-      opacity: 0;
-      animation: boltAttack1 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    .cyber-bolt-2 {
-      opacity: 0;
-      animation: boltAttack2 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    .cyber-bolt-3 {
-      opacity: 0;
-      animation: boltAttack3 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    @keyframes spinSlow {
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes tailLash {
-      0% { transform: rotate(-5deg); }
-      100% { transform: rotate(9deg); }
-    }
-
-    @keyframes lionStance {
-      0% { transform: scale(0.92) translateY(8px); opacity: 0; }
-      15% { transform: scale(1) translateY(0); opacity: 1; }
-      38% { transform: scale(1.03) translateY(-3px); }
-      58% { transform: scale(1.01) translateX(-3px); }
-      76% { transform: scale(1.04) translateX(4px); }
+    @keyframes shieldBrace {
+      0% { transform: scale(0.84) translateY(14px); opacity: 0; }
+      22% { transform: scale(1) translateY(0); opacity: 1; }
+      48% { transform: scale(1.06) translateX(-4px); }
+      66% { transform: scale(1.08) translateX(4px); }
       100% { transform: scale(1) translateX(0); opacity: 1; }
     }
 
-    @keyframes drawAndSlashSword {
-      0% { transform: rotate(118deg) translate(-12px, 10px) scale(0.88); }
-      15% { transform: rotate(105deg) translate(-8px, 6px) scale(0.92); }
-      38% { transform: rotate(-28deg) translate(0, -6px) scale(1.05); }
-      58% { transform: rotate(-18deg) translate(0, -2px) scale(1.02); }
-      74% { transform: rotate(52deg) translate(12px, 8px) scale(1.08); }
-      90%, 100% { transform: rotate(-8deg) translate(0, 0) scale(1); }
-    }
-
-    @keyframes bladeFlash {
-      0%, 22% { opacity: 0; }
-      35% { opacity: 1; filter: drop-shadow(0 0 14px #10B981); }
-      55% { opacity: 0.4; }
-      74% { opacity: 1; filter: drop-shadow(0 0 18px #10B981); }
-      100% { opacity: 0.7; }
-    }
-
-    @keyframes raiseAndBlockShield {
-      0% { transform: translate(-24px, 26px) rotate(22deg) scale(0.9); }
-      18% { transform: translate(-18px, 18px) rotate(14deg) scale(0.94); }
-      40% { transform: translate(6px, -4px) rotate(-6deg) scale(1.04); }
-      54% { transform: translate(-3px, 0px) rotate(3deg) scale(1.08); }
-      66% { transform: translate(8px, -4px) rotate(-8deg) scale(1.09); }
-      85%, 100% { transform: translate(4px, -2px) rotate(-4deg) scale(1.02); }
-    }
-
-    @keyframes domeImpactFlash {
-      0%, 46% { opacity: 0; transform: scale(0.9); }
-      54% { opacity: 1; transform: scale(1.08); }
-      60% { opacity: 0.25; transform: scale(1); }
-      66% { opacity: 1; transform: scale(1.12); }
-      76% { opacity: 0.9; transform: scale(1.05); }
-      100% { opacity: 0.35; transform: scale(1); }
-    }
-
-    @keyframes boltAttack1 {
-      0%, 38% { transform: translate(110px, -70px) scale(0.8); opacity: 0; }
-      42% { opacity: 1; }
-      53% { transform: translate(0px, 0px) scale(1.1); opacity: 1; }
-      57% { transform: translate(10px, -8px) scale(2.2); opacity: 0; }
-      100% { opacity: 0; }
-    }
-
-    @keyframes boltAttack2 {
-      0%, 50% { transform: translate(115px, 55px) scale(0.8); opacity: 0; }
-      54% { opacity: 1; }
-      65% { transform: translate(0px, 0px) scale(1.1); opacity: 1; }
-      69% { transform: translate(12px, 6px) scale(2.2); opacity: 0; }
-      100% { opacity: 0; }
-    }
-
-    @keyframes boltAttack3 {
-      0%, 60% { transform: translate(105px, -85px) scale(0.8); opacity: 0; }
-      64% { opacity: 1; }
-      73% { transform: translate(-10px, -18px) scale(1.2); opacity: 1; }
-      78% { transform: translate(-2px, -24px) scale(2.5); opacity: 0; }
-      100% { opacity: 0; }
+    @keyframes lionPulse {
+      0%, 30% { filter: drop-shadow(0 0 0px rgba(251, 191, 36, 0)); }
+      52%, 78% { filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.65)); }
+      100% { filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.3)); }
     }
 
     .splash-status {
@@ -1317,100 +1242,145 @@
 <body>
 
   <!-- =========================================================================
-       HERALDIC CYBER-LION GUARDIAN SPLASH SCREEN
+       ROYAL HERALDIC LION RAMPANT CREST + 60FPS CANVAS DEFENSE ENGINE
        ========================================================================= -->
   <div class="splash-screen" id="splashScreen">
     <div class="defense-stage" id="defenseArena">
-      <svg class="guardian-svg" viewBox="0 0 360 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Real-Time 60fps Particle, Shield Dome & Threat Interception Canvas -->
+      <canvas id="defenseCanvas" width="360" height="320"></canvas>
+
+      <!-- High-Precision Royal Heraldic Lion Rampant with Animated Broadsword & Shield -->
+      <svg class="crest-emblem-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="obsidianArmor" x1="115" y1="65" x2="220" y2="270" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#27272A" />
-            <stop offset="100%" stop-color="#09090B" />
+          <linearGradient id="shieldObsidian" x1="80" y1="50" x2="220" y2="250" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1E293B" />
+            <stop offset="55%" stop-color="#0F172A" />
+            <stop offset="100%" stop-color="#020617" />
           </linearGradient>
-          <linearGradient id="royalGold" x1="120" y1="60" x2="210" y2="250" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#FBBF24" />
+          <linearGradient id="royalGoldGrad" x1="90" y1="50" x2="210" y2="245" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FEF08A" />
+            <stop offset="45%" stop-color="#F59E0B" />
             <stop offset="100%" stop-color="#B45309" />
           </linearGradient>
-          <linearGradient id="cyberBlade" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#ECFDF5" />
+          <linearGradient id="emeraldSteel" x1="60" y1="220" x2="245" y2="35" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#059669" />
             <stop offset="50%" stop-color="#34D399" />
-            <stop offset="100%" stop-color="#059669" />
-          </linearGradient>
-          <linearGradient id="shieldEmerald" x1="210" y1="100" x2="265" y2="215" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#10B981" />
-            <stop offset="100%" stop-color="#064E3B" />
+            <stop offset="100%" stop-color="#FFFFFF" />
           </linearGradient>
         </defs>
 
-        <!-- Tactical Radar Perimeter Ring -->
-        <circle class="tactical-ring" cx="180" cy="160" r="132" stroke="rgba(16, 185, 129, 0.35)" stroke-width="1.5" stroke-dasharray="8 6" />
-        <ellipse cx="180" cy="272" rx="95" ry="12" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.35)" stroke-width="1.2" />
-
-        <!-- RIGHT ARM + CYBER BROADSWORD -->
-        <g class="sword-arm-group">
-          <path d="M162 142 C152 128, 146 112, 152 96 C156 88, 166 88, 170 96 C172 110, 172 128, 168 144 Z" fill="url(#obsidianArmor)" stroke="url(#royalGold)" stroke-width="1.8" />
-          <circle cx="158" cy="92" r="7" fill="#18181B" stroke="url(#royalGold)" stroke-width="1.8" />
-          <circle cx="158" cy="105" r="4.5" fill="#FBBF24" />
-          <rect x="155" y="86" width="6" height="16" rx="2" fill="#18181B" stroke="#FBBF24" stroke-width="1.2" />
-          <path d="M140 86 L176 86 L173 81 L143 81 Z" fill="url(#royalGold)" />
-          <!-- Razor-sharp Cyber Broadsword Blade -->
-          <polygon points="153,81 163,81 165,16 158,2 151,16" fill="url(#cyberBlade)" stroke="#064E3B" stroke-width="1.5" />
-          <line x1="158" y1="78" x2="158" y2="12" stroke="#FFFFFF" stroke-width="1.8" />
-          <polygon class="blade-gleam" points="150,81 166,81 168,14 158,0 148,14" fill="rgba(16, 185, 129, 0.45)" />
+        <!-- ===============================================================
+             ANIMATED BROADSWORD (Unsheathes & Slashes diagonally across crest)
+             =============================================================== -->
+        <g class="animated-broadsword">
+          <!-- Pommel & Leather-Wrapped Hilt -->
+          <circle cx="72" cy="232" r="8" fill="url(#royalGoldGrad)" stroke="#0F172A" stroke-width="2" />
+          <path d="M77 227 L102 202" stroke="#0F172A" stroke-width="9" stroke-linecap="round" />
+          <path d="M77 227 L102 202" stroke="url(#royalGoldGrad)" stroke-width="5" stroke-dasharray="3 3" stroke-linecap="round" />
+          <!-- Winged Royal Crossguard -->
+          <path d="M84 184 L120 220 L114 226 L78 190 Z" fill="url(#royalGoldGrad)" stroke="#0F172A" stroke-width="1.8" stroke-linejoin="round" />
+          <!-- Razor-Sharp Double-Edged Broadsword Blade -->
+          <polygon points="97,197 107,207 244,62 254,40 232,50" fill="url(#emeraldSteel)" stroke="#064E3B" stroke-width="1.8" stroke-linejoin="round" />
+          <!-- Glowing Center Fuller -->
+          <line x1="104" y1="200" x2="244" y2="50" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" />
         </g>
 
-        <!-- FULL-BODIED HERALDIC RAMPANT LION -->
-        <g class="lion-full-body">
-          <g class="lion-tail">
-            <path d="M145 215 C110 208, 94 176, 108 148 C118 128, 102 110, 92 116" stroke="url(#obsidianArmor)" stroke-width="6.5" stroke-linecap="round" fill="none" />
-            <path d="M145 215 C110 208, 94 176, 108 148 C118 128, 102 110, 92 116" stroke="url(#royalGold)" stroke-width="1.5" stroke-linecap="round" fill="none" />
-            <path d="M92 116 C82 110, 78 120, 85 128 C92 134, 100 126, 92 116 Z" fill="url(#royalGold)" />
+        <!-- ===============================================================
+             ARMORED HEATER SHIELD + SCULPTED FULL-BODIED HERALDIC LION RAMPANT
+             =============================================================== -->
+        <g class="animated-shield-core">
+          <!-- Outer Gold-Rimmed Armored Heater Shield -->
+          <path d="M150 42 
+                   L228 64 
+                   L228 148 
+                   C228 202, 186 242, 150 262 
+                   C114 242, 72 202, 72 148 
+                   L72 64 Z" 
+                fill="url(#shieldObsidian)" stroke="url(#royalGoldGrad)" stroke-width="5" stroke-linejoin="round" />
+
+          <!-- Inner Emerald Tactical Bevel -->
+          <path d="M150 53 
+                   L217 72 
+                   L217 146 
+                   C217 193, 181 229, 150 248 
+                   C119 229, 83 193, 83 146 
+                   L83 72 Z" 
+                fill="none" stroke="#10B981" stroke-width="1.6" stroke-opacity="0.55" stroke-linejoin="round" />
+
+          <!-- Subtle Heraldic Shield Quadrant Lines -->
+          <line x1="150" y1="53" x2="150" y2="248" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+          <line x1="83" y1="146" x2="217" y2="146" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+
+          <!-- ===============================================================
+               SCULPTED ROYAL HERALDIC LION RAMPANT (Full-Bodied, Crowned, Wielding Sword)
+               =============================================================== -->
+          <g class="sculpted-lion">
+            <!-- Royal 3-Pointed Crown above Lion Head -->
+            <path d="M138 72 L141 60 L149 67 L156 58 L163 67 L170 61 L167 73 Z" fill="url(#royalGoldGrad)" />
+
+            <!-- S-Curved Heraldic Double-Tufted Tail (Left side of crest) -->
+            <path d="M126 184 
+                     C102 178, 92 152, 102 130 
+                     C110 112, 98 96, 98 84 
+                     C98 76, 108 74, 112 82 
+                     C115 88, 106 94, 106 102 
+                     C106 114, 118 124, 112 144 
+                     C106 162, 116 174, 130 176 Z" 
+                  fill="url(#royalGoldGrad)" />
+            <!-- Tail Flourish Tuft -->
+            <path d="M98 84 C90 80, 88 92, 96 96 C102 99, 106 90, 98 84 Z" fill="url(#royalGoldGrad)" />
+
+            <!-- Full-Bodied Rampant Lion (Head, Flowing Mane, Arched Torso, 4 Clawed Limbs) -->
+            <path d="M142 76 
+                     C154 74, 166 78, 172 86 
+                     L184 88 
+                     C185 92, 182 96, 176 96 
+                     L168 96 
+                     L167 101 
+                     L178 104 
+                     C177 109, 171 112, 164 110 
+                     C158 108, 154 106, 150 106 
+                     C160 114, 168 126, 166 144 
+                     C164 158, 156 170, 160 184 
+                     C164 196, 174 208, 182 220 
+                     L192 222 
+                     C194 226, 188 230, 178 228 
+                     L168 226 
+                     C160 212, 152 200, 146 190 
+                     C138 190, 132 204, 126 222 
+                     L134 224 
+                     C135 228, 128 230, 116 228 
+                     L112 226 
+                     C116 206, 122 190, 126 174 
+                     C122 162, 122 146, 128 132 
+                     C120 130, 116 122, 122 116 
+                     C114 112, 114 102, 122 98 
+                     C116 92, 118 82, 128 80 
+                     C126 74, 134 72, 142 76 Z" 
+                  fill="url(#royalGoldGrad)" />
+
+            <!-- Raised Front Right Foreleg & Claws Brandishing Mini Sword -->
+            <path d="M162 118 
+                     C176 112, 188 102, 196 90 
+                     L204 92 
+                     C206 96, 202 102, 196 104 
+                     C186 114, 176 124, 164 128 Z" 
+                  fill="url(#royalGoldGrad)" />
+            <!-- Raised Front Left Foreleg & Claws -->
+            <path d="M158 134 
+                     C174 134, 188 130, 200 122 
+                     L206 126 
+                     C206 131, 200 135, 194 136 
+                     C182 142, 170 144, 158 144 Z" 
+                  fill="url(#royalGoldGrad)" />
+
+            <!-- Fierce Cutout Details (Eye, Mane Locks, Rib Muscularity) -->
+            <polygon points="160,84 168,82 166,87 159,87" fill="#0F172A" />
+            <polygon points="162,84 167,83 165,86 161,86" fill="#10B981" />
+            <path d="M136 90 C130 94, 128 102, 134 108" stroke="#0F172A" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M134 104 C128 110, 128 118, 136 122" stroke="#0F172A" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M148 136 C140 144, 140 156, 146 166" stroke="#0F172A" stroke-width="2.2" stroke-linecap="round" />
           </g>
-
-          <path d="M150 205 C140 225, 134 245, 128 262 L148 266 L154 260 C156 244, 162 226, 168 210 Z" fill="url(#obsidianArmor)" stroke="url(#royalGold)" stroke-width="1.8" stroke-linejoin="round" />
-          <path d="M126 262 C126 257, 136 256, 150 262 L152 268 L124 268 Z" fill="url(#royalGold)" />
-
-          <path d="M154 128 C184 126, 206 146, 202 174 C198 194, 190 210, 194 226 L160 226 C144 214, 142 192, 146 168 C148 152, 148 138, 154 128 Z" fill="url(#obsidianArmor)" stroke="url(#royalGold)" stroke-width="2" stroke-linejoin="round" />
-          <path d="M186 150 L174 162 L178 182" stroke="#10B981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-          <circle cx="174" cy="162" r="2.5" fill="#10B981" />
-
-          <path d="M174 212 C182 228, 192 246, 198 262 L218 266 L216 258 C206 242, 198 224, 192 208 Z" fill="url(#obsidianArmor)" stroke="url(#royalGold)" stroke-width="1.8" stroke-linejoin="round" />
-          <path d="M196 262 C198 256, 212 256, 224 262 L226 268 L194 268 Z" fill="url(#royalGold)" />
-
-          <polygon points="114,230 121,234 162,174 155,170" fill="#09090B" stroke="url(#royalGold)" stroke-width="1.6" />
-
-          <path d="M168 74 L152 66 L155 78 L136 74 L143 88 L124 92 L135 104 L122 114 L136 124 L128 138 L146 144 L142 158 L166 156 L184 144 L188 120 L182 92 Z" fill="url(#obsidianArmor)" stroke="url(#royalGold)" stroke-width="2" stroke-linejoin="round" />
-          <path d="M166 84 L148 84 L154 96 L140 102 L150 114 L140 124 L156 132 L174 126 Z" fill="url(#royalGold)" opacity="0.9" />
-
-          <path d="M166 82 C180 80, 192 86, 196 94 L210 98 L208 108 L194 110 L192 116 L204 119 L200 126 C188 128, 176 124, 168 118 Z" fill="url(#obsidianArmor)" stroke="url(#royalGold)" stroke-width="2" stroke-linejoin="round" />
-          <polygon points="183,93 192,91 190,96 182,96" fill="#10B981" filter="drop-shadow(0 0 4px #10B981)" />
-          <polygon points="203,108 206,108 205,113" fill="#FBBF24" />
-          <polygon points="164,80 168,65 175,74 182,63 189,74 195,67 192,81" fill="url(#royalGold)" />
-        </g>
-
-        <!-- LEFT ARM + HERALDIC HEATER SHIELD -->
-        <g class="shield-arm-group">
-          <path d="M186 146 C198 146, 214 148, 226 152 L226 166 C212 166, 196 162, 184 158 Z" fill="url(#obsidianArmor)" stroke="url(#royalGold)" stroke-width="1.8" />
-          <path d="M214 110 L254 102 L254 162 C254 194, 234 214, 234 222 C234 214, 214 194, 214 162 Z" fill="url(#shieldEmerald)" stroke="url(#royalGold)" stroke-width="3" stroke-linejoin="round" />
-          <path d="M234 110 L234 212 M218 152 L250 146" stroke="url(#royalGold)" stroke-width="2.4" stroke-linecap="round" />
-          <circle cx="234" cy="150" r="6.5" fill="#FBBF24" stroke="#064E3B" stroke-width="2" />
-        </g>
-
-        <!-- Emerald Energy Forcefield Arc on Shield Block -->
-        <path class="shield-dome-arc" d="M244 74 C284 110, 284 206, 244 242" stroke="#10B981" stroke-width="4" stroke-linecap="round" fill="none" filter="drop-shadow(0 0 12px #10B981)" />
-
-        <!-- Incoming Red Threat Bolts -->
-        <g class="cyber-bolt-1">
-          <line x1="258" y1="132" x2="292" y2="112" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
-          <circle cx="256" cy="133" r="6" fill="#EF4444" filter="drop-shadow(0 0 10px #EF4444)" />
-        </g>
-        <g class="cyber-bolt-2">
-          <line x1="258" y1="176" x2="294" y2="192" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
-          <circle cx="256" cy="175" r="6" fill="#EF4444" filter="drop-shadow(0 0 10px #EF4444)" />
-        </g>
-        <g class="cyber-bolt-3">
-          <line x1="242" y1="102" x2="278" y2="78" stroke="#EF4444" stroke-width="4" stroke-linecap="round" />
-          <circle cx="240" cy="104" r="6" fill="#EF4444" filter="drop-shadow(0 0 10px #EF4444)" />
         </g>
       </svg>
     </div>
@@ -1893,8 +1863,136 @@
       history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
 
-    // Full-Bodied Rampant Lion Sword & Shield Defense Controller
+    // =========================================================================
+    // 60FPS HTML5 CANVAS CYBER-DEFENSE PARTICLE & SHIELD ENGINE
+    // =========================================================================
     let splashTimers = [];
+    let animFrameId = null;
+
+    function startCanvasDefenseEngine() {
+      const canvas = document.getElementById('defenseCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width;
+      const H = canvas.height;
+
+      let frame = 0;
+      let shieldFlash = 0;
+
+      // Incoming red malicious packets that get blocked & shattered into green/gold sparks
+      const threats = [
+        { startX: 350, startY: 70, targetX: 222, targetY: 120, spawnFrame: 20, hitFrame: 50 },
+        { startX: 355, startY: 215, targetX: 220, targetY: 175, spawnFrame: 42, hitFrame: 72 },
+        { startX: 10, startY: 85, targetX: 105, targetY: 130, spawnFrame: 62, hitFrame: 92 }
+      ];
+
+      const sparks = [];
+
+      function spawnSparks(x, y, color) {
+        for (let i = 0; i < 26; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 1.6 + Math.random() * 4.8;
+          sparks.push({
+            x, y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            alpha: 1,
+            radius: 1.5 + Math.random() * 2.5,
+            color
+          });
+        }
+      }
+
+      function renderLoop() {
+        frame++;
+        ctx.clearRect(0, 0, W, H);
+
+        // 1. Rotating Outer Tactical Radar Ring
+        ctx.save();
+        ctx.translate(W / 2, H / 2);
+        ctx.rotate(frame * 0.008);
+        ctx.strokeStyle = 'rgba(16, 185, 129, 0.32)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([8, 6]);
+        ctx.beginPath();
+        ctx.arc(0, 0, 128, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+
+        // 2. Glowing Emerald Forcefield Ring Flash on Impact
+        if (shieldFlash > 0.02) {
+          ctx.save();
+          ctx.strokeStyle = `rgba(16, 185, 129, ${shieldFlash})`;
+          ctx.shadowColor = '#10B981';
+          ctx.shadowBlur = 22;
+          ctx.lineWidth = 4.5;
+          ctx.beginPath();
+          ctx.arc(W / 2, H / 2, 108, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.restore();
+          shieldFlash *= 0.88;
+        }
+
+        // 3. Update & Draw Incoming Red Threat Bolts
+        threats.forEach(t => {
+          if (frame >= t.spawnFrame && frame <= t.hitFrame) {
+            const p = (frame - t.spawnFrame) / (t.hitFrame - t.spawnFrame);
+            const curX = t.startX + (t.targetX - t.startX) * p;
+            const curY = t.startY + (t.targetY - t.startY) * p;
+
+            ctx.save();
+            ctx.strokeStyle = '#EF4444';
+            ctx.shadowColor = '#EF4444';
+            ctx.shadowBlur = 12;
+            ctx.lineWidth = 3.5;
+            ctx.beginPath();
+            ctx.moveTo(curX, curY);
+            ctx.lineTo(curX - (t.targetX - t.startX) * 0.14, curY - (t.targetY - t.startY) * 0.14);
+            ctx.stroke();
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.beginPath();
+            ctx.arc(curX, curY, 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+
+            if (frame === t.hitFrame) {
+              shieldFlash = 1.0;
+              spawnSparks(t.targetX, t.targetY, '#10B981');
+              spawnSparks(t.targetX, t.targetY, '#FBBF24');
+            }
+          }
+        });
+
+        // 4. Update & Draw Shattered Emerald / Gold Defense Sparks
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const s = sparks[i];
+          s.x += s.vx;
+          s.y += s.vy;
+          s.alpha *= 0.92;
+          if (s.alpha < 0.03) {
+            sparks.splice(i, 1);
+            continue;
+          }
+          ctx.save();
+          ctx.globalAlpha = s.alpha;
+          ctx.fillStyle = s.color;
+          ctx.shadowColor = s.color;
+          ctx.shadowBlur = 8;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        if (frame < 190) {
+          animFrameId = requestAnimationFrame(renderLoop);
+        }
+      }
+
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+      animFrameId = requestAnimationFrame(renderLoop);
+    }
 
     function runDefenseSequence() {
       splashTimers.forEach(t => clearTimeout(t));
@@ -1904,27 +2002,30 @@
       const status = document.getElementById('splashStatus');
       if (!splash || !status) return;
 
+      startCanvasDefenseEngine();
+
       status.textContent = "SHUMBA GUARDIAN // UNSHEATHING BROADSWORD & SHIELD...";
 
       splashTimers.push(setTimeout(() => {
         status.textContent = "SWORD DRAWN // SHIELD LOCKED IN GUARD STANCE";
-      }, 900));
+      }, 850));
 
       splashTimers.push(setTimeout(() => {
-        status.textContent = "INCOMING THREAT BOLTS -> BLOCKED BY SHIELD!";
-      }, 1500));
+        status.textContent = "INCOMING THREAT PACKETS -> SHATTERED BY SHIELD!";
+      }, 1450));
 
       splashTimers.push(setTimeout(() => {
         status.textContent = "COUNTER-SLASH EXECUTED // PERIMETER SECURE";
-      }, 2100));
+      }, 2050));
 
       splashTimers.push(setTimeout(() => {
         splash.classList.add('hidden');
-      }, 2750));
+      }, 2700));
     }
 
     function dismissSplashNow() {
       splashTimers.forEach(t => clearTimeout(t));
+      if (animFrameId) cancelAnimationFrame(animFrameId);
       const splash = document.getElementById('splashScreen');
       if (splash) splash.classList.add('hidden');
     }
@@ -2191,6 +2292,10 @@
           <a class="cmd-item" href="mailto:tanakashumba04@gmail.com">
             <span>Send an Email (tanakashumba04@gmail.com)</span>
             <span class="kbd-tag">Email</span>
+          </a>
+          <a class="cmd-item" href="https://github.com/TanakaShumba" target="_blank" rel="noopener">
+            <span>Open GitHub Profile</span>
+            <span class="kbd-tag">↗</span>
           </a>
           <a class="cmd-item" href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">
             <span>Open LinkedIn Profile</span>
