@@ -65,14 +65,14 @@
     }
 
     /* =====================================================
-       OPENING SPLASH: FLOOD-FILL CUTOUT LION + SLICE ENGINE
+       OPENING SPLASH: SKELETAL MESH LION + SHADER VFX
        ===================================================== */
     .splash-screen {
       position: fixed;
       inset: 0;
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.18), transparent 56%),
+        radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.22), transparent 58%),
         linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
         linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
       background-size: 100% 100%, 40px 40px, 40px 40px;
@@ -94,12 +94,13 @@
 
     .defense-stage {
       position: relative;
-      width: 420px;
-      height: 380px;
+      width: 480px;
+      height: 410px;
+      max-width: 95vw;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     #defenseCanvas {
@@ -141,7 +142,7 @@
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, var(--text), var(--accent-bright));
-      animation: fillBar 2.8s var(--ease-out) forwards;
+      animation: fillBar 3.1s var(--ease-out) forwards;
     }
 
     .splash-skip {
@@ -182,7 +183,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .container { max-width: 940px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
     /* Scroll Reveal */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out); }
@@ -191,33 +192,34 @@
     .delay-2 { transition-delay: 0.16s; }
     .delay-3 { transition-delay: 0.24s; }
 
-    /* Navbar */
+    /* Navbar (Single-Line Locked) */
     header {
       position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       background: color-mix(in srgb, var(--bg) 84%, transparent);
       border-bottom: 1px solid var(--border);
     }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; position: relative; }
-    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 600; font-size: 0.94rem; cursor: pointer; }
-    .brand-name { font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 6px; }
-    .brand-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: 2px 7px; border-radius: 99px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; gap: 12px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.94rem; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+    .brand-name { font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
     
     .lion-badge {
       width: 40px; height: 40px; border-radius: 11px; background: var(--surface);
       border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center;
-      box-shadow: var(--shadow); overflow: hidden; transition: transform 0.35s var(--ease-out), border-color 0.2s ease;
+      box-shadow: var(--shadow); overflow: hidden; transition: transform 0.35s var(--ease-out), border-color 0.2s ease; flex-shrink: 0;
     }
     .brand:hover .lion-badge { transform: rotate(-4deg) scale(1.06); border-color: var(--accent); }
     .lion-badge img { width: 36px; height: 36px; object-fit: contain; }
 
-    .nav-links { display: flex; align-items: center; gap: 10px; font-size: 0.86rem; color: var(--text-muted); }
-    .nav-links a.nav-item { position: relative; padding: 4px 4px; transition: color 0.2s ease; }
+    .nav-links { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
+    .nav-links a.nav-item { position: relative; padding: 4px 4px; transition: color 0.2s ease; white-space: nowrap; }
     .nav-links a.nav-item:hover { color: var(--text); }
     .btn-small {
-      display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px;
+      display: inline-flex; align-items: center; gap: 5px; padding: 7px 13px;
       border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
       color: var(--text); font-size: 0.76rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease;
+      white-space: nowrap; flex-shrink: 0;
     }
     .btn-small:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow); }
     .btn-game { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
@@ -227,7 +229,6 @@
 
     /* =====================================================
        30-SECOND PLAYABLE "PACKET SLICER" GAME DRAWER
-       (Inspired by egbemodeyomi.com's "Slice" Navbar Game)
        ===================================================== */
     .game-drawer {
       display: none;
@@ -258,7 +259,7 @@
     .game-overlay p { font-size: 0.84rem; color: #949BA6; max-width: 420px; margin-bottom: 14px; }
 
     /* =====================================================
-       HERO SECTION + "HOVER ME. TRUST ME." GOD-MODE CARD
+       HERO SECTION + 3D TILT GOD-MODE CARD
        ===================================================== */
     .hero { padding: 64px 0 48px; }
     .chapter-tag {
@@ -270,7 +271,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 235px;
+      grid-template-columns: 1fr 240px;
       gap: 40px;
       align-items: center;
       margin-bottom: 26px;
@@ -281,54 +282,58 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      perspective: 900px;
     }
 
     .profile-photo-card {
       position: relative;
-      width: 220px;
-      height: 255px;
+      width: 224px;
+      height: 260px;
       border-radius: 22px;
       overflow: hidden;
       border: 2px solid var(--border);
       box-shadow: var(--shadow);
       background: var(--surface);
       cursor: pointer;
-      perspective: 800px;
-      transition: transform 0.35s var(--ease-out), border-color 0.3s ease, box-shadow 0.35s ease;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease-out, border-color 0.3s ease, box-shadow 0.35s ease;
     }
 
     .profile-photo-card:hover,
     .profile-photo-card.god-mode {
       border-color: var(--accent-bright);
-      box-shadow: 0 24px 50px -12px rgba(16, 185, 129, 0.32);
+      box-shadow: 0 24px 50px -12px rgba(16, 185, 129, 0.35);
     }
 
-    .profile-photo-card img.real-photo,
-    .profile-photo-card img.guardian-photo {
+    .profile-photo-card img.real-photo {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      transition: opacity 0.4s var(--ease-out), transform 0.5s var(--ease-out);
-    }
-
-    .profile-photo-card img.real-photo {
       object-fit: cover;
       object-position: center top;
       opacity: 1;
       z-index: 1;
+      transition: opacity 0.35s var(--ease-out);
     }
 
-    .profile-photo-card img.guardian-photo {
-      object-fit: contain;
-      padding: 6px;
-      background: radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.22), var(--surface) 72%);
+    /* Live Interactive Mini-Canvas for Guardian Mode inside the Hero Card */
+    #heroGuardianCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 42%, rgba(16, 185, 129, 0.25), #0D1117 78%);
       opacity: 0;
-      transform: scale(1.1);
       z-index: 2;
+      transition: opacity 0.35s var(--ease-out);
     }
 
-    /* Laser scanline sweep when switching to Guardian Mode */
+    .profile-photo-card:hover #heroGuardianCanvas,
+    .profile-photo-card.god-mode #heroGuardianCanvas {
+      opacity: 1;
+    }
+
     .scanline-sweep {
       position: absolute;
       left: 0; right: 0; top: -10%;
@@ -350,12 +355,6 @@
       100% { top: 100%; opacity: 0; }
     }
 
-    .profile-photo-card:hover img.guardian-photo,
-    .profile-photo-card.god-mode img.guardian-photo {
-      opacity: 1;
-      transform: scale(1);
-    }
-
     .godmode-hud-pill {
       position: absolute;
       bottom: 10px;
@@ -363,7 +362,7 @@
       right: 10px;
       padding: 5px 10px;
       border-radius: 10px;
-      background: rgba(20, 20, 22, 0.82);
+      background: rgba(20, 20, 22, 0.84);
       color: #FFFFFF;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.64rem;
@@ -376,7 +375,7 @@
 
     .handwritten-note {
       font-family: 'Caveat', cursive;
-      font-size: 1.2rem;
+      font-size: 1.22rem;
       color: var(--accent);
       margin-top: 8px;
       transform: rotate(-2deg);
@@ -444,7 +443,6 @@
     .section-title { font-family: 'Instrument Serif', serif; font-size: 2.3rem; font-weight: 400; }
     .section-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted); text-transform: uppercase; }
 
-    /* Live Zeek/Snort Terminal Stream Bar above Projects */
     .live-terminal-bar {
       background: #0D1117;
       color: #E6EDF3;
@@ -487,7 +485,7 @@
     .project-card:hover .card-footer span.arrow { transform: translateX(5px); color: var(--accent); }
     .card-footer span.arrow { transition: transform 0.2s ease, color 0.2s ease; }
 
-    /* Draggable Bento Strip ("Drag things around" like egbemodeyomi.com) */
+    /* Draggable Bento Strip */
     .bento-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 14px; position: relative; }
     .bento-item {
       background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px;
@@ -545,10 +543,10 @@
 
     footer { padding: 46px 0 88px; font-size: 0.88rem; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
 
-    @media (max-width: 740px) {
+    @media (max-width: 820px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
       .resume-item { grid-template-columns: 1fr; gap: 6px; }
-      .nav-links a.hide-mobile, .brand-name { display: none; }
+      .nav-links a.hide-mobile, .brand-tag { display: none; }
       .skills-categories, .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -556,14 +554,14 @@
 <body>
 
   <!-- =========================================================================
-       OPENING SPLASH: FLOOD-FILL TRANSPARENT 3D LION + INTERACTIVE SLICE ENGINE
+       OPENING SPLASH: SKELETAL MESH-RIGGED 3D LION + HEX-SHIELD & CRESCENT SLASH
        ========================================================================= -->
   <div class="splash-screen" id="splashScreen">
     <div class="defense-stage" id="defenseArena">
-      <canvas id="defenseCanvas" width="420" height="380"></canvas>
+      <canvas id="defenseCanvas" width="480" height="410"></canvas>
     </div>
-    <div class="splash-status" id="splashStatus">SHUMBA GUARDIAN // RAISING RUNE SHIELD &amp; BROADSWORD...</div>
-    <div class="splash-sub">SWIPE CURSOR TO SLICE RED THREATS · OR WAIT 2S</div>
+    <div class="splash-status" id="splashStatus">SHUMBA GUARDIAN // INITIALIZING SKELETAL MESH &amp; RUNE SHIELD...</div>
+    <div class="splash-sub">SWIPE CURSOR TO SLICE EXPLOITS · OR WAIT 2.5S</div>
     <div class="splash-bar"><div class="splash-bar-fill"></div></div>
     <button class="splash-skip" onclick="dismissSplashNow()">Enter portfolio →</button>
   </div>
@@ -591,7 +589,7 @@
       </nav>
     </div>
 
-    <!-- Playable 30-Second "Packet Slicer" Mini-Game Drawer (like egbemodeyomi.com) -->
+    <!-- Playable 30-Second "Packet Slicer" Mini-Game Drawer -->
     <div class="game-drawer" id="gameDrawer">
       <div class="container">
         <div class="game-header">
@@ -606,7 +604,7 @@
           <div class="game-overlay" id="gameOverlay">
             <span class="chapter-tag"><i></i> 30-SECOND SOC CHALLENGE</span>
             <h3>Slice the <em>Exploits</em></h3>
-            <p>Drag or swipe your cursor across the arena to slice red malicious packets (<strong>SYN Flood</strong>, <strong>Homoglyph Phish</strong>, <strong>C2 Beacon</strong>) with the Lion's broadsword. <strong>Don't slice green TLS 1.3 traffic!</strong></p>
+            <p>Swipe across the arena to slice red malicious packets (<strong>SYN Flood</strong>, <strong>Homoglyph Phish</strong>, <strong>C2 Beacon</strong>) with the Lion's broadsword. <strong>Don't slice green TLS 1.3 traffic!</strong></p>
             <button class="btn-small btn-primary-small" onclick="startSlicerGame()">Start Defense (30s) →</button>
           </div>
         </div>
@@ -615,7 +613,7 @@
   </header>
 
   <main class="container">
-    <!-- Chapter 01: Hero with Interactive God-Mode Portrait Card -->
+    <!-- Chapter 01: Hero with Interactive 3D God-Mode Card -->
     <section class="hero" style="border-bottom: none;">
       <div class="hero-grid reveal active">
         <div>
@@ -632,12 +630,12 @@
           </h1>
         </div>
 
-        <!-- "Hover Me. Trust Me." God-Mode Portrait Card (Suit Portrait <-> Cutout 3D Lion) -->
+        <!-- "Hover Me. Trust Me." God-Mode Portrait Card (Suit Portrait <-> Live Mesh-Animated 3D Lion) -->
         <div class="godmode-card-wrap">
-          <div class="profile-photo-card" id="godmodeCard" onclick="this.classList.toggle('god-mode')" title="Hover or tap to toggle Shumba Guardian mode">
+          <div class="profile-photo-card" id="godmodeCard" onclick="this.classList.toggle('god-mode')" title="Hover or tap to activate live Shumba Guardian mode">
             <div class="scanline-sweep"></div>
             <img class="real-photo user-portrait" src="profile.jpg" alt="Tanaka Shumba Portrait" />
-            <img class="guardian-photo cutout-lion-img" src="lion.jpg" alt="Shumba Guardian Mode" />
+            <canvas id="heroGuardianCanvas" width="224" height="260"></canvas>
             <div class="godmode-hud-pill">
               <span style="display:inline-flex; align-items:center; gap:5px;">
                 <span class="pulse" style="width:6px; height:6px;"></span>
@@ -693,7 +691,6 @@
         <span class="section-subtitle">Hover to stream telemetry · Click to inspect</span>
       </div>
 
-      <!-- Live Interactive Terminal Stream -->
       <div class="live-terminal-bar">
         <div class="term-dots">
           <i style="background:#EF4444;"></i>
@@ -747,7 +744,7 @@
       </div>
     </section>
 
-    <!-- Chapter 03: Draggable Bento Collage ("Drag things around") -->
+    <!-- Chapter 03: Draggable Bento Collage -->
     <section class="reveal">
       <span class="chapter-tag"><i></i> Chapter 03 · Off The Clock</span>
       <div class="section-header">
@@ -923,7 +920,7 @@
       history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
 
-    // 1. Smart Portrait Resolver (Finds your suit photo automatically)
+    // 1. Smart Portrait Resolver
     (function resolveUserPortrait() {
       const candidates = ['profile.jpg', 'image.png', 'profile.png', 'images/profile.jpg', 'images/image.png', 'me.jpg'];
       let idx = 0;
@@ -941,8 +938,7 @@
       tryNext();
     })();
 
-    // 2. BFS Corner Flood-Fill Background Remover for lion.jpg
-    // Removes 100% of the beige/white studio square box without cutting off the sword tip or feet!
+    // 2. Flood-Fill Cutout + Floor Shadow Cleaner for lion.jpg
     let transparentLionCanvas = null;
     function getCutoutLion(callback) {
       if (transparentLionCanvas) { callback(transparentLionCanvas); return; }
@@ -960,41 +956,32 @@
           const visited = new Uint8Array(S * S);
           const q = [];
 
-          // Seed BFS from all 4 outer borders of lion.jpg
           for (let x = 0; x < S; x++) { q.push(x, (S - 1) * S + x); visited[x] = 1; visited[(S - 1) * S + x] = 1; }
           for (let y = 0; y < S; y++) { q.push(y * S, y * S + (S - 1)); visited[y * S] = 1; visited[y * S + (S - 1)] = 1; }
 
           const bgR = d[0], bgG = d[1], bgB = d[2];
 
-          function isBgPixel(idx4) {
+          function isBgPixel(idx4, yCoord) {
             const r = d[idx4], g = d[idx4 + 1], b = d[idx4 + 2];
             const maxC = Math.max(r, g, b), minC = Math.min(r, g, b);
             const sat = maxC - minC;
             const luma = (r + g + b) / 3;
             const distToCorner = Math.hypot(r - bgR, g - bgG, b - bgB);
-            // Match studio off-white backdrop & soft floor shadow while preserving green glow & dark steel sword
-            if (g > r + 10 && g > b + 10) return false; // Preserve green rune shield glow
-            return (distToCorner < 42) || (luma > 210 && sat < 26) || (luma > 175 && sat < 18);
+            if (g > r + 9 && g > b + 9) return false; // Keep green rune shield glow
+            // Also strip the grey studio floor shadow beneath the paws (yCoord > S * 0.82)
+            if (yCoord > S * 0.82 && sat < 34 && luma > 125) return true;
+            return (distToCorner < 44) || (luma > 208 && sat < 26) || (luma > 172 && sat < 18);
           }
 
           let head = 0;
           while (head < q.length) {
             const p = q[head++];
-            const idx4 = p * 4;
-            d[idx4 + 3] = 0; // Make background 100% transparent
+            d[p * 4 + 3] = 0;
             const x = p % S, y = (p / S) | 0;
-            const neighbors = [];
-            if (x > 0) neighbors.push(p - 1);
-            if (x < S - 1) neighbors.push(p + 1);
-            if (y > 0) neighbors.push(p - S);
-            if (y < S - 1) neighbors.push(p + S);
-            for (let i = 0; i < neighbors.length; i++) {
-              const nb = neighbors[i];
-              if (!visited[nb] && isBgPixel(nb * 4)) {
-                visited[nb] = 1;
-                q.push(nb);
-              }
-            }
+            if (x > 0 && !visited[p - 1] && isBgPixel((p - 1) * 4, y)) { visited[p - 1] = 1; q.push(p - 1); }
+            if (x < S - 1 && !visited[p + 1] && isBgPixel((p + 1) * 4, y)) { visited[p + 1] = 1; q.push(p + 1); }
+            if (y > 0 && !visited[p - S] && isBgPixel((p - S) * 4, y - 1)) { visited[p - S] = 1; q.push(p - S); }
+            if (y < S - 1 && !visited[p + S] && isBgPixel((p + S) * 4, y + 1)) { visited[p + S] = 1; q.push(p + S); }
           }
           octx.putImageData(id, 0, 0);
           const pngUrl = off.toDataURL('image/png');
@@ -1007,7 +994,191 @@
       img.src = 'lion.jpg';
     }
 
-    // 3. Opening Splash 60fps Combat Engine
+    // 3. Textured Triangle Renderer for Skeletal 2D Mesh Warp
+    function drawTexturedTriangle(ctx, img, u0, v0, u1, v1, u2, v2, x0, y0, x1, y1, x2, y2) {
+      // Expand clip triangle slightly from centroid to prevent hairline subpixel seams
+      const cx = (x0 + x1 + x2) / 3, cy = (y0 + y1 + y2) / 3;
+      const ex0 = x0 + (x0 - cx) * 0.04, ey0 = y0 + (y0 - cy) * 0.04;
+      const ex1 = x1 + (x1 - cx) * 0.04, ey1 = y1 + (y1 - cy) * 0.04;
+      const ex2 = x2 + (x2 - cx) * 0.04, ey2 = y2 + (y2 - cy) * 0.04;
+
+      const du1 = u1 - u0, dv1 = v1 - v0, du2 = u2 - u0, dv2 = v2 - v0;
+      const dx1 = x1 - x0, dy1 = y1 - y0, dx2 = x2 - x0, dy2 = y2 - y0;
+      const det = du1 * dv2 - du2 * dv1;
+      if (Math.abs(det) < 1e-5) return;
+      const invDet = 1 / det;
+
+      const a = (dx1 * dv2 - dx2 * dv1) * invDet;
+      const b = (dy1 * dv2 - dy2 * dv1) * invDet;
+      const c = (dx2 * du1 - dx1 * du2) * invDet;
+      const d = (dy2 * du1 - dy1 * du2) * invDet;
+      const e = x0 - a * u0 - c * v0;
+      const f = y0 - b * u0 - d * v0;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(ex0, ey0);
+      ctx.lineTo(ex1, ey1);
+      ctx.lineTo(ex2, ey2);
+      ctx.closePath();
+      ctx.clip();
+      ctx.transform(a, b, c, d, e, f);
+      ctx.drawImage(img, 0, 0);
+      ctx.restore();
+    }
+
+    // Deforms the 10x10 Skeletal Mesh so the Lion physically swings its sword, raises its shield, breathes & lashes its tail!
+    function renderSkeletalMeshLion(ctx, lionCanvas, centerX, centerY, size, frame, shieldRecoil, swordSlashProgress) {
+      const N = 10;
+      const S = lionCanvas.width;
+      const half = size / 2;
+      const startX = centerX - half;
+      const startY = centerY - half;
+
+      const verts = [];
+      for (let gy = 0; gy <= N; gy++) {
+        const row = [];
+        for (let gx = 0; gx <= N; gx++) {
+          const u = gx / N; // 0 (left: sword/tail) -> 1 (right: rune shield)
+          const v = gy / N; // 0 (top: mane) -> 1 (bottom: paws)
+
+          let dx = 0, dy = 0;
+
+          // 1. Breathing Chest & Roaring Head (center-top)
+          const chestWeight = Math.max(0, 1 - Math.hypot(u - 0.48, v - 0.34) * 2.5);
+          dy += Math.sin(frame * 0.09) * 4.5 * chestWeight;
+          dx += Math.cos(frame * 0.09) * 2.0 * chestWeight;
+
+          // 2. Whipping Tail (left side: u < 0.30, 0.50 < v < 0.85)
+          if (u < 0.34 && v > 0.45 && v < 0.86) {
+            const tailW = (0.34 - u) * 3.0 * (1 - Math.abs(v - 0.65) * 4);
+            if (tailW > 0) {
+              dy += Math.sin(frame * 0.14 + u * 6) * 11 * tailW;
+              dx += Math.cos(frame * 0.14) * 5 * tailW;
+            }
+          }
+
+          // 3. Left Arm & Glowing Rune Shield (right side of image: u > 0.54, 0.18 < v < 0.82)
+          if (u > 0.52 && v > 0.16 && v < 0.82) {
+            const shieldW = Math.min(1, (u - 0.52) * 2.4) * (1 - Math.abs(v - 0.48) * 2.2);
+            if (shieldW > 0) {
+              // Raises shield at start, braces & ripples on threat impact
+              const guardLift = Math.sin(frame * 0.06) * 5 - 4;
+              dx += (-shieldRecoil * 16 + Math.cos(frame * 0.06) * 4) * shieldW;
+              dy += (guardLift - shieldRecoil * 6) * shieldW;
+            }
+          }
+
+          // 4. Right Gauntlet & Broadsword Slash (bottom-left to center: u < 0.58, v > 0.40, excluding planted paws)
+          const isPlantedPaw = (v > 0.82 && u > 0.25);
+          if (!isPlantedPaw && u < 0.58 && v > 0.38) {
+            // Pivot around right shoulder (u=0.35, v=0.38)
+            const relU = u - 0.35;
+            const relV = v - 0.38;
+            const armW = Math.min(1, Math.hypot(relU, relV) * 2.2) * Math.max(0, 1 - Math.max(0, u - 0.48) * 6);
+            // Wind-up angle before slash, then violent whip-slash when swordSlashProgress > 0
+            let angle = Math.sin(frame * 0.07) * 0.08 - 0.12;
+            if (swordSlashProgress > 0) {
+              // Wind up (-0.38 rad) then whip down (+0.32 rad)
+              angle = Math.sin(swordSlashProgress * Math.PI * 2 - Math.PI / 2) * 0.36;
+            }
+            const cosA = Math.cos(angle), sinA = Math.sin(angle);
+            const rotU = relU * cosA - relV * sinA;
+            const rotV = relU * sinA + relV * cosA;
+            dx += (rotU - relU) * size * armW;
+            dy += (rotV - relV) * size * armW;
+          }
+
+          row.push({
+            u: u * S,
+            v: v * S,
+            x: startX + u * size + dx,
+            y: startY + v * size + dy
+          });
+        }
+        verts.push(row);
+      }
+
+      for (let gy = 0; gy < N; gy++) {
+        for (let gx = 0; gx < N; gx++) {
+          const p00 = verts[gy][gx];
+          const p10 = verts[gy][gx + 1];
+          const p01 = verts[gy + 1][gx];
+          const p11 = verts[gy + 1][gx + 1];
+          drawTexturedTriangle(ctx, lionCanvas, p00.u, p00.v, p10.u, p10.v, p01.u, p01.v, p00.x, p00.y, p10.x, p10.y, p01.x, p01.y);
+          drawTexturedTriangle(ctx, lionCanvas, p10.u, p10.v, p11.u, p11.v, p01.u, p01.v, p10.x, p10.y, p11.x, p11.y, p01.x, p01.y);
+        }
+      }
+    }
+
+    // Draws a tapered, glowing crescent sword-slash ribbon (NOT a flat circle!)
+    function drawCrescentSlash(ctx, cx, cy, radius, startAngle, endAngle, thickness, alpha) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      const steps = 28;
+      const outer = [], inner = [];
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const ang = startAngle + (endAngle - startAngle) * t;
+        // Taper thickness from 0 at tips to full width in middle
+        const taper = Math.sin(t * Math.PI);
+        const rOut = radius + thickness * 0.5 * taper;
+        const rIn = radius - thickness * 0.5 * taper;
+        outer.push({ x: cx + Math.cos(ang) * rOut, y: cy + Math.sin(ang) * rOut });
+        inner.unshift({ x: cx + Math.cos(ang) * rIn, y: cy + Math.sin(ang) * rIn });
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(outer[0].x, outer[0].y);
+      outer.forEach(p => ctx.lineTo(p.x, p.y));
+      inner.forEach(p => ctx.lineTo(p.x, p.y));
+      ctx.closePath();
+
+      const grad = ctx.createRadialGradient(cx, cy, radius - thickness, cx, cy, radius + thickness);
+      grad.addColorStop(0, `rgba(5, 150, 105, 0)`);
+      grad.addColorStop(0.45, `rgba(16, 185, 129, ${alpha * 0.85})`);
+      grad.addColorStop(0.75, `rgba(167, 243, 208, ${alpha})`);
+      grad.addColorStop(1, `rgba(255, 255, 255, ${alpha})`);
+
+      ctx.fillStyle = grad;
+      ctx.shadowColor = '#10B981';
+      ctx.shadowBlur = 24;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // Draws a 3D Hexagonal Honeycomb Energy Barrier over the Rune Shield on impact
+    function drawHexShieldMatrix(ctx, impactX, impactY, flashAlpha) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      const hexR = 14;
+      const cols = 4, rows = 5;
+      for (let r = -rows; r <= rows; r++) {
+        for (let c = -cols; c <= cols; c++) {
+          const hx = impactX + c * hexR * 1.55;
+          const hy = impactY + r * hexR * 1.75 + (c % 2) * hexR * 0.88;
+          const dist = Math.hypot(hx - impactX, hy - impactY);
+          if (dist > 68) continue;
+          const localA = flashAlpha * (1 - dist / 68);
+          ctx.strokeStyle = `rgba(52, 211, 153, ${localA})`;
+          ctx.fillStyle = `rgba(16, 185, 129, ${localA * 0.25})`;
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          for (let k = 0; k < 6; k++) {
+            const a = (k * Math.PI) / 3;
+            const px = hx + Math.cos(a) * (hexR * 0.88);
+            const py = hy + Math.sin(a) * (hexR * 0.88);
+            if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+        }
+      }
+      ctx.restore();
+    }
+
+    // 4. Opening Splash 60fps Combat Engine
     let splashTimers = [];
     let animFrameId = null;
 
@@ -1016,27 +1187,37 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       const W = canvas.width, H = canvas.height;
-      let frame = 0, shieldFlash = 0, slashFlash = 0;
+      let frame = 0, shieldFlash = 0, slashProgress = 0, shakeMag = 0;
+      let lastHitX = 310, lastHitY = 175;
 
       const threats = [
-        { startX: 410, startY: 65, targetX: 270, targetY: 140, spawnFrame: 20, hitFrame: 48, type: 'shield' },
-        { startX: 412, startY: 235, targetX: 268, targetY: 185, spawnFrame: 40, hitFrame: 68, type: 'shield' },
-        { startX: 15, startY: 265, targetX: 155, targetY: 225, spawnFrame: 58, hitFrame: 84, type: 'sword' }
+        { startX: 470, startY: 55, targetX: 305, targetY: 155, spawnFrame: 18, hitFrame: 46, type: 'shield', label: 'SYN_FLOOD // 443' },
+        { startX: 475, startY: 250, targetX: 298, targetY: 205, spawnFrame: 38, hitFrame: 66, type: 'shield', label: 'C2_BEACON // 8080' },
+        { startX: 12, startY: 270, targetX: 175, targetY: 240, spawnFrame: 62, hitFrame: 88, type: 'sword', label: 'ZERO_DAY_PAYLOAD' }
       ];
       const sparks = [];
+      const shockwaves = [];
       const sliceTrail = [];
 
       canvas.parentElement.onmousemove = (e) => {
         const rect = canvas.getBoundingClientRect();
-        sliceTrail.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, alpha: 1 });
+        sliceTrail.push({ x: (e.clientX - rect.left) * (W / rect.width), y: (e.clientY - rect.top) * (H / rect.height), alpha: 1 });
         if (sliceTrail.length > 14) sliceTrail.shift();
       };
 
-      function spawnSparks(x, y, color) {
-        for (let i = 0; i < 28; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 1.8 + Math.random() * 5.2;
-          sparks.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, alpha: 1, radius: 1.6 + Math.random() * 2.8, color });
+      function spawnVelocitySparks(x, y, isShield) {
+        shockwaves.push({ x, y, r: 8, maxR: 85, alpha: 0.95 });
+        for (let i = 0; i < 34; i++) {
+          const baseAngle = isShield ? (-0.7 + Math.random() * 1.4) : (Math.PI * 0.55 + Math.random() * 1.2);
+          const speed = 3.5 + Math.random() * 7.5;
+          sparks.push({
+            x, y,
+            vx: Math.cos(baseAngle) * speed,
+            vy: Math.sin(baseAngle) * speed - 1.5,
+            alpha: 1,
+            len: 8 + Math.random() * 14,
+            color: i % 3 === 0 ? '#FFFFFF' : (i % 2 === 0 ? '#34D399' : '#FBBF24')
+          });
         }
       }
 
@@ -1045,132 +1226,173 @@
           frame++;
           ctx.clearRect(0, 0, W, H);
 
-          // Outer Radar Ring
+          // Camera Shake on Impact
           ctx.save();
-          ctx.translate(W / 2, H / 2);
-          ctx.rotate(frame * 0.008);
-          ctx.strokeStyle = 'rgba(16, 185, 129, 0.28)';
-          ctx.lineWidth = 1.5;
-          ctx.setLineDash([8, 6]);
+          if (shakeMag > 0.2) {
+            ctx.translate((Math.random() - 0.5) * shakeMag, (Math.random() - 0.5) * shakeMag);
+            shakeMag *= 0.82;
+          }
+
+          // 1. Isometric Glowing Cyber Pedestal Under the Lion's Paws
+          const pedX = W / 2, pedY = H * 0.84;
+          ctx.save();
+          const pedGrad = ctx.createRadialGradient(pedX, pedY, 10, pedX, pedY, 130);
+          pedGrad.addColorStop(0, 'rgba(16, 185, 129, 0.28)');
+          pedGrad.addColorStop(1, 'rgba(16, 185, 129, 0)');
+          ctx.fillStyle = pedGrad;
           ctx.beginPath();
-          ctx.arc(0, 0, 158, 0, Math.PI * 2);
+          ctx.ellipse(pedX, pedY, 125, 22, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.45)';
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([10, 6]);
+          ctx.beginPath();
+          ctx.ellipse(pedX, pedY, 108, 17, 0, 0, Math.PI * 2);
           ctx.stroke();
           ctx.restore();
 
-          // Dynamic Combat Physics on Cutout Lion
-          const entrance = Math.min(1, frame / 20);
-          const ease = 1 - Math.pow(1 - entrance, 3);
-          let offsetX = 0, offsetY = (1 - ease) * 18, rot = 0, scale = 0.86 + 0.14 * ease;
-          if (shieldFlash > 0.1) { offsetX -= shieldFlash * 6; rot = -shieldFlash * 0.04; scale += shieldFlash * 0.04; }
-          if (slashFlash > 0.1) { offsetX += slashFlash * 9; rot = slashFlash * 0.05; scale += slashFlash * 0.06; }
-
-          ctx.save();
-          ctx.translate(W / 2 + offsetX, H / 2 + offsetY);
-          ctx.rotate(rot);
-          ctx.scale(scale, scale);
-          ctx.globalAlpha = ease;
-          if (shieldFlash > 0.05 || slashFlash > 0.05) {
-            ctx.shadowColor = '#10B981';
-            ctx.shadowBlur = 24 * Math.max(shieldFlash, slashFlash);
+          // 2. Trigger Sword Slash Progress around frame 60..98
+          if (frame >= 56 && frame <= 102) {
+            slashProgress = (frame - 56) / 46;
+          } else {
+            slashProgress = 0;
           }
-          ctx.drawImage(lionSource, -160, -160, 320, 320);
+
+          // 3. Render Deformable Skeletal Mesh Lion
+          const entrance = Math.min(1, frame / 18);
+          ctx.save();
+          ctx.globalAlpha = 1 - Math.pow(1 - entrance, 3);
+          renderSkeletalMeshLion(ctx, lionSource, W / 2, H * 0.47, 340, frame, shieldFlash, slashProgress);
           ctx.restore();
 
-          // Shield Arc Flash
-          if (shieldFlash > 0.02) {
+          // 4. 3D Hexagonal Forcefield Matrix on Shield Block
+          if (shieldFlash > 0.03) {
+            drawHexShieldMatrix(ctx, lastHitX, lastHitY, shieldFlash);
+            shieldFlash *= 0.89;
+          }
+
+          // 5. Tapered Crescent Broadsword Slash Ribbon (Frames 74..96)
+          if (frame >= 74 && frame <= 98) {
+            const sp = (frame - 74) / 24;
+            const slashAlpha = Math.sin(sp * Math.PI);
+            drawCrescentSlash(ctx, W * 0.39, H * 0.54, 98, 0.35 + sp * 0.5, 2.35 + sp * 0.65, 26, slashAlpha);
+          }
+
+          // 6. Expanding Impact Shockwave Rings
+          for (let i = shockwaves.length - 1; i >= 0; i--) {
+            const sw = shockwaves[i];
+            sw.r += (sw.maxR - sw.r) * 0.18;
+            sw.alpha *= 0.86;
+            if (sw.alpha < 0.03) { shockwaves.splice(i, 1); continue; }
             ctx.save();
-            ctx.strokeStyle = `rgba(16, 185, 129, ${shieldFlash})`;
-            ctx.shadowColor = '#10B981';
-            ctx.shadowBlur = 24;
-            ctx.lineWidth = 5;
+            ctx.strokeStyle = `rgba(52, 211, 153, ${sw.alpha})`;
+            ctx.lineWidth = 2.5;
             ctx.beginPath();
-            ctx.arc(240, 165, 76, -0.85, 0.85);
+            ctx.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
             ctx.stroke();
             ctx.restore();
-            shieldFlash *= 0.88;
           }
 
-          // Broadsword Counter-Slash Arc
-          if (slashFlash > 0.02) {
-            ctx.save();
-            ctx.strokeStyle = `rgba(16, 185, 129, ${slashFlash})`;
-            ctx.shadowColor = '#10B981';
-            ctx.shadowBlur = 22;
-            ctx.lineWidth = 6;
-            ctx.beginPath();
-            ctx.arc(165, 195, 86, 0.3, 2.2);
-            ctx.stroke();
-            ctx.restore();
-            slashFlash *= 0.86;
-          }
-
-          // Cursor Blade Trail
-          if (sliceTrail.length > 1) {
-            ctx.save();
-            for (let i = 1; i < sliceTrail.length; i++) {
-              const p0 = sliceTrail[i - 1], p1 = sliceTrail[i];
-              ctx.strokeStyle = `rgba(16, 185, 129, ${p1.alpha})`;
-              ctx.lineWidth = i * 0.45;
-              ctx.lineCap = 'round';
-              ctx.beginPath();
-              ctx.moveTo(p0.x, p0.y);
-              ctx.lineTo(p1.x, p1.y);
-              ctx.stroke();
-              p1.alpha *= 0.9;
-            }
-            ctx.restore();
-          }
-
-          // Incoming Red Threat Packets
+          // 7. Incoming Telemetry-Tracked Cyber Threat Lances
           threats.forEach(t => {
             if (frame >= t.spawnFrame && frame <= t.hitFrame) {
               const p = (frame - t.spawnFrame) / (t.hitFrame - t.spawnFrame);
               const curX = t.startX + (t.targetX - t.startX) * p;
               const curY = t.startY + (t.targetY - t.startY) * p;
+              const ang = Math.atan2(t.targetY - t.startY, t.targetX - t.startX);
 
               ctx.save();
-              ctx.strokeStyle = '#EF4444';
+              ctx.globalCompositeOperation = 'lighter';
+              const tailX = curX - Math.cos(ang) * 52;
+              const tailY = curY - Math.sin(ang) * 52;
+              const lGrad = ctx.createLinearGradient(tailX, tailY, curX, curY);
+              lGrad.addColorStop(0, 'rgba(239, 68, 68, 0)');
+              lGrad.addColorStop(0.7, 'rgba(239, 68, 68, 0.9)');
+              lGrad.addColorStop(1, '#FFFFFF');
+
+              ctx.strokeStyle = lGrad;
               ctx.shadowColor = '#EF4444';
-              ctx.shadowBlur = 12;
-              ctx.lineWidth = 4;
+              ctx.shadowBlur = 16;
+              ctx.lineWidth = 4.5;
+              ctx.lineCap = 'round';
               ctx.beginPath();
-              ctx.moveTo(curX, curY);
-              ctx.lineTo(curX - (t.targetX - t.startX) * 0.16, curY - (t.targetY - t.startY) * 0.16);
+              ctx.moveTo(tailX, tailY);
+              ctx.lineTo(curX, curY);
               ctx.stroke();
 
-              ctx.fillStyle = '#FFFFFF';
-              ctx.beginPath();
-              ctx.arc(curX, curY, 4.5, 0, Math.PI * 2);
-              ctx.fill();
+              // Target Lock Reticle & Telemetry Tag
+              ctx.strokeStyle = 'rgba(239, 68, 68, 0.75)';
+              ctx.lineWidth = 1.2;
+              ctx.strokeRect(curX - 9, curY - 9, 18, 18);
+              ctx.fillStyle = '#EF4444';
+              ctx.font = '600 9px "JetBrains Mono", monospace';
+              ctx.fillText(t.label, curX - 38, curY - 14);
               ctx.restore();
 
               if (frame === t.hitFrame) {
+                lastHitX = t.targetX;
+                lastHitY = t.targetY;
                 if (t.type === 'shield') shieldFlash = 1.0;
-                if (t.type === 'sword') slashFlash = 1.0;
-                spawnSparks(t.targetX, t.targetY, '#10B981');
-                spawnSparks(t.targetX, t.targetY, '#34D399');
-                spawnSparks(t.targetX, t.targetY, '#FBBF24');
+                shakeMag = 9;
+                spawnVelocitySparks(t.targetX, t.targetY, t.type === 'shield');
               }
             }
           });
 
-          // Sparks
+          // 8. Directional Velocity Spark Streaks with Gravity & Floor Bounce
+          ctx.save();
+          ctx.globalCompositeOperation = 'lighter';
           for (let i = sparks.length - 1; i >= 0; i--) {
             const s = sparks[i];
-            s.x += s.vx; s.y += s.vy; s.alpha *= 0.92;
-            if (s.alpha < 0.03) { sparks.splice(i, 1); continue; }
-            ctx.save();
+            const prevX = s.x, prevY = s.y;
+            s.x += s.vx;
+            s.y += s.vy;
+            s.vy += 0.28; // Gravity
+            s.vx *= 0.97;
+            // Bounce off pedestal floor
+            if (s.y > pedY + 6 && s.vy > 0) {
+              s.y = pedY + 6;
+              s.vy *= -0.45;
+            }
+            s.alpha *= 0.93;
+            if (s.alpha < 0.04) { sparks.splice(i, 1); continue; }
+
+            ctx.strokeStyle = s.color;
             ctx.globalAlpha = s.alpha;
-            ctx.fillStyle = s.color;
             ctx.shadowColor = s.color;
-            ctx.shadowBlur = 8;
+            ctx.shadowBlur = 10;
+            ctx.lineWidth = 2.2;
+            ctx.lineCap = 'round';
             ctx.beginPath();
-            ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.moveTo(s.x, s.y);
+            ctx.lineTo(prevX - s.vx * 1.4, prevY - s.vy * 1.4);
+            ctx.stroke();
+          }
+          ctx.restore();
+
+          // 9. User Cursor Tapered Blade Trail
+          if (sliceTrail.length > 2) {
+            ctx.save();
+            for (let i = 1; i < sliceTrail.length; i++) {
+              const p0 = sliceTrail[i - 1], p1 = sliceTrail[i];
+              ctx.strokeStyle = `rgba(16, 185, 129, ${p1.alpha})`;
+              ctx.shadowColor = '#10B981';
+              ctx.shadowBlur = 10;
+              ctx.lineWidth = i * 0.55;
+              ctx.lineCap = 'round';
+              ctx.beginPath();
+              ctx.moveTo(p0.x, p0.y);
+              ctx.lineTo(p1.x, p1.y);
+              ctx.stroke();
+              p1.alpha *= 0.88;
+            }
             ctx.restore();
           }
 
-          if (frame < 195) { animFrameId = requestAnimationFrame(renderLoop); }
+          ctx.restore(); // End camera shake
+
+          if (frame < 205) { animFrameId = requestAnimationFrame(renderLoop); }
         }
         if (animFrameId) cancelAnimationFrame(animFrameId);
         animFrameId = requestAnimationFrame(renderLoop);
@@ -1187,10 +1409,10 @@
       startCanvasDefenseEngine();
       status.textContent = "SHUMBA GUARDIAN // RAISING RUNE SHIELD & BROADSWORD...";
 
-      splashTimers.push(setTimeout(() => { status.textContent = "SHIELD LOCKED // INTERCEPTING THREAT VECTORS"; }, 850));
-      splashTimers.push(setTimeout(() => { status.textContent = "MALICIOUS PACKETS -> SHATTERED BY RUNE SHIELD!"; }, 1450));
-      splashTimers.push(setTimeout(() => { status.textContent = "COUNTER-SLASH EXECUTED // PERIMETER SECURE"; }, 2050));
-      splashTimers.push(setTimeout(() => { splash.classList.add('hidden'); }, 2800));
+      splashTimers.push(setTimeout(() => { status.textContent = "HEX-SHIELD LOCKED // DEFLECTING SYN_FLOOD & C2 BEACONS"; }, 800));
+      splashTimers.push(setTimeout(() => { status.textContent = "BROADSWORD COUNTER-SLASH // ZERO_DAY NEUTRALIZED!"; }, 1550));
+      splashTimers.push(setTimeout(() => { status.textContent = "PERIMETER SECURE // ACCESS GRANTED"; }, 2250));
+      splashTimers.push(setTimeout(() => { splash.classList.add('hidden'); }, 3000));
     }
 
     function dismissSplashNow() {
@@ -1214,11 +1436,61 @@
       runDefenseSequence();
     }
 
-    // 4. Playable 30-Second "Packet Slicer" Game Engine (like egbemodeyomi.com)
+    // 5. Live Interactive Hero Guardian Card (Skeletal Breathing + 3D Parallax + Embers)
+    (function initHeroGuardianCard() {
+      const card = document.getElementById('godmodeCard');
+      const hCanvas = document.getElementById('heroGuardianCanvas');
+      const label = document.getElementById('godmodeLabel');
+      if (!card || !hCanvas) return;
+      const hctx = hCanvas.getContext('2d');
+      let hFrame = 0, active = false;
+      const embers = Array.from({ length: 18 }, () => ({
+        x: Math.random() * 224,
+        y: Math.random() * 260,
+        vy: -(0.4 + Math.random() * 0.9),
+        r: 1 + Math.random() * 2
+      }));
+
+      function renderHeroGuardian() {
+        if (!active && !card.classList.contains('god-mode')) return;
+        hFrame++;
+        hctx.clearRect(0, 0, 224, 260);
+        if (transparentLionCanvas) {
+          renderSkeletalMeshLion(hctx, transparentLionCanvas, 112, 128, 215, hFrame, 0, (hFrame % 90 < 35) ? (hFrame % 90) / 35 : 0);
+        }
+        embers.forEach(em => {
+          em.y += em.vy;
+          if (em.y < 0) { em.y = 260; em.x = Math.random() * 224; }
+          hctx.fillStyle = '#34D399';
+          hctx.beginPath();
+          hctx.arc(em.x, em.y, em.r, 0, Math.PI * 2);
+          hctx.fill();
+        });
+        requestAnimationFrame(renderHeroGuardian);
+      }
+
+      card.addEventListener('mouseenter', () => {
+        active = true;
+        label.textContent = 'GUARDIAN MODE';
+        getCutoutLion(() => requestAnimationFrame(renderHeroGuardian));
+      });
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const nx = ((e.clientX - r.left) / r.width) * 2 - 1;
+        const ny = ((e.clientY - r.top) / r.height) * 2 - 1;
+        card.style.transform = `rotateY(${nx * 12}deg) rotateX(${-ny * 12}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        active = false;
+        card.style.transform = '';
+        if (!card.classList.contains('god-mode')) label.textContent = 'ANALYST MODE';
+      });
+    })();
+
+    // 6. Playable 30-Second "Packet Slicer" Game Engine
     let gameLoopId = null, gameTimerInt = null, score = 0, bestScore = 0, timeLeft = 30;
     function toggleGameDrawer() {
-      const d = document.getElementById('gameDrawer');
-      d.classList.toggle('open');
+      document.getElementById('gameDrawer').classList.toggle('open');
     }
 
     function startSlicerGame() {
@@ -1242,20 +1514,19 @@
         trail.push({ x: mx, y: my, a: 1 });
         if (trail.length > 12) trail.shift();
 
-        // Check slice collisions
         for (let i = packets.length - 1; i >= 0; i--) {
           const pk = packets[i];
           if (Math.hypot(pk.x - mx, pk.y - my) < pk.r + 14) {
             if (pk.bad) {
               score += 10;
               for (let k = 0; k < 14; k++) {
-                const a = Math.random() * Math.PI * 2, s = 1.5 + Math.random() * 3.5;
+                const a = Math.random() * Math.PI * 2, s = 2 + Math.random() * 4;
                 sparks.push({ x: pk.x, y: pk.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, a: 1, c: '#10B981' });
               }
             } else {
               score = Math.max(0, score - 15);
               for (let k = 0; k < 14; k++) {
-                const a = Math.random() * Math.PI * 2, s = 1.5 + Math.random() * 3.5;
+                const a = Math.random() * Math.PI * 2, s = 2 + Math.random() * 4;
                 sparks.push({ x: pk.x, y: pk.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, a: 1, c: '#EF4444' });
               }
             }
@@ -1324,8 +1595,8 @@
           const s = sparks[i];
           s.x += s.vx; s.y += s.vy; s.a *= 0.9;
           if (s.a < 0.04) { sparks.splice(i, 1); continue; }
-          ctx.fillStyle = s.c; ctx.globalAlpha = s.a;
-          ctx.beginPath(); ctx.arc(s.x, s.y, 2.2, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = s.c; ctx.globalAlpha = s.a; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(s.x - s.vx * 2, s.y - s.vy * 2); ctx.stroke();
           ctx.globalAlpha = 1;
         }
 
@@ -1335,14 +1606,7 @@
       gameLoopId = requestAnimationFrame(loop);
     }
 
-    // 5. God-Mode Label Toggle + Draggable Bento Cards
-    const gmCard = document.getElementById('godmodeCard');
-    const gmLabel = document.getElementById('godmodeLabel');
-    gmCard.addEventListener('mouseenter', () => { gmLabel.textContent = 'GUARDIAN MODE'; });
-    gmCard.addEventListener('mouseleave', () => {
-      if (!gmCard.classList.contains('god-mode')) gmLabel.textContent = 'ANALYST MODE';
-    });
-
+    // 7. Draggable Bento Cards
     document.querySelectorAll('#draggableBento .bento-item').forEach(card => {
       let isDown = false, startX = 0, startY = 0, curX = 0, curY = 0;
       card.addEventListener('mousedown', (e) => {
