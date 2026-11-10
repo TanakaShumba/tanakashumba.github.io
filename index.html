@@ -6,7 +6,7 @@
   <title>Tanaka Shumba | Cybersecurity, AI & Systems</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #FAF8F5;
@@ -18,8 +18,6 @@
       --accent: #059669;
       --accent-bright: #10B981;
       --accent-soft: rgba(16, 185, 129, 0.12);
-      --gold: #D97706;
-      --gold-light: #F59E0B;
       --danger: #EF4444;
       --pill-bg: #EFECE6;
       --grid-color: rgba(20, 20, 22, 0.038);
@@ -38,8 +36,6 @@
       --accent: #10B981;
       --accent-bright: #34D399;
       --accent-soft: rgba(16, 185, 129, 0.15);
-      --gold: #F59E0B;
-      --gold-light: #FBBF24;
       --danger: #F87171;
       --pill-bg: #171B22;
       --grid-color: rgba(255, 255, 255, 0.03);
@@ -63,101 +59,6 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
-
-    /* =====================================================
-       CINEMATIC 3D LION OPTICAL SHADER REVEAL (ZERO 2D DOODLES)
-       ===================================================== */
-    .splash-screen {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      background-image: 
-        radial-gradient(circle at 52% 45%, rgba(16, 185, 129, 0.18), transparent 54%),
-        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-      background-size: 100% 100%, 40px 40px, 40px 40px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out), visibility 0.65s;
-    }
-
-    .splash-screen.hidden {
-      opacity: 0;
-      transform: scale(1.04);
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .defense-stage {
-      position: relative;
-      width: 390px;
-      height: 370px;
-      max-width: 92vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 6px;
-    }
-
-    #defenseCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 5;
-      pointer-events: none;
-    }
-
-    .splash-status {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-      min-height: 22px;
-      text-align: center;
-    }
-
-    .splash-sub {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .splash-bar {
-      width: 210px;
-      height: 3px;
-      background: var(--border);
-      border-radius: 99px;
-      overflow: hidden;
-    }
-
-    .splash-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--text), var(--accent-bright));
-      animation: fillBar 2.3s var(--ease-out) forwards;
-    }
-
-    .splash-skip {
-      margin-top: 14px;
-      background: transparent;
-      border: none;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      cursor: pointer;
-      text-decoration: underline;
-      opacity: 0.75;
-    }
-
-    @keyframes fillBar { to { width: 100%; } }
 
     /* Ambient Glow & Scroll Progress */
     .ambient-glow {
@@ -186,7 +87,7 @@
     .container { max-width: 940px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
     /* Scroll Reveal */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
     .reveal.active { opacity: 1; transform: translateY(0); }
     .delay-1 { transition-delay: 0.08s; }
     .delay-2 { transition-delay: 0.16s; }
@@ -204,13 +105,19 @@
     .brand-name { font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
     .brand-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
     
-    .lion-badge {
-      width: 40px; height: 40px; border-radius: 11px; background: var(--surface);
-      border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center;
-      box-shadow: var(--shadow); overflow: hidden; transition: transform 0.35s var(--ease-out), border-color 0.2s ease; flex-shrink: 0;
+    .monogram-badge {
+      width: 38px; height: 38px; border-radius: 10px; background: var(--text);
+      color: var(--bg); display: inline-flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: -0.03em; box-shadow: var(--shadow); position: relative;
+      transition: transform 0.3s var(--ease-out); flex-shrink: 0;
     }
-    .brand:hover .lion-badge { transform: rotate(-4deg) scale(1.06); border-color: var(--accent); }
-    .lion-badge img { width: 36px; height: 36px; object-fit: contain; }
+    .monogram-badge::after {
+      content: ""; position: absolute; bottom: -2px; right: -2px;
+      width: 9px; height: 9px; border-radius: 50%; background: var(--accent-bright);
+      border: 2px solid var(--bg);
+    }
+    .brand:hover .monogram-badge { transform: translateY(-1px) scale(1.04); }
 
     .nav-links { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
     .nav-links a.nav-item { position: relative; padding: 4px 4px; transition: color 0.2s ease; white-space: nowrap; }
@@ -235,7 +142,7 @@
       box-shadow: var(--shadow-hover);
       padding: 18px 0 22px;
     }
-    .game-drawer.open { display: block; animation: fadeIn 0.25s ease; }
+    .game-drawer.open { display: block; }
     .game-header {
       display: flex; align-items: center; justify-content: space-between;
       margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
@@ -257,7 +164,7 @@
     .game-overlay p { font-size: 0.84rem; color: #949BA6; max-width: 420px; margin-bottom: 14px; }
 
     /* =====================================================
-       HERO SECTION + CLEAN 3D PARALLAX GUARDIAN CARD
+       HERO SECTION + 3D PARALLAX EXECUTIVE PORTRAIT CARD
        ===================================================== */
     .hero { padding: 64px 0 48px; }
     .chapter-tag {
@@ -269,13 +176,13 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 240px;
+      grid-template-columns: 1fr 230px;
       gap: 40px;
       align-items: center;
       margin-bottom: 26px;
     }
 
-    .godmode-card-wrap {
+    .portrait-wrap {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -285,102 +192,51 @@
 
     .profile-photo-card {
       position: relative;
-      width: 224px;
-      height: 260px;
+      width: 216px;
+      height: 252px;
       border-radius: 22px;
       overflow: hidden;
-      border: 2px solid var(--border);
+      border: 1.5px solid var(--border);
       box-shadow: var(--shadow);
       background: var(--surface);
-      cursor: pointer;
       transform-style: preserve-3d;
       transition: transform 0.2s ease-out, border-color 0.3s ease, box-shadow 0.35s ease;
     }
 
-    .profile-photo-card:hover,
-    .profile-photo-card.god-mode {
+    .profile-photo-card:hover {
       border-color: var(--accent-bright);
-      box-shadow: 0 24px 50px -12px rgba(16, 185, 129, 0.32);
-    }
-
-    .profile-photo-card img.real-photo,
-    .profile-photo-card img.guardian-photo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      transition: opacity 0.4s var(--ease-out), transform 0.45s var(--ease-out);
+      box-shadow: var(--shadow-hover);
     }
 
     .profile-photo-card img.real-photo {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center top;
-      opacity: 1;
-      z-index: 1;
+      display: block;
+      transition: transform 0.5s var(--ease-out);
     }
 
-    .profile-photo-card img.guardian-photo {
-      object-fit: contain;
-      padding: 10px 10px 36px 10px;
-      background: radial-gradient(circle at 56% 44%, rgba(16, 185, 129, 0.22), var(--surface) 70%);
-      opacity: 0;
-      transform: scale(0.92);
-      z-index: 2;
-      filter: drop-shadow(0 10px 20px rgba(16, 185, 129, 0.25));
+    .profile-photo-card:hover img.real-photo {
+      transform: scale(1.03);
     }
 
-    .profile-photo-card:hover img.guardian-photo,
-    .profile-photo-card.god-mode img.guardian-photo {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .scanline-sweep {
-      position: absolute;
-      left: 0; right: 0; top: -10%;
-      height: 2px;
-      background: var(--accent-bright);
-      box-shadow: 0 0 14px 3px var(--accent-bright);
-      z-index: 4;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .profile-photo-card:hover .scanline-sweep,
-    .profile-photo-card.god-mode .scanline-sweep {
-      animation: scanSweep 1.4s ease-in-out infinite;
-    }
-
-    @keyframes scanSweep {
-      0% { top: 0%; opacity: 0.85; }
-      100% { top: 100%; opacity: 0; }
-    }
-
-    .godmode-hud-pill {
+    .portrait-hud-pill {
       position: absolute;
       bottom: 10px;
       left: 10px;
       right: 10px;
-      padding: 5px 10px;
+      padding: 6px 10px;
       border-radius: 10px;
-      background: rgba(20, 20, 22, 0.84);
+      background: rgba(20, 20, 22, 0.82);
       color: #FFFFFF;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.64rem;
-      backdrop-filter: blur(6px);
-      z-index: 5;
+      font-size: 0.62rem;
+      backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    .handwritten-note {
-      font-family: 'Caveat', cursive;
-      font-size: 1.22rem;
-      color: var(--accent);
-      margin-top: 8px;
-      transform: rotate(-2deg);
-      user-select: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .hero-top-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
@@ -554,28 +410,13 @@
 </head>
 <body>
 
-  <!-- =========================================================================
-       OPENING SPLASH: PURE 3D LION + REAL OPTICAL RUNE & BLADE SHADER PASS
-       ========================================================================= -->
-  <div class="splash-screen" id="splashScreen">
-    <div class="defense-stage" id="defenseArena">
-      <canvas id="defenseCanvas" width="390" height="370"></canvas>
-    </div>
-    <div class="splash-status" id="splashStatus">SHUMBA GUARDIAN // IGNITING RUNE SHIELD &amp; BROADSWORD...</div>
-    <div class="splash-sub">TANAKA SHUMBA · ACTIVE CYBERSECURITY DEFENSE</div>
-    <div class="splash-bar"><div class="splash-bar-fill"></div></div>
-    <button class="splash-skip" onclick="dismissSplashNow()">Enter portfolio →</button>
-  </div>
-
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="ambient-glow"></div>
 
   <header>
     <div class="container nav-inner">
-      <a href="#" class="brand" onclick="replaySplash(event)" aria-label="Tanaka Shumba Home" title="Click to replay Shumba Guardian intro">
-        <span class="lion-badge">
-          <img class="cutout-lion-img" src="lion.jpg" alt="Shumba Crest" />
-        </span>
+      <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" aria-label="Tanaka Shumba Home">
+        <span class="monogram-badge">TS</span>
         <span class="brand-name">Tanaka Shumba <span class="brand-tag">SEC // AI</span></span>
       </a>
       <nav class="nav-links">
@@ -594,7 +435,7 @@
     <div class="game-drawer" id="gameDrawer">
       <div class="container">
         <div class="game-header">
-          <div><strong>SHUMBA PACKET SLICER</strong> · <span style="color:var(--text-muted)">Slice red exploits, spare green TLS packets</span></div>
+          <div><strong>SOC PACKET SLICER</strong> · <span style="color:var(--text-muted)">Slice red exploits, spare green TLS packets</span></div>
           <div>
             <span id="gameTimer">30</span>s · <span id="gameScore" style="color:var(--accent); font-weight:600;">0</span> pts · Best: <span id="gameBest">0</span>
             &nbsp;<button class="btn-small" style="padding:3px 10px;" onclick="toggleGameDrawer()">Close ×</button>
@@ -604,9 +445,9 @@
           <canvas id="slicerCanvas" width="850" height="240"></canvas>
           <div class="game-overlay" id="gameOverlay">
             <span class="chapter-tag"><i></i> 30-SECOND SOC CHALLENGE</span>
-            <h3>Slice the <em>Exploits</em></h3>
-            <p>Swipe across the arena to slice red malicious packets (<strong>SYN Flood</strong>, <strong>Homoglyph Phish</strong>, <strong>C2 Beacon</strong>) with the Lion's broadsword. <strong>Don't slice green TLS 1.3 traffic!</strong></p>
-            <button class="btn-small btn-primary-small" onclick="startSlicerGame()">Start Defense (30s) →</button>
+            <h3>Intercept the <em>Exploits</em></h3>
+            <p>Swipe your cursor across the arena to slice red malicious packets (<strong>SYN Flood</strong>, <strong>Homoglyph Phish</strong>, <strong>C2 Beacon</strong>). <strong>Don't slice green TLS 1.3 traffic!</strong></p>
+            <button class="btn-small btn-primary-small" onclick="startSlicerGame()">Start Shift (30s) →</button>
           </div>
         </div>
       </div>
@@ -614,7 +455,7 @@
   </header>
 
   <main class="container">
-    <!-- Chapter 01: Hero with Interactive 3D God-Mode Card -->
+    <!-- Chapter 01: Hero with 3D Interactive Executive Portrait Card -->
     <section class="hero" style="border-bottom: none;">
       <div class="hero-grid reveal active">
         <div>
@@ -631,21 +472,17 @@
           </h1>
         </div>
 
-        <!-- "Hover Me. Trust Me." God-Mode Portrait Card (Suit Portrait <-> Clean Cutout 3D Lion) -->
-        <div class="godmode-card-wrap">
-          <div class="profile-photo-card" id="godmodeCard" onclick="this.classList.toggle('god-mode')" title="Hover or tap to toggle Shumba Guardian mode">
-            <div class="scanline-sweep"></div>
+        <div class="portrait-wrap">
+          <div class="profile-photo-card" id="portraitCard" title="Tanaka Shumba · M.S. CS & B.S. Cybersecurity">
             <img class="real-photo user-portrait" src="profile.jpg" alt="Tanaka Shumba Portrait" />
-            <img class="guardian-photo cutout-lion-img" src="lion.jpg" alt="Shumba Guardian Mode" />
-            <div class="godmode-hud-pill">
-              <span style="display:inline-flex; align-items:center; gap:5px;">
+            <div class="portrait-hud-pill">
+              <span style="display:inline-flex; align-items:center; gap:6px;">
                 <span class="pulse" style="width:6px; height:6px;"></span>
-                <span id="godmodeLabel">ANALYST MODE</span>
+                <span>ID VERIFIED</span>
               </span>
-              <span style="color:#34D399;">SHUMBA // 01</span>
+              <span style="color:#34D399;">M.S. CS · B.S. CYBER</span>
             </div>
           </div>
-          <div class="handwritten-note">↑ hover me. trust me</div>
         </div>
       </div>
 
@@ -921,7 +758,7 @@
       history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
 
-    // 1. Smart Portrait Resolver
+    // 1. Smart Portrait Resolver (Loads your suit portrait everywhere)
     (function resolveUserPortrait() {
       const candidates = ['profile.jpg', 'image.png', 'profile.png', 'images/profile.jpg', 'images/image.png', 'me.jpg'];
       let idx = 0;
@@ -939,215 +776,22 @@
       tryNext();
     })();
 
-    // 2. Precision Cutout + Optical Rune Bloom Extractor for lion.jpg
-    // Cleans 100% of the studio background (including the trapped gap between the legs)
-    // AND extracts the glowing emerald shield runes into a real optical bloom layer!
-    let transparentLionCanvas = null;
-    let runeBloomCanvas = null;
-
-    function prepareLionShaderLayers(callback) {
-      if (transparentLionCanvas && runeBloomCanvas) {
-        callback(transparentLionCanvas, runeBloomCanvas);
-        return;
-      }
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.onload = () => {
-        const S = 460;
-        const off = document.createElement('canvas');
-        off.width = S; off.height = S;
-        const octx = off.getContext('2d');
-        octx.drawImage(img, 0, 0, S, S);
-
-        const bloom = document.createElement('canvas');
-        bloom.width = S; bloom.height = S;
-        const bctx = bloom.getContext('2d');
-
-        try {
-          const id = octx.getImageData(0, 0, S, S);
-          const d = id.data;
-          const bloomData = bctx.createImageData(S, S);
-          const bd = bloomData.data;
-
-          const bgR = d[0], bgG = d[1], bgB = d[2];
-
-          for (let i = 0; i < d.length; i += 4) {
-            const p = i >> 2;
-            const x = p % S, y = (p / S) | 0;
-            const r = d[i], g = d[i + 1], b = d[i + 2];
-            const maxC = Math.max(r, g, b), minC = Math.min(r, g, b);
-            const sat = maxC - minC;
-            const luma = (r + g + b) / 3;
-            const distToCorner = Math.hypot(r - bgR, g - bgG, b - bgB);
-
-            // Detect emerald rune shield glow pixels
-            const isGreenRune = (g > r + 14 && g > b + 10);
-            if (isGreenRune) {
-              bd[i] = r;
-              bd[i + 1] = Math.min(255, g + 35);
-              bd[i + 2] = b;
-              bd[i + 3] = Math.min(255, (g - r) * 3.2);
-              continue;
-            }
-
-            // Detect neutral studio background & floor shadow (including trapped gap between legs)
-            // Keep bright steel sword blade (which sits at x: 0.25..0.55, y: 0.50..0.76 and has high contrast edges)
-            const inSwordZone = (x > S * 0.24 && x < S * 0.54 && y > S * 0.48 && y < S * 0.77);
-            const isStudioBackdrop = (!inSwordZone && (distToCorner < 42 || (luma > 212 && sat < 24)));
-            const isTrappedLegGap = (x > S * 0.36 && x < S * 0.56 && y > S * 0.65 && y < S * 0.90 && sat < 26 && luma > 168);
-            const isFloorShadow = (y > S * 0.81 && sat < 32 && luma > 130);
-
-            if (isStudioBackdrop || isTrappedLegGap || isFloorShadow) {
-              d[i + 3] = 0;
-            }
-          }
-
-          octx.putImageData(id, 0, 0);
-          bctx.putImageData(bloomData, 0, 0);
-
-          const pngUrl = off.toDataURL('image/png');
-          document.querySelectorAll('.cutout-lion-img').forEach(el => { el.src = pngUrl; });
-        } catch (e) {}
-
-        transparentLionCanvas = off;
-        runeBloomCanvas = bloom;
-        callback(off, bloom);
-      };
-      img.onerror = () => { if (img.src.indexOf('lion-guardian.png') === -1) img.src = 'lion-guardian.png'; };
-      img.src = 'lion.jpg';
-    }
-
-    // 3. Cinematic Optical Shader Splash Engine (Zero 2D MS-Paint Doodles!)
-    let splashTimers = [];
-    let animFrameId = null;
-
-    function startCanvasDefenseEngine() {
-      const canvas = document.getElementById('defenseCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const W = canvas.width, H = canvas.height;
-      let frame = 0;
-
-      prepareLionShaderLayers((lionSource, bloomSource) => {
-        function renderLoop() {
-          frame++;
-          ctx.clearRect(0, 0, W, H);
-
-          // Smooth cinematic dolly-in & breathing curve
-          const progress = Math.min(1, frame / 32);
-          const easeOut = 1 - Math.pow(1 - progress, 3);
-          const breathe = Math.sin(frame * 0.06) * 2.5;
-          const scale = 0.88 + 0.12 * easeOut + Math.sin(frame * 0.06) * 0.008;
-          const drawSize = 350;
-
-          ctx.save();
-          ctx.translate(W / 2, H / 2 + (1 - easeOut) * 16 + breathe);
-          ctx.scale(scale, scale);
-          ctx.globalAlpha = easeOut;
-
-          // A) Soft Ambient Emerald Backlight behind the Lion
-          const pulseIntensity = 0.5 + 0.5 * Math.sin(frame * 0.1);
-          const backGlow = ctx.createRadialGradient(25, -10, 10, 25, -10, 155);
-          backGlow.addColorStop(0, `rgba(16, 185, 129, ${0.22 + pulseIntensity * 0.14})`);
-          backGlow.addColorStop(1, 'rgba(16, 185, 129, 0)');
-          ctx.fillStyle = backGlow;
-          ctx.beginPath();
-          ctx.arc(25, -10, 155, 0, Math.PI * 2);
-          ctx.fill();
-
-          // B) Crisp 3D Cutout Armored Lion (100% straight sword, zero distortion)
-          ctx.drawImage(lionSource, -drawSize / 2, -drawSize / 2, drawSize, drawSize);
-
-          // C) Volumetric Optical Bloom on the Lion's Actual 3D Rune Shield!
-          ctx.save();
-          ctx.globalCompositeOperation = 'screen';
-          ctx.filter = `blur(${6 + pulseIntensity * 8}px) brightness(1.8)`;
-          ctx.globalAlpha = 0.65 + pulseIntensity * 0.35;
-          ctx.drawImage(bloomSource, -drawSize / 2, -drawSize / 2, drawSize, drawSize);
-          ctx.restore();
-
-          // D) Specular Metallic Light Glint Sweeping Down the Steel Broadsword (Frames 20..75)
-          if (frame >= 18 && frame <= 85) {
-            const glintP = (frame - 18) / 67;
-            // Sword runs from hilt (-68, 12) down-right to tip (10, 92)
-            const gx = -68 + glintP * 85;
-            const gy = 12 + glintP * 85;
-            ctx.save();
-            ctx.globalCompositeOperation = 'overlay';
-            const bladeGlint = ctx.createRadialGradient(gx, gy, 2, gx, gy, 36);
-            bladeGlint.addColorStop(0, `rgba(255, 255, 255, ${Math.sin(glintP * Math.PI) * 0.95})`);
-            bladeGlint.addColorStop(0.5, `rgba(167, 243, 208, ${Math.sin(glintP * Math.PI) * 0.5})`);
-            bladeGlint.addColorStop(1, 'rgba(255, 255, 255, 0)');
-            ctx.fillStyle = bladeGlint;
-            ctx.beginPath();
-            ctx.arc(gx, gy, 36, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-          }
-
-          ctx.restore();
-
-          if (frame < 160) { animFrameId = requestAnimationFrame(renderLoop); }
-        }
-        if (animFrameId) cancelAnimationFrame(animFrameId);
-        animFrameId = requestAnimationFrame(renderLoop);
-      });
-    }
-
-    function runDefenseSequence() {
-      splashTimers.forEach(t => clearTimeout(t));
-      splashTimers = [];
-      const splash = document.getElementById('splashScreen');
-      const status = document.getElementById('splashStatus');
-      if (!splash || !status) return;
-
-      startCanvasDefenseEngine();
-      status.textContent = "SHUMBA GUARDIAN // IGNITING RUNE SHIELD & BROADSWORD...";
-
-      splashTimers.push(setTimeout(() => { status.textContent = "RUNE SHIELD ACTIVE // PERIMETER SECURE"; }, 950));
-      splashTimers.push(setTimeout(() => { splash.classList.add('hidden'); }, 2250));
-    }
-
-    function dismissSplashNow() {
-      splashTimers.forEach(t => clearTimeout(t));
-      if (animFrameId) cancelAnimationFrame(animFrameId);
-      const splash = document.getElementById('splashScreen');
-      if (splash) splash.classList.add('hidden');
-    }
-
-    window.addEventListener('DOMContentLoaded', runDefenseSequence);
-
-    function replaySplash(e) {
-      e.preventDefault();
-      history.replaceState(null, document.title, window.location.pathname);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      const splash = document.getElementById('splashScreen');
-      const bar = splash.querySelector('.splash-bar');
-      const barClone = bar.cloneNode(true);
-      bar.parentNode.replaceChild(barClone, bar);
-      splash.classList.remove('hidden');
-      runDefenseSequence();
-    }
-
-    // 4. 3D Tilt & Guardian Label on Hero Portrait Card
+    // 2. Smooth 3D Tilt on Hero Portrait Card
     (function initHeroCardTilt() {
-      const card = document.getElementById('godmodeCard');
-      const label = document.getElementById('godmodeLabel');
+      const card = document.getElementById('portraitCard');
       if (!card) return;
-      card.addEventListener('mouseenter', () => { label.textContent = 'GUARDIAN MODE'; });
       card.addEventListener('mousemove', (e) => {
         const r = card.getBoundingClientRect();
         const nx = ((e.clientX - r.left) / r.width) * 2 - 1;
         const ny = ((e.clientY - r.top) / r.height) * 2 - 1;
-        card.style.transform = `rotateY(${nx * 10}deg) rotateX(${-ny * 10}deg) translateY(-4px)`;
+        card.style.transform = `rotateY(${nx * 8}deg) rotateX(${-ny * 8}deg) translateY(-4px)`;
       });
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
-        if (!card.classList.contains('god-mode')) label.textContent = 'ANALYST MODE';
       });
     })();
 
-    // 5. Playable 30-Second "Packet Slicer" Game Engine
+    // 3. Playable 30-Second "SOC Packet Slicer" Game Engine
     let gameLoopId = null, gameTimerInt = null, score = 0, bestScore = 0, timeLeft = 30;
     function toggleGameDrawer() {
       document.getElementById('gameDrawer').classList.toggle('open');
@@ -1266,7 +910,7 @@
       gameLoopId = requestAnimationFrame(loop);
     }
 
-    // 6. Draggable Bento Cards
+    // 4. Draggable Bento Cards
     document.querySelectorAll('#draggableBento .bento-item').forEach(card => {
       let isDown = false, startX = 0, startY = 0, curX = 0, curY = 0;
       card.addEventListener('mousedown', (e) => {
@@ -1395,7 +1039,7 @@
       document.getElementById('modalBody').innerHTML = `
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:18px; padding-right:40px;">
           <div style="display:flex; align-items:center; gap:14px;">
-            <img src="${portraitSrc}" onerror="this.src='lion.jpg';" alt="Tanaka Shumba" style="width:52px; height:52px; border-radius:50%; object-fit:cover; border:2px solid var(--accent);" />
+            <img src="${portraitSrc}" alt="Tanaka Shumba" style="width:52px; height:52px; border-radius:50%; object-fit:cover; border:2px solid var(--accent);" />
             <div>
               <h3 style="font-family:'Instrument Serif', serif; font-size:2rem; font-weight:400;">Tanaka Shumba</h3>
               <div style="font-size:0.82rem; color:var(--text-muted);">tanakashumba04@gmail.com | 334-482-0211</div>
