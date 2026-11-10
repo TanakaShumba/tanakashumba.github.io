@@ -6,7 +6,7 @@
   <title>Tanaka Shumba | Cybersecurity, AI & Systems</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #FAF8F5;
@@ -24,7 +24,7 @@
       --pill-bg: #EFECE6;
       --grid-color: rgba(20, 20, 22, 0.038);
       --shadow: 0 10px 30px -10px rgba(20, 20, 22, 0.06);
-      --shadow-hover: 0 22px 45px -12px rgba(20, 20, 22, 0.12);
+      --shadow-hover: 0 22px 45px -12px rgba(20, 20, 22, 0.14);
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -65,16 +65,16 @@
     }
 
     /* =====================================================
-       3D ARMORED LION GUARDIAN SPLASH SCREEN (FEATHER MASKED)
+       OPENING SPLASH: FLOOD-FILL CUTOUT LION + SLICE ENGINE
        ===================================================== */
     .splash-screen {
       position: fixed;
       inset: 0;
-      background: #FAF8F5;
+      background: var(--bg);
       background-image: 
-        radial-gradient(circle at 50% 46%, rgba(16, 185, 129, 0.16), transparent 54%),
-        linear-gradient(to right, rgba(20, 20, 22, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(20, 20, 22, 0.035) 1px, transparent 1px);
+        radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.18), transparent 56%),
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
       background-size: 100% 100%, 40px 40px, 40px 40px;
       z-index: 9999;
       display: flex;
@@ -82,6 +82,7 @@
       align-items: center;
       justify-content: center;
       transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out), visibility 0.65s;
+      cursor: crosshair;
     }
 
     .splash-screen.hidden {
@@ -93,12 +94,12 @@
 
     .defense-stage {
       position: relative;
-      width: 380px;
-      height: 360px;
+      width: 420px;
+      height: 380px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     #defenseCanvas {
@@ -106,82 +107,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
-      z-index: 4;
-    }
-
-    .lion-warrior-wrap {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      animation: warriorCombatSequence 2.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    /* Radial mask + brightness boost completely erases the square JPG edges */
-    .lion-warrior-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      mix-blend-mode: multiply;
-      filter: brightness(1.06) contrast(1.08) saturate(1.08);
-      -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 54%, rgba(0,0,0,0.6) 66%, transparent 74%);
-      mask-image: radial-gradient(circle at 50% 50%, #000 54%, rgba(0,0,0,0.6) 66%, transparent 74%);
-      border-radius: 50%;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    .rune-shield-glow {
-      position: absolute;
-      right: 24px;
-      top: 72px;
-      width: 110px;
-      height: 160px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, rgba(16, 185, 129, 0) 70%);
-      pointer-events: none;
-      z-index: 3;
-      animation: shieldAuraPulse 2.85s ease-out forwards;
-    }
-
-    .sword-slash-arc {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
       z-index: 5;
-      pointer-events: none;
-      opacity: 0;
-      animation: slashArcFlash 2.85s ease-out forwards;
-    }
-
-    @keyframes warriorCombatSequence {
-      0% { transform: scale(0.84) translateY(18px); opacity: 0; }
-      20% { transform: scale(1) translateY(0); opacity: 1; }
-      42% { transform: scale(1.04) translateX(-5px) rotate(-1.5deg); }
-      60% { transform: scale(1.06) translateX(-7px) rotate(-2.5deg); }
-      76% { transform: scale(1.09) translateX(8px) translateY(-4px) rotate(2.5deg); }
-      92%, 100% { transform: scale(1.02) translateX(0) translateY(0) rotate(0deg); opacity: 1; }
-    }
-
-    @keyframes shieldAuraPulse {
-      0%, 25% { opacity: 0.25; transform: scale(0.9); }
-      42% { opacity: 0.95; transform: scale(1.25); }
-      52% { opacity: 0.4; transform: scale(1); }
-      60% { opacity: 1; transform: scale(1.35); }
-      76% { opacity: 0.85; transform: scale(1.15); }
-      100% { opacity: 0.5; transform: scale(1); }
-    }
-
-    @keyframes slashArcFlash {
-      0%, 66% { opacity: 0; transform: scale(0.85) rotate(-12deg); }
-      74% { opacity: 1; transform: scale(1.06) rotate(4deg); }
-      86%, 100% { opacity: 0; transform: scale(1.15) rotate(12deg); }
     }
 
     .splash-status {
@@ -204,7 +130,7 @@
     }
 
     .splash-bar {
-      width: 200px;
+      width: 220px;
       height: 3px;
       background: var(--border);
       border-radius: 99px;
@@ -215,7 +141,7 @@
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, var(--text), var(--accent-bright));
-      animation: fillBar 2.7s var(--ease-out) forwards;
+      animation: fillBar 2.8s var(--ease-out) forwards;
     }
 
     .splash-skip {
@@ -232,7 +158,7 @@
 
     @keyframes fillBar { to { width: 100%; } }
 
-    /* Ambient Soft Top Glow & Progress Bar */
+    /* Ambient Glow & Scroll Progress */
     .ambient-glow {
       position: fixed;
       top: -180px;
@@ -256,7 +182,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    .container { max-width: 880px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
     /* Scroll Reveal */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out); }
@@ -267,61 +193,197 @@
 
     /* Navbar */
     header {
-      position: sticky; top: 0; z-index: 40;
+      position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       background: color-mix(in srgb, var(--bg) 84%, transparent);
       border-bottom: 1px solid var(--border);
     }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; position: relative; }
     .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 600; font-size: 0.94rem; cursor: pointer; }
     .brand-name { font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 6px; }
     .brand-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: 2px 7px; border-radius: 99px; }
     
     .lion-badge {
-      width: 38px; height: 38px; border-radius: 10px; background: var(--surface);
+      width: 40px; height: 40px; border-radius: 11px; background: var(--surface);
       border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center;
-      box-shadow: var(--shadow); color: var(--text); transition: transform 0.35s var(--ease-out), border-color 0.2s ease;
+      box-shadow: var(--shadow); overflow: hidden; transition: transform 0.35s var(--ease-out), border-color 0.2s ease;
     }
     .brand:hover .lion-badge { transform: rotate(-4deg) scale(1.06); border-color: var(--accent); }
-    .lion-badge svg { width: 22px; height: 22px; }
+    .lion-badge img { width: 36px; height: 36px; object-fit: contain; }
 
-    .nav-links { display: flex; align-items: center; gap: 14px; font-size: 0.88rem; color: var(--text-muted); }
-    .nav-links a.nav-item { position: relative; padding: 4px 2px; transition: color 0.2s ease; }
+    .nav-links { display: flex; align-items: center; gap: 10px; font-size: 0.86rem; color: var(--text-muted); }
+    .nav-links a.nav-item { position: relative; padding: 4px 4px; transition: color 0.2s ease; }
     .nav-links a.nav-item:hover { color: var(--text); }
     .btn-small {
-      display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px;
+      display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px;
       border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
-      color: var(--text); font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease;
+      color: var(--text); font-size: 0.76rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease;
     }
     .btn-small:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow); }
+    .btn-game { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
     .btn-primary-small { background: var(--text); color: var(--bg); border-color: var(--text); }
     .btn-primary-small:hover { opacity: 0.9; }
-    .kbd-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; opacity: 0.75; }
+    .kbd-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; opacity: 0.75; }
 
-    /* Hero Layout with Real Profile Photo */
-    .hero { padding: 72px 0 48px; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 185px; gap: 32px; align-items: center; margin-bottom: 24px; }
-    
-    .profile-photo-card {
-      position: relative; width: 175px; height: 185px; border-radius: 24px;
-      overflow: hidden; border: 2px solid var(--border); box-shadow: var(--shadow);
-      background: var(--surface); transition: transform 0.3s var(--ease-out), border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .profile-photo-card:hover {
-      transform: translateY(-4px) rotate(1deg);
-      border-color: var(--accent);
+    /* =====================================================
+       30-SECOND PLAYABLE "PACKET SLICER" GAME DRAWER
+       (Inspired by egbemodeyomi.com's "Slice" Navbar Game)
+       ===================================================== */
+    .game-drawer {
+      display: none;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       box-shadow: var(--shadow-hover);
+      padding: 18px 0 22px;
     }
-    .profile-photo-card img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    .game-drawer.open { display: block; animation: fadeIn 0.25s ease; }
+    .game-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
     }
-    .profile-badge-overlay {
-      position: absolute; bottom: 10px; right: 10px; width: 14px; height: 14px;
-      background: var(--accent-bright); border-radius: 50%; border: 2.5px solid var(--surface);
-      box-shadow: 0 0 10px var(--accent-bright);
+    .game-arena {
+      position: relative; width: 100%; height: 240px; border-radius: 16px;
+      background: #0D1117; border: 1px solid var(--border); overflow: hidden;
+      cursor: crosshair; user-select: none;
+    }
+    #slicerCanvas { width: 100%; height: 100%; display: block; }
+    .game-overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; background: rgba(13, 17, 23, 0.78);
+      color: #F4F4F6; text-align: center; padding: 20px; z-index: 4;
+      backdrop-filter: blur(4px);
+    }
+    .game-overlay.hidden { display: none; }
+    .game-overlay h3 { font-family: 'Instrument Serif', serif; font-size: 2rem; font-weight: 400; margin-bottom: 6px; }
+    .game-overlay p { font-size: 0.84rem; color: #949BA6; max-width: 420px; margin-bottom: 14px; }
+
+    /* =====================================================
+       HERO SECTION + "HOVER ME. TRUST ME." GOD-MODE CARD
+       ===================================================== */
+    .hero { padding: 64px 0 48px; }
+    .chapter-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 10px;
+    }
+    .chapter-tag i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-bright); display: inline-block; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 235px;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 26px;
     }
 
-    .hero-top-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .godmode-card-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-photo-card {
+      position: relative;
+      width: 220px;
+      height: 255px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--surface);
+      cursor: pointer;
+      perspective: 800px;
+      transition: transform 0.35s var(--ease-out), border-color 0.3s ease, box-shadow 0.35s ease;
+    }
+
+    .profile-photo-card:hover,
+    .profile-photo-card.god-mode {
+      border-color: var(--accent-bright);
+      box-shadow: 0 24px 50px -12px rgba(16, 185, 129, 0.32);
+    }
+
+    .profile-photo-card img.real-photo,
+    .profile-photo-card img.guardian-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.4s var(--ease-out), transform 0.5s var(--ease-out);
+    }
+
+    .profile-photo-card img.real-photo {
+      object-fit: cover;
+      object-position: center top;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .profile-photo-card img.guardian-photo {
+      object-fit: contain;
+      padding: 6px;
+      background: radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.22), var(--surface) 72%);
+      opacity: 0;
+      transform: scale(1.1);
+      z-index: 2;
+    }
+
+    /* Laser scanline sweep when switching to Guardian Mode */
+    .scanline-sweep {
+      position: absolute;
+      left: 0; right: 0; top: -10%;
+      height: 3px;
+      background: var(--accent-bright);
+      box-shadow: 0 0 16px 4px var(--accent-bright);
+      z-index: 4;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .profile-photo-card:hover .scanline-sweep,
+    .profile-photo-card.god-mode .scanline-sweep {
+      animation: scanSweep 1.2s ease-in-out infinite;
+    }
+
+    @keyframes scanSweep {
+      0% { top: 0%; opacity: 0.95; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    .profile-photo-card:hover img.guardian-photo,
+    .profile-photo-card.god-mode img.guardian-photo {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .godmode-hud-pill {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      background: rgba(20, 20, 22, 0.82);
+      color: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      backdrop-filter: blur(6px);
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .handwritten-note {
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-top: 8px;
+      transform: rotate(-2deg);
+      user-select: none;
+    }
+
+    .hero-top-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
     .hero-greeting { font-family: 'JetBrains Mono', monospace; font-size: 0.84rem; color: var(--text-muted); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .role-rotator {
       display: inline-block; padding: 4px 11px; border-radius: 8px; background: var(--surface);
@@ -330,8 +392,8 @@
     }
 
     .hero h1 {
-      font-family: 'Instrument Serif', serif; font-size: clamp(2.8rem, 5.8vw, 4.3rem);
-      font-weight: 400; line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 20px;
+      font-family: 'Instrument Serif', serif; font-size: clamp(2.85rem, 5.8vw, 4.35rem);
+      font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px;
     }
     .hero h1 em { font-style: italic; color: var(--text-muted); position: relative; display: inline-block; }
     .hero h1 em::after { content: ""; position: absolute; left: 0; bottom: 6px; width: 100%; height: 8px; background: var(--accent-soft); z-index: -1; border-radius: 4px; }
@@ -378,9 +440,30 @@
 
     /* Sections & Cards */
     section { padding: 68px 0; border-bottom: 1px solid var(--border); }
-    .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 34px; }
-    .section-title { font-family: 'Instrument Serif', serif; font-size: 2.25rem; font-weight: 400; }
-    .section-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
+    .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 10px; }
+    .section-title { font-family: 'Instrument Serif', serif; font-size: 2.3rem; font-weight: 400; }
+    .section-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted); text-transform: uppercase; }
+
+    /* Live Zeek/Snort Terminal Stream Bar above Projects */
+    .live-terminal-bar {
+      background: #0D1117;
+      color: #E6EDF3;
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .term-dots { display: inline-flex; gap: 6px; flex-shrink: 0; }
+    .term-dots i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+    .term-log { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #34D399; flex: 1; }
 
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 22px; }
     .project-card {
@@ -389,7 +472,7 @@
     }
     .project-card::after {
       content: ""; position: absolute; inset: 0;
-      background: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.08), transparent 45%);
+      background: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.09), transparent 45%);
       opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
     }
     .project-card:hover::after { opacity: 1; }
@@ -401,13 +484,18 @@
     .project-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 10px; }
     .project-card p { font-size: 0.94rem; color: var(--text-muted); margin-bottom: 24px; }
     .card-footer { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 500; display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); }
-    .project-card:hover .card-footer span.arrow { transform: translateX(4px); color: var(--accent); }
+    .project-card:hover .card-footer span.arrow { transform: translateX(5px); color: var(--accent); }
     .card-footer span.arrow { transition: transform 0.2s ease, color 0.2s ease; }
 
-    /* Bento & Timeline */
-    .bento-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 14px; }
-    .bento-item { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); transition: transform 0.25s var(--ease-out), border-color 0.25s ease; }
-    .bento-item:hover { transform: translateY(-3px); border-color: var(--accent); }
+    /* Draggable Bento Strip ("Drag things around" like egbemodeyomi.com) */
+    .bento-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 14px; position: relative; }
+    .bento-item {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px;
+      box-shadow: var(--shadow); cursor: grab; user-select: none; position: relative;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .bento-item:active { cursor: grabbing; z-index: 20; box-shadow: var(--shadow-hover); border-color: var(--accent); }
+    .bento-item:hover { border-color: var(--accent); }
     .bento-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); margin-bottom: 10px; display: flex; justify-content: space-between; }
     .bento-value { font-weight: 600; font-size: 0.96rem; }
     .vinyl-wrap { display: flex; align-items: center; gap: 12px; }
@@ -429,8 +517,8 @@
     .skill-group-title { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
     .skill-group-title span.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-bright); }
     .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-pill { font-family: 'JetBrains Mono', monospace; padding: 6px 11px; border-radius: 8px; background: var(--surface-alt); border: 1px solid var(--border); font-size: 0.78rem; transition: border-color 0.2s ease, color 0.2s ease; }
-    .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .skill-pill { font-family: 'JetBrains Mono', monospace; padding: 6px 11px; border-radius: 8px; background: var(--surface-alt); border: 1px solid var(--border); font-size: 0.78rem; transition: all 0.2s ease; }
+    .skill-pill:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
     /* Quote & Footer */
     .quote-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 40px 36px; box-shadow: var(--shadow); }
@@ -457,7 +545,7 @@
 
     footer { padding: 46px 0 88px; font-size: 0.88rem; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
 
-    @media (max-width: 720px) {
+    @media (max-width: 740px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
       .resume-item { grid-template-columns: 1fr; gap: 6px; }
       .nav-links a.hide-mobile, .brand-name { display: none; }
@@ -467,23 +555,17 @@
 </head>
 <body>
 
-  <!-- SPLASH SCREEN (FEATHER MASKED SO ZERO SQUARE CORNERS SHOW) -->
+  <!-- =========================================================================
+       OPENING SPLASH: FLOOD-FILL TRANSPARENT 3D LION + INTERACTIVE SLICE ENGINE
+       ========================================================================= -->
   <div class="splash-screen" id="splashScreen">
     <div class="defense-stage" id="defenseArena">
-      <canvas id="defenseCanvas" width="380" height="360"></canvas>
-      <div class="lion-warrior-wrap">
-        <img src="lion.jpg" onerror="if(this.src.indexOf('lion-guardian.png')===-1){this.src='lion-guardian.png';}" alt="Shumba Guardian" class="lion-warrior-img" />
-        <div class="rune-shield-glow"></div>
-        <svg class="sword-slash-arc" viewBox="0 0 310 310" fill="none">
-          <path d="M55 185 C115 245, 215 240, 275 145" stroke="#10B981" stroke-width="6" stroke-linecap="round" filter="drop-shadow(0 0 12px #10B981)" />
-          <path d="M65 192 C120 242, 208 236, 265 155" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
-        </svg>
-      </div>
+      <canvas id="defenseCanvas" width="420" height="380"></canvas>
     </div>
     <div class="splash-status" id="splashStatus">SHUMBA GUARDIAN // RAISING RUNE SHIELD &amp; BROADSWORD...</div>
-    <div class="splash-sub">TANAKA SHUMBA · ACTIVE CYBERSECURITY DEFENSE</div>
+    <div class="splash-sub">SWIPE CURSOR TO SLICE RED THREATS · OR WAIT 2S</div>
     <div class="splash-bar"><div class="splash-bar-fill"></div></div>
-    <button class="splash-skip" onclick="dismissSplashNow()">Skip intro</button>
+    <button class="splash-skip" onclick="dismissSplashNow()">Enter portfolio →</button>
   </div>
 
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -491,14 +573,9 @@
 
   <header>
     <div class="container nav-inner">
-      <a href="#" class="brand" onclick="replaySplash(event)" aria-label="Tanaka Shumba Home" title="Click to replay Shumba Guardian defense">
+      <a href="#" class="brand" onclick="replaySplash(event)" aria-label="Tanaka Shumba Home" title="Click to replay Shumba Guardian intro">
         <span class="lion-badge">
-          <!-- Crisp Vector Shield Crest (Clean at 38px) -->
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 3L30 8V17C30 25 24.8 30.8 18 33C11.2 30.8 6 25 6 17V8L18 3Z" fill="#10B981" fill-opacity="0.14" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M18 8V28M11 16H25" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="18" cy="16" r="3" fill="#10B981"/>
-          </svg>
+          <img class="cutout-lion-img" src="lion.jpg" alt="Shumba Crest" />
         </span>
         <span class="brand-name">Tanaka Shumba <span class="brand-tag">SEC // AI</span></span>
       </a>
@@ -506,19 +583,43 @@
         <a href="#work" class="nav-item hide-mobile">Work</a>
         <a href="#experience" class="nav-item hide-mobile">Experience</a>
         <a href="#skills" class="nav-item hide-mobile">Skills</a>
+        <button class="btn-small btn-game" onclick="toggleGameDrawer()" title="Play 30-second Packet Slicer mini-game">⚔️ Defend</button>
         <button class="btn-small" onclick="openResumeModal()">View Resume</button>
-        <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf" class="btn-small btn-primary-small">Download Resume</a>
+        <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf" class="btn-small btn-primary-small">Download CV</a>
         <button class="btn-small hide-mobile" onclick="openCmdPalette()"><span class="kbd-tag">⌘K</span></button>
         <button class="btn-small" id="themeBtn" onclick="toggleTheme()">Dark</button>
       </nav>
     </div>
+
+    <!-- Playable 30-Second "Packet Slicer" Mini-Game Drawer (like egbemodeyomi.com) -->
+    <div class="game-drawer" id="gameDrawer">
+      <div class="container">
+        <div class="game-header">
+          <div><strong>SHUMBA PACKET SLICER</strong> · <span style="color:var(--text-muted)">Slice red exploits, spare green TLS packets</span></div>
+          <div>
+            <span id="gameTimer">30</span>s · <span id="gameScore" style="color:var(--accent); font-weight:600;">0</span> pts · Best: <span id="gameBest">0</span>
+            &nbsp;<button class="btn-small" style="padding:3px 10px;" onclick="toggleGameDrawer()">Close ×</button>
+          </div>
+        </div>
+        <div class="game-arena" id="gameArena">
+          <canvas id="slicerCanvas" width="850" height="240"></canvas>
+          <div class="game-overlay" id="gameOverlay">
+            <span class="chapter-tag"><i></i> 30-SECOND SOC CHALLENGE</span>
+            <h3>Slice the <em>Exploits</em></h3>
+            <p>Drag or swipe your cursor across the arena to slice red malicious packets (<strong>SYN Flood</strong>, <strong>Homoglyph Phish</strong>, <strong>C2 Beacon</strong>) with the Lion's broadsword. <strong>Don't slice green TLS 1.3 traffic!</strong></p>
+            <button class="btn-small btn-primary-small" onclick="startSlicerGame()">Start Defense (30s) →</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main class="container">
-    <!-- Hero with Real Profile Photo Side-by-Side -->
+    <!-- Chapter 01: Hero with Interactive God-Mode Portrait Card -->
     <section class="hero" style="border-bottom: none;">
       <div class="hero-grid reveal active">
         <div>
+          <span class="chapter-tag"><i></i> Chapter 01 · Active Defense &amp; AI</span>
           <div class="hero-top-meta">
             <div class="hero-greeting">
               <span>Hi, I'm Tanaka Shumba</span>
@@ -530,11 +631,22 @@
             I secure networks, <em>detect threats</em>, respond to incidents, &amp; <em>train AI models</em>.
           </h1>
         </div>
-        <div style="display: flex; justify-content: center;">
-          <div class="profile-photo-card" title="Tanaka Shumba">
-            <img class="user-portrait" src="profile.jpg" alt="Tanaka Shumba Portrait" />
-            <div class="profile-badge-overlay" title="Available for Cybersecurity & AI Roles"></div>
+
+        <!-- "Hover Me. Trust Me." God-Mode Portrait Card (Suit Portrait <-> Cutout 3D Lion) -->
+        <div class="godmode-card-wrap">
+          <div class="profile-photo-card" id="godmodeCard" onclick="this.classList.toggle('god-mode')" title="Hover or tap to toggle Shumba Guardian mode">
+            <div class="scanline-sweep"></div>
+            <img class="real-photo user-portrait" src="profile.jpg" alt="Tanaka Shumba Portrait" />
+            <img class="guardian-photo cutout-lion-img" src="lion.jpg" alt="Shumba Guardian Mode" />
+            <div class="godmode-hud-pill">
+              <span style="display:inline-flex; align-items:center; gap:5px;">
+                <span class="pulse" style="width:6px; height:6px;"></span>
+                <span id="godmodeLabel">ANALYST MODE</span>
+              </span>
+              <span style="color:#34D399;">SHUMBA // 01</span>
+            </div>
           </div>
+          <div class="handwritten-note">↑ hover me. trust me</div>
         </div>
       </div>
 
@@ -573,62 +685,76 @@
   </div>
 
   <main class="container">
-    <!-- 4 Distinct Technical Projects (Zero Duplication with Work Experience) -->
+    <!-- Chapter 02: Academic Projects & Featured Work -->
     <section id="work" class="reveal">
+      <span class="chapter-tag"><i></i> Chapter 02 · Selected Research &amp; Labs</span>
       <div class="section-header">
         <h2 class="section-title">Academic Projects &amp; Featured Work</h2>
-        <span class="section-subtitle">Click a card for technical breakdown</span>
+        <span class="section-subtitle">Hover to stream telemetry · Click to inspect</span>
+      </div>
+
+      <!-- Live Interactive Terminal Stream -->
+      <div class="live-terminal-bar">
+        <div class="term-dots">
+          <i style="background:#EF4444;"></i>
+          <i style="background:#F59E0B;"></i>
+          <i style="background:#10B981;"></i>
+        </div>
+        <div class="term-log" id="terminalLog">zeek::conn.log [ACTIVE] -> monitoring eth0 | 0 unencrypted anomalies | TLS_1.3 handshake verified</div>
+        <span style="color:#949BA6; font-size:0.68rem;">LIVE SENSOR</span>
       </div>
 
       <div class="projects-grid">
-        <div class="project-card" onclick="openModal('iot')">
+        <div class="project-card" onclick="openModal('iot')" onmouseenter="setTermLog('zeek::iot_metadata.log -> 148,200 packets analyzed | DNS burst & TLS JA3 fingerprint identified on smart camera')">
           <div>
-            <div class="pcap-header"><span class="pcap-id">PCAP_01 // IOT_PRIVACY</span><span>2026</span></div>
+            <div class="pcap-header"><span class="pcap-id">01 // PCAP_IOT_PRIVACY</span><span>M.S. THESIS · 2026</span></div>
             <div class="card-tags"><span class="tag">Master's Thesis</span><span class="tag">Wireshark</span><span class="tag">Zeek</span><span class="tag">Snort</span></div>
             <h3>Master's Thesis: Smart Home IoT Traffic Metadata Analysis</h3>
             <p>Empirical analysis of encrypted network traffic metadata across smart home IoT devices, identifying DNS/TLS beaconing patterns and behavioral privacy leakage.</p>
           </div>
-          <div class="card-footer"><span>View Case Study &amp; Findings</span><span class="arrow">→</span></div>
+          <div class="card-footer"><span>Inspect Thesis &amp; Findings</span><span class="arrow">→</span></div>
         </div>
 
-        <div class="project-card" onclick="openModal('ids')">
+        <div class="project-card" onclick="openModal('ids')" onmouseenter="setTermLog('snort::alert [1:1000042:1] -> ET SCAN Nmap SYN Scan detected from 192.168.56.104 -> blocked via pfSense')">
           <div>
-            <div class="pcap-header"><span class="pcap-id">SOC_02 // IDS_TELEMETRY</span><span>2026</span></div>
+            <div class="pcap-header"><span class="pcap-id">02 // SOC_IDS_TELEMETRY</span><span>LAB · 2026</span></div>
             <div class="card-tags"><span class="tag">Suricata &amp; Snort</span><span class="tag">Splunk</span><span class="tag">pfSense</span><span class="tag">Kali Linux</span></div>
             <h3>Network Intrusion Detection &amp; SIEM Telemetry Lab</h3>
             <p>Built a segmented virtual SOC environment to capture port scans, brute-force attempts, and anomalous packet flows using custom Snort/Zeek rules and SIEM dashboards.</p>
           </div>
-          <div class="card-footer"><span>View Lab Architecture</span><span class="arrow">→</span></div>
+          <div class="card-footer"><span>Inspect Lab Architecture</span><span class="arrow">→</span></div>
         </div>
 
-        <div class="project-card" onclick="openModal('sysadmin')">
+        <div class="project-card" onclick="openModal('sysadmin')" onmouseenter="setTermLog('hdparm --security-erase -> ATA Secure Erase completed on /dev/sda | 0 recoverable sectors verified')">
           <div>
-            <div class="pcap-header"><span class="pcap-id">SYS_03 // SECURE_ERASE</span><span>2026</span></div>
+            <div class="pcap-header"><span class="pcap-id">03 // SYS_SECURE_ERASE</span><span>SYSTEMS · 2026</span></div>
             <div class="card-tags"><span class="tag">ATA Secure Erase</span><span class="tag">Log Auditing</span><span class="tag">Access Control</span></div>
             <h3>Hardware Sanitization &amp; Endpoint Access Hardening</h3>
             <p>Executed firmware-level ATA Secure Erase protocols for enterprise drive decommissioning and audited peripheral connection logs to enforce strict endpoint access controls.</p>
           </div>
-          <div class="card-footer"><span>View Protocol Breakdown</span><span class="arrow">→</span></div>
+          <div class="card-footer"><span>Inspect Protocol Breakdown</span><span class="arrow">→</span></div>
         </div>
 
-        <div class="project-card" onclick="openModal('osint')">
+        <div class="project-card" onclick="openModal('osint')" onmouseenter="setTermLog('python3 homoglyph_scan.py -> ALERT: Punycode IDN spoofing detected (xn--pple-43d.com) | TLS cert mismatch')">
           <div>
-            <div class="pcap-header"><span class="pcap-id">SEC_04 // PYTHON_OSINT</span><span>2026</span></div>
+            <div class="pcap-header"><span class="pcap-id">04 // SEC_PYTHON_OSINT</span><span>AUTOMATION · 2026</span></div>
             <div class="card-tags"><span class="tag">Python</span><span class="tag">Phishing Defense</span><span class="tag">OSINT</span><span class="tag">DNS/TLS</span></div>
             <h3>Automated Phishing Homoglyph &amp; Passive OSINT Analyzer</h3>
             <p>Developed Python automation to detect deceptive IDN homoglyph domains, inspect passive DNS/header metadata, and benchmark anti-bot and phishing indicators.</p>
           </div>
-          <div class="card-footer"><span>View Script &amp; Methodology</span><span class="arrow">→</span></div>
+          <div class="card-footer"><span>Inspect Script &amp; Methodology</span><span class="arrow">→</span></div>
         </div>
       </div>
     </section>
 
+    <!-- Chapter 03: Draggable Bento Collage ("Drag things around") -->
     <section class="reveal">
+      <span class="chapter-tag"><i></i> Chapter 03 · Off The Clock</span>
       <div class="section-header">
         <h2 class="section-title">Lately I've Been Into</h2>
-        <span class="section-subtitle">Current Rotation</span>
+        <span class="section-subtitle">✋ Drag cards around the desk</span>
       </div>
-      <div class="bento-strip">
+      <div class="bento-strip" id="draggableBento">
         <div class="bento-item">
           <div class="bento-label"><span>ON REPEAT</span><span>♫</span></div>
           <div class="vinyl-wrap"><div class="vinyl-disc"></div><div><div class="bento-value">NF</div><div style="font-size: 0.78rem; color: var(--text-muted);">Hip-Hop Rotation</div></div></div>
@@ -648,7 +774,9 @@
       </div>
     </section>
 
+    <!-- Chapter 04: Experience & Education -->
     <section id="experience" class="reveal">
+      <span class="chapter-tag"><i></i> Chapter 04 · Verified Track Record</span>
       <div class="section-header">
         <h2 class="section-title">Experience &amp; Education</h2>
         <span class="section-subtitle">Background</span>
@@ -699,8 +827,9 @@
       </div>
     </section>
 
-    <!-- Fixed Title Case: Cybersecurity & Tools -->
+    <!-- Chapter 05: Cybersecurity & Tools -->
     <section id="skills" class="reveal">
+      <span class="chapter-tag"><i></i> Chapter 05 · Technical Arsenal</span>
       <div class="section-header">
         <h2 class="section-title">Cybersecurity &amp; Tools</h2>
         <span class="section-subtitle">Full Security Stack</span>
@@ -794,7 +923,7 @@
       history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
 
-    // Smart Portrait Resolver: Automatically finds your suit photo across all elements
+    // 1. Smart Portrait Resolver (Finds your suit photo automatically)
     (function resolveUserPortrait() {
       const candidates = ['profile.jpg', 'image.png', 'profile.png', 'images/profile.jpg', 'images/image.png', 'me.jpg'];
       let idx = 0;
@@ -812,6 +941,73 @@
       tryNext();
     })();
 
+    // 2. BFS Corner Flood-Fill Background Remover for lion.jpg
+    // Removes 100% of the beige/white studio square box without cutting off the sword tip or feet!
+    let transparentLionCanvas = null;
+    function getCutoutLion(callback) {
+      if (transparentLionCanvas) { callback(transparentLionCanvas); return; }
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = () => {
+        const S = 440;
+        const off = document.createElement('canvas');
+        off.width = S; off.height = S;
+        const octx = off.getContext('2d');
+        octx.drawImage(img, 0, 0, S, S);
+        try {
+          const id = octx.getImageData(0, 0, S, S);
+          const d = id.data;
+          const visited = new Uint8Array(S * S);
+          const q = [];
+
+          // Seed BFS from all 4 outer borders of lion.jpg
+          for (let x = 0; x < S; x++) { q.push(x, (S - 1) * S + x); visited[x] = 1; visited[(S - 1) * S + x] = 1; }
+          for (let y = 0; y < S; y++) { q.push(y * S, y * S + (S - 1)); visited[y * S] = 1; visited[y * S + (S - 1)] = 1; }
+
+          const bgR = d[0], bgG = d[1], bgB = d[2];
+
+          function isBgPixel(idx4) {
+            const r = d[idx4], g = d[idx4 + 1], b = d[idx4 + 2];
+            const maxC = Math.max(r, g, b), minC = Math.min(r, g, b);
+            const sat = maxC - minC;
+            const luma = (r + g + b) / 3;
+            const distToCorner = Math.hypot(r - bgR, g - bgG, b - bgB);
+            // Match studio off-white backdrop & soft floor shadow while preserving green glow & dark steel sword
+            if (g > r + 10 && g > b + 10) return false; // Preserve green rune shield glow
+            return (distToCorner < 42) || (luma > 210 && sat < 26) || (luma > 175 && sat < 18);
+          }
+
+          let head = 0;
+          while (head < q.length) {
+            const p = q[head++];
+            const idx4 = p * 4;
+            d[idx4 + 3] = 0; // Make background 100% transparent
+            const x = p % S, y = (p / S) | 0;
+            const neighbors = [];
+            if (x > 0) neighbors.push(p - 1);
+            if (x < S - 1) neighbors.push(p + 1);
+            if (y > 0) neighbors.push(p - S);
+            if (y < S - 1) neighbors.push(p + S);
+            for (let i = 0; i < neighbors.length; i++) {
+              const nb = neighbors[i];
+              if (!visited[nb] && isBgPixel(nb * 4)) {
+                visited[nb] = 1;
+                q.push(nb);
+              }
+            }
+          }
+          octx.putImageData(id, 0, 0);
+          const pngUrl = off.toDataURL('image/png');
+          document.querySelectorAll('.cutout-lion-img').forEach(el => { el.src = pngUrl; });
+        } catch (e) {}
+        transparentLionCanvas = off;
+        callback(off);
+      };
+      img.onerror = () => { if (img.src.indexOf('lion-guardian.png') === -1) img.src = 'lion-guardian.png'; };
+      img.src = 'lion.jpg';
+    }
+
+    // 3. Opening Splash 60fps Combat Engine
     let splashTimers = [];
     let animFrameId = null;
 
@@ -819,17 +1015,22 @@
       const canvas = document.getElementById('defenseCanvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      const W = canvas.width;
-      const H = canvas.height;
+      const W = canvas.width, H = canvas.height;
+      let frame = 0, shieldFlash = 0, slashFlash = 0;
 
-      let frame = 0;
-      let shieldFlash = 0;
       const threats = [
-        { startX: 375, startY: 65, targetX: 250, targetY: 130, spawnFrame: 20, hitFrame: 48 },
-        { startX: 378, startY: 225, targetX: 248, targetY: 175, spawnFrame: 40, hitFrame: 68 },
-        { startX: 15, startY: 255, targetX: 130, targetY: 205, spawnFrame: 62, hitFrame: 88 }
+        { startX: 410, startY: 65, targetX: 270, targetY: 140, spawnFrame: 20, hitFrame: 48, type: 'shield' },
+        { startX: 412, startY: 235, targetX: 268, targetY: 185, spawnFrame: 40, hitFrame: 68, type: 'shield' },
+        { startX: 15, startY: 265, targetX: 155, targetY: 225, spawnFrame: 58, hitFrame: 84, type: 'sword' }
       ];
       const sparks = [];
+      const sliceTrail = [];
+
+      canvas.parentElement.onmousemove = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        sliceTrail.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, alpha: 1 });
+        if (sliceTrail.length > 14) sliceTrail.shift();
+      };
 
       function spawnSparks(x, y, color) {
         for (let i = 0; i < 28; i++) {
@@ -839,85 +1040,141 @@
         }
       }
 
-      function renderLoop() {
-        frame++;
-        ctx.clearRect(0, 0, W, H);
+      getCutoutLion((lionSource) => {
+        function renderLoop() {
+          frame++;
+          ctx.clearRect(0, 0, W, H);
 
-        ctx.save();
-        ctx.translate(W / 2, H / 2);
-        ctx.rotate(frame * 0.008);
-        ctx.strokeStyle = 'rgba(16, 185, 129, 0.28)';
-        ctx.lineWidth = 1.5;
-        ctx.setLineDash([8, 6]);
-        ctx.beginPath();
-        ctx.arc(0, 0, 152, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.restore();
-
-        if (shieldFlash > 0.02) {
+          // Outer Radar Ring
           ctx.save();
-          ctx.strokeStyle = `rgba(16, 185, 129, ${shieldFlash})`;
-          ctx.shadowColor = '#10B981';
-          ctx.shadowBlur = 24;
-          ctx.lineWidth = 5;
+          ctx.translate(W / 2, H / 2);
+          ctx.rotate(frame * 0.008);
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.28)';
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([8, 6]);
           ctx.beginPath();
-          ctx.arc(230, 155, 72, -0.85, 0.85);
+          ctx.arc(0, 0, 158, 0, Math.PI * 2);
           ctx.stroke();
           ctx.restore();
-          shieldFlash *= 0.88;
-        }
 
-        threats.forEach(t => {
-          if (frame >= t.spawnFrame && frame <= t.hitFrame) {
-            const p = (frame - t.spawnFrame) / (t.hitFrame - t.spawnFrame);
-            const curX = t.startX + (t.targetX - t.startX) * p;
-            const curY = t.startY + (t.targetY - t.startY) * p;
+          // Dynamic Combat Physics on Cutout Lion
+          const entrance = Math.min(1, frame / 20);
+          const ease = 1 - Math.pow(1 - entrance, 3);
+          let offsetX = 0, offsetY = (1 - ease) * 18, rot = 0, scale = 0.86 + 0.14 * ease;
+          if (shieldFlash > 0.1) { offsetX -= shieldFlash * 6; rot = -shieldFlash * 0.04; scale += shieldFlash * 0.04; }
+          if (slashFlash > 0.1) { offsetX += slashFlash * 9; rot = slashFlash * 0.05; scale += slashFlash * 0.06; }
 
+          ctx.save();
+          ctx.translate(W / 2 + offsetX, H / 2 + offsetY);
+          ctx.rotate(rot);
+          ctx.scale(scale, scale);
+          ctx.globalAlpha = ease;
+          if (shieldFlash > 0.05 || slashFlash > 0.05) {
+            ctx.shadowColor = '#10B981';
+            ctx.shadowBlur = 24 * Math.max(shieldFlash, slashFlash);
+          }
+          ctx.drawImage(lionSource, -160, -160, 320, 320);
+          ctx.restore();
+
+          // Shield Arc Flash
+          if (shieldFlash > 0.02) {
             ctx.save();
-            ctx.strokeStyle = '#EF4444';
-            ctx.shadowColor = '#EF4444';
-            ctx.shadowBlur = 12;
-            ctx.lineWidth = 4;
+            ctx.strokeStyle = `rgba(16, 185, 129, ${shieldFlash})`;
+            ctx.shadowColor = '#10B981';
+            ctx.shadowBlur = 24;
+            ctx.lineWidth = 5;
             ctx.beginPath();
-            ctx.moveTo(curX, curY);
-            ctx.lineTo(curX - (t.targetX - t.startX) * 0.16, curY - (t.targetY - t.startY) * 0.16);
+            ctx.arc(240, 165, 76, -0.85, 0.85);
             ctx.stroke();
+            ctx.restore();
+            shieldFlash *= 0.88;
+          }
 
-            ctx.fillStyle = '#FFFFFF';
+          // Broadsword Counter-Slash Arc
+          if (slashFlash > 0.02) {
+            ctx.save();
+            ctx.strokeStyle = `rgba(16, 185, 129, ${slashFlash})`;
+            ctx.shadowColor = '#10B981';
+            ctx.shadowBlur = 22;
+            ctx.lineWidth = 6;
             ctx.beginPath();
-            ctx.arc(curX, curY, 4.5, 0, Math.PI * 2);
+            ctx.arc(165, 195, 86, 0.3, 2.2);
+            ctx.stroke();
+            ctx.restore();
+            slashFlash *= 0.86;
+          }
+
+          // Cursor Blade Trail
+          if (sliceTrail.length > 1) {
+            ctx.save();
+            for (let i = 1; i < sliceTrail.length; i++) {
+              const p0 = sliceTrail[i - 1], p1 = sliceTrail[i];
+              ctx.strokeStyle = `rgba(16, 185, 129, ${p1.alpha})`;
+              ctx.lineWidth = i * 0.45;
+              ctx.lineCap = 'round';
+              ctx.beginPath();
+              ctx.moveTo(p0.x, p0.y);
+              ctx.lineTo(p1.x, p1.y);
+              ctx.stroke();
+              p1.alpha *= 0.9;
+            }
+            ctx.restore();
+          }
+
+          // Incoming Red Threat Packets
+          threats.forEach(t => {
+            if (frame >= t.spawnFrame && frame <= t.hitFrame) {
+              const p = (frame - t.spawnFrame) / (t.hitFrame - t.spawnFrame);
+              const curX = t.startX + (t.targetX - t.startX) * p;
+              const curY = t.startY + (t.targetY - t.startY) * p;
+
+              ctx.save();
+              ctx.strokeStyle = '#EF4444';
+              ctx.shadowColor = '#EF4444';
+              ctx.shadowBlur = 12;
+              ctx.lineWidth = 4;
+              ctx.beginPath();
+              ctx.moveTo(curX, curY);
+              ctx.lineTo(curX - (t.targetX - t.startX) * 0.16, curY - (t.targetY - t.startY) * 0.16);
+              ctx.stroke();
+
+              ctx.fillStyle = '#FFFFFF';
+              ctx.beginPath();
+              ctx.arc(curX, curY, 4.5, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.restore();
+
+              if (frame === t.hitFrame) {
+                if (t.type === 'shield') shieldFlash = 1.0;
+                if (t.type === 'sword') slashFlash = 1.0;
+                spawnSparks(t.targetX, t.targetY, '#10B981');
+                spawnSparks(t.targetX, t.targetY, '#34D399');
+                spawnSparks(t.targetX, t.targetY, '#FBBF24');
+              }
+            }
+          });
+
+          // Sparks
+          for (let i = sparks.length - 1; i >= 0; i--) {
+            const s = sparks[i];
+            s.x += s.vx; s.y += s.vy; s.alpha *= 0.92;
+            if (s.alpha < 0.03) { sparks.splice(i, 1); continue; }
+            ctx.save();
+            ctx.globalAlpha = s.alpha;
+            ctx.fillStyle = s.color;
+            ctx.shadowColor = s.color;
+            ctx.shadowBlur = 8;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
             ctx.fill();
             ctx.restore();
-
-            if (frame === t.hitFrame) {
-              shieldFlash = 1.0;
-              spawnSparks(t.targetX, t.targetY, '#10B981');
-              spawnSparks(t.targetX, t.targetY, '#34D399');
-              spawnSparks(t.targetX, t.targetY, '#FBBF24');
-            }
           }
-        });
 
-        for (let i = sparks.length - 1; i >= 0; i--) {
-          const s = sparks[i];
-          s.x += s.vx; s.y += s.vy; s.alpha *= 0.92;
-          if (s.alpha < 0.03) { sparks.splice(i, 1); continue; }
-          ctx.save();
-          ctx.globalAlpha = s.alpha;
-          ctx.fillStyle = s.color;
-          ctx.shadowColor = s.color;
-          ctx.shadowBlur = 8;
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.restore();
+          if (frame < 195) { animFrameId = requestAnimationFrame(renderLoop); }
         }
-
-        if (frame < 190) { animFrameId = requestAnimationFrame(renderLoop); }
-      }
-
-      if (animFrameId) cancelAnimationFrame(animFrameId);
-      animFrameId = requestAnimationFrame(renderLoop);
+        if (animFrameId) cancelAnimationFrame(animFrameId);
+        animFrameId = requestAnimationFrame(renderLoop);
+      });
     }
 
     function runDefenseSequence() {
@@ -933,7 +1190,7 @@
       splashTimers.push(setTimeout(() => { status.textContent = "SHIELD LOCKED // INTERCEPTING THREAT VECTORS"; }, 850));
       splashTimers.push(setTimeout(() => { status.textContent = "MALICIOUS PACKETS -> SHATTERED BY RUNE SHIELD!"; }, 1450));
       splashTimers.push(setTimeout(() => { status.textContent = "COUNTER-SLASH EXECUTED // PERIMETER SECURE"; }, 2050));
-      splashTimers.push(setTimeout(() => { splash.classList.add('hidden'); }, 2750));
+      splashTimers.push(setTimeout(() => { splash.classList.add('hidden'); }, 2800));
     }
 
     function dismissSplashNow() {
@@ -950,16 +1207,166 @@
       history.replaceState(null, document.title, window.location.pathname);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       const splash = document.getElementById('splashScreen');
-      const arena = document.getElementById('defenseArena');
       const bar = splash.querySelector('.splash-bar');
-
-      const arenaClone = arena.cloneNode(true);
-      arena.parentNode.replaceChild(arenaClone, arena);
       const barClone = bar.cloneNode(true);
       bar.parentNode.replaceChild(barClone, bar);
-
       splash.classList.remove('hidden');
       runDefenseSequence();
+    }
+
+    // 4. Playable 30-Second "Packet Slicer" Game Engine (like egbemodeyomi.com)
+    let gameLoopId = null, gameTimerInt = null, score = 0, bestScore = 0, timeLeft = 30;
+    function toggleGameDrawer() {
+      const d = document.getElementById('gameDrawer');
+      d.classList.toggle('open');
+    }
+
+    function startSlicerGame() {
+      document.getElementById('gameOverlay').classList.add('hidden');
+      const canvas = document.getElementById('slicerCanvas');
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+      score = 0; timeLeft = 30;
+      document.getElementById('gameScore').textContent = score;
+      document.getElementById('gameTimer').textContent = timeLeft;
+
+      const packets = [];
+      const trail = [];
+      const sparks = [];
+      const badLabels = ['SYN_FLOOD', 'C2_BEACON', 'HOMOGLYPH_URL', 'SQLi_PAYLOAD', 'SSH_BRUTE'];
+
+      canvas.onmousemove = (e) => {
+        const r = canvas.getBoundingClientRect();
+        const mx = (e.clientX - r.left) * (W / r.width);
+        const my = (e.clientY - r.top) * (H / r.height);
+        trail.push({ x: mx, y: my, a: 1 });
+        if (trail.length > 12) trail.shift();
+
+        // Check slice collisions
+        for (let i = packets.length - 1; i >= 0; i--) {
+          const pk = packets[i];
+          if (Math.hypot(pk.x - mx, pk.y - my) < pk.r + 14) {
+            if (pk.bad) {
+              score += 10;
+              for (let k = 0; k < 14; k++) {
+                const a = Math.random() * Math.PI * 2, s = 1.5 + Math.random() * 3.5;
+                sparks.push({ x: pk.x, y: pk.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, a: 1, c: '#10B981' });
+              }
+            } else {
+              score = Math.max(0, score - 15);
+              for (let k = 0; k < 14; k++) {
+                const a = Math.random() * Math.PI * 2, s = 1.5 + Math.random() * 3.5;
+                sparks.push({ x: pk.x, y: pk.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, a: 1, c: '#EF4444' });
+              }
+            }
+            document.getElementById('gameScore').textContent = score;
+            packets.splice(i, 1);
+          }
+        }
+      };
+
+      if (gameTimerInt) clearInterval(gameTimerInt);
+      gameTimerInt = setInterval(() => {
+        timeLeft--;
+        document.getElementById('gameTimer').textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(gameTimerInt);
+          cancelAnimationFrame(gameLoopId);
+          if (score > bestScore) { bestScore = score; document.getElementById('gameBest').textContent = bestScore; }
+          const ov = document.getElementById('gameOverlay');
+          ov.querySelector('h3').innerHTML = `Shift Complete: <em>${score} pts</em>`;
+          ov.classList.remove('hidden');
+        }
+      }, 1000);
+
+      function loop() {
+        ctx.clearRect(0, 0, W, H);
+        if (Math.random() < 0.06) {
+          const isBad = Math.random() > 0.22;
+          packets.push({
+            x: 80 + Math.random() * (W - 160),
+            y: H + 20,
+            vx: (Math.random() - 0.5) * 2.2,
+            vy: -(4.2 + Math.random() * 2.4),
+            r: 18,
+            bad: isBad,
+            label: isBad ? badLabels[(Math.random() * badLabels.length) | 0] : 'TLS_1.3_OK'
+          });
+        }
+
+        for (let i = packets.length - 1; i >= 0; i--) {
+          const pk = packets[i];
+          pk.x += pk.vx; pk.y += pk.vy; pk.vy += 0.08;
+          if (pk.y > H + 40) { packets.splice(i, 1); continue; }
+          ctx.save();
+          ctx.fillStyle = pk.bad ? 'rgba(239, 68, 68, 0.2)' : 'rgba(16, 185, 129, 0.2)';
+          ctx.strokeStyle = pk.bad ? '#EF4444' : '#10B981';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(pk.x, pk.y, pk.r, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+          ctx.fillStyle = '#F4F4F6';
+          ctx.font = '600 10px "JetBrains Mono", monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(pk.label, pk.x, pk.y + 3);
+          ctx.restore();
+        }
+
+        for (let i = 1; i < trail.length; i++) {
+          const p0 = trail[i - 1], p1 = trail[i];
+          ctx.strokeStyle = `rgba(16, 185, 129, ${p1.a})`;
+          ctx.lineWidth = i * 0.5;
+          ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
+          p1.a *= 0.88;
+        }
+
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const s = sparks[i];
+          s.x += s.vx; s.y += s.vy; s.a *= 0.9;
+          if (s.a < 0.04) { sparks.splice(i, 1); continue; }
+          ctx.fillStyle = s.c; ctx.globalAlpha = s.a;
+          ctx.beginPath(); ctx.arc(s.x, s.y, 2.2, 0, Math.PI * 2); ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+
+        gameLoopId = requestAnimationFrame(loop);
+      }
+      if (gameLoopId) cancelAnimationFrame(gameLoopId);
+      gameLoopId = requestAnimationFrame(loop);
+    }
+
+    // 5. God-Mode Label Toggle + Draggable Bento Cards
+    const gmCard = document.getElementById('godmodeCard');
+    const gmLabel = document.getElementById('godmodeLabel');
+    gmCard.addEventListener('mouseenter', () => { gmLabel.textContent = 'GUARDIAN MODE'; });
+    gmCard.addEventListener('mouseleave', () => {
+      if (!gmCard.classList.contains('god-mode')) gmLabel.textContent = 'ANALYST MODE';
+    });
+
+    document.querySelectorAll('#draggableBento .bento-item').forEach(card => {
+      let isDown = false, startX = 0, startY = 0, curX = 0, curY = 0;
+      card.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.clientX - curX;
+        startY = e.clientY - curY;
+        card.style.transition = 'none';
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        curX = e.clientX - startX;
+        curY = e.clientY - startY;
+        card.style.transform = `translate(${curX}px, ${curY}px) rotate(${curX * 0.04}deg)`;
+      });
+      window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+      });
+    });
+
+    function setTermLog(text) {
+      const el = document.getElementById('terminalLog');
+      if (el) el.textContent = text;
     }
 
     document.querySelectorAll('header a.nav-item').forEach(link => {
