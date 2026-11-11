@@ -113,7 +113,7 @@
       border-radius: 999px;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      background: color-mix(in srgb, var(--surface) 85%, transparent);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
       display: flex;
@@ -246,7 +246,7 @@
       font-weight: 400;
       line-height: 1.03;
       letter-spacing: -0.025em;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .hero h1 em {
@@ -270,36 +270,29 @@
       border-radius: 4px;
     }
 
-    /* Rich Bio with Tactile Inline Chips (like egbemodeyomi.com) */
+    /* Clean Pillar Chips above bio */
+    .cyber-pillars { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .cyber-pillar-chip {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; padding: 5px 11px;
+      border-radius: 8px; background: var(--surface); border: 1px solid var(--border);
+      display: inline-flex; align-items: center; gap: 6px; box-shadow: var(--shadow);
+      color: var(--text);
+    }
+    .cyber-pillar-chip span.chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-bright); }
+
+    /* Smooth, Readable Bio Paragraph (Zero Floating Commas!) */
     .hero-sub {
-      font-size: 1.06rem;
-      line-height: 1.75;
+      font-size: 1.04rem;
+      line-height: 1.72;
       color: var(--text-muted);
       margin-bottom: 28px;
     }
 
-    .inline-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 1px 9px;
-      margin: 0 1px;
-      border-radius: 7px;
-      background: var(--surface);
-      border: 1px solid var(--border);
+    .hero-sub strong {
       color: var(--text);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 500;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-      vertical-align: baseline;
-      transition: all 0.2s ease;
-    }
-
-    .inline-chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-1px);
+      font-weight: 600;
+      border-bottom: 1.5px solid rgba(16, 185, 129, 0.35);
+      padding-bottom: 1px;
     }
 
     /* Right Column: Layered Portrait + Dark SOC Telemetry Card */
@@ -312,7 +305,6 @@
       perspective: 1000px;
     }
 
-    /* Back Decorative Accent Frame */
     .deck-backdrop-card {
       position: absolute;
       width: 248px;
@@ -329,7 +321,6 @@
       transform: rotate(8deg) translate(22px, -10px);
     }
 
-    /* Main Portrait Polaroid Frame */
     .profile-photo-card {
       position: relative;
       width: 252px;
@@ -357,7 +348,6 @@
       display: block;
     }
 
-    /* Crisp Single-Line Top Tag on Portrait (Never Wraps!) */
     .portrait-top-pill {
       position: absolute;
       top: 12px;
@@ -377,7 +367,6 @@
       border: 1px solid rgba(255, 255, 255, 0.14);
     }
 
-    /* Overlapping Dark Obsidian SOC Telemetry Widget (High Contrast!) */
     .soc-floating-widget {
       position: absolute;
       bottom: 4px;
@@ -439,7 +428,7 @@
       white-space: nowrap;
     }
 
-    .handwritten-Floating {
+    .handwritten-floating {
       position: absolute;
       bottom: -22px;
       right: 12px;
@@ -452,10 +441,6 @@
     }
 
     .status-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 0.85rem; margin-bottom: 26px; }
-    .status-pill {
-      display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px;
-      background: var(--surface); border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; box-shadow: var(--shadow);
-    }
     .pulse { width: 8px; height: 8px; background: var(--accent-bright); border-radius: 50%; position: relative; display: inline-block; }
     .pulse::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; background: var(--accent-bright); opacity: 0.4; animation: pulse-ring 2s infinite; }
     @keyframes pulse-ring { 0% { transform: scale(0.7); opacity: 0.6; } 100% { transform: scale(2.1); opacity: 0; } }
@@ -477,7 +462,7 @@
     .telemetry-ok { color: #34D399; font-weight: 600; }
 
     /* =====================================================
-       INTERACTIVE DRAGGABLE COLLAGE BOARD (LIKE EGBEMODEYOMI.COM)
+       INTERACTIVE DRAGGABLE COLLAGE BOARD
        ===================================================== */
     .collage-section {
       padding: 36px 0 64px;
@@ -550,8 +535,8 @@
     .marquee-star { color: var(--accent); margin: 0 18px; }
     @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    /* Sections & Cards */
-    section { padding: 68px 0; border-bottom: 1px solid var(--border); }
+    /* Sections & Cards (Added scroll-margin-top so sticky navbar never slices headers!) */
+    section { padding: 68px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 90px; }
     .chapter-tag {
       font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent);
       text-transform: uppercase; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 6px;
@@ -563,7 +548,7 @@
     .section-title { font-family: 'Instrument Serif', serif; font-size: 2.4rem; font-weight: 400; }
     .section-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted); text-transform: uppercase; }
 
-    /* Project Cards with High-Contrast Dark Telemetry Schematic Headers */
+    /* Project Cards with Non-Truncated Terminal Headers */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px; }
     .project-card {
       position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
@@ -575,9 +560,9 @@
     .project-visual-header {
       background: var(--obsidian);
       color: #E6EDF3;
-      padding: 16px 22px;
+      padding: 15px 20px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       border-bottom: 1px solid var(--border);
     }
 
@@ -585,7 +570,8 @@
       display: flex;
       justify-content: space-between;
       color: #949BA6;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
+      font-size: 0.66rem;
     }
 
     .visual-terminal-line {
@@ -594,10 +580,9 @@
       border-left: 2px solid #10B981;
       padding: 6px 10px;
       border-radius: 0 6px 6px 0;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .project-body { padding: 24px 26px 22px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
@@ -644,7 +629,7 @@
     .cmd-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 12px; background: var(--surface-alt); border: 1px solid var(--border); font-size: 0.9rem; cursor: pointer; color: var(--text); text-align: left; transition: border-color 0.2s ease, transform 0.2s ease; }
     .cmd-item:hover { border-color: var(--accent); transform: translateX(4px); }
 
-    .sidekick-btn { position: fixed; bottom: 24px; right: 24px; background: var(--obsidian); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 10px 18px 10px 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; cursor: pointer; z-index: 60; display: flex; align-items: center; gap: 9px; box-shadow: var(--shadow-lg); transition: transform 0.2s var(--ease-out); }
+    .sidekick-btn { position: fixed; bottom: 24px; right: 24px; background: var(--obsidian); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 11px 18px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; cursor: pointer; z-index: 60; display: flex; align-items: center; gap: 9px; box-shadow: var(--shadow-lg); transition: transform 0.2s var(--ease-out); }
     .sidekick-btn:hover { transform: translateY(-2px); }
     .sidekick-panel { position: fixed; bottom: 78px; right: 24px; width: 330px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 20px; display: none; z-index: 60; box-shadow: var(--shadow-lg); }
     .sidekick-panel.open { display: block; }
@@ -679,7 +664,7 @@
       <nav class="nav-links">
         <a href="#work" class="nav-item hide-mobile">Work</a>
         <a href="#experience" class="nav-item hide-mobile">Experience</a>
-        <a href="#skills" class="nav-item hide-mobile">Arsenal</a>
+        <a href="#skills" class="nav-item hide-mobile">Skills</a>
         <button class="btn-small btn-game" onclick="toggleGameDrawer()" title="Play 30-second Packet Slicer mini-game">⚔️ Defend</button>
         <button class="btn-small" onclick="openResumeModal()">View Resume</button>
         <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf" class="btn-small btn-primary-small">Download CV</a>
@@ -727,8 +712,17 @@
             I secure networks, <em>detect threats</em>, respond to incidents, &amp; <em>train AI models</em>.
           </h1>
 
+          <div class="cyber-pillars">
+            <span class="cyber-pillar-chip"><span class="chip-dot"></span>Network Security</span>
+            <span class="cyber-pillar-chip"><span class="chip-dot"></span>Threat Detection</span>
+            <span class="cyber-pillar-chip"><span class="chip-dot"></span>Incident Response</span>
+            <span class="cyber-pillar-chip"><span class="chip-dot"></span>Vulnerability Assessment</span>
+            <span class="cyber-pillar-chip"><span class="chip-dot"></span>SIEM &amp; IDS/IPS</span>
+            <span class="cyber-pillar-chip"><span class="chip-dot"></span>AI Training</span>
+          </div>
+
           <p class="hero-sub">
-            Hi, I'm Tanaka. I hold an <span class="inline-chip">M.S. in Computer Science</span> and a <span class="inline-chip">B.S. in Cybersecurity</span> from <span class="inline-chip">Troy University</span>, and currently work as an AI Trainer at <span class="inline-chip">Snorkel AI</span>. I inspect packet telemetry, hunt network threats, harden endpoints, and evaluate AI models using <span class="inline-chip">Wireshark</span>, <span class="inline-chip">Zeek</span>, <span class="inline-chip">Snort</span>, <span class="inline-chip">Suricata</span>, <span class="inline-chip">Splunk</span>, <span class="inline-chip">Burp Suite</span>, <span class="inline-chip">Python</span>, and <span class="inline-chip">Kali Linux</span>.
+            Hi, I'm Tanaka. I hold an <strong>M.S. in Computer Science</strong> and a <strong>B.S. in Cybersecurity</strong> from <strong>Troy University</strong>, and currently work as an AI Trainer at <strong>Snorkel AI</strong>. I monitor network traffic, investigate security alerts, find vulnerabilities, harden systems, and evaluate AI models using <strong>Wireshark</strong>, <strong>Zeek</strong>, <strong>Snort</strong>, <strong>Suricata</strong>, <strong>Splunk</strong>, <strong>Nmap</strong>, <strong>pfSense</strong>, <strong>Burp Suite</strong>, <strong>Python</strong>, and <strong>Kali Linux</strong>.
           </p>
 
           <div class="status-bar">
@@ -766,19 +760,19 @@
             </div>
           </div>
 
-          <div class="handwritten-Floating">↓ drag the cards below</div>
+          <div class="handwritten-floating">↓ drag the cards below</div>
         </div>
       </div>
 
-      <!-- High-Contrast Dark Telemetry Strip -->
+      <!-- High-Contrast Dark Telemetry Strip (Replaced ARSENAL with TOOLS) -->
       <div class="telemetry-bar reveal active delay-2">
         <div class="telemetry-item"><span class="telemetry-key">STATUS:</span><span class="telemetry-ok">● ACTIVE DEFENSE &amp; AI TRAINING</span></div>
-        <div class="telemetry-item"><span class="telemetry-key">ARSENAL:</span><span>WIRESHARK · ZEEK · SNORT · SPLUNK · NMAP · BURP</span></div>
+        <div class="telemetry-item"><span class="telemetry-key">TOOLS:</span><span>WIRESHARK · ZEEK · SNORT · SPLUNK · NMAP · BURP</span></div>
         <div class="telemetry-item"><span class="telemetry-key">OS:</span><span>KALI / UBUNTU / MACOS</span></div>
       </div>
     </section>
 
-    <!-- Interactive Draggable Desk Collage (Like egbemodeyomi.com) -->
+    <!-- Interactive Draggable Desk Collage -->
     <div class="collage-section reveal active delay-3">
       <div class="collage-header">
         <span class="chapter-tag" style="margin-bottom:0;"><i></i> Interactive Desk · Drag cards around</span>
@@ -825,7 +819,7 @@
   </div>
 
   <main class="container">
-    <!-- Chapter 02: Academic Projects & Featured Work (With Dark Visual Schematics) -->
+    <!-- Chapter 02: Academic Projects & Featured Work (Clean Non-Truncated Terminal Lines) -->
     <section id="work" class="reveal">
       <span class="chapter-tag"><i></i> Chapter 02 · Selected Research &amp; Labs</span>
       <div class="section-header">
@@ -837,7 +831,7 @@
         <div class="project-card" onclick="openModal('iot')">
           <div class="project-visual-header">
             <div class="visual-top"><span>01 // PCAP_IOT_PRIVACY</span><span>M.S. THESIS · 2026</span></div>
-            <div class="visual-terminal-line">$ zeek -r smart_home_iot.pcap -> DNS/TLS metadata leakage identified</div>
+            <div class="visual-terminal-line">$ zeek -r iot_traffic.pcap -> DNS/TLS leakage detected</div>
           </div>
           <div class="project-body">
             <div>
@@ -852,7 +846,7 @@
         <div class="project-card" onclick="openModal('ids')">
           <div class="project-visual-header">
             <div class="visual-top"><span>02 // SOC_IDS_TELEMETRY</span><span>SOC LAB · 2026</span></div>
-            <div class="visual-terminal-line">snort::alert [1:100042] -> SYN scan &amp; brute-force blocked via pfSense</div>
+            <div class="visual-terminal-line">snort::alert [1:100042] -> SYN scan blocked via pfSense</div>
           </div>
           <div class="project-body">
             <div>
@@ -867,7 +861,7 @@
         <div class="project-card" onclick="openModal('sysadmin')">
           <div class="project-visual-header">
             <div class="visual-top"><span>03 // SYS_SECURE_ERASE</span><span>SYSTEMS · 2026</span></div>
-            <div class="visual-terminal-line">$ hdparm --security-erase /dev/sda -> 0 recoverable sectors verified</div>
+            <div class="visual-terminal-line">$ hdparm --security-erase /dev/sda -> 0 sectors left</div>
           </div>
           <div class="project-body">
             <div>
@@ -882,7 +876,7 @@
         <div class="project-card" onclick="openModal('osint')">
           <div class="project-visual-header">
             <div class="visual-top"><span>04 // SEC_PYTHON_OSINT</span><span>AUTOMATION · 2026</span></div>
-            <div class="visual-terminal-line">$ python3 homoglyph_scan.py -> IDN Punycode spoof &amp; TLS mismatch flagged</div>
+            <div class="visual-terminal-line">$ python3 homoglyph_scan.py -> IDN Punycode spoof flagged</div>
           </div>
           <div class="project-body">
             <div>
@@ -949,9 +943,9 @@
       </div>
     </section>
 
-    <!-- Chapter 04: Cybersecurity & Tools -->
+    <!-- Chapter 04: Cybersecurity & Tools (Removed "Arsenal") -->
     <section id="skills" class="reveal">
-      <span class="chapter-tag"><i></i> Chapter 04 · Technical Arsenal</span>
+      <span class="chapter-tag"><i></i> Chapter 04 · Skills &amp; Tools</span>
       <div class="section-header">
         <h2 class="section-title">Cybersecurity &amp; Tools</h2>
         <span class="section-subtitle">Full Security Stack</span>
@@ -1023,15 +1017,15 @@
     </div>
   </div>
 
-  <!-- AI Sidekick with Real Photo Avatar -->
+  <!-- AI Sidekick Button (Clean Pulsing Emerald Dot — Zero Lion Icon!) -->
   <button class="sidekick-btn" onclick="toggleSidekick()">
-    <img class="user-portrait" src="profile.jpg" alt="Tanaka" style="width:22px; height:22px; border-radius:50%; object-fit:cover; border: 1.5px solid var(--accent-bright);" />
-    Ask About Tanaka
+    <span class="pulse"></span>
+    <span>Ask About Tanaka</span>
   </button>
   <div class="sidekick-panel" id="sidekickPanel">
     <div style="font-weight: 600; font-size: 0.92rem; margin-bottom: 4px; display:flex; align-items:center; gap:8px;">
-      <img class="user-portrait" src="profile.jpg" alt="Tanaka" style="width:28px; height:28px; border-radius:50%; object-fit:cover; border: 1.5px solid var(--accent);" />
-      Tanaka's AI Sidekick:
+      <span class="pulse"></span>
+      <span>Tanaka's AI Sidekick:</span>
     </div>
     <div id="sidekickAnswer" style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 10px;">Select a question below for a quick summary.</div>
     <button class="sidekick-q" onclick="askSidekick('summary')">What is Tanaka's background?</button>
@@ -1045,7 +1039,7 @@
       history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
 
-    // 1. Smart Portrait Resolver (Ensures your suit photo loads everywhere, never the old lion)
+    // 1. Smart Portrait Resolver
     (function resolveUserPortrait() {
       const candidates = ['profile.jpg', 'image.png', 'profile.png', 'images/profile.jpg', 'images/image.png', 'me.jpg'];
       let idx = 0;
