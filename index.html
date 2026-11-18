@@ -314,3 +314,127 @@ footer a:hover{color:var(--accent)}
       <div class="stack">
         <div class="box"><h4>Monitor and detect</h4><ul><li>Wireshark</li><li>Zeek</li><li>Snort</li><li>Suricata</li><li>Splunk</li><li>Wazuh</li></ul></div>
         <div class="box"><h4>Test and exploit</h4><ul><li>Nmap</li><li>Burp Suite</li><li>Metasploit</li><li>Nessus</li><li>OWASP ZAP</li><li>Nikto</li></ul></div>
+        <div class="box"><h4>Respond and harden</h4><ul><li>pfSense</li><li>IPTables</li><li>UFW</li><li>ATA Secure Erase</li><li>Log auditing</li><li>Access control</li></ul></div>
+        <div class="box"><h4>Code and systems</h4><ul><li>Python</li><li>Bash</li><li>PowerShell</li><li>Java</li><li>C++</li><li>Docker</li><li>Kali Linux</li><li>Ubuntu</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Looking for a careful analyst? <em>Let's talk.</em></h2>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com <span>→</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        <a class="btn" href="tel:+13344820211">(334) 482-0211 <span>→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Tanaka Shumba</span>
+    <span>Troy, Alabama</span>
+    <span><a href="https://github.com/TanakaShumba" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn</a> · <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">Résumé</a></span>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+(function () {
+  var header = document.getElementById('siteHeader');
+  var btn = document.getElementById('menuBtn');
+  btn.addEventListener('click', function () {
+    var open = header.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? 'Close' : 'Menu';
+  });
+  header.querySelectorAll('nav a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      header.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'Menu';
+    });
+  });
+})();
+
+// Live repositories: six most recently updated, forks and profile repos excluded.
+// Case study cards with a data-repo="repo-name" attribute link to that repo when it exists.
+(function () {
+  var user = 'TanakaShumba';
+  var excluded = [user.toLowerCase(), (user + '.github.io').toLowerCase()];
+  var grid = document.getElementById('repos');
+  var repoAll = document.getElementById('repoAll');
+  var caseCards = document.querySelectorAll('#work .card[data-repo]');
+
+  function monthYear(iso) {
+    var d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
+
+  fetch('https://api.github.com/users/' + user + '/repos?per_page=100&sort=updated')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (list) {
+      var repos = list.filter(function (r) {
+        return !r.fork && excluded.indexOf(r.name.toLowerCase()) === -1;
+      });
+
+      repoAll.textContent = 'View all ' + repos.length + ' repositories on GitHub ↗';
+
+      repos.slice(0, 6).forEach(function (r) {
+        var a = document.createElement('a');
+        a.className = 'card repo';
+        a.href = r.html_url; a.target = '_blank'; a.rel = 'noopener';
+
+        var top = document.createElement('div');
+        top.className = 'top';
+        var lang = document.createElement('span');
+        lang.textContent = r.language || 'Code';
+        var when = document.createElement('span');
+        when.textContent = 'Updated ' + monthYear(r.updated_at);
+        top.append(lang, when);
+
+        var h = document.createElement('h3');
+        h.textContent = r.name;
+
+        var stars = document.createElement('div');
+        stars.className = 'tools';
+        if (r.stargazers_count > 0) {
+          var s = document.createElement('span');
+          s.textContent = '★ ' + r.stargazers_count;
+          stars.appendChild(s);
+        }
+
+        a.append(top, h, stars);
+        grid.appendChild(a);
+      });
+
+      caseCards.forEach(function (card) {
+        var name = (card.getAttribute('data-repo') || '').toLowerCase();
+        if (!name) return;
+        var match = repos.filter(function (r) { return r.name.toLowerCase() === name; })[0];
+        if (!match) return;
+        card.classList.add('linked');
+        card.addEventListener('click', function () { window.open(match.html_url, '_blank', 'noopener'); });
+        var top = card.querySelector('.top');
+        var view = document.createElement('span');
+        view.className = 'viewRepo';
+        view.textContent = 'View repo ↗';
+        top.appendChild(view);
+      });
+    })
+    .catch(function () {
+      repoAll.textContent = 'View all repositories on GitHub ↗';
+      var p = document.createElement('p');
+      p.className = 'muted';
+      p.textContent = 'The live list could not load. Open the GitHub profile to see everything.';
+      grid.appendChild(p);
+    });
+})();
+</script>
+</body>
+</html>
