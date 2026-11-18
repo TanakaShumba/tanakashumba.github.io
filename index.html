@@ -10,18 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FFFFFF; --panel:#FFFFFF; --panel2:#F2F5FD; --line:#E1E7F3;
-  --text:#0E1630; --muted:#4A5573; --dim:#6B7593;
-  --accent:#2452E6; --accent-hover:#1A41C7; --accent-soft:#B7C8F2;
-  --ink:#0B1530; --ink-line:#1B2A55; --ink-text:#C9D6F5; --ink-prompt:#8FB0FF;
+  --bg:#070B14; --panel:#0C1322; --panel2:#111A2D; --line:#1B2740;
+  --text:#E6ECFA; --muted:#8A97B5; --dim:#5C6A88;
+  --accent:#3D6BFF; --accent-hover:#5A82FF; --accent-soft:#1E2F66;
+  --red:#FF5C5C; --green:#3DDC97;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{
   background-color:var(--bg);
   background-image:
-    linear-gradient(rgba(36,82,230,.045) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(36,82,230,.045) 1px,transparent 1px);
+    linear-gradient(rgba(61,107,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(61,107,255,.05) 1px,transparent 1px);
   background-size:56px 56px;
   color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
 }
@@ -29,62 +29,81 @@ a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.eyebrow b{color:var(--accent);font-weight:500}
 em{font-style:italic;color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
 /* Header */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:50;background:rgba(7,11,20,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .bar{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:.95rem}
 .mark{width:34px;height:34px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:600}
 nav{display:flex;gap:26px;font-size:.9rem;color:var(--muted)}
-nav a:hover{color:var(--accent)}
+nav a:hover{color:var(--text)}
 .bar-right{display:flex;gap:10px;align-items:center}
-.menu{display:none;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text);font:inherit;font-size:.85rem;cursor:pointer;align-items:center}
+.menu{display:none;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);font:inherit;font-size:.85rem;cursor:pointer;align-items:center}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:8px;border:1px solid var(--line);background:#fff;font-size:.9rem;font-weight:500;color:var(--text);transition:border-color .2s,background .2s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:8px;border:1px solid var(--line);background:var(--panel);font-size:.9rem;font-weight:500;color:var(--text);transition:border-color .2s,background .2s;white-space:nowrap}
 .btn:hover{border-color:var(--accent)}
 .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
 .btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;padding:96px 28px 88px}
-.hero h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,6vw,5rem);line-height:1.02;letter-spacing:-.02em;margin:22px 0 26px;color:var(--text)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:96px 28px 72px}
+.hero h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,6vw,5rem);line-height:1.02;letter-spacing:-.02em;margin:22px 0 26px}
 .lead{color:var(--muted);font-size:1.02rem;max-width:540px}
 .actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
-.term{margin-top:40px;max-width:460px;background:var(--ink);border:1px solid var(--ink-line);border-radius:12px;padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.85;color:var(--ink-text);box-shadow:0 18px 40px -20px rgba(14,22,48,.45)}
-.term .p{color:var(--ink-prompt)}
-.term .o{color:#fff}
-.cursor{display:inline-block;width:8px;height:14px;background:var(--ink-prompt);vertical-align:-2px}
-.portrait .frame{aspect-ratio:4/5;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--panel2)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.portrait .initials{display:none;height:100%;place-items:center;font-family:'Instrument Serif',serif;font-size:6rem;color:var(--accent-soft)}
-.portrait .caption{margin-top:14px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim)}
+
+/* Network map */
+.scope{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(61,107,255,.35)}
+.scopeHead{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim)}
+.scopeHead .live{color:var(--green);display:inline-flex;align-items:center;gap:6px}
+.scopeHead .live i{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.6s ease-in-out infinite}
+.map{display:block;width:100%;height:auto}
+.lbl{font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--muted)}
+.lbl.hot{fill:var(--red)}
+.lbl.ok{fill:var(--green)}
+.flow{stroke-dasharray:4 8;animation:flow 1.8s linear infinite}
+.ring{transform-box:fill-box;transform-origin:center;animation:ring 2s ease-out infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+@keyframes ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+@keyframes blink{50%{opacity:.25}}
+
+/* Status strip */
+.status{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--dim)}
+.status .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(61,220,151,.15)}
+.status b{color:var(--text);font-weight:500}
 
 /* Sections */
 section{padding:88px 0;border-top:1px solid var(--line)}
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
-.head h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.1;margin-top:12px;color:var(--text)}
+.head h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.1;margin-top:12px}
 .head p{color:var(--muted);max-width:420px;font-size:.98rem}
 
 /* Roles */
-.roles{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
-.role{padding:28px 24px;background:#fff}
+.roles{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.role{padding:28px 24px}
 .role+.role{border-left:1px solid var(--line)}
 .role .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent)}
 .role h3{font-size:1.1rem;font-weight:600;margin:16px 0 8px}
 .role p{color:var(--muted);font-size:.92rem}
 
-/* Cards (case studies and repositories share this style) */
+/* Cards */
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,box-shadow .2s}
-.card:hover{border-color:var(--accent-soft);box-shadow:0 12px 30px -18px rgba(36,82,230,.35)}
-.card .top{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+.card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:var(--accent-soft);box-shadow:0 14px 34px -20px rgba(61,107,255,.5)}
+.card .top{display:flex;justify-content:space-between;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
 .card h3{font-size:1.2rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
 .card p{color:var(--muted);font-size:.93rem}
 .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
 .tools span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 9px;background:var(--panel2)}
+
+/* Scan-frame brackets on case study cards */
+.frame::before,.frame::after{content:"";position:absolute;width:16px;height:16px;border:0 solid var(--accent);pointer-events:none;transition:width .25s,height .25s}
+.frame::before{top:-1px;left:-1px;border-top-width:2px;border-left-width:2px;border-top-left-radius:14px}
+.frame::after{bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px;border-bottom-right-radius:14px}
+.frame:hover::before,.frame:hover::after{width:26px;height:26px}
 .card.linked{cursor:pointer}
 .viewRepo{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);text-transform:none;letter-spacing:.02em}
 
@@ -95,19 +114,21 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 
 /* Credentials */
 .creds{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.cred{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:6px}
+.cred{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:6px}
 .cred .issuer{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
 .cred h3{font-size:1.06rem;font-weight:600;margin-top:4px}
 .cred p{color:var(--muted);font-size:.9rem}
-.cred .when{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim);margin-top:auto;padding-top:10px;display:flex;gap:14px;flex-wrap:wrap}
+.cred .when{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim);margin-top:auto;padding-top:10px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .cred .when a{color:var(--accent)}
 .cred .when a:hover{text-decoration:underline}
+.verified{color:var(--green)!important;display:inline-flex;align-items:center;gap:6px}
+.verified::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
 .courses{margin-top:22px;font-size:.9rem;color:var(--muted)}
 .courses b{color:var(--text);font-weight:500}
 
 /* Experience */
-.log{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
-.row{display:grid;grid-template-columns:210px 1fr;gap:28px;padding:26px 28px;background:#fff;border-top:1px solid var(--line)}
+.log{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.row{display:grid;grid-template-columns:210px 1fr;gap:28px;padding:26px 28px;border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
 .row .when{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--dim);padding-top:4px}
 .row h3{font-size:1.1rem;font-weight:600}
@@ -116,14 +137,14 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 
 /* Toolkit */
 .stack{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:stretch}
-.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;height:100%}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;height:100%}
 .box h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px}
 .box ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
 .box li{font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:6px;padding:5px 10px;background:var(--panel2);color:var(--text)}
 
 /* Contact */
 .contact{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end}
-.contact h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.6rem,5vw,4rem);line-height:1.05;margin-top:14px;color:var(--text)}
+.contact h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.6rem,5vw,4rem);line-height:1.05;margin-top:14px}
 .contact-actions{display:flex;flex-direction:column;gap:12px}
 .contact-actions .btn{justify-content:space-between;height:52px;font-size:.95rem}
 
@@ -135,10 +156,10 @@ footer a:hover{color:var(--accent)}
 /* Responsive */
 @media (max-width:920px){
   .hero{grid-template-columns:1fr;gap:48px;padding:64px 28px}
-  .portrait{max-width:380px}
+  .scope{max-width:520px}
   .menu{display:inline-flex}
   nav{display:none}
-  header.open nav{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:4px 28px 12px}
+  header.open nav{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:4px 28px 12px}
   header.open nav a{padding:12px 0;border-bottom:1px solid var(--line)}
   .roles{grid-template-columns:1fr 1fr}
   .role:nth-child(3){border-left:0}
@@ -149,6 +170,10 @@ footer a:hover{color:var(--accent)}
 @media (max-width:600px){
   .roles{grid-template-columns:1fr}
   .role+.role{border-left:0;border-top:1px solid var(--line)}
+}
+@media (prefers-reduced-motion:reduce){
+  .flow,.ring,.cur,.scopeHead .live i,.status .dot{animation:none!important}
+  animateMotion{display:none}
 }
 </style>
 </head>
@@ -170,34 +195,86 @@ footer a:hover{color:var(--accent)}
 <main>
   <div class="hero wrap" id="top">
     <div>
-      <span class="eyebrow">Cybersecurity analyst · Troy, Alabama</span>
+      <span class="eyebrow"><b>SOC analyst</b> · Troy, Alabama</span>
       <h1>I find threats on the wire <em>before they become incidents.</em></h1>
       <p class="lead">I monitor network traffic, investigate alerts, test systems, and respond to incidents. B.S. in Cybersecurity and M.S. in Computer Science, Troy University, December 2026. I also evaluate AI models for Snorkel AI.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#work">View case studies</a>
         <a class="btn" href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">Download résumé</a>
       </div>
-      <div class="term" aria-label="Session summary">
-        <div><span class="p">$</span> whoami</div>
-        <div class="o">tanaka shumba</div>
-        <div><span class="p">$</span> status</div>
-        <div class="o">open to SOC and security analyst roles <span class="cursor"></span></div>
+      <div class="status">
+        <span class="dot"></span>
+        <span>monitoring 4 segments</span>
+        <span>·</span>
+        <span>last alert <b id="ago">00:00:00</b> ago</span>
       </div>
     </div>
 
-    <figure class="portrait">
-      <div class="frame">
-        <img src="profile.jpg" alt="Tanaka Shumba" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="initials">TS</div>
+    <figure class="scope" aria-label="Network monitoring diagram">
+      <div class="scopeHead">
+        <span>zeek // eth0 topology</span>
+        <span class="live"><i></i>LIVE</span>
       </div>
-      <figcaption class="caption"><span>Tanaka Shumba</span><span>Troy, Alabama</span></figcaption>
+      <svg class="map" viewBox="0 0 480 360" role="img" aria-label="Network diagram: pfSense hub monitoring several hosts, with one flagged alert and one contained threat">
+        <!-- links -->
+        <g stroke="#1B2740" stroke-width="1" fill="none">
+          <path d="M240 180 L80 90"/>
+          <path d="M240 180 L80 270"/>
+          <path d="M240 180 L400 90"/>
+          <path d="M240 180 L400 270"/>
+          <path d="M240 180 L240 40"/>
+          <path d="M240 180 L240 320"/>
+        </g>
+        <!-- live traffic on three links -->
+        <g stroke="#3D6BFF" stroke-width="1.2" fill="none" opacity=".75" class="flow">
+          <path d="M240 180 L80 90"/>
+          <path d="M240 180 L400 90"/>
+          <path d="M240 180 L240 40"/>
+        </g>
+        <!-- packets -->
+        <circle r="2.5" fill="#5A82FF">
+          <animateMotion dur="2.8s" repeatCount="indefinite" path="M240 180 L80 90"/>
+        </circle>
+        <circle r="2.5" fill="#5A82FF">
+          <animateMotion dur="3.4s" repeatCount="indefinite" path="M240 180 L400 90"/>
+        </circle>
+        <circle r="2.5" fill="#FF5C5C">
+          <animateMotion dur="2.2s" repeatCount="indefinite" path="M80 270 L240 180"/>
+        </circle>
+
+        <!-- alert ring on the flagged host -->
+        <circle cx="80" cy="270" r="14" fill="none" stroke="#FF5C5C" stroke-width="1.2" class="ring"/>
+
+        <!-- hub -->
+        <circle cx="240" cy="180" r="20" fill="#111A2D" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="240" y="216" text-anchor="middle" class="lbl">pfSense</text>
+
+        <!-- hosts -->
+        <circle cx="80" cy="90" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="80" y="72" text-anchor="middle" class="lbl">WS-01</text>
+
+        <circle cx="80" cy="270" r="8" fill="#FF5C5C" stroke="#FF5C5C" stroke-width="1.5"/>
+        <text x="80" y="296" text-anchor="middle" class="lbl hot">IOT-CAM-02</text>
+
+        <circle cx="400" cy="90" r="8" fill="#0C1322" stroke="#3DDC97" stroke-width="1.5"/>
+        <text x="400" y="72" text-anchor="middle" class="lbl ok">SPLUNK</text>
+
+        <circle cx="400" cy="270" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="400" y="296" text-anchor="middle" class="lbl">DNS</text>
+
+        <circle cx="240" cy="40" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="240" y="26" text-anchor="middle" class="lbl">WAN</text>
+
+        <circle cx="240" cy="320" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="240" y="344" text-anchor="middle" class="lbl">LAB</text>
+      </svg>
     </figure>
   </div>
 
   <section id="roles">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">What I do</span><h2>Four ways I <em>defend</em> systems.</h2></div>
+        <div><span class="eyebrow">// what i do</span><h2>Four ways I <em>defend</em> systems.</h2></div>
         <p>The roles overlap in practice. Detection feeds response, testing shows what to monitor, and AI review follows the same security habits.</p>
       </div>
       <div class="roles">
@@ -212,29 +289,29 @@ footer a:hover{color:var(--accent)}
   <section id="work">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Research and labs</span><h2>Selected <em>case studies</em></h2></div>
+        <div><span class="eyebrow">// research and labs</span><h2>Selected <em>case studies</em></h2></div>
         <p>Each project starts with a question about real traffic and ends with a rule, a report, or a fix.</p>
       </div>
       <div class="grid2">
-        <article class="card" data-repo="">
+        <article class="card frame" data-repo="">
           <div class="top"><span>M.S. thesis</span><span>2026</span></div>
           <h3>Smart Home IoT Traffic Metadata Analysis</h3>
           <p>Empirical analysis of encrypted smart home traffic, showing how DNS and TLS metadata can reveal daily routines even when payloads are encrypted.</p>
           <div class="tools"><span>Wireshark</span><span>Zeek</span><span>Snort</span><span>Kali</span></div>
         </article>
-        <article class="card" data-repo="">
+        <article class="card frame" data-repo="">
           <div class="top"><span>SOC lab</span><span>2026</span></div>
           <h3>Network Intrusion Detection and SIEM Telemetry Lab</h3>
           <p>A segmented virtual SOC that catches port scans, brute-force attempts, and odd packet flows using custom Snort and Zeek rules, with alerts sent to Splunk.</p>
           <div class="tools"><span>Suricata</span><span>Snort</span><span>Splunk</span><span>pfSense</span></div>
         </article>
-        <article class="card" data-repo="">
+        <article class="card frame" data-repo="">
           <div class="top"><span>Systems</span><span>2026</span></div>
           <h3>Hardware Sanitization and Endpoint Hardening</h3>
           <p>Firmware-level ATA Secure Erase for decommissioning enterprise drives, plus audits of device connection logs and access-control settings on lab endpoints.</p>
           <div class="tools"><span>ATA Secure Erase</span><span>Log auditing</span><span>Access control</span></div>
         </article>
-        <article class="card" data-repo="">
+        <article class="card frame" data-repo="">
           <div class="top"><span>Automation</span><span>2026</span></div>
           <h3>Phishing Homoglyph and Passive OSINT Analyzer</h3>
           <p>Python automation that detects deceptive IDN homoglyph domains and inspects passive DNS and header metadata for phishing indicators.</p>
@@ -247,7 +324,7 @@ footer a:hover{color:var(--accent)}
   <section id="code">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Open source</span><h2>Tools I <em>built</em></h2></div>
+        <div><span class="eyebrow">// open source</span><h2>Tools I <em>built</em></h2></div>
         <p>The six most recently updated repositories. Forks and profile repositories are excluded.</p>
       </div>
       <div class="grid2" id="repos"></div>
@@ -258,7 +335,7 @@ footer a:hover{color:var(--accent)}
   <section id="credentials">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Credentials</span><h2>Training and <em>certificates</em></h2></div>
+        <div><span class="eyebrow">// credentials</span><h2>Training and <em>certificates</em></h2></div>
         <p>Dated as issued. Where the issuer provides a verification link, it's included.</p>
       </div>
       <div class="creds">
@@ -266,13 +343,13 @@ footer a:hover{color:var(--accent)}
           <div class="issuer">Cisco Networking Academy</div>
           <h3>Ethical Hacker</h3>
           <p>Student-level credential covering penetration testing methodology, vulnerability scanning, network and application exploitation, and reporting.</p>
-          <div class="when"><span>Sept 13, 2024</span></div>
+          <div class="when"><span>Sept 13, 2024</span><span class="verified">credential</span></div>
         </div>
         <div class="cred">
           <div class="issuer">Google via Coursera</div>
           <h3>Google Cybersecurity Professional Certificate</h3>
           <p>Eight courses covering SIEM tools, intrusion detection systems, Linux, SQL, and Python for entry-level security roles.</p>
-          <div class="when"><span>Jul 4, 2023</span><a href="https://coursera.org/verify/professional-cert/5U8NB74Y76DD" target="_blank" rel="noopener">Verify ↗</a></div>
+          <div class="when"><span>Jul 4, 2023</span><a href="https://coursera.org/verify/professional-cert/5U8NB74Y76DD" target="_blank" rel="noopener">Verify ↗</a><span class="verified">verified</span></div>
         </div>
         <div class="cred">
           <div class="issuer">Texas A&amp;M Engineering Extension (FEMA-supported)</div>
@@ -294,7 +371,7 @@ footer a:hover{color:var(--accent)}
   <section id="experience">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Experience</span><h2>The <em>path</em></h2></div>
+        <div><span class="eyebrow">// experience</span><h2>The <em>path</em></h2></div>
         <p>Roles and education, most recent first.</p>
       </div>
       <div class="log">
@@ -309,7 +386,7 @@ footer a:hover{color:var(--accent)}
   <section id="skills">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Skills</span><h2>Toolkit, <em>by function</em></h2></div>
+        <div><span class="eyebrow">// toolkit</span><h2>Toolkit, <em>by function</em></h2></div>
         <p>Grouped by what I use each tool for.</p>
       </div>
       <div class="stack">
@@ -324,7 +401,7 @@ footer a:hover{color:var(--accent)}
   <section id="contact">
     <div class="wrap contact">
       <div>
-        <span class="eyebrow">Contact</span>
+        <span class="eyebrow">// contact</span>
         <h2>Let's talk about <em>your security team.</em></h2>
       </div>
       <div class="contact-actions">
@@ -361,6 +438,19 @@ footer a:hover{color:var(--accent)}
       btn.textContent = 'Menu';
     });
   });
+})();
+
+// Status counter: time since the last alert shown in the hero
+(function () {
+  var el = document.getElementById('ago');
+  var start = Date.now();
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var s = Math.floor((Date.now() - start) / 1000);
+    el.textContent = pad(Math.floor(s / 3600)) + ':' + pad(Math.floor((s % 3600) / 60)) + ':' + pad(s % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
 })();
 
 // Live repositories: six most recently updated, forks and profile repos excluded.
