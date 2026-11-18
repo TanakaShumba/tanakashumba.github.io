@@ -26,9 +26,7 @@ body{
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-.mono{font-family:'JetBrains Mono',monospace}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.eyebrow b{color:var(--accent);font-weight:500}
 em{font-style:italic;color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
@@ -53,6 +51,8 @@ nav a:hover{color:var(--text)}
 .hero h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,6vw,5rem);line-height:1.02;letter-spacing:-.02em;margin:22px 0 26px}
 .lead{color:var(--muted);font-size:1.02rem;max-width:540px}
 .actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted);margin-top:36px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(201,242,90,.15)}
 .term{margin-top:40px;max-width:460px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.85;color:var(--muted)}
 .term .p{color:var(--accent)}
 .term .o{color:var(--text)}
@@ -60,7 +60,7 @@ nav a:hover{color:var(--text)}
 .portrait .frame{aspect-ratio:4/5;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .portrait .initials{display:none;height:100%;place-items:center;font-family:'Instrument Serif',serif;font-size:6rem;color:var(--dim)}
-.portrait .caption{margin-top:14px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim)}
+.portrait .caption{margin-top:14px;display:flex;justify-content:space-between;font-size:.85rem;color:var(--dim)}
 
 /* Sections */
 section{padding:88px 0;border-top:1px solid var(--line)}
@@ -73,7 +73,6 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .role{padding:28px 24px;background:var(--panel)}
 .role+.role{border-left:1px solid var(--line)}
 .role .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim)}
-.role .side{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);margin-top:6px}
 .role h3{font-size:1.1rem;font-weight:600;margin:16px 0 8px}
 .role p{color:var(--muted);font-size:.92rem}
 
@@ -94,7 +93,7 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .ghLink:hover{color:var(--accent)}
 .muted{color:var(--muted)}
 
-/* Certifications */
+/* Credentials */
 .creds{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .cred{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:6px}
 .cred .issuer{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
@@ -106,7 +105,7 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .courses{margin-top:22px;font-size:.9rem;color:var(--muted)}
 .courses b{color:var(--text);font-weight:500}
 
-/* Work log */
+/* Experience */
 .log{border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .row{display:grid;grid-template-columns:210px 1fr;gap:28px;padding:26px 28px;background:var(--panel);border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
@@ -115,7 +114,7 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .row .org{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.8rem;margin:2px 0 8px}
 .row p{color:var(--muted);font-size:.93rem;max-width:640px}
 
-/* Stack */
+/* Skills */
 .stack{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
 .box h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:14px}
@@ -125,7 +124,6 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 /* Contact */
 .contact{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end}
 .contact h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.6rem,5vw,4rem);line-height:1.05;margin-top:14px}
-.contact p{color:var(--muted);margin-top:16px;max-width:460px}
 .contact-actions{display:flex;flex-direction:column;gap:12px}
 .contact-actions .btn{justify-content:space-between;height:52px;font-size:.95rem}
 
@@ -160,7 +158,7 @@ footer a:hover{color:var(--accent)}
   <div class="wrap bar">
     <a class="brand" href="#top"><span class="mark">TS</span>Tanaka Shumba</a>
     <nav>
-      <a href="#roles">Focus</a><a href="#work">Work</a><a href="#code">Code</a><a href="#credentials">Credentials</a><a href="#experience">Experience</a><a href="#stack">Stack</a>
+      <a href="#roles">Focus</a><a href="#work">Work</a><a href="#code">Code</a><a href="#credentials">Credentials</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
     </nav>
     <div class="bar-right">
       <a class="btn btn-primary" href="#contact">Contact</a>
@@ -172,9 +170,9 @@ footer a:hover{color:var(--accent)}
 <main>
   <div class="hero wrap" id="top">
     <div>
-      <span class="eyebrow"><b>SOC analyst</b> · Troy, Alabama</span>
-      <h1>Detect early. <em>Contain fast.</em> Document everything.</h1>
-      <p class="lead">Network monitoring, threat detection, penetration testing, and incident response. B.S. in Cybersecurity and M.S. in Computer Science from Troy University, December 2026. I also review AI-generated code for security flaws at Snorkel AI.</p>
+      <span class="eyebrow">Cybersecurity analyst · Troy, Alabama</span>
+      <h1>I find threats on the wire <em>before they become incidents.</em></h1>
+      <p class="lead">I monitor network traffic, investigate alerts, test systems, and respond to incidents. B.S. in Cybersecurity and M.S. in Computer Science, Troy University, December 2026. I also evaluate AI models for Snorkel AI.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#work">View case studies</a>
         <a class="btn" href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">Download résumé</a>
@@ -182,10 +180,8 @@ footer a:hover{color:var(--accent)}
       <div class="term" aria-label="Session summary">
         <div><span class="p">$</span> whoami</div>
         <div class="o">tanaka shumba</div>
-        <div><span class="p">$</span> role --list</div>
-        <div class="o">soc analyst · pentest · incident response</div>
         <div><span class="p">$</span> status</div>
-        <div class="o">open to roles <span class="cursor"></span></div>
+        <div class="o">open to SOC and security analyst roles <span class="cursor"></span></div>
       </div>
     </div>
 
@@ -194,21 +190,21 @@ footer a:hover{color:var(--accent)}
         <img src="profile.jpg" alt="Tanaka Shumba" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
         <div class="initials">TS</div>
       </div>
-      <figcaption class="caption"><span>tanaka shumba</span><span>troy, al</span></figcaption>
+      <figcaption class="caption"><span>Tanaka Shumba</span><span>Troy, Alabama</span></figcaption>
     </figure>
   </div>
 
   <section id="roles">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">01 // Focus</span><h2>Blue team, red team, <em>one analyst.</em></h2></div>
-        <p>Detection, testing, response, and model review inform each other. Attacks I simulate are the ones I learn to catch.</p>
+        <div><span class="eyebrow">What I do</span><h2>Four ways I <em>defend</em> systems.</h2></div>
+        <p>The roles overlap in practice. Detection feeds response, testing shows what to monitor, and AI review follows the same security habits.</p>
       </div>
       <div class="roles">
-        <div class="role"><span class="num">01</span><div class="side">BLUE TEAM</div><h3>SOC analyst</h3><p>Monitor traffic, tune IDS rules, and triage alerts in Splunk.</p></div>
-        <div class="role"><span class="num">02</span><div class="side">RED TEAM</div><h3>Penetration tester</h3><p>Scan, exploit, and document weaknesses in lab networks, web apps, and cloud setups.</p></div>
-        <div class="role"><span class="num">03</span><div class="side">BLUE TEAM</div><h3>Incident responder</h3><p>Isolate hosts, preserve evidence, and write up root cause and remediation.</p></div>
-        <div class="role"><span class="num">04</span><div class="side">MODEL REVIEW</div><h3>AI evaluator</h3><p>Review generated code and security answers for vulnerabilities and unsafe patterns.</p></div>
+        <div class="role"><span class="num">01</span><h3>SOC analyst</h3><p>Watch network traffic, tune IDS rules, and sort real alerts from noise in Splunk.</p></div>
+        <div class="role"><span class="num">02</span><h3>Penetration tester</h3><p>Scan, exploit, and document weaknesses in lab networks, web apps, and cloud setups.</p></div>
+        <div class="role"><span class="num">03</span><h3>Incident responder</h3><p>Isolate threats, preserve evidence, and write up what happened and how to prevent it.</p></div>
+        <div class="role"><span class="num">04</span><h3>AI evaluator</h3><p>Review model-written code and security answers for flaws, accuracy, and unsafe patterns.</p></div>
       </div>
     </div>
   </section>
@@ -216,32 +212,32 @@ footer a:hover{color:var(--accent)}
   <section id="work">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">02 // Research</span><h2>Lab reports and <em>case studies.</em></h2></div>
-        <p>Each project starts with a question about real traffic and ends with a detection rule, a report, or a fix.</p>
+        <div><span class="eyebrow">Research and labs</span><h2>Selected <em>case studies</em></h2></div>
+        <p>Each project starts with a question about real traffic and ends with a rule, a report, or a fix.</p>
       </div>
       <div class="grid2">
         <article class="card">
           <div class="top"><span>M.S. thesis</span><span>2026</span></div>
           <h3>Smart Home IoT Traffic Metadata Analysis</h3>
-          <p>Passive analysis of encrypted IoT traffic. DNS and TLS metadata reveal device behavior and daily routines without decrypting payloads.</p>
+          <p>Empirical analysis of encrypted smart home traffic, showing how DNS and TLS metadata can reveal daily routines even when payloads are encrypted.</p>
           <div class="tools"><span>Wireshark</span><span>Zeek</span><span>Snort</span><span>Kali</span></div>
         </article>
         <article class="card">
           <div class="top"><span>SOC lab</span><span>2026</span></div>
           <h3>Network Intrusion Detection and SIEM Telemetry Lab</h3>
-          <p>A segmented virtual SOC. Custom Snort and Zeek rules flag port scans and brute-force attempts, with alerts forwarded to Splunk for triage.</p>
+          <p>A segmented virtual SOC that catches port scans, brute-force attempts, and odd packet flows using custom Snort and Zeek rules, with alerts sent to Splunk.</p>
           <div class="tools"><span>Suricata</span><span>Snort</span><span>Splunk</span><span>pfSense</span></div>
         </article>
         <article class="card">
           <div class="top"><span>Systems</span><span>2026</span></div>
           <h3>Hardware Sanitization and Endpoint Hardening</h3>
-          <p>Firmware-level ATA Secure Erase for drive decommissioning, with audits of device connection logs and host access controls.</p>
+          <p>Firmware-level ATA Secure Erase for decommissioning enterprise drives, plus audits of device connection logs and access-control settings on lab endpoints.</p>
           <div class="tools"><span>ATA Secure Erase</span><span>Log auditing</span><span>Access control</span></div>
         </article>
         <article class="card">
           <div class="top"><span>Automation</span><span>2026</span></div>
           <h3>Phishing Homoglyph and Passive OSINT Analyzer</h3>
-          <p>Python tooling that flags IDN homoglyph spoofing and inspects passive DNS and email header metadata for phishing indicators.</p>
+          <p>Python automation that detects deceptive IDN homoglyph domains and inspects passive DNS and header metadata for phishing indicators.</p>
           <div class="tools"><span>Python</span><span>OSINT</span><span>DNS/TLS</span></div>
         </article>
       </div>
@@ -251,8 +247,8 @@ footer a:hover{color:var(--accent)}
   <section id="code">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">03 // Repositories</span><h2>Public <em>repositories.</em></h2></div>
-        <p>Pulled live from GitHub. Forks and profile repositories are excluded.</p>
+        <div><span class="eyebrow">Open source</span><h2>Tools I <em>built</em></h2></div>
+        <p>Pulled live from my GitHub profile. Forks are hidden.</p>
       </div>
       <a class="ghLink" href="https://github.com/TanakaShumba" target="_blank" rel="noopener"><span id="repoCount">Loading repositories</span> ↗</a>
       <div class="grid2" id="repos"></div>
@@ -262,20 +258,20 @@ footer a:hover{color:var(--accent)}
   <section id="credentials">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">04 // Credentials</span><h2>Certifications and <em>training.</em></h2></div>
+        <div><span class="eyebrow">Credentials</span><h2>Training and <em>certificates</em></h2></div>
         <p>Dated as issued. Where the issuer provides a verification link, it's included.</p>
       </div>
       <div class="creds">
         <div class="cred">
           <div class="issuer">Cisco Networking Academy</div>
           <h3>Ethical Hacker</h3>
-          <p>Student-level credential in penetration testing methodology, vulnerability scanning, exploitation, and reporting.</p>
+          <p>Student-level credential covering penetration testing methodology, vulnerability scanning, network and application exploitation, and reporting.</p>
           <div class="when"><span>Sept 13, 2024</span></div>
         </div>
         <div class="cred">
           <div class="issuer">Google via Coursera</div>
           <h3>Google Cybersecurity Professional Certificate</h3>
-          <p>Eight courses covering SIEM tools, intrusion detection systems, Linux, SQL, Python, and entry-level security operations.</p>
+          <p>Eight courses covering SIEM tools, intrusion detection systems, Linux, SQL, and Python for entry-level security roles.</p>
           <div class="when"><span>Jul 4, 2023</span><a href="https://coursera.org/verify/professional-cert/5U8NB74Y76DD" target="_blank" rel="noopener">Verify ↗</a></div>
         </div>
         <div class="cred">
@@ -298,27 +294,27 @@ footer a:hover{color:var(--accent)}
   <section id="experience">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">05 // Experience</span><h2>Work <em>log.</em></h2></div>
+        <div><span class="eyebrow">Experience</span><h2>The <em>path</em></h2></div>
       </div>
       <div class="log">
-        <div class="row"><div class="when">Sept 2025 to Dec 2026</div><div><h3>Student Worker, Computer Science Dept.</h3><div class="org">Troy University</div><p>Maintain lab systems and networks, enforce baseline security practices, and coach students on cybersecurity fundamentals and introductory threat analysis.</p></div></div>
-        <div class="row"><div class="when">2026 to Present</div><div><h3>AI Trainer</h3><div class="org">Snorkel AI</div><p>Build datasets and technical prompts to train and benchmark LLMs. Review model-generated code and security answers for flaws, accuracy, and reasoning.</p></div></div>
-        <div class="row"><div class="when">Dec 2026</div><div><h3>M.S. Computer Science (Cybersecurity)</h3><div class="org">Troy University</div><p>Thesis: empirical analysis of privacy leakage in smart home IoT devices using network traffic metadata.</p></div></div>
+        <div class="row"><div class="when">Sept 2025 to Dec 2026</div><div><h3>Student Worker, Computer Science Dept.</h3><div class="org">Troy University</div><p>Keep lab systems and networks reliable and secure. Coach students on cybersecurity fundamentals, programming, and introductory threat analysis.</p></div></div>
+        <div class="row"><div class="when">2026 to Present</div><div><h3>AI Trainer</h3><div class="org">Snorkel AI</div><p>Build datasets and write technical prompts to train and benchmark LLMs. Review model-generated code and cybersecurity answers for security flaws, accuracy, and reasoning.</p></div></div>
+        <div class="row"><div class="when">Dec 2026</div><div><h3>M.S. Computer Science (Cybersecurity)</h3><div class="org">Troy University</div><p>Thesis: an empirical analysis of privacy leakage in smart home IoT devices using network traffic metadata.</p></div></div>
         <div class="row"><div class="when">Dec 2023</div><div><h3>B.S. Cybersecurity</h3><div class="org">Troy University</div><p>Network security, IDS/IPS, incident response, threat detection, and vulnerability assessment.</p></div></div>
       </div>
     </div>
   </section>
 
-  <section id="stack">
+  <section id="skills">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">06 // Stack</span><h2>Tools by <em>function.</em></h2></div>
+        <div><span class="eyebrow">Skills</span><h2>Tools by <em>task</em></h2></div>
       </div>
       <div class="stack">
-        <div class="box"><h4>Detection and monitoring</h4><ul><li>Wireshark</li><li>Zeek</li><li>Snort</li><li>Suricata</li><li>Splunk</li><li>Wazuh</li></ul></div>
-        <div class="box"><h4>Offensive testing</h4><ul><li>Nmap</li><li>Burp Suite</li><li>Metasploit</li><li>Nessus</li><li>OWASP ZAP</li><li>Nikto</li></ul></div>
-        <div class="box"><h4>Hardening and response</h4><ul><li>pfSense</li><li>IPTables</li><li>UFW</li><li>ATA Secure Erase</li><li>Log auditing</li><li>Access control</li></ul></div>
-        <div class="box"><h4>Engineering and systems</h4><ul><li>Python</li><li>Bash</li><li>PowerShell</li><li>Java</li><li>C++</li><li>Docker</li><li>Kali Linux</li><li>Ubuntu</li></ul></div>
+        <div class="box"><h4>Monitor and detect</h4><ul><li>Wireshark</li><li>Zeek</li><li>Snort</li><li>Suricata</li><li>Splunk</li><li>Wazuh</li></ul></div>
+        <div class="box"><h4>Test and exploit</h4><ul><li>Nmap</li><li>Burp Suite</li><li>Metasploit</li><li>Nessus</li><li>OWASP ZAP</li><li>Nikto</li></ul></div>
+        <div class="box"><h4>Respond and harden</h4><ul><li>pfSense</li><li>IPTables</li><li>UFW</li><li>ATA Secure Erase</li><li>Log auditing</li><li>Access control</li></ul></div>
+        <div class="box"><h4>Code and systems</h4><ul><li>Python</li><li>Bash</li><li>PowerShell</li><li>Java</li><li>C++</li><li>Docker</li><li>Kali Linux</li><li>Ubuntu</li></ul></div>
       </div>
     </div>
   </section>
@@ -326,9 +322,8 @@ footer a:hover{color:var(--accent)}
   <section id="contact">
     <div class="wrap contact">
       <div>
-        <span class="eyebrow">07 // Contact</span>
-        <h2>Open a <em>secure channel.</em></h2>
-        <p>Hiring for SOC analyst, detection, and security analysis roles.</p>
+        <span class="eyebrow">Contact</span>
+        <h2>Looking for a careful analyst? <em>Let's talk.</em></h2>
       </div>
       <div class="contact-actions">
         <a class="btn btn-primary" href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com <span>→</span></a>
