@@ -10,49 +10,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0B0C0B; --panel:#121412; --line:#24281F; --text:#F1EEE6; --muted:#9BA096; --dim:#858B80; --accent:#C9F25A;
+  --bg:#0A0B0A; --panel:#101210; --panel2:#151815; --line:#1F231D;
+  --text:#E9ECE4; --muted:#9AA096; --dim:#858B80; --accent:#C9F25A;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(rgba(233,236,228,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(233,236,228,.035) 1px,transparent 1px);
+  background-size:56px 56px;
+  color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.mono{font-family:'JetBrains Mono',monospace}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.eyebrow b{color:var(--accent);font-weight:500}
 em{font-style:italic;color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
-/* Intro: framed warrior image, terminal boot lines, lime sweep, then reveal */
-#intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;animation:introOut .4s ease 2.2s forwards}
-@keyframes introOut{to{opacity:0;visibility:hidden}}
-.boot{width:min(620px,90vw)}
-.shot{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#000}
-.shot img{width:100%;height:100%;object-fit:cover;animation:zoom 2.6s ease-out forwards}
-@keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-.shot::before,.shot::after{content:"";position:absolute;width:22px;height:22px;border:0 solid var(--accent)}
-.shot::before{top:12px;left:12px;border-top-width:2px;border-left-width:2px}
-.shot::after{bottom:12px;right:12px;border-bottom-width:2px;border-right-width:2px}
-.term{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--muted);min-height:6.5em}
-.term p{opacity:0;animation:line .2s ease forwards;animation-delay:var(--d)}
-@keyframes line{to{opacity:1}}
-.term .ok{color:var(--accent)}
-.cur{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:-2px;margin-left:4px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.sweep{position:absolute;top:0;bottom:0;left:-6px;width:4px;background:var(--accent);box-shadow:0 0 24px var(--accent);animation:sweep .5s ease-in 1.8s forwards}
-@keyframes sweep{to{left:100%}}
-@media (prefers-reduced-motion:reduce){#intro{display:none}}
-
 /* Header */
-header{position:sticky;top:0;z-index:50;background:rgba(11,12,11,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:50;background:rgba(10,11,10,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .bar{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:.95rem}
-.mark{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:600}
+.mark{width:34px;height:34px;border-radius:8px;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:600}
 nav{display:flex;gap:26px;font-size:.9rem;color:var(--muted)}
 nav a:hover{color:var(--text)}
-.menu{display:none;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--text);font:inherit;font-size:.85rem;cursor:pointer;align-items:center}
+.bar-right{display:flex;gap:10px;align-items:center}
+.menu{display:none;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:8px;background:none;color:var(--text);font:inherit;font-size:.85rem;cursor:pointer;align-items:center}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);font-size:.9rem;font-weight:500;color:var(--text);transition:border-color .2s,background .2s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:8px;border:1px solid var(--line);background:var(--panel);font-size:.9rem;font-weight:500;color:var(--text);transition:border-color .2s;white-space:nowrap}
 .btn:hover{border-color:var(--accent)}
 .btn-primary{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
 .btn-primary:hover{background:#d8f77a;border-color:#d8f77a}
@@ -60,14 +51,16 @@ nav a:hover{color:var(--text)}
 /* Hero */
 .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;padding:96px 28px 88px}
 .hero h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,6vw,5rem);line-height:1.02;letter-spacing:-.02em;margin:22px 0 26px}
-.lead{color:var(--muted);font-size:1.05rem;max-width:520px}
+.lead{color:var(--muted);font-size:1.02rem;max-width:540px}
 .actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
-.status{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted);margin-top:36px}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(201,242,90,.15)}
-.portrait .frame{aspect-ratio:4/5;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
+.term{margin-top:40px;max-width:460px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.85;color:var(--muted)}
+.term .p{color:var(--accent)}
+.term .o{color:var(--text)}
+.cursor{display:inline-block;width:8px;height:14px;background:var(--accent);vertical-align:-2px}
+.portrait .frame{aspect-ratio:4/5;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .portrait .initials{display:none;height:100%;place-items:center;font-family:'Instrument Serif',serif;font-size:6rem;color:var(--dim)}
-.portrait .caption{margin-top:14px;display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted)}
+.portrait .caption{margin-top:14px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim)}
 
 /* Sections */
 section{padding:88px 0;border-top:1px solid var(--line)}
@@ -76,66 +69,70 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .head p{color:var(--muted);max-width:420px;font-size:.98rem}
 
 /* Roles */
-.roles{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
-.role{padding:28px 24px 8px 0}
-.role+.role{padding-left:24px;border-left:1px solid var(--line)}
-.role .num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--dim)}
-.role h3{font-size:1.1rem;font-weight:600;margin:14px 0 8px}
+.roles{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.role{padding:28px 24px;background:var(--panel)}
+.role+.role{border-left:1px solid var(--line)}
+.role .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim)}
+.role .side{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);margin-top:6px}
+.role h3{font-size:1.1rem;font-weight:600;margin:16px 0 8px}
 .role p{color:var(--muted);font-size:.92rem}
 
 /* Cards */
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s}
+.card:hover{border-color:#3A4236}
 .card .top{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
-.card h3{font-size:1.25rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
+.card h3{font-size:1.2rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
 .card p{color:var(--muted);font-size:.93rem}
 .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
-.tools span{font-size:.75rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 9px}
-a.repo{transition:border-color .25s}
-a.repo:hover{border-color:#3A4236}
-.repo h3{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:500;word-break:break-word}
-.repo .meta{font-size:.78rem;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-top:auto}
-.ghLink{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted);margin-bottom:24px}
-.ghLink:hover{color:var(--text)}
+.tools span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 9px;background:var(--panel2)}
+
+/* Repos */
+.repo h3{font-family:'JetBrains Mono',monospace;font-size:.95rem;font-weight:500;word-break:break-word}
+.repo .meta{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--dim);margin-top:auto}
+.ghLink{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);margin-bottom:24px}
+.ghLink:hover{color:var(--accent)}
 .muted{color:var(--muted)}
 
-/* Credentials */
-.creds{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line)}
-.cred{padding:26px 24px 26px 0;border-bottom:1px solid var(--line)}
-.cred:nth-child(even){padding-left:24px;padding-right:0;border-left:1px solid var(--line)}
-.cred .issuer{font-size:.72rem;color:var(--accent);font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
-.cred h3{font-size:1.08rem;font-weight:600;margin:8px 0 6px}
+/* Certifications */
+.creds{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.cred{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:6px}
+.cred .issuer{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.cred h3{font-size:1.06rem;font-weight:600;margin-top:4px}
 .cred p{color:var(--muted);font-size:.9rem}
-.cred .when{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim);margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
+.cred .when{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim);margin-top:auto;padding-top:10px;display:flex;gap:14px;flex-wrap:wrap}
 .cred .when a{color:var(--accent)}
 .cred .when a:hover{text-decoration:underline}
-.courses{margin-top:28px;font-size:.92rem;color:var(--muted)}
+.courses{margin-top:22px;font-size:.9rem;color:var(--muted)}
 .courses b{color:var(--text);font-weight:500}
 
-/* Experience */
-.tl{border-top:1px solid var(--line)}
-.row{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
-.row .when{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--dim);padding-top:4px}
+/* Work log */
+.log{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.row{display:grid;grid-template-columns:210px 1fr;gap:28px;padding:26px 28px;background:var(--panel);border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row .when{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--dim);padding-top:4px}
 .row h3{font-size:1.1rem;font-weight:600}
-.row .org{color:var(--accent);font-size:.9rem;margin:2px 0 8px}
+.row .org{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.8rem;margin:2px 0 8px}
 .row p{color:var(--muted);font-size:.93rem;max-width:640px}
 
-/* Skills */
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:36px 56px}
-.skills h4{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:14px}
-.skills ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.skills li{font-size:.92rem;border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:var(--panel)}
+/* Stack */
+.stack{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+.box h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:14px}
+.box ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.box li{font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:6px;padding:5px 10px;background:var(--panel2);color:var(--text)}
 
 /* Contact */
 .contact{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end}
 .contact h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.6rem,5vw,4rem);line-height:1.05;margin-top:14px}
+.contact p{color:var(--muted);margin-top:16px;max-width:460px}
 .contact-actions{display:flex;flex-direction:column;gap:12px}
 .contact-actions .btn{justify-content:space-between;height:52px;font-size:.95rem}
 
 /* Footer */
-footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--dim);font-size:.85rem}
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--dim);font-size:.84rem;font-family:'JetBrains Mono',monospace}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-footer a:hover{color:var(--text)}
+footer a:hover{color:var(--accent)}
 
 /* Responsive */
 @media (max-width:920px){
@@ -146,42 +143,28 @@ footer a:hover{color:var(--text)}
   header.open nav{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:4px 28px 12px}
   header.open nav a{padding:12px 0;border-bottom:1px solid var(--line)}
   .roles{grid-template-columns:1fr 1fr}
-  .role:nth-child(odd){padding-left:0;border-left:0}
-  .role:nth-child(even){padding-left:24px;border-left:1px solid var(--line)}
+  .role:nth-child(3){border-left:0}
   .role:nth-child(n+3){border-top:1px solid var(--line)}
-  .grid2,.creds,.skills,.contact{grid-template-columns:1fr}
-  .cred:nth-child(even){padding-left:0;border-left:0}
+  .grid2,.creds,.stack,.contact{grid-template-columns:1fr}
   .row{grid-template-columns:1fr;gap:6px}
 }
 @media (max-width:600px){
   .roles{grid-template-columns:1fr}
-  .role,.role+.role{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .role+.role{border-left:0;border-top:1px solid var(--line)}
 }
 </style>
 </head>
 <body>
 
-<div id="intro" aria-hidden="true">
-  <div class="boot">
-    <div class="shot"><img src="lion-warrior.jpg" alt=""></div>
-    <div class="term">
-      <p style="--d:.3s">&gt; identify: tanaka shumba</p>
-      <p style="--d:.8s">&gt; role: cybersecurity analyst</p>
-      <p style="--d:1.3s" class="ok">&gt; access granted<span class="cur"></span></p>
-    </div>
-  </div>
-  <div class="sweep"></div>
-</div>
-
 <header id="siteHeader">
   <div class="wrap bar">
     <a class="brand" href="#top"><span class="mark">TS</span>Tanaka Shumba</a>
     <nav>
-      <a href="#roles">Focus</a><a href="#work">Work</a><a href="#code">Code</a><a href="#credentials">Credentials</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
+      <a href="#roles">Focus</a><a href="#work">Work</a><a href="#code">Code</a><a href="#credentials">Credentials</a><a href="#experience">Experience</a><a href="#stack">Stack</a>
     </nav>
-    <div style="display:flex;gap:10px;align-items:center">
+    <div class="bar-right">
       <a class="btn btn-primary" href="#contact">Contact</a>
-      <button class="menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
+      <button class="menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="siteHeader">Menu</button>
     </div>
   </div>
 </header>
@@ -189,14 +172,21 @@ footer a:hover{color:var(--text)}
 <main>
   <div class="hero wrap" id="top">
     <div>
-      <span class="eyebrow">Cybersecurity analyst · Troy, Alabama</span>
-      <h1>I find threats on the wire <em>before they become incidents.</em></h1>
-      <p class="lead">I monitor network traffic, investigate alerts, test systems, and respond to incidents. B.S. in Cybersecurity and M.S. in Computer Science, Troy University, December 2026. I also evaluate AI models for Snorkel AI.</p>
+      <span class="eyebrow"><b>SOC analyst</b> · Troy, Alabama</span>
+      <h1>Detect early. <em>Contain fast.</em> Document everything.</h1>
+      <p class="lead">Network monitoring, threat detection, penetration testing, and incident response. B.S. in Cybersecurity and M.S. in Computer Science from Troy University, December 2026. I also review AI-generated code for security flaws at Snorkel AI.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#work">View case studies</a>
         <a class="btn" href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">Download résumé</a>
       </div>
-      <p class="status"><i></i>Open to SOC and security analyst roles</p>
+      <div class="term" aria-label="Session summary">
+        <div><span class="p">$</span> whoami</div>
+        <div class="o">tanaka shumba</div>
+        <div><span class="p">$</span> role --list</div>
+        <div class="o">soc analyst · pentest · incident response</div>
+        <div><span class="p">$</span> status</div>
+        <div class="o">open to roles <span class="cursor"></span></div>
+      </div>
     </div>
 
     <figure class="portrait">
@@ -204,21 +194,21 @@ footer a:hover{color:var(--text)}
         <img src="profile.jpg" alt="Tanaka Shumba" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
         <div class="initials">TS</div>
       </div>
-      <figcaption class="caption"><span>Tanaka Shumba</span><span>Troy, Alabama</span></figcaption>
+      <figcaption class="caption"><span>tanaka shumba</span><span>troy, al</span></figcaption>
     </figure>
   </div>
 
   <section id="roles">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">What I do</span><h2>Four ways I <em>defend</em> systems.</h2></div>
-        <p>The roles overlap in practice. Detection feeds response, testing shows what to monitor, and AI review follows the same security habits.</p>
+        <div><span class="eyebrow">01 // Focus</span><h2>Blue team, red team, <em>one analyst.</em></h2></div>
+        <p>Detection, testing, response, and model review inform each other. Attacks I simulate are the ones I learn to catch.</p>
       </div>
       <div class="roles">
-        <div class="role"><span class="num">01</span><h3>SOC analyst</h3><p>Watch network traffic, tune IDS rules, and sort real alerts from noise in Splunk.</p></div>
-        <div class="role"><span class="num">02</span><h3>Penetration tester</h3><p>Scan, exploit, and document weaknesses in lab networks, web apps, and cloud setups.</p></div>
-        <div class="role"><span class="num">03</span><h3>Incident responder</h3><p>Isolate threats, preserve evidence, and write up what happened and how to prevent it.</p></div>
-        <div class="role"><span class="num">04</span><h3>AI evaluator</h3><p>Review model-written code and security answers for flaws, accuracy, and unsafe patterns.</p></div>
+        <div class="role"><span class="num">01</span><div class="side">BLUE TEAM</div><h3>SOC analyst</h3><p>Monitor traffic, tune IDS rules, and triage alerts in Splunk.</p></div>
+        <div class="role"><span class="num">02</span><div class="side">RED TEAM</div><h3>Penetration tester</h3><p>Scan, exploit, and document weaknesses in lab networks, web apps, and cloud setups.</p></div>
+        <div class="role"><span class="num">03</span><div class="side">BLUE TEAM</div><h3>Incident responder</h3><p>Isolate hosts, preserve evidence, and write up root cause and remediation.</p></div>
+        <div class="role"><span class="num">04</span><div class="side">MODEL REVIEW</div><h3>AI evaluator</h3><p>Review generated code and security answers for vulnerabilities and unsafe patterns.</p></div>
       </div>
     </div>
   </section>
@@ -226,32 +216,32 @@ footer a:hover{color:var(--text)}
   <section id="work">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Research and labs</span><h2>Selected <em>case studies</em></h2></div>
-        <p>Each project starts with a question about real traffic and ends with a rule, a report, or a fix.</p>
+        <div><span class="eyebrow">02 // Research</span><h2>Lab reports and <em>case studies.</em></h2></div>
+        <p>Each project starts with a question about real traffic and ends with a detection rule, a report, or a fix.</p>
       </div>
       <div class="grid2">
         <article class="card">
           <div class="top"><span>M.S. thesis</span><span>2026</span></div>
           <h3>Smart Home IoT Traffic Metadata Analysis</h3>
-          <p>Empirical analysis of encrypted smart home traffic, showing how DNS and TLS metadata can reveal daily routines even when payloads are encrypted.</p>
+          <p>Passive analysis of encrypted IoT traffic. DNS and TLS metadata reveal device behavior and daily routines without decrypting payloads.</p>
           <div class="tools"><span>Wireshark</span><span>Zeek</span><span>Snort</span><span>Kali</span></div>
         </article>
         <article class="card">
           <div class="top"><span>SOC lab</span><span>2026</span></div>
           <h3>Network Intrusion Detection and SIEM Telemetry Lab</h3>
-          <p>A segmented virtual SOC that catches port scans, brute-force attempts, and odd packet flows using custom Snort and Zeek rules, with alerts sent to Splunk.</p>
+          <p>A segmented virtual SOC. Custom Snort and Zeek rules flag port scans and brute-force attempts, with alerts forwarded to Splunk for triage.</p>
           <div class="tools"><span>Suricata</span><span>Snort</span><span>Splunk</span><span>pfSense</span></div>
         </article>
         <article class="card">
           <div class="top"><span>Systems</span><span>2026</span></div>
           <h3>Hardware Sanitization and Endpoint Hardening</h3>
-          <p>Firmware-level ATA Secure Erase for decommissioning enterprise drives, plus audits of device connection logs and access-control settings on lab endpoints.</p>
+          <p>Firmware-level ATA Secure Erase for drive decommissioning, with audits of device connection logs and host access controls.</p>
           <div class="tools"><span>ATA Secure Erase</span><span>Log auditing</span><span>Access control</span></div>
         </article>
         <article class="card">
           <div class="top"><span>Automation</span><span>2026</span></div>
           <h3>Phishing Homoglyph and Passive OSINT Analyzer</h3>
-          <p>Python automation that detects deceptive IDN homoglyph domains and inspects passive DNS and header metadata for phishing indicators.</p>
+          <p>Python tooling that flags IDN homoglyph spoofing and inspects passive DNS and email header metadata for phishing indicators.</p>
           <div class="tools"><span>Python</span><span>OSINT</span><span>DNS/TLS</span></div>
         </article>
       </div>
@@ -261,8 +251,8 @@ footer a:hover{color:var(--text)}
   <section id="code">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Open source</span><h2>Tools I <em>built</em></h2></div>
-        <p>Pulled live from my GitHub profile. Forks are hidden.</p>
+        <div><span class="eyebrow">03 // Repositories</span><h2>Public <em>repositories.</em></h2></div>
+        <p>Pulled live from GitHub. Forks and profile repositories are excluded.</p>
       </div>
       <a class="ghLink" href="https://github.com/TanakaShumba" target="_blank" rel="noopener"><span id="repoCount">Loading repositories</span> ↗</a>
       <div class="grid2" id="repos"></div>
@@ -272,24 +262,24 @@ footer a:hover{color:var(--text)}
   <section id="credentials">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Credentials</span><h2>Training and <em>certificates</em></h2></div>
+        <div><span class="eyebrow">04 // Credentials</span><h2>Certifications and <em>training.</em></h2></div>
         <p>Dated as issued. Where the issuer provides a verification link, it's included.</p>
       </div>
       <div class="creds">
         <div class="cred">
-          <div class="issuer">CISCO NETWORKING ACADEMY</div>
+          <div class="issuer">Cisco Networking Academy</div>
           <h3>Ethical Hacker</h3>
-          <p>Student-level credential covering penetration testing methodology, vulnerability scanning, network and application exploitation, and reporting.</p>
+          <p>Student-level credential in penetration testing methodology, vulnerability scanning, exploitation, and reporting.</p>
           <div class="when"><span>Sept 13, 2024</span></div>
         </div>
         <div class="cred">
-          <div class="issuer">GOOGLE VIA COURSERA</div>
+          <div class="issuer">Google via Coursera</div>
           <h3>Google Cybersecurity Professional Certificate</h3>
-          <p>Eight courses covering SIEM tools, intrusion detection systems, Linux, SQL, and Python for entry-level security roles.</p>
+          <p>Eight courses covering SIEM tools, intrusion detection systems, Linux, SQL, Python, and entry-level security operations.</p>
           <div class="when"><span>Jul 4, 2023</span><a href="https://coursera.org/verify/professional-cert/5U8NB74Y76DD" target="_blank" rel="noopener">Verify ↗</a></div>
         </div>
         <div class="cred">
-          <div class="issuer">TEXAS A&amp;M ENGINEERING EXTENSION (FEMA-SUPPORTED)</div>
+          <div class="issuer">Texas A&amp;M Engineering Extension (FEMA-supported)</div>
           <h3>Cyber Incident Management and Digital Forensics</h3>
           <p>Introduction to Cyber Incident Management (9 hrs), Foundations of Cyber Crime (10 hrs), Digital Forensics Basics (7 hrs), and Cybersecurity in the Workplace (2 hrs).</p>
           <div class="when"><span>Aug to Nov 2023</span></div>
@@ -308,27 +298,27 @@ footer a:hover{color:var(--text)}
   <section id="experience">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Experience</span><h2>The <em>path</em></h2></div>
+        <div><span class="eyebrow">05 // Experience</span><h2>Work <em>log.</em></h2></div>
       </div>
-      <div class="tl">
-        <div class="row"><div class="when">Sept 2025 to Dec 2026</div><div><h3>Student Worker, Computer Science Dept.</h3><div class="org">Troy University</div><p>Keep lab systems and networks reliable and secure. Coach students on cybersecurity fundamentals, programming, and introductory threat analysis.</p></div></div>
-        <div class="row"><div class="when">2026 to Present</div><div><h3>AI Trainer</h3><div class="org">Snorkel AI</div><p>Build datasets and write technical prompts to train and benchmark LLMs. Review model-generated code and cybersecurity answers for security flaws, accuracy, and reasoning.</p></div></div>
-        <div class="row"><div class="when">Dec 2026</div><div><h3>M.S. Computer Science (Cybersecurity)</h3><div class="org">Troy University</div><p>Thesis: an empirical analysis of privacy leakage in smart home IoT devices using network traffic metadata.</p></div></div>
+      <div class="log">
+        <div class="row"><div class="when">Sept 2025 to Dec 2026</div><div><h3>Student Worker, Computer Science Dept.</h3><div class="org">Troy University</div><p>Maintain lab systems and networks, enforce baseline security practices, and coach students on cybersecurity fundamentals and introductory threat analysis.</p></div></div>
+        <div class="row"><div class="when">2026 to Present</div><div><h3>AI Trainer</h3><div class="org">Snorkel AI</div><p>Build datasets and technical prompts to train and benchmark LLMs. Review model-generated code and security answers for flaws, accuracy, and reasoning.</p></div></div>
+        <div class="row"><div class="when">Dec 2026</div><div><h3>M.S. Computer Science (Cybersecurity)</h3><div class="org">Troy University</div><p>Thesis: empirical analysis of privacy leakage in smart home IoT devices using network traffic metadata.</p></div></div>
         <div class="row"><div class="when">Dec 2023</div><div><h3>B.S. Cybersecurity</h3><div class="org">Troy University</div><p>Network security, IDS/IPS, incident response, threat detection, and vulnerability assessment.</p></div></div>
       </div>
     </div>
   </section>
 
-  <section id="skills">
+  <section id="stack">
     <div class="wrap">
       <div class="head">
-        <div><span class="eyebrow">Skills</span><h2>Tools by <em>task</em></h2></div>
+        <div><span class="eyebrow">06 // Stack</span><h2>Tools by <em>function.</em></h2></div>
       </div>
-      <div class="skills">
-        <div><h4>Monitor and detect</h4><ul><li>Wireshark</li><li>Zeek</li><li>Snort</li><li>Suricata</li><li>Splunk</li><li>Wazuh</li></ul></div>
-        <div><h4>Test and exploit</h4><ul><li>Nmap</li><li>Burp Suite</li><li>Metasploit</li><li>Nessus</li><li>OWASP ZAP</li><li>Nikto</li></ul></div>
-        <div><h4>Respond and harden</h4><ul><li>pfSense</li><li>IPTables</li><li>UFW</li><li>ATA Secure Erase</li><li>Log auditing</li><li>Access control</li></ul></div>
-        <div><h4>Code and systems</h4><ul><li>Python</li><li>Bash</li><li>PowerShell</li><li>Java</li><li>C++</li><li>Docker</li><li>Kali Linux</li><li>Ubuntu</li></ul></div>
+      <div class="stack">
+        <div class="box"><h4>Detection and monitoring</h4><ul><li>Wireshark</li><li>Zeek</li><li>Snort</li><li>Suricata</li><li>Splunk</li><li>Wazuh</li></ul></div>
+        <div class="box"><h4>Offensive testing</h4><ul><li>Nmap</li><li>Burp Suite</li><li>Metasploit</li><li>Nessus</li><li>OWASP ZAP</li><li>Nikto</li></ul></div>
+        <div class="box"><h4>Hardening and response</h4><ul><li>pfSense</li><li>IPTables</li><li>UFW</li><li>ATA Secure Erase</li><li>Log auditing</li><li>Access control</li></ul></div>
+        <div class="box"><h4>Engineering and systems</h4><ul><li>Python</li><li>Bash</li><li>PowerShell</li><li>Java</li><li>C++</li><li>Docker</li><li>Kali Linux</li><li>Ubuntu</li></ul></div>
       </div>
     </div>
   </section>
@@ -336,8 +326,9 @@ footer a:hover{color:var(--text)}
   <section id="contact">
     <div class="wrap contact">
       <div>
-        <span class="eyebrow">Contact</span>
-        <h2>Looking for a careful analyst? <em>Let's talk.</em></h2>
+        <span class="eyebrow">07 // Contact</span>
+        <h2>Open a <em>secure channel.</em></h2>
+        <p>Hiring for SOC analyst, detection, and security analysis roles.</p>
       </div>
       <div class="contact-actions">
         <a class="btn btn-primary" href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com <span>→</span></a>
@@ -375,10 +366,10 @@ footer a:hover{color:var(--text)}
   });
 })();
 
-// Live GitHub repositories. Hides forks and the user's GitHub Pages repo, and shows no descriptions.
+// Live repositories. Hides forks, the profile repo (TanakaShumba), and the GitHub Pages repo.
 (function () {
   var user = 'TanakaShumba';
-  var pagesRepo = (user + '.github.io').toLowerCase();
+  var excluded = [user.toLowerCase(), (user + '.github.io').toLowerCase()];
   var grid = document.getElementById('repos');
   var count = document.getElementById('repoCount');
 
@@ -386,7 +377,7 @@ footer a:hover{color:var(--text)}
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (list) {
       var repos = list.filter(function (r) {
-        return !r.fork && r.name.toLowerCase() !== pagesRepo;
+        return !r.fork && excluded.indexOf(r.name.toLowerCase()) === -1;
       });
       count.textContent = repos.length + ' public repositories';
       repos.forEach(function (r) {
