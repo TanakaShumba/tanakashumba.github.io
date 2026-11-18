@@ -11,7 +11,7 @@
 <style>
 :root{
   --bg:#0A0B0A; --panel:#101210; --panel2:#151815; --line:#1F231D;
-  --text:#E9ECE4; --muted:#9AA096; --dim:#858B80; --accent:#C9F25A;
+  --text:#E9ECE4; --muted:#A9AFA3; --dim:#979D91; --accent:#C9F25A;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
@@ -51,8 +51,6 @@ nav a:hover{color:var(--text)}
 .hero h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,6vw,5rem);line-height:1.02;letter-spacing:-.02em;margin:22px 0 26px}
 .lead{color:var(--muted);font-size:1.02rem;max-width:540px}
 .actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
-.status{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted);margin-top:36px}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(201,242,90,.15)}
 .term{margin-top:40px;max-width:460px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.85;color:var(--muted)}
 .term .p{color:var(--accent)}
 .term .o{color:var(--text)}
@@ -60,7 +58,7 @@ nav a:hover{color:var(--text)}
 .portrait .frame{aspect-ratio:4/5;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .portrait .initials{display:none;height:100%;place-items:center;font-family:'Instrument Serif',serif;font-size:6rem;color:var(--dim)}
-.portrait .caption{margin-top:14px;display:flex;justify-content:space-between;font-size:.85rem;color:var(--dim)}
+.portrait .caption{margin-top:14px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim)}
 
 /* Sections */
 section{padding:88px 0;border-top:1px solid var(--line)}
@@ -76,7 +74,7 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .role h3{font-size:1.1rem;font-weight:600;margin:16px 0 8px}
 .role p{color:var(--muted);font-size:.92rem}
 
-/* Cards */
+/* Cards (case studies and repositories share this style) */
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s}
 .card:hover{border-color:#3A4236}
@@ -85,12 +83,13 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .card p{color:var(--muted);font-size:.93rem}
 .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
 .tools span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 9px;background:var(--panel2)}
+.card.linked{cursor:pointer}
+.card.linked:hover .viewRepo{color:var(--accent)}
+.viewRepo{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim);text-transform:none;letter-spacing:.02em;transition:color .2s}
 
-/* Repos */
-.repo h3{font-family:'JetBrains Mono',monospace;font-size:.95rem;font-weight:500;word-break:break-word}
-.repo .meta{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--dim);margin-top:auto}
-.ghLink{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);margin-bottom:24px}
-.ghLink:hover{color:var(--accent)}
+/* Repositories */
+.repo h3{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:500;word-break:break-word}
+.repoMore{margin-top:28px;display:flex;justify-content:center}
 .muted{color:var(--muted)}
 
 /* Credentials */
@@ -115,8 +114,8 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .row p{color:var(--muted);font-size:.93rem;max-width:640px}
 
 /* Skills */
-.stack{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+.stack{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:stretch}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;height:100%}
 .box h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:14px}
 .box ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
 .box li{font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line);border-radius:6px;padding:5px 10px;background:var(--panel2);color:var(--text)}
@@ -216,25 +215,25 @@ footer a:hover{color:var(--accent)}
         <p>Each project starts with a question about real traffic and ends with a rule, a report, or a fix.</p>
       </div>
       <div class="grid2">
-        <article class="card">
+        <article class="card" data-repo="">
           <div class="top"><span>M.S. thesis</span><span>2026</span></div>
           <h3>Smart Home IoT Traffic Metadata Analysis</h3>
           <p>Empirical analysis of encrypted smart home traffic, showing how DNS and TLS metadata can reveal daily routines even when payloads are encrypted.</p>
           <div class="tools"><span>Wireshark</span><span>Zeek</span><span>Snort</span><span>Kali</span></div>
         </article>
-        <article class="card">
+        <article class="card" data-repo="">
           <div class="top"><span>SOC lab</span><span>2026</span></div>
           <h3>Network Intrusion Detection and SIEM Telemetry Lab</h3>
           <p>A segmented virtual SOC that catches port scans, brute-force attempts, and odd packet flows using custom Snort and Zeek rules, with alerts sent to Splunk.</p>
           <div class="tools"><span>Suricata</span><span>Snort</span><span>Splunk</span><span>pfSense</span></div>
         </article>
-        <article class="card">
+        <article class="card" data-repo="">
           <div class="top"><span>Systems</span><span>2026</span></div>
           <h3>Hardware Sanitization and Endpoint Hardening</h3>
           <p>Firmware-level ATA Secure Erase for decommissioning enterprise drives, plus audits of device connection logs and access-control settings on lab endpoints.</p>
           <div class="tools"><span>ATA Secure Erase</span><span>Log auditing</span><span>Access control</span></div>
         </article>
-        <article class="card">
+        <article class="card" data-repo="">
           <div class="top"><span>Automation</span><span>2026</span></div>
           <h3>Phishing Homoglyph and Passive OSINT Analyzer</h3>
           <p>Python automation that detects deceptive IDN homoglyph domains and inspects passive DNS and header metadata for phishing indicators.</p>
@@ -248,10 +247,10 @@ footer a:hover{color:var(--accent)}
     <div class="wrap">
       <div class="head">
         <div><span class="eyebrow">Open source</span><h2>Tools I <em>built</em></h2></div>
-        <p>Pulled live from my GitHub profile. Forks are hidden.</p>
+        <p>The six most recently updated repositories. Forks and profile repositories are excluded.</p>
       </div>
-      <a class="ghLink" href="https://github.com/TanakaShumba" target="_blank" rel="noopener"><span id="repoCount">Loading repositories</span> ↗</a>
       <div class="grid2" id="repos"></div>
+      <div class="repoMore"><a class="btn" id="repoAll" href="https://github.com/TanakaShumba?tab=repositories" target="_blank" rel="noopener">View all repositories on GitHub ↗</a></div>
     </div>
   </section>
 
@@ -295,6 +294,7 @@ footer a:hover{color:var(--accent)}
     <div class="wrap">
       <div class="head">
         <div><span class="eyebrow">Experience</span><h2>The <em>path</em></h2></div>
+        <p>Roles and education, most recent first.</p>
       </div>
       <div class="log">
         <div class="row"><div class="when">Sept 2025 to Dec 2026</div><div><h3>Student Worker, Computer Science Dept.</h3><div class="org">Troy University</div><p>Keep lab systems and networks reliable and secure. Coach students on cybersecurity fundamentals, programming, and introductory threat analysis.</p></div></div>
@@ -309,90 +309,8 @@ footer a:hover{color:var(--accent)}
     <div class="wrap">
       <div class="head">
         <div><span class="eyebrow">Skills</span><h2>Tools by <em>task</em></h2></div>
+        <p>Grouped by what I use each tool for.</p>
       </div>
       <div class="stack">
         <div class="box"><h4>Monitor and detect</h4><ul><li>Wireshark</li><li>Zeek</li><li>Snort</li><li>Suricata</li><li>Splunk</li><li>Wazuh</li></ul></div>
         <div class="box"><h4>Test and exploit</h4><ul><li>Nmap</li><li>Burp Suite</li><li>Metasploit</li><li>Nessus</li><li>OWASP ZAP</li><li>Nikto</li></ul></div>
-        <div class="box"><h4>Respond and harden</h4><ul><li>pfSense</li><li>IPTables</li><li>UFW</li><li>ATA Secure Erase</li><li>Log auditing</li><li>Access control</li></ul></div>
-        <div class="box"><h4>Code and systems</h4><ul><li>Python</li><li>Bash</li><li>PowerShell</li><li>Java</li><li>C++</li><li>Docker</li><li>Kali Linux</li><li>Ubuntu</li></ul></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap contact">
-      <div>
-        <span class="eyebrow">Contact</span>
-        <h2>Looking for a careful analyst? <em>Let's talk.</em></h2>
-      </div>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com <span>→</span></a>
-        <a class="btn" href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-        <a class="btn" href="tel:+13344820211">(334) 482-0211 <span>→</span></a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>© 2026 Tanaka Shumba</span>
-    <span>Troy, Alabama</span>
-    <span><a href="https://github.com/TanakaShumba" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn</a> · <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">Résumé</a></span>
-  </div>
-</footer>
-
-<script>
-// Mobile menu
-(function () {
-  var header = document.getElementById('siteHeader');
-  var btn = document.getElementById('menuBtn');
-  btn.addEventListener('click', function () {
-    var open = header.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.textContent = open ? 'Close' : 'Menu';
-  });
-  header.querySelectorAll('nav a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      header.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = 'Menu';
-    });
-  });
-})();
-
-// Live repositories. Hides forks, the profile repo (TanakaShumba), and the GitHub Pages repo.
-(function () {
-  var user = 'TanakaShumba';
-  var excluded = [user.toLowerCase(), (user + '.github.io').toLowerCase()];
-  var grid = document.getElementById('repos');
-  var count = document.getElementById('repoCount');
-
-  fetch('https://api.github.com/users/' + user + '/repos?per_page=100&sort=updated')
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (list) {
-      var repos = list.filter(function (r) {
-        return !r.fork && excluded.indexOf(r.name.toLowerCase()) === -1;
-      });
-      count.textContent = repos.length + ' public repositories';
-      repos.forEach(function (r) {
-        var a = document.createElement('a');
-        a.className = 'card repo';
-        a.href = r.html_url; a.target = '_blank'; a.rel = 'noopener';
-        var h = document.createElement('h3'); h.textContent = r.name;
-        var m = document.createElement('div'); m.className = 'meta';
-        m.textContent = (r.language || 'Code') + '  ·  ★ ' + r.stargazers_count;
-        a.append(h, m);
-        grid.appendChild(a);
-      });
-    })
-    .catch(function () {
-      count.textContent = 'View all repositories on GitHub';
-      var p = document.createElement('p'); p.className = 'muted';
-      p.textContent = 'The live list could not load. Open the GitHub profile to see everything.';
-      grid.appendChild(p);
-    });
-})();
-</script>
-</body>
-</html>
