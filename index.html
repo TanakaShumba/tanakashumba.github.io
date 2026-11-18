@@ -114,6 +114,7 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 
 /* Repositories */
 .repo h3{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:500;word-break:break-word}
+.repoNote{margin-bottom:20px;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--dim)}
 .repoMore{margin-top:28px;display:flex;justify-content:center}
 .muted{color:var(--muted)}
 
@@ -326,6 +327,7 @@ footer a:hover{color:var(--accent)}
         <div><span class="eyebrow">// open source</span><h2>Tools I <em>built</em></h2></div>
         <p>Every public repository on my GitHub. Forks and the profile repository are excluded.</p>
       </div>
+      <p class="repoNote" id="repoNote">Loading repositories…</p>
       <div class="grid2" id="repos"></div>
       <div class="repoMore"><a class="btn" id="repoAll" href="https://github.com/TanakaShumba?tab=repositories" target="_blank" rel="noopener">View on GitHub ↗</a></div>
     </div>
@@ -405,4 +407,153 @@ footer a:hover{color:var(--accent)}
       </div>
       <div class="contact-actions">
         <a class="btn btn-primary" href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com <span>→</span></a>
-        <a class="btn" href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn
+        <a class="btn" href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        <a class="btn" href="tel:+13344820211">(334) 482-0211 <span>→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Tanaka Shumba</span>
+    <span>Troy, Alabama</span>
+    <span><a href="https://github.com/TanakaShumba" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/tanakashumba-" target="_blank" rel="noopener">LinkedIn</a> · <a href="resume.pdf" download="Tanaka_Shumba_Resume.pdf">Résumé</a></span>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+(function () {
+  var header = document.getElementById('siteHeader');
+  var btn = document.getElementById('menuBtn');
+  btn.addEventListener('click', function () {
+    var open = header.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? 'Close' : 'Menu';
+  });
+  header.querySelectorAll('nav a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      header.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'Menu';
+    });
+  });
+})();
+
+// Status counter: time since the last alert shown in the hero
+(function () {
+  var el = document.getElementById('ago');
+  var start = Date.now();
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var s = Math.floor((Date.now() - start) / 1000);
+    el.textContent = pad(Math.floor(s / 3600)) + ':' + pad(Math.floor((s % 3600) / 60)) + ':' + pad(s % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// Tools I built: live from GitHub when available, saved list when GitHub blocks requests.
+// Case file cards with data-repo="repo-name" link to that repo when it exists.
+(function () {
+  var user = 'TanakaShumba';
+  var excluded = [user.toLowerCase(), (user + '.github.io').toLowerCase()];
+
+  // Saved copy of the public repositories, used when the live GitHub list cannot load.
+  // Update this list when you add or delete repositories.
+  var FALLBACK = [
+    'ShadowProbe-API', 'TraceArchitect-AI', 'SafetyShield-AI', 'SubSniper', 'MediChat',
+    'CyberTrack', 'HoneyPing', 'CloudSentinel', 'CyberHunt', 'ThreatHawk', 'LogGuardian',
+    'python-network-scanner', 'automated-vulnerability-scanner', 'siem-log-parser',
+    'phishing-email-detector', 'windows-event-log-analyzer', 'soc-alert-triage',
+    'cloud-misconfig-scanner', 'nmap-threat-model', 'malware-analyzer', 'ethical-hacking-sim',
+    'cloud-security-checker', 'basic-pen-test', 'simple-ids', 'cybersecurity-lab-series',
+    'secure-hospital-system', 'voip-traffic-analyzer', 'Healthcare_System',
+    'Login-BruteForce-Simulator', 'password-security-demo', 'security-awareness-mini-course'
+  ];
+
+  var grid = document.getElementById('repos');
+  var repoAll = document.getElementById('repoAll');
+  var note = document.getElementById('repoNote');
+  var caseCards = document.querySelectorAll('#work .card[data-repo]');
+
+  function monthYear(iso) {
+    var d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
+
+  function render(repos) {
+    grid.innerHTML = '';
+    repos.forEach(function (r) {
+      var a = document.createElement('a');
+      a.className = 'card repo';
+      a.href = r.html_url; a.target = '_blank'; a.rel = 'noopener';
+
+      var top = document.createElement('div');
+      top.className = 'top';
+      var lang = document.createElement('span');
+      lang.textContent = r.language || 'Code';
+      var when = document.createElement('span');
+      when.textContent = r.updated_at ? 'Updated ' + monthYear(r.updated_at) : 'Repository';
+      top.append(lang, when);
+
+      var h = document.createElement('h3');
+      h.textContent = r.name;
+
+      var stars = document.createElement('div');
+      stars.className = 'tools';
+      if (r.stargazers_count > 0) {
+        var s = document.createElement('span');
+        s.textContent = '★ ' + r.stargazers_count;
+        stars.appendChild(s);
+      }
+
+      a.append(top, h, stars);
+      grid.appendChild(a);
+    });
+  }
+
+  function linkCases(repos) {
+    caseCards.forEach(function (card) {
+      var name = (card.getAttribute('data-repo') || '').toLowerCase();
+      if (!name) return;
+      var match = repos.filter(function (r) { return r.name.toLowerCase() === name; })[0];
+      if (!match) return;
+      card.classList.add('linked');
+      card.addEventListener('click', function () { window.open(match.html_url, '_blank', 'noopener'); });
+      var view = document.createElement('span');
+      view.className = 'viewRepo';
+      view.textContent = 'View repo ↗';
+      card.querySelector('.top').appendChild(view);
+    });
+  }
+
+  function useFallback() {
+    var repos = FALLBACK.map(function (name) {
+      return { name: name, html_url: 'https://github.com/' + user + '/' + name };
+    });
+    render(repos);
+    linkCases(repos);
+    repoAll.textContent = 'View all ' + repos.length + ' on GitHub ↗';
+    note.textContent = 'Live list is unavailable right now, so this is the saved list.';
+  }
+
+  note.textContent = 'Loading repositories…';
+
+  fetch('https://api.github.com/users/' + user + '/repos?per_page=100&sort=updated')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (list) {
+      var repos = list.filter(function (r) {
+        return !r.fork && excluded.indexOf(r.name.toLowerCase()) === -1;
+      });
+      render(repos);
+      linkCases(repos);
+      repoAll.textContent = 'View all ' + repos.length + ' on GitHub ↗';
+      note.textContent = '';
+    })
+    .catch(useFallback);
+})();
+</script>
+</body>
+</html>
