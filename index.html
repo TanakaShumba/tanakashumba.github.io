@@ -63,6 +63,97 @@
       overflow-x: hidden;
     }
 
+    /* =====================================================
+       2-SECOND CINEMATIC LION INTRO SPLASH SCREEN
+       ===================================================== */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      background: var(--obsidian);
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s var(--ease-out), visibility 0.6s;
+    }
+
+    .splash-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .lion-intro-stage {
+      position: relative;
+      width: 460px;
+      height: 300px;
+      max-width: 92vw;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      margin-bottom: 20px;
+    }
+
+    .lion-intro-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: lionZoom 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes lionZoom {
+      0% { transform: scale(1.08); filter: brightness(0.8) contrast(1.1); }
+      100% { transform: scale(1); filter: brightness(1.05) contrast(1.15); }
+    }
+
+    .lion-intro-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 62% 45%, rgba(16, 185, 129, 0.28) 0%, transparent 65%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .intro-status-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #34D399;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .intro-progress-bar {
+      width: 200px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .intro-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #059669, #34D399);
+      animation: fillIntro 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fillIntro { to { width: 100%; } }
+
+    .skip-intro-btn {
+      margin-top: 16px;
+      background: transparent;
+      border: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #949BA6;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Ambient Glow & Scroll Progress */
     .ambient-glow {
       position: fixed;
       top: -160px;
@@ -170,9 +261,7 @@
     .btn-primary-small:hover { opacity: 0.92; border-color: var(--accent-bright); }
     .kbd-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; opacity: 0.75; }
 
-    /* =====================================================
-       30-SECOND PLAYABLE "PACKET SLICER" GAME DRAWER
-       ===================================================== */
+    /* Playable 30-Second Mini-Game Drawer */
     .game-drawer {
       display: none;
       max-width: 1020px;
@@ -205,7 +294,7 @@
     .game-overlay p { font-size: 0.84rem; color: #949BA6; max-width: 420px; margin-bottom: 14px; }
 
     /* =====================================================
-       HERO SECTION: EDITORIAL + LAYERED INTERACTIVE DECK
+       HERO SECTION
        ===================================================== */
     .hero { padding: 56px 0 44px; }
 
@@ -226,11 +315,7 @@
     }
 
     .hero-meta-strip .sep { opacity: 0.35; }
-    .hero-meta-strip .role-rotator {
-      color: var(--accent);
-      font-weight: 600;
-      transition: opacity 0.2s ease;
-    }
+    .hero-meta-strip .role-rotator { color: var(--accent); font-weight: 600; transition: opacity 0.2s ease; }
 
     .hero-grid {
       display: grid;
@@ -260,42 +345,22 @@
 
     .hero h1 em::after {
       content: "";
-      position: absolute;
-      left: 0;
-      bottom: 4px;
-      width: 100%;
-      height: 7px;
-      background: var(--accent-soft);
-      z-index: -1;
-      border-radius: 4px;
+      position: absolute; left: 0; bottom: 4px; width: 100%; height: 7px;
+      background: var(--accent-soft); z-index: -1; border-radius: 4px;
     }
 
-    /* Clean Pillar Chips above bio */
     .cyber-pillars { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
     .cyber-pillar-chip {
       font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; padding: 5px 11px;
       border-radius: 8px; background: var(--surface); border: 1px solid var(--border);
-      display: inline-flex; align-items: center; gap: 6px; box-shadow: var(--shadow);
-      color: var(--text);
+      display: inline-flex; align-items: center; gap: 6px; box-shadow: var(--shadow); color: var(--text);
     }
     .cyber-pillar-chip span.chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-bright); }
 
-    /* Smooth, Readable Bio Paragraph (Zero Floating Commas!) */
-    .hero-sub {
-      font-size: 1.04rem;
-      line-height: 1.72;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-    }
+    .hero-sub { font-size: 1.04rem; line-height: 1.72; color: var(--text-muted); margin-bottom: 28px; }
+    .hero-sub strong { color: var(--text); font-weight: 600; border-bottom: 1.5px solid rgba(16, 185, 129, 0.35); padding-bottom: 1px; }
 
-    .hero-sub strong {
-      color: var(--text);
-      font-weight: 600;
-      border-bottom: 1.5px solid rgba(16, 185, 129, 0.35);
-      padding-bottom: 1px;
-    }
-
-    /* Right Column: Layered Portrait + Dark SOC Telemetry Card */
+    /* Hero Deck (Portrait + SOC Widget) */
     .hero-deck {
       position: relative;
       height: 360px;
@@ -307,138 +372,50 @@
 
     .deck-backdrop-card {
       position: absolute;
-      width: 248px;
-      height: 295px;
-      border-radius: 24px;
+      width: 248px; height: 295px; border-radius: 24px;
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(37, 99, 235, 0.08));
       border: 1px dashed var(--accent);
       transform: rotate(5deg) translate(14px, -6px);
       z-index: 1;
       transition: transform 0.4s var(--ease-out);
     }
-
-    .hero-deck:hover .deck-backdrop-card {
-      transform: rotate(8deg) translate(22px, -10px);
-    }
+    .hero-deck:hover .deck-backdrop-card { transform: rotate(8deg) translate(22px, -10px); }
 
     .profile-photo-card {
       position: relative;
-      width: 252px;
-      height: 300px;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 3px solid var(--surface);
-      box-shadow: var(--shadow-lg);
-      background: var(--obsidian);
-      transform: rotate(-2deg);
-      z-index: 2;
-      transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
-      cursor: pointer;
+      width: 252px; height: 300px; border-radius: 24px; overflow: hidden;
+      border: 3px solid var(--surface); box-shadow: var(--shadow-lg); background: var(--obsidian);
+      transform: rotate(-2deg); z-index: 2;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease; cursor: pointer;
     }
-
-    .profile-photo-card:hover {
-      transform: rotate(0deg) scale(1.02);
-    }
-
-    .profile-photo-card img.real-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
+    .profile-photo-card:hover { transform: rotate(0deg) scale(1.02); }
+    .profile-photo-card img.real-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 
     .portrait-top-pill {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 4px 10px;
-      border-radius: 99px;
-      background: rgba(13, 17, 23, 0.78);
-      color: #FFFFFF;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 500;
-      backdrop-filter: blur(8px);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 99px;
+      background: rgba(13, 17, 23, 0.78); color: #FFFFFF; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; font-weight: 500; backdrop-filter: blur(8px);
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; border: 1px solid rgba(255, 255, 255, 0.14);
     }
 
     .soc-floating-widget {
-      position: absolute;
-      bottom: 4px;
-      left: -18px;
-      width: 225px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: var(--obsidian);
-      color: #F3F4F6;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
-      z-index: 3;
-      font-family: 'JetBrains Mono', monospace;
-      transform: rotate(1.5deg);
+      position: absolute; bottom: 4px; left: -18px; width: 225px; padding: 12px 14px;
+      border-radius: 16px; background: var(--obsidian); color: #F3F4F6;
+      border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+      z-index: 3; font-family: 'JetBrains Mono', monospace; transform: rotate(1.5deg);
       transition: transform 0.35s var(--ease-out);
     }
+    .hero-deck:hover .soc-floating-widget { transform: rotate(0deg) translate(-6px, 4px); }
 
-    .hero-deck:hover .soc-floating-widget {
-      transform: rotate(0deg) translate(-6px, 4px);
-    }
-
-    .soc-widget-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.64rem;
-      color: #949BA6;
-      margin-bottom: 8px;
-    }
-
-    .soc-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      height: 24px;
-      margin-bottom: 7px;
-    }
-
-    .soc-bars span {
-      flex: 1;
-      background: var(--accent-bright);
-      border-radius: 2px;
-      animation: barPulse 1.4s ease-in-out infinite alternate;
-    }
-
+    .soc-widget-head { display: flex; align-items: center; justify-content: space-between; font-size: 0.64rem; color: #949BA6; margin-bottom: 8px; }
+    .soc-bars { display: flex; align-items: flex-end; gap: 3px; height: 24px; margin-bottom: 7px; }
+    .soc-bars span { flex: 1; background: var(--accent-bright); border-radius: 2px; animation: barPulse 1.4s ease-in-out infinite alternate; }
     .soc-bars span:nth-child(2n) { animation-duration: 0.9s; background: #34D399; }
     .soc-bars span:nth-child(3n) { animation-duration: 1.7s; opacity: 0.65; }
+    @keyframes barPulse { 0% { height: 22%; } 100% { height: 98%; } }
 
-    @keyframes barPulse {
-      0% { height: 22%; }
-      100% { height: 98%; }
-    }
-
-    .soc-widget-foot {
-      font-size: 0.66rem;
-      color: #34D399;
-      display: flex;
-      justify-content: space-between;
-      white-space: nowrap;
-    }
-
-    .handwritten-floating {
-      position: absolute;
-      bottom: -22px;
-      right: 12px;
-      font-family: 'Caveat', cursive;
-      font-size: 1.2rem;
-      color: var(--accent);
-      transform: rotate(-3deg);
-      z-index: 4;
-      pointer-events: none;
-    }
+    .soc-widget-foot { font-size: 0.66rem; color: #34D399; display: flex; justify-content: space-between; white-space: nowrap; }
+    .handwritten-floating { position: absolute; bottom: -22px; right: 12px; font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--accent); transform: rotate(-3deg); z-index: 4; pointer-events: none; }
 
     .status-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 0.85rem; margin-bottom: 26px; }
     .pulse { width: 8px; height: 8px; background: var(--accent-bright); border-radius: 50%; position: relative; display: inline-block; }
@@ -451,7 +428,6 @@
     }
     .cta-link:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 
-    /* High-Contrast Dark Telemetry Strip */
     .telemetry-bar {
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 16px;
       padding: 13px 20px; border-radius: 14px; background: var(--obsidian); color: #E6EDF3;
@@ -461,71 +437,29 @@
     .telemetry-key { color: #949BA6; font-weight: 500; }
     .telemetry-ok { color: #34D399; font-weight: 600; }
 
-    /* =====================================================
-       INTERACTIVE DRAGGABLE COLLAGE BOARD
-       ===================================================== */
-    .collage-section {
-      padding: 36px 0 64px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .collage-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-    }
-
+    /* Interactive Desk Collage */
+    .collage-section { padding: 36px 0 64px; border-bottom: 1px solid var(--border); }
+    .collage-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
     .collage-board {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      padding: 22px;
-      border-radius: 24px;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
+      position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 22px;
+      border-radius: 24px; background: var(--surface-alt); border: 1px solid var(--border); box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
     }
-
     .sticker-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-      cursor: grab;
-      user-select: none;
-      position: relative;
-      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 18px;
+      box-shadow: var(--shadow); cursor: grab; user-select: none; position: relative; transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
-
     .sticker-card:nth-child(1) { transform: rotate(-1.5deg); }
     .sticker-card:nth-child(2) { transform: rotate(1.2deg); background: var(--obsidian); color: #FFFFFF; border-color: #232936; }
     .sticker-card:nth-child(3) { transform: rotate(-1deg); background: linear-gradient(135deg, #034694 0%, #001C58 100%); color: #FFFFFF; border: none; }
     .sticker-card:nth-child(4) { transform: rotate(1.6deg); }
-
     .sticker-card:active { cursor: grabbing; z-index: 30; box-shadow: var(--shadow-lg); }
     .sticker-card:hover { border-color: var(--accent-bright); }
-
-    .sticker-top {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.66rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      opacity: 0.7;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
+    .sticker-top { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.7; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
     .vinyl-wrap { display: flex; align-items: center; gap: 12px; }
     .vinyl-disc {
       width: 42px; height: 42px; border-radius: 50%;
       background: radial-gradient(circle, var(--accent-bright) 0 18%, #18181b 20% 42%, #323238 43% 46%, #18181b 47% 100%);
-      animation: spin 5s linear infinite; flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: spin 5s linear infinite; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -535,12 +469,11 @@
     .marquee-star { color: var(--accent); margin: 0 18px; }
     @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    /* Sections & Cards (Added scroll-margin-top so sticky navbar never slices headers!) */
+    /* Sections & Cards */
     section { padding: 68px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 90px; }
     .chapter-tag {
       font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent);
-      text-transform: uppercase; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 6px;
-      margin-bottom: 8px;
+      text-transform: uppercase; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 8px;
     }
     .chapter-tag i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-bright); display: inline-block; }
 
@@ -548,7 +481,7 @@
     .section-title { font-family: 'Instrument Serif', serif; font-size: 2.4rem; font-weight: 400; }
     .section-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted); text-transform: uppercase; }
 
-    /* Project Cards with Non-Truncated Terminal Headers */
+    /* Projects Grid */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px; }
     .project-card {
       position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
@@ -558,33 +491,14 @@
     .project-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--shadow-lg); }
 
     .project-visual-header {
-      background: var(--obsidian);
-      color: #E6EDF3;
-      padding: 15px 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      border-bottom: 1px solid var(--border);
+      background: var(--obsidian); color: #E6EDF3; padding: 15px 20px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; border-bottom: 1px solid var(--border);
     }
-
-    .visual-top {
-      display: flex;
-      justify-content: space-between;
-      color: #949BA6;
-      margin-bottom: 9px;
-      font-size: 0.66rem;
-    }
-
+    .visual-top { display: flex; justify-content: space-between; color: #949BA6; margin-bottom: 9px; font-size: 0.66rem; }
     .visual-terminal-line {
-      color: #34D399;
-      background: rgba(16, 185, 129, 0.1);
-      border-left: 2px solid #10B981;
-      padding: 6px 10px;
-      border-radius: 0 6px 6px 0;
-      font-size: 0.65rem;
-      white-space: nowrap;
-      overflow: hidden;
+      color: #34D399; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10B981;
+      padding: 6px 10px; border-radius: 0 6px 6px 0; font-size: 0.65rem; white-space: nowrap; overflow: hidden;
     }
-
     .project-body { padding: 24px 26px 22px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
     .card-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 12px; }
     .tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; padding: 4px 10px; border-radius: 6px; background: var(--surface-alt); color: var(--text-muted); }
@@ -593,6 +507,49 @@
     .card-footer { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; font-weight: 600; display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); }
     .project-card:hover .card-footer span.arrow { transform: translateX(5px); color: var(--accent); }
     .card-footer span.arrow { transition: transform 0.2s ease, color 0.2s ease; }
+
+    /* =====================================================
+       NEW: CERTIFICATES & REPOSITORIES GRID (CHAPTER 03)
+       ===================================================== */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 20px;
+    }
+
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s var(--ease-out), border-color 0.25s ease;
+    }
+    .cert-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+
+    .cert-issuer {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .cert-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .cert-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
 
     /* Experience Timeline */
     .resume-list { display: flex; flex-direction: column; gap: 18px; }
@@ -644,11 +601,24 @@
       .collage-board { grid-template-columns: repeat(2, 1fr); }
       .resume-item { grid-template-columns: 1fr; gap: 6px; }
       .nav-links a.hide-mobile, .brand-tag { display: none; }
-      .skills-categories, .projects-grid { grid-template-columns: 1fr; }
+      .skills-categories, .projects-grid, .certs-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
+  <!-- =========================================================================
+       2-SECOND CINEMATIC LION OPENING INTRO (SHUMBA GUARDIAN REVEAL)
+       ========================================================================= -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="lion-intro-stage">
+      <img src="lion.jpg" alt="Shumba Guardian Lion" />
+      <div class="lion-intro-glow"></div>
+    </div>
+    <div class="intro-status-text">SHUMBA GUARDIAN // PROTECTION &amp; DEFENSE</div>
+    <div class="intro-progress-bar"><div class="intro-progress-fill"></div></div>
+    <button class="skip-intro-btn" onclick="dismissSplashNow()">Skip intro →</button>
+  </div>
 
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="ambient-glow"></div>
@@ -663,6 +633,7 @@
       </a>
       <nav class="nav-links">
         <a href="#work" class="nav-item hide-mobile">Work</a>
+        <a href="#certs" class="nav-item hide-mobile">Certs</a>
         <a href="#experience" class="nav-item hide-mobile">Experience</a>
         <a href="#skills" class="nav-item hide-mobile">Skills</a>
         <button class="btn-small btn-game" onclick="toggleGameDrawer()" title="Play 30-second Packet Slicer mini-game">⚔️ Defend</button>
@@ -722,7 +693,7 @@
           </div>
 
           <p class="hero-sub">
-            Hi, I'm Tanaka. I hold an <strong>M.S. in Computer Science</strong> and a <strong>B.S. in Cybersecurity</strong> from <strong>Troy University</strong>, and currently work as an AI Trainer at <strong>Snorkel AI</strong>. I monitor network traffic, investigate security alerts, find vulnerabilities, harden systems, and evaluate AI models using <strong>Wireshark</strong>, <strong>Zeek</strong>, <strong>Snort</strong>, <strong>Suricata</strong>, <strong>Splunk</strong>, <strong>Nmap</strong>, <strong>pfSense</strong>, <strong>Burp Suite</strong>, <strong>Python</strong>, and <strong>Kali Linux</strong>.
+            Hi, I'm Tanaka (Shumba, meaning lion). I hold an <strong>M.S. in Computer Science</strong> and a <strong>B.S. in Cybersecurity</strong> from <strong>Troy University</strong> (graduating Dec 2026), and currently work as an AI Trainer at <strong>Snorkel AI</strong>. I monitor network traffic, investigate security alerts, find vulnerabilities, harden systems, and evaluate AI models using <strong>Wireshark</strong>, <strong>Zeek</strong>, <strong>Snort</strong>, <strong>Suricata</strong>, <strong>Splunk</strong>, <strong>Nmap</strong>, <strong>pfSense</strong>, <strong>Burp Suite</strong>, <strong>Python</strong>, and <strong>Kali Linux</strong>.
           </p>
 
           <div class="status-bar">
@@ -764,7 +735,7 @@
         </div>
       </div>
 
-      <!-- High-Contrast Dark Telemetry Strip (Replaced ARSENAL with TOOLS) -->
+      <!-- High-Contrast Dark Telemetry Strip -->
       <div class="telemetry-bar reveal active delay-2">
         <div class="telemetry-item"><span class="telemetry-key">STATUS:</span><span class="telemetry-ok">● ACTIVE DEFENSE &amp; AI TRAINING</span></div>
         <div class="telemetry-item"><span class="telemetry-key">TOOLS:</span><span>WIRESHARK · ZEEK · SNORT · SPLUNK · NMAP · BURP</span></div>
@@ -819,7 +790,7 @@
   </div>
 
   <main class="container">
-    <!-- Chapter 02: Academic Projects & Featured Work (Clean Non-Truncated Terminal Lines) -->
+    <!-- Chapter 02: Academic Projects & Featured Work -->
     <section id="work" class="reveal">
       <span class="chapter-tag"><i></i> Chapter 02 · Selected Research &amp; Labs</span>
       <div class="section-header">
@@ -890,9 +861,47 @@
       </div>
     </section>
 
-    <!-- Chapter 03: Experience & Education -->
+    <!-- Chapter 03: Certificates & Open Source Repositories -->
+    <section id="certs" class="reveal">
+      <span class="chapter-tag"><i></i> Chapter 03 · Certifications &amp; Code Repos</span>
+      <div class="section-header">
+        <h2 class="section-title">Certificates &amp; Open Source Tools</h2>
+        <span class="section-subtitle">Verified credentials &amp; tools built to solve real problems</span>
+      </div>
+
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div>
+            <div class="cert-issuer">Troy University · M.S. Thesis</div>
+            <div class="cert-title">IoT Metadata Privacy Analysis</div>
+            <div class="cert-desc">Empirical research paper examining encrypted network telemetry and behavioral leakage in smart home ecosystems.</div>
+          </div>
+          <div class="card-footer"><a href="resume.pdf" target="_blank">View Abstract ↗</a></div>
+        </div>
+
+        <div class="cert-card">
+          <div>
+            <div class="cert-issuer">GitHub Open Source</div>
+            <div class="cert-title">CyberTrack macOS Auditor</div>
+            <div class="cert-desc">Open-source macOS auditing tool that checks Firewall, FileVault, Gatekeeper and open ports, rating security from 0 to 100.</div>
+          </div>
+          <div class="card-footer"><a href="https://github.com/TanakaShumba" target="_blank">View Repo ↗</a></div>
+        </div>
+
+        <div class="cert-card">
+          <div>
+            <div class="cert-issuer">GitHub Open Source</div>
+            <div class="cert-title">CloudSentinel Misconfig Scanner</div>
+            <div class="cert-desc">Automated scanner for cloud infrastructure compliance gaps and IAM permission oversights without touching live systems.</div>
+          </div>
+          <div class="card-footer"><a href="https://github.com/TanakaShumba" target="_blank">View Repo ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 04: Experience & Education -->
     <section id="experience" class="reveal">
-      <span class="chapter-tag"><i></i> Chapter 03 · Verified Track Record</span>
+      <span class="chapter-tag"><i></i> Chapter 04 · Verified Track Record</span>
       <div class="section-header">
         <h2 class="section-title">Experience &amp; Education</h2>
         <span class="section-subtitle">Background</span>
@@ -910,7 +919,7 @@
           </div>
         </div>
         <div class="resume-item">
-          <div class="resume-date">Sept 2025 to Dec 2026</div>
+          <div class="resume-date">Sept 2025 to Present</div>
           <div class="resume-content">
             <h4>Student Worker, Computer Science Dept.</h4>
             <div class="resume-org">Troy University</div>
@@ -921,7 +930,7 @@
           </div>
         </div>
         <div class="resume-item">
-          <div class="resume-date">Oct 2026</div>
+          <div class="resume-date">Dec 2026</div>
           <div class="resume-content">
             <h4>M.S. in Computer Science (Cybersecurity Concentration)</h4>
             <div class="resume-org">Troy University</div>
@@ -943,9 +952,9 @@
       </div>
     </section>
 
-    <!-- Chapter 04: Cybersecurity & Tools (Removed "Arsenal") -->
+    <!-- Chapter 05: Cybersecurity & Tools -->
     <section id="skills" class="reveal">
-      <span class="chapter-tag"><i></i> Chapter 04 · Skills &amp; Tools</span>
+      <span class="chapter-tag"><i></i> Chapter 05 · Skills &amp; Tools</span>
       <div class="section-header">
         <h2 class="section-title">Cybersecurity &amp; Tools</h2>
         <span class="section-subtitle">Full Security Stack</span>
@@ -1017,7 +1026,7 @@
     </div>
   </div>
 
-  <!-- AI Sidekick Button (Clean Pulsing Emerald Dot — Zero Lion Icon!) -->
+  <!-- AI Sidekick Button -->
   <button class="sidekick-btn" onclick="toggleSidekick()">
     <span class="pulse"></span>
     <span>Ask About Tanaka</span>
@@ -1038,6 +1047,22 @@
     if (window.location.hash || window.location.href.endsWith('#')) {
       history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
+
+    // 2-Second Cinematic Lion Intro Logic
+    let introTimers = [];
+    function runIntroSequence() {
+      const splash = document.getElementById('splashScreen');
+      if (!splash) return;
+      introTimers.push(setTimeout(() => {
+        splash.classList.add('hidden');
+      }, 2100));
+    }
+    function dismissSplashNow() {
+      introTimers.forEach(t => clearTimeout(t));
+      const splash = document.getElementById('splashScreen');
+      if (splash) splash.classList.add('hidden');
+    }
+    window.addEventListener('DOMContentLoaded', runIntroSequence);
 
     // 1. Smart Portrait Resolver
     (function resolveUserPortrait() {
@@ -1325,21 +1350,17 @@
           </div>
           <div>
             <strong>Education</strong>
-            <p style="color:var(--text-muted); margin-top:4px;">Troy University · M.S. Computer Science (Cybersecurity) | Oct 2026<br/>Troy University · B.S. Cybersecurity | Dec 2023</p>
+            <p style="color:var(--text-muted); margin-top:4px;">Troy University · M.S. Computer Science (Cybersecurity) | Dec 2026<br/>Troy University · B.S. Cybersecurity | Dec 2023</p>
           </div>
           <div>
             <strong>Experience</strong>
             <p style="color:var(--text-muted); margin-top:4px;">
               <strong>AI Trainer</strong> | Snorkel AI (2026 to Present)<br/>
               • Build high-quality datasets, author complex prompts, and evaluate LLM outputs across cybersecurity and software engineering domains.<br/><br/>
-              <strong>Student Worker, Computer Science Dept.</strong> | Troy University (Sept 2025 to Dec 2026)<br/>
+              <strong>Student Worker, Computer Science Dept.</strong> | Troy University (Sept 2025 to Present)<br/>
               • Maintained and supported computer lab systems and networks, ensuring system reliability and adherence to basic security practices.<br/>
               • Assisted students with cybersecurity fundamentals, programming concepts, and introductory threat analysis.
             </p>
-          </div>
-          <div>
-            <strong>Academic Projects &amp; Research</strong>
-            <p style="color:var(--text-muted); margin-top:4px;"><strong>Master's Thesis: IoT Network Privacy Analysis</strong><br/>• Designed and executed a comprehensive privacy analysis of smart home IoT device network traffic metadata.<br/>• Configured virtualized environments and utilized Wireshark, Zeek, Snort, and Kali Linux for advanced packet analysis and telemetry logging.</p>
           </div>
         </div>
       `;
