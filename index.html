@@ -50,18 +50,28 @@ nav a:hover{color:var(--text)}
 .btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:96px 28px 72px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;padding:96px 28px 72px}
 .hero h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,6vw,5rem);line-height:1.02;letter-spacing:-.02em;margin:22px 0 26px}
 .lead{color:var(--muted);font-size:1.02rem;max-width:540px}
 .actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.status{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--dim)}
+.status .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(61,220,151,.15);animation:blink 1.6s ease-in-out infinite}
+.status b{color:var(--text);font-weight:500}
 
-/* Network map */
-.scope{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(61,107,255,.35)}
-.scopeHead{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim)}
+/* Portrait */
+.portrait .frame{aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 30px 60px -30px rgba(61,107,255,.35)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.portrait .initials{display:none;height:100%;place-items:center;font-family:'Instrument Serif',serif;font-size:6rem;color:var(--dim)}
+.portrait .caption{margin-top:14px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim)}
+
+/* Live topology band */
+.scopeBand{padding:0 0 8px}
+.scope{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.scopeHead{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--dim)}
 .scopeHead .live{color:var(--green);display:inline-flex;align-items:center;gap:6px}
 .scopeHead .live i{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.6s ease-in-out infinite}
 .map{display:block;width:100%;height:auto}
-.lbl{font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--muted)}
+.lbl{font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--muted)}
 .lbl.hot{fill:var(--red)}
 .lbl.ok{fill:var(--green)}
 .flow{stroke-dasharray:4 8;animation:flow 1.8s linear infinite}
@@ -69,11 +79,6 @@ nav a:hover{color:var(--text)}
 @keyframes flow{to{stroke-dashoffset:-24}}
 @keyframes ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.4);opacity:0}}
 @keyframes blink{50%{opacity:.25}}
-
-/* Status strip */
-.status{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--dim)}
-.status .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(61,220,151,.15)}
-.status b{color:var(--text);font-weight:500}
 
 /* Sections */
 section{padding:88px 0;border-top:1px solid var(--line)}
@@ -121,7 +126,7 @@ section{padding:88px 0;border-top:1px solid var(--line)}
 .cred .when{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--dim);margin-top:auto;padding-top:10px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .cred .when a{color:var(--accent)}
 .cred .when a:hover{text-decoration:underline}
-.verified{color:var(--green)!important;display:inline-flex;align-items:center;gap:6px}
+.verified{color:var(--green);display:inline-flex;align-items:center;gap:6px}
 .verified::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
 .courses{margin-top:22px;font-size:.9rem;color:var(--muted)}
 .courses b{color:var(--text);font-weight:500}
@@ -156,7 +161,7 @@ footer a:hover{color:var(--accent)}
 /* Responsive */
 @media (max-width:920px){
   .hero{grid-template-columns:1fr;gap:48px;padding:64px 28px}
-  .scope{max-width:520px}
+  .portrait{max-width:380px}
   .menu{display:inline-flex}
   nav{display:none}
   header.open nav{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:4px 28px 12px}
@@ -210,63 +215,62 @@ footer a:hover{color:var(--accent)}
       </div>
     </div>
 
+    <figure class="portrait">
+      <div class="frame">
+        <img src="profile.jpg" alt="Tanaka Shumba" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="initials">TS</div>
+      </div>
+      <figcaption class="caption"><span>Tanaka Shumba</span><span>Troy, Alabama</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap scopeBand">
     <figure class="scope" aria-label="Network monitoring diagram">
       <div class="scopeHead">
         <span>zeek // eth0 topology</span>
         <span class="live"><i></i>LIVE</span>
       </div>
-      <svg class="map" viewBox="0 0 480 360" role="img" aria-label="Network diagram: pfSense hub monitoring several hosts, with one flagged alert and one contained threat">
+      <svg class="map" viewBox="0 0 1040 230" role="img" aria-label="Network diagram: a pfSense hub monitoring five hosts. One camera is flagged with a live alert, and the SIEM node is healthy.">
         <!-- links -->
         <g stroke="#1B2740" stroke-width="1" fill="none">
-          <path d="M240 180 L80 90"/>
-          <path d="M240 180 L80 270"/>
-          <path d="M240 180 L400 90"/>
-          <path d="M240 180 L400 270"/>
-          <path d="M240 180 L240 40"/>
-          <path d="M240 180 L240 320"/>
+          <path d="M520 120 L200 60"/>
+          <path d="M520 120 L200 180"/>
+          <path d="M520 120 L840 60"/>
+          <path d="M520 120 L840 180"/>
+          <path d="M520 120 L520 40"/>
         </g>
-        <!-- live traffic on three links -->
+        <!-- live traffic -->
         <g stroke="#3D6BFF" stroke-width="1.2" fill="none" opacity=".75" class="flow">
-          <path d="M240 180 L80 90"/>
-          <path d="M240 180 L400 90"/>
-          <path d="M240 180 L240 40"/>
+          <path d="M520 120 L200 60"/>
+          <path d="M520 120 L840 60"/>
+          <path d="M520 120 L520 40"/>
         </g>
-        <!-- packets -->
-        <circle r="2.5" fill="#5A82FF">
-          <animateMotion dur="2.8s" repeatCount="indefinite" path="M240 180 L80 90"/>
-        </circle>
-        <circle r="2.5" fill="#5A82FF">
-          <animateMotion dur="3.4s" repeatCount="indefinite" path="M240 180 L400 90"/>
-        </circle>
-        <circle r="2.5" fill="#FF5C5C">
-          <animateMotion dur="2.2s" repeatCount="indefinite" path="M80 270 L240 180"/>
-        </circle>
+        <circle r="2.5" fill="#5A82FF"><animateMotion dur="2.8s" repeatCount="indefinite" path="M520 120 L200 60"/></circle>
+        <circle r="2.5" fill="#5A82FF"><animateMotion dur="3.4s" repeatCount="indefinite" path="M520 120 L840 60"/></circle>
+        <circle r="2.5" fill="#FF5C5C"><animateMotion dur="2.2s" repeatCount="indefinite" path="M200 180 L520 120"/></circle>
 
-        <!-- alert ring on the flagged host -->
-        <circle cx="80" cy="270" r="14" fill="none" stroke="#FF5C5C" stroke-width="1.2" class="ring"/>
+        <!-- alert ring on the flagged camera -->
+        <circle cx="200" cy="180" r="14" fill="none" stroke="#FF5C5C" stroke-width="1.2" class="ring"/>
 
         <!-- hub -->
-        <circle cx="240" cy="180" r="20" fill="#111A2D" stroke="#3D6BFF" stroke-width="1.5"/>
-        <text x="240" y="216" text-anchor="middle" class="lbl">pfSense</text>
+        <circle cx="520" cy="120" r="20" fill="#111A2D" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="520" y="158" text-anchor="middle" class="lbl">pfSense</text>
 
         <!-- hosts -->
-        <circle cx="80" cy="90" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
-        <text x="80" y="72" text-anchor="middle" class="lbl">WS-01</text>
+        <circle cx="200" cy="60" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="200" y="42" text-anchor="middle" class="lbl">WS-01</text>
 
-        <circle cx="80" cy="270" r="8" fill="#FF5C5C" stroke="#FF5C5C" stroke-width="1.5"/>
-        <text x="80" y="296" text-anchor="middle" class="lbl hot">IOT-CAM-02</text>
+        <circle cx="200" cy="180" r="8" fill="#FF5C5C" stroke="#FF5C5C" stroke-width="1.5"/>
+        <text x="200" y="208" text-anchor="middle" class="lbl hot">IOT-CAM-02</text>
 
-        <circle cx="400" cy="90" r="8" fill="#0C1322" stroke="#3DDC97" stroke-width="1.5"/>
-        <text x="400" y="72" text-anchor="middle" class="lbl ok">SPLUNK</text>
+        <circle cx="840" cy="60" r="8" fill="#0C1322" stroke="#3DDC97" stroke-width="1.5"/>
+        <text x="840" y="42" text-anchor="middle" class="lbl ok">SPLUNK</text>
 
-        <circle cx="400" cy="270" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
-        <text x="400" y="296" text-anchor="middle" class="lbl">DNS</text>
+        <circle cx="840" cy="180" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="840" y="208" text-anchor="middle" class="lbl">DNS</text>
 
-        <circle cx="240" cy="40" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
-        <text x="240" y="26" text-anchor="middle" class="lbl">WAN</text>
-
-        <circle cx="240" cy="320" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
-        <text x="240" y="344" text-anchor="middle" class="lbl">LAB</text>
+        <circle cx="520" cy="40" r="8" fill="#0C1322" stroke="#3D6BFF" stroke-width="1.5"/>
+        <text x="520" y="24" text-anchor="middle" class="lbl">WAN</text>
       </svg>
     </figure>
   </div>
@@ -402,7 +406,7 @@ footer a:hover{color:var(--accent)}
     <div class="wrap contact">
       <div>
         <span class="eyebrow">// contact</span>
-        <h2>Let's talk about <em>your security team.</em></h2>
+        <h2>Let's <em>talk.</em></h2>
       </div>
       <div class="contact-actions">
         <a class="btn btn-primary" href="mailto:tanakashumba04@gmail.com">tanakashumba04@gmail.com <span>→</span></a>
