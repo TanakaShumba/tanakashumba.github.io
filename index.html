@@ -23,14 +23,11 @@ a{color:inherit;text-decoration:none}
 em.s{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--lime)}
 .muted{color:var(--muted)}
 
-/* Lion intro: warrior video plays once, holds on last frame, click to enter */
-#intro{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .5s ease,visibility .5s}
+/* Lion intro: video plays once, then fades out on its own */
+#intro{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s}
 #intro.done{opacity:0;visibility:hidden;pointer-events:none}
-#intro .lion{width:min(880px,92vw);height:auto;max-height:72vh;object-fit:cover;border-radius:18px;border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(0,0,0,.7);animation:lionIn .9s ease .1s both}
-@keyframes lionIn{from{opacity:0;transform:scale(.94);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
-#intro .cap{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;color:var(--muted);min-height:1em}
-#intro .sound{position:absolute;bottom:28px;right:28px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:var(--text);background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
-#intro .sound:hover{border-color:var(--lime)}
+#intro .lion{width:min(880px,92vw);max-height:72vh;height:auto;object-fit:cover;border-radius:18px;border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(0,0,0,.7);animation:lionIn .6s ease both}
+@keyframes lionIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){#intro{display:none}}
 
 /* Nav */
@@ -158,11 +155,9 @@ a.card:hover,.card:hover{border-color:var(--lime);transform:translateY(-3px)}
 </head>
 <body>
 
-<!-- Lion intro -->
+<!-- Lion intro: plays once, then fades out -->
 <div id="intro">
-  <video class="lion" id="introVideo" src="lion-warrior.mp4" poster="lion-warrior.jpg" autoplay muted playsinline preload="auto" aria-label="Lion warrior drawing his sword"></video>
-  <div class="cap" id="introCap">SHUMBA · LION</div>
-  <button class="sound" id="soundBtn" type="button">Sound off</button>
+  <video class="lion" id="introVideo" src="lion-warrior.mp4" poster="lion-warrior.jpg" autoplay muted playsinline></video>
 </div>
 
 <header class="nav">
@@ -437,36 +432,20 @@ a.card:hover,.card:hover{border-color:var(--lime);transform:translateY(-3px)}
 </footer>
 
 <script>
-// Lion intro: muted autoplay, holds on last frame, click to enter
+// Lion intro: plays once, then fades out
 (function () {
   var intro = document.getElementById('intro');
   var v = document.getElementById('introVideo');
-  var cap = document.getElementById('introCap');
-  var btn = document.getElementById('soundBtn');
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   function finish() { intro.classList.add('done'); v.pause(); }
-  function ready() { cap.textContent = 'CLICK TO ENTER'; }
 
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) { finish(); return; }
 
-  v.addEventListener('ended', ready);
-  v.addEventListener('error', ready);
+  v.addEventListener('ended', finish);
+  v.addEventListener('error', finish);
   var p = v.play();
-  if (p && p.catch) { p.catch(ready); }
-  setTimeout(ready, 6000);
-
-  intro.addEventListener('click', finish);
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    v.muted = false;
-    v.currentTime = 0;
-    btn.textContent = 'Sound on';
-    v.play().catch(function () { btn.textContent = 'Sound unavailable'; });
-  });
-  document.addEventListener('keydown', function (e) {
-    if (!intro.classList.contains('done') && (e.key === 'Enter' || e.key === ' ')) finish();
-  });
+  if (p && p.catch) { p.catch(finish); }
+  setTimeout(finish, 4000); // safety net if the video stalls
 })();
 
 // Live GitHub repo list (works on GitHub Pages; blocked in preview tools)
